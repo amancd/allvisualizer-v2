@@ -166,27 +166,33 @@ export default function TwoSumVisualizer() {
   const currentStepData = steps[currentStep] || { i: -1, j: -1, message: '' };
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-6">
-      <h3 className="text-2xl font-bold text-gray-900 mb-6">Interactive Visualizer</h3>
-
+    <div className="bg-gradient-to-br from-gray-50 to-white rounded-2xl border border-gray-200 p-6 md:p-8">
       {/* Custom Input Section */}
-      <div className="mb-6 p-4 bg-gray-50 rounded-lg">
-        <h4 className="font-semibold text-gray-900 mb-3">Custom Input</h4>
-        <div className="grid md:grid-cols-2 gap-4">
+      <div className="mb-8 p-6 bg-white rounded-xl border border-gray-200 shadow-sm">
+        <div className="flex items-center gap-3 mb-4">
+          <div className="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center">
+            <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+            </svg>
+          </div>
+          <h4 className="text-lg font-bold text-gray-900">Custom Input</h4>
+        </div>
+        
+        <div className="grid sm:grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Array (comma-separated numbers)
+            <label className="block text-sm font-semibold text-gray-700 mb-2">
+              Array (comma-separated)
             </label>
             <input
               type="text"
               value={customInput}
               onChange={(e) => setCustomInput(e.target.value)}
               placeholder="e.g., 2,7,11,15"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+              className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all text-sm"
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-semibold text-gray-700 mb-2">
               Target
             </label>
             <input
@@ -194,75 +200,86 @@ export default function TwoSumVisualizer() {
               value={customTarget}
               onChange={(e) => setCustomTarget(e.target.value)}
               placeholder="e.g., 9"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+              className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all text-sm"
             />
           </div>
         </div>
+        
         {error && (
-          <div className="mt-3 p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
-            {error}
+          <div className="mt-4 p-4 bg-red-50 border-2 border-red-200 rounded-xl text-red-700 text-sm flex items-start gap-3">
+            <svg className="w-5 h-5 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+            </svg>
+            <span>{error}</span>
           </div>
         )}
+        
         <button
           onClick={handleApplyInput}
-          className="mt-3 bg-indigo-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-indigo-700 transition-colors"
+          className="mt-4 w-full sm:w-auto bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-3 rounded-xl font-semibold hover:shadow-lg transition-all hover:-translate-y-0.5 flex items-center justify-center gap-2"
         >
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+          </svg>
           Apply & Visualize
         </button>
       </div>
 
       {/* Current State Display */}
-      <div className="mb-6 p-4 bg-indigo-50 rounded-lg">
-        <div className="flex justify-between items-center mb-2">
-          <span className="text-sm font-medium text-gray-700">Array:</span>
-          <span className="font-mono text-indigo-600">[{nums.join(', ')}]</span>
+      <div className="mb-8 grid sm:grid-cols-2 gap-4">
+        <div className="p-4 bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl border border-indigo-200">
+          <div className="text-xs font-semibold text-indigo-600 mb-1 uppercase tracking-wide">Array</div>
+          <div className="font-mono text-lg font-bold text-gray-900">[{nums.join(', ')}]</div>
         </div>
-        <div className="flex justify-between items-center">
-          <span className="text-sm font-medium text-gray-700">Target:</span>
-          <span className="font-mono text-indigo-600">{target}</span>
+        <div className="p-4 bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl border border-purple-200">
+          <div className="text-xs font-semibold text-purple-600 mb-1 uppercase tracking-wide">Target</div>
+          <div className="font-mono text-lg font-bold text-gray-900">{target}</div>
         </div>
       </div>
 
       {/* Array Visualization */}
-      <div className="mb-6 overflow-x-auto">
-        <div className="flex gap-2 min-w-max pb-4">
+      <div className="mb-8 overflow-x-auto">
+        <div className="flex gap-3 min-w-max pb-4 px-2">
           {nums.map((num, index) => (
             <div key={index} className="flex flex-col items-center relative">
               {/* Pointer indicators */}
               {currentStepData.i === index && (
-                <div className="absolute -top-8 flex flex-col items-center animate-bounce">
-                  <div className="text-2xl">👆</div>
-                  <div className="text-xs font-semibold text-indigo-600 whitespace-nowrap">
-                    Current
+                <div className="absolute -top-12 flex flex-col items-center animate-bounce z-10">
+                  <div className="text-3xl">�</div>
+                  <div className="text-xs font-bold text-indigo-600 whitespace-nowrap bg-indigo-100 px-2 py-1 rounded-full">
+                    Checking
                   </div>
                 </div>
               )}
               {currentStepData.j === index && currentStepData.found && (
-                <div className="absolute -top-8 flex flex-col items-center animate-bounce">
-                  <div className="text-2xl">👆</div>
-                  <div className="text-xs font-semibold text-green-600 whitespace-nowrap">
-                    Match!
+                <div className="absolute -top-12 flex flex-col items-center animate-bounce z-10">
+                  <div className="text-3xl">🎯</div>
+                  <div className="text-xs font-bold text-green-600 whitespace-nowrap bg-green-100 px-2 py-1 rounded-full">
+                    Found!
                   </div>
                 </div>
               )}
               
-              <div className="text-xs text-gray-500 mb-1">Index {index}</div>
+              <div className="text-xs font-semibold text-gray-500 mb-2 bg-gray-100 px-2 py-0.5 rounded">
+                Index {index}
+              </div>
+              
               <div
-                className={`w-16 h-16 flex items-center justify-center rounded-lg font-bold text-lg transition-all ${
+                className={`w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center rounded-xl font-bold text-lg sm:text-xl transition-all duration-300 ${
                   currentStepData.i === index || currentStepData.j === index
                     ? currentStepData.found
-                      ? 'bg-green-500 text-white scale-110 shadow-lg ring-4 ring-green-300'
-                      : 'bg-yellow-400 text-gray-900 scale-110 shadow-lg ring-4 ring-yellow-300'
+                      ? 'bg-gradient-to-br from-green-500 to-emerald-600 text-white scale-110 shadow-xl ring-4 ring-green-300 animate-pulse'
+                      : 'bg-gradient-to-br from-yellow-400 to-orange-500 text-white scale-110 shadow-xl ring-4 ring-yellow-300'
                     : result && (result[0] === index || result[1] === index)
-                    ? 'bg-green-200 text-green-800'
-                    : 'bg-gray-200 text-gray-700'
+                    ? 'bg-gradient-to-br from-green-100 to-emerald-100 text-green-800 border-2 border-green-300'
+                    : 'bg-white border-2 border-gray-300 text-gray-700 hover:border-indigo-300 hover:shadow-md'
                 }`}
               >
                 {num}
               </div>
               
               {/* Value label below */}
-              <div className="text-xs text-gray-600 mt-1 font-mono">
+              <div className="text-xs text-gray-600 mt-2 font-mono font-semibold bg-gray-50 px-2 py-0.5 rounded">
                 nums[{index}]
               </div>
             </div>
@@ -271,28 +288,34 @@ export default function TwoSumVisualizer() {
       </div>
 
       {/* Step Message */}
-      <div className="mb-6 p-4 bg-gray-100 rounded-lg">
-        <div className="flex justify-between items-center mb-2">
-          <span className="text-sm font-medium text-gray-700">
-            Step {currentStep + 1} of {steps.length}
-          </span>
+      <div className="mb-6 p-6 bg-white rounded-xl border-2 border-gray-200 shadow-sm">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-3">
+          <div className="flex items-center gap-2">
+            <div className="w-2 h-2 bg-indigo-500 rounded-full animate-pulse"></div>
+            <span className="text-sm font-bold text-gray-700 uppercase tracking-wide">
+              Step {currentStep + 1} of {steps.length}
+            </span>
+          </div>
           {currentStepData.found && (
-            <span className="px-3 py-1 bg-green-500 text-white text-sm font-semibold rounded-full">
+            <span className="px-4 py-2 bg-gradient-to-r from-green-500 to-emerald-600 text-white text-sm font-bold rounded-full shadow-lg flex items-center gap-2 w-fit">
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+              </svg>
               Solution Found!
             </span>
           )}
         </div>
-        <p className="text-gray-800">{currentStepData.message}</p>
+        <p className="text-gray-800 text-sm sm:text-base leading-relaxed">{currentStepData.message}</p>
       </div>
 
       {/* Control Buttons */}
-      <div className="flex flex-wrap gap-2 justify-center mb-4">
+      <div className="flex flex-wrap gap-3 justify-center mb-6">
         <button
           onClick={handleReset}
           disabled={currentStep === 0}
-          className="px-4 py-2 bg-gray-600 text-white rounded-lg font-semibold hover:bg-gray-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors flex items-center gap-2"
+          className="px-4 sm:px-5 py-2.5 bg-gray-600 text-white rounded-xl font-semibold hover:bg-gray-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-all hover:-translate-y-0.5 hover:shadow-lg disabled:hover:translate-y-0 disabled:hover:shadow-none flex items-center gap-2 text-sm"
         >
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
           </svg>
           Reset
@@ -301,9 +324,9 @@ export default function TwoSumVisualizer() {
         <button
           onClick={handlePrevious}
           disabled={currentStep === 0}
-          className="px-4 py-2 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors flex items-center gap-2"
+          className="px-4 sm:px-5 py-2.5 bg-indigo-600 text-white rounded-xl font-semibold hover:bg-indigo-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-all hover:-translate-y-0.5 hover:shadow-lg disabled:hover:translate-y-0 disabled:hover:shadow-none flex items-center gap-2 text-sm"
         >
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
           </svg>
           Previous
@@ -311,7 +334,7 @@ export default function TwoSumVisualizer() {
 
         <button
           onClick={togglePlayPause}
-          className="px-6 py-2 bg-green-600 text-white rounded-lg font-semibold hover:bg-green-700 transition-colors flex items-center gap-2"
+          className="px-5 sm:px-6 py-2.5 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-xl font-semibold hover:shadow-lg transition-all hover:-translate-y-0.5 flex items-center gap-2 text-sm"
         >
           {isPlaying ? (
             <>
@@ -334,10 +357,10 @@ export default function TwoSumVisualizer() {
         <button
           onClick={handleNext}
           disabled={currentStep >= steps.length - 1}
-          className="px-4 py-2 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors flex items-center gap-2"
+          className="px-4 sm:px-5 py-2.5 bg-indigo-600 text-white rounded-xl font-semibold hover:bg-indigo-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-all hover:-translate-y-0.5 hover:shadow-lg disabled:hover:translate-y-0 disabled:hover:shadow-none flex items-center gap-2 text-sm"
         >
           Next
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>
         </button>
@@ -345,17 +368,26 @@ export default function TwoSumVisualizer() {
 
       {/* Result Display */}
       {result && (
-        <div className="mt-6 p-4 bg-green-50 border border-green-200 rounded-lg">
-          <div className="flex items-center gap-2 text-green-800">
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            <div>
-              <span className="font-semibold">Solution: </span>
-              <span className="font-mono">[{result[0]}, {result[1]}]</span>
-              <span className="ml-2 text-sm">
-                (nums[{result[0]}] = {nums[result[0]]}, nums[{result[1]}] = {nums[result[1]]})
-              </span>
+        <div className="p-6 bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-300 rounded-xl shadow-sm">
+          <div className="flex items-start gap-3">
+            <div className="w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center flex-shrink-0">
+              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <div className="flex-1">
+              <div className="font-bold text-green-800 mb-1 text-lg">Solution Found!</div>
+              <div className="text-green-700">
+                <span className="font-semibold">Indices: </span>
+                <span className="font-mono bg-white px-3 py-1 rounded-lg border border-green-200 inline-block">[{result[0]}, {result[1]}]</span>
+              </div>
+              <div className="text-green-700 mt-2 text-sm">
+                <span className="font-semibold">Values: </span>
+                <span className="font-mono">
+                  nums[{result[0]}] = {nums[result[0]]}, nums[{result[1]}] = {nums[result[1]]}
+                </span>
+                <span className="ml-2">→ Sum = {nums[result[0]] + nums[result[1]]}</span>
+              </div>
             </div>
           </div>
         </div>
@@ -363,9 +395,15 @@ export default function TwoSumVisualizer() {
 
       {/* Progress Bar */}
       <div className="mt-6">
-        <div className="w-full bg-gray-200 rounded-full h-2">
+        <div className="flex items-center justify-between mb-2">
+          <span className="text-xs font-semibold text-gray-600">Progress</span>
+          <span className="text-xs font-semibold text-indigo-600">
+            {Math.round(((currentStep + 1) / steps.length) * 100)}%
+          </span>
+        </div>
+        <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
           <div
-            className="bg-indigo-600 h-2 rounded-full transition-all duration-300"
+            className="bg-gradient-to-r from-indigo-600 to-purple-600 h-3 rounded-full transition-all duration-300 shadow-inner"
             style={{ width: `${((currentStep + 1) / steps.length) * 100}%` }}
           ></div>
         </div>

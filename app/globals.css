@@ -148,9 +148,31 @@
     transform: scale(1);
   }
   }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
 }
+
+/* Grid Pattern Background */
+.bg-grid-pattern {
+  background-image: 
+    linear-gradient(to right, rgb(156 163 175 / 0.15) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(156 163 175 / 0.15) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
 .fade-in {
   animation: fadeIn 0.5s ease-in-out;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
 }
 
 .slide-in {
