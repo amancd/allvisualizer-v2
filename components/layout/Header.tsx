@@ -65,9 +65,6 @@ export default function Header() {
                     href="/dsa-visualizer" 
                     className="flex items-center gap-3 px-4 py-3 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors group/item"
                   >
-                    <div className="w-8 h-8 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center text-white text-xs">
-                      🔍
-                    </div>
                     <div>
                       <div className="font-medium">DSA Visualizer</div>
                       <div className="text-xs text-gray-500">Data Structures & Algorithms</div>
@@ -98,18 +95,21 @@ export default function Header() {
           </div>
 
           {/* CTA Button - Desktop */}
-          <div className="hidden lg:flex items-center gap-3">
-            <Link
-              href="/dsa-visualizer"
-              className="group relative px-5 py-2.5 bg-indigo-600 text-white text-sm font-semibold rounded-lg overflow-hidden transition-all hover:bg-indigo-700 hover:shadow-lg hover:shadow-indigo-200 hover:-translate-y-0.5"
+          <div className="hidden lg:block">
+            <a
+              href="https://play.google.com/store/apps/details?id=com.atomdyno.dsavisualizer"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-2 px-5 py-2.5 bg-black text-white text-sm font-semibold rounded-lg transition-all hover:bg-gray-800"
             >
-              <span className="relative z-10 flex items-center gap-2">
-                Get Started
-                <svg className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                </svg>
-              </span>
-            </Link>
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z" />
+              </svg>
+              <div className="text-left">
+                <div className="text-xs leading-none">GET IT ON</div>
+                <div className="text-sm font-bold leading-tight">Google Play</div>
+              </div>
+            </a>
           </div>
 
           {/* Mobile menu button */}

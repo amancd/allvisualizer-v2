@@ -1,22 +1,32 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy - AllVisualizer",
+  description: "Read AllVisualizer's Privacy Policy to understand how we collect, use, and protect your personal information when you use our services.",
+  openGraph: {
+    title: "Privacy Policy - AllVisualizer",
+    description: "How we protect your privacy and data",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
+
 export default function PrivacyPolicyPage() {
   return (
-    <div className="bg-gray-50">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Privacy Policy</h1>
-          <p className="text-xl text-indigo-100">
+    <div className="min-h-screen bg-white">
+      {/* Main Content */}
+      <section className="py-16 md:py-24">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Privacy Policy</h1>
+          <p className="text-xl text-gray-600 mb-12">
             Last updated: November 2, 2025
           </p>
-        </div>
-      </section>
 
-      {/* Main Content */}
-      <section className="py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-lg shadow-sm p-8 md:p-12">
-            <div className="prose prose-lg max-w-none">
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Introduction</h2>
+          <div className="space-y-8">
+            <div>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">Introduction</h2>
               <p className="text-gray-700 mb-6">
                 Welcome to AllVisualizer ("we," "our," or "us"). We are committed to protecting your privacy 
                 and ensuring you have a positive experience on our website. This Privacy Policy explains how 
@@ -24,7 +34,10 @@ export default function PrivacyPolicyPage() {
                 allvisualizer.com.
               </p>
 
-              <h2 className="text-3xl font-bold text-gray-900 mb-6 mt-8">Information We Collect</h2>
+            </div>
+
+            <div>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">Information We Collect</h2>
               <h3 className="text-xl font-semibold text-gray-900 mb-4">Personal Information</h3>
               <p className="text-gray-700 mb-6">
                 We may collect personal information that you voluntarily provide to us when you:
@@ -49,7 +62,10 @@ export default function PrivacyPolicyPage() {
                 <li>Referring website addresses</li>
               </ul>
 
-              <h2 className="text-3xl font-bold text-gray-900 mb-6 mt-8">How We Use Your Information</h2>
+            </div>
+
+            <div>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">How We Use Your Information</h2>
               <p className="text-gray-700 mb-6">
                 We use the information we collect to:
               </p>
@@ -63,7 +79,10 @@ export default function PrivacyPolicyPage() {
                 <li>Detect and prevent fraud and abuse</li>
               </ul>
 
-              <h2 className="text-3xl font-bold text-gray-900 mb-6 mt-8">Disclosure of Your Information</h2>
+            </div>
+
+            <div>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">Disclosure of Your Information</h2>
               <p className="text-gray-700 mb-6">
                 We may share your information in the following situations:
               </p>
@@ -74,21 +93,30 @@ export default function PrivacyPolicyPage() {
                 <li>With your consent or at your direction</li>
               </ul>
 
-              <h2 className="text-3xl font-bold text-gray-900 mb-6 mt-8">Third-Party Services</h2>
+            </div>
+
+            <div>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">Third-Party Services</h2>
               <p className="text-gray-700 mb-6">
                 Our website may contain links to third-party websites and services, including Discord. 
                 Please note that we are not responsible for the privacy practices of these third parties. 
                 We encourage you to read their privacy policies.
               </p>
 
-              <h2 className="text-3xl font-bold text-gray-900 mb-6 mt-8">Data Security</h2>
+            </div>
+
+            <div>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">Data Security</h2>
               <p className="text-gray-700 mb-6">
                 We implement appropriate technical and organizational security measures to protect your 
                 personal information. However, no method of transmission over the Internet or electronic 
                 storage is 100% secure.
               </p>
 
-              <h2 className="text-3xl font-bold text-gray-900 mb-6 mt-8">Your Rights</h2>
+            </div>
+
+            <div>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">Your Rights</h2>
               <p className="text-gray-700 mb-6">
                 Depending on your location, you may have certain rights regarding your personal information, 
                 including:
@@ -101,20 +129,29 @@ export default function PrivacyPolicyPage() {
                 <li>The right to data portability</li>
               </ul>
 
-              <h2 className="text-3xl font-bold text-gray-900 mb-6 mt-8">Children's Privacy</h2>
+            </div>
+
+            <div>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">Children's Privacy</h2>
               <p className="text-gray-700 mb-6">
                 Our services are not directed to children under the age of 13. We do not knowingly collect 
                 personal information from children under 13. If you believe we have collected information 
                 from a child under 13, please contact us.
               </p>
 
-              <h2 className="text-3xl font-bold text-gray-900 mb-6 mt-8">Changes to This Privacy Policy</h2>
+            </div>
+
+            <div>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">Changes to This Privacy Policy</h2>
               <p className="text-gray-700 mb-6">
                 We may update this Privacy Policy from time to time. We will notify you of any changes by 
                 posting the new Privacy Policy on this page and updating the "Last updated" date.
               </p>
 
-              <h2 className="text-3xl font-bold text-gray-900 mb-6 mt-8">Contact Us</h2>
+            </div>
+
+            <div>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">Contact Us</h2>
               <p className="text-gray-700 mb-6">
                 If you have any questions about this Privacy Policy, please contact us at:
               </p>

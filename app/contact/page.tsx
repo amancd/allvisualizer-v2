@@ -25,23 +25,18 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="bg-gray-50">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Contact Us</h1>
-          <p className="text-xl text-indigo-100">
+    <div className="min-h-screen bg-white">
+      {/* Main Content */}
+      <section className="py-16 md:py-24">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Contact Us</h1>
+          <p className="text-xl text-gray-600 mb-12">
             We'd love to hear from you
           </p>
-        </div>
-      </section>
 
-      {/* Main Content */}
-      <section className="py-16">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-8">
             {/* Contact Form */}
-            <div className="bg-white rounded-lg shadow-sm p-8">
+            <div className="border border-gray-200 rounded-lg p-8">
               <h2 className="text-2xl font-bold text-gray-900 mb-6">
                 Send us a Message
               </h2>
@@ -123,7 +118,7 @@ export default function ContactPage() {
 
             {/* Contact Information */}
             <div>
-              <div className="bg-white rounded-lg shadow-sm p-8 mb-6">
+              <div className="border border-gray-200 rounded-lg p-8 mb-6">
                 <h2 className="text-2xl font-bold text-gray-900 mb-6">
                   Get in Touch
                 </h2>
@@ -154,16 +149,16 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div className="bg-indigo-600 text-white rounded-lg shadow-sm p-8">
-                <h3 className="text-xl font-bold mb-4">Join Our Community</h3>
-                <p className="mb-6">
+              <div className="border border-gray-200 rounded-lg p-8">
+                <h3 className="text-xl font-bold text-gray-900 mb-4">Join Our Community</h3>
+                <p className="text-gray-600 mb-6">
                   Connect with other learners, share your experiences, and get help from the community on Discord.
                 </p>
                 <a
                   href="https://discord.gg/z4TgSrJQ"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block bg-white text-indigo-600 px-6 py-3 rounded-lg font-semibold hover:bg-indigo-50 transition-colors w-full text-center"
+                  className="block bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition-colors w-full text-center"
                 >
                   Join Discord
                 </a>

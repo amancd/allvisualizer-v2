@@ -238,52 +238,61 @@ export default function TwoSumVisualizer() {
       </div>
 
       {/* Array Visualization */}
-      <div className="mb-8 overflow-x-auto">
-        <div className="flex gap-3 min-w-max pb-4 px-2">
-          {nums.map((num, index) => (
+      <div className="mb-8 py-4">
+        <div className="overflow-x-auto">
+          <div className="flex gap-4 justify-center items-end min-w-max px-4 pb-4 pt-16">
+            {nums.map((num, index) => (
             <div key={index} className="flex flex-col items-center relative">
-              {/* Pointer indicators */}
-              {currentStepData.i === index && (
-                <div className="absolute -top-12 flex flex-col items-center animate-bounce z-10">
-                  <div className="text-3xl">�</div>
-                  <div className="text-xs font-bold text-indigo-600 whitespace-nowrap bg-indigo-100 px-2 py-1 rounded-full">
-                    Checking
+                {/* Pointer indicators - positioned absolutely above */}
+                {currentStepData.i === index && (
+                  <div className="absolute -top-16 left-1/2 -translate-x-1/2 flex flex-col items-center z-10">
+                    <div className="w-8 h-8 bg-indigo-500 rounded-full flex items-center justify-center mb-1 animate-bounce">
+                      <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                      </svg>
+                    </div>
+                    <div className="text-xs font-bold text-indigo-600 whitespace-nowrap bg-indigo-100 px-3 py-1 rounded-full shadow-md">
+                      Checking
+                    </div>
                   </div>
-                </div>
-              )}
-              {currentStepData.j === index && currentStepData.found && (
-                <div className="absolute -top-12 flex flex-col items-center animate-bounce z-10">
-                  <div className="text-3xl">🎯</div>
-                  <div className="text-xs font-bold text-green-600 whitespace-nowrap bg-green-100 px-2 py-1 rounded-full">
-                    Found!
+                )}
+                {currentStepData.j === index && currentStepData.found && (
+                  <div className="absolute -top-16 left-1/2 -translate-x-1/2 flex flex-col items-center z-10">
+                    <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center mb-1 animate-bounce">
+                      <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                    <div className="text-xs font-bold text-green-600 whitespace-nowrap bg-green-100 px-3 py-1 rounded-full shadow-md animate-pulse">
+                      Found!
+                    </div>
                   </div>
+                )}
+              
+                <div className="text-xs font-medium text-gray-500 mb-2 px-2 py-1 bg-gray-100 rounded-md">
+                  Index {index}
                 </div>
-              )}
               
-              <div className="text-xs font-semibold text-gray-500 mb-2 bg-gray-100 px-2 py-0.5 rounded">
-                Index {index}
-              </div>
+                <div
+                  className={`w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center rounded-2xl font-bold text-xl sm:text-2xl transition-all duration-500 transform ${
+                    currentStepData.i === index || currentStepData.j === index
+                      ? currentStepData.found
+                        ? 'bg-gradient-to-br from-green-400 to-emerald-500 text-white scale-110 shadow-2xl ring-4 ring-green-200 animate-pulse'
+                        : 'bg-gradient-to-br from-amber-400 to-orange-500 text-white scale-105 shadow-xl ring-4 ring-amber-200'
+                      : result && (result[0] === index || result[1] === index)
+                      ? 'bg-gradient-to-br from-green-50 to-emerald-50 text-green-700 border-2 border-green-400 shadow-lg'
+                      : 'bg-white border-2 border-gray-200 text-gray-700 hover:border-indigo-300 hover:shadow-lg hover:scale-105'
+                  }`}
+                >
+                  {num}
+                </div>
               
-              <div
-                className={`w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center rounded-xl font-bold text-lg sm:text-xl transition-all duration-300 ${
-                  currentStepData.i === index || currentStepData.j === index
-                    ? currentStepData.found
-                      ? 'bg-gradient-to-br from-green-500 to-emerald-600 text-white scale-110 shadow-xl ring-4 ring-green-300 animate-pulse'
-                      : 'bg-gradient-to-br from-yellow-400 to-orange-500 text-white scale-110 shadow-xl ring-4 ring-yellow-300'
-                    : result && (result[0] === index || result[1] === index)
-                    ? 'bg-gradient-to-br from-green-100 to-emerald-100 text-green-800 border-2 border-green-300'
-                    : 'bg-white border-2 border-gray-300 text-gray-700 hover:border-indigo-300 hover:shadow-md'
-                }`}
-              >
-                {num}
+                <div className="text-xs text-gray-500 mt-2 font-mono font-medium px-2 py-1 bg-gray-50 rounded">
+                  nums[{index}]
+                </div>
               </div>
-              
-              {/* Value label below */}
-              <div className="text-xs text-gray-600 mt-2 font-mono font-semibold bg-gray-50 px-2 py-0.5 rounded">
-                nums[{index}]
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
 
