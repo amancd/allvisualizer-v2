@@ -1,32 +1,27 @@
 "use client";
 
 import { useEffect } from 'react';
+import { giscusConfig } from '@/config/giscus';
 
 interface GiscusCommentsProps {
-  repo: string; // e.g., "amancd/allvisualizer-v2"
-  repoId: string;
-  category: string;
-  categoryId: string;
   mapping?: 'pathname' | 'url' | 'title' | 'og:title' | 'specific' | 'number';
-  reactionsEnabled?: boolean;
-  emitMetadata?: boolean;
-  inputPosition?: 'top' | 'bottom';
   theme?: string;
-  lang?: string;
 }
 
 export default function GiscusComments({
-  repo,
-  repoId,
-  category,
-  categoryId,
-  mapping = 'pathname',
-  reactionsEnabled = true,
-  emitMetadata = false,
-  inputPosition = 'bottom',
-  theme = 'light',
-  lang = 'en'
+  mapping = giscusConfig.mapping,
+  theme = giscusConfig.theme,
 }: GiscusCommentsProps) {
+  const {
+    repo,
+    repoId,
+    category,
+    categoryId,
+    reactionsEnabled,
+    emitMetadata,
+    inputPosition,
+    lang
+  } = giscusConfig;
   useEffect(() => {
     const script = document.createElement('script');
     script.src = 'https://giscus.app/client.js';

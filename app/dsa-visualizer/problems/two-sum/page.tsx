@@ -220,15 +220,7 @@ Explanation: nums[0] + nums[1] == 9, so we return [0, 1]`}</pre>
           <p className="text-gray-600 mb-6">
             Have questions or want to discuss alternative approaches? Join the conversation below.
           </p>
-          <GiscusComments 
-            repo="amancd/allvisualizer-v2"
-            repoId="YOUR_REPO_ID"
-            category="General"
-            categoryId="YOUR_CATEGORY_ID"
-            mapping="pathname"
-            reactionsEnabled={true}
-            theme="light"
-          />
+          <GiscusComments />
         </section>
 
         {/* Back Link */}

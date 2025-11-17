@@ -387,12 +387,7 @@ ln(f(x))       →  f'(x)/f(x)`
 
           <section className="pt-8 border-t border-gray-200">
             <h2 className="text-2xl font-bold text-gray-900 mb-6">Discussion</h2>
-            <GiscusComments
-              repo="amancd/allvisualizer-v2"
-              repoId="YOUR_REPO_ID"
-              category="General"
-              categoryId="YOUR_CATEGORY_ID"
-            />
+            <GiscusComments />
           </section>
         </article>
       </div>
