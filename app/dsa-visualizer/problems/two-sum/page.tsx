@@ -88,13 +88,13 @@ export default function TwoSumProblem() {
   const [selectedLanguage, setSelectedLanguage] = useState<Language>('javascript');
 
   return (
-    <div className="min-h-screen bg-white pt-16">
+    <div className="min-h-screen bg-white pt-24">
       <article className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Breadcrumb */}
         <nav className="flex items-center gap-2 text-sm text-gray-600 mb-8">
-          <Link href="/" className="hover:text-indigo-600">Home</Link>
+          <Link href="/" className="hover:text-gray-900">Home</Link>
           <span>/</span>
-          <Link href="/dsa-visualizer" className="hover:text-indigo-600">DSA</Link>
+          <Link href="/dsa-visualizer" className="hover:text-gray-900">DSA</Link>
           <span>/</span>
           <span className="text-gray-900">Two Sum</span>
         </nav>
@@ -133,7 +133,7 @@ Output: [0, 1]
 Explanation: nums[0] + nums[1] == 9, so we return [0, 1]`}</pre>
           </div>
 
-          <p className="text-sm text-gray-600 bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r">
+          <p className="text-sm text-gray-600 bg-gray-100 border-l-4 border-gray-900 p-4 rounded-r">
             <strong>Note:</strong> You may assume that each input has exactly one solution, and you may not use the same element twice.
           </p>
         </section>
@@ -173,7 +173,7 @@ Explanation: nums[0] + nums[1] == 9, so we return [0, 1]`}</pre>
                 onClick={() => setSelectedLanguage(lang)}
                 className={`px-4 py-2 font-medium text-sm transition-colors ${
                   selectedLanguage === lang
-                    ? 'border-b-2 border-indigo-600 text-indigo-600'
+                    ? 'border-b-2 border-gray-900 text-gray-900'
                     : 'text-gray-600 hover:text-gray-900'
                 }`}
               >
@@ -227,7 +227,7 @@ Explanation: nums[0] + nums[1] == 9, so we return [0, 1]`}</pre>
         <div className="pt-8 border-t border-gray-200">
           <Link
             href="/dsa-visualizer"
-            className="inline-flex items-center gap-2 text-indigo-600 hover:text-indigo-700"
+            className="inline-flex items-center gap-2 text-gray-900 hover:text-gray-800"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />

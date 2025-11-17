@@ -198,13 +198,13 @@ export default function SimplePerceptronVisualizer() {
   return (
     <div className="space-y-6">
       {/* Introduction */}
-      <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-lg p-6">
+      <div className="bg-gradient-to-r from-gray-50 to-gray-100 border border-gray-300 rounded-lg p-6">
         <h3 className="text-lg font-semibold text-gray-900 mb-3">The Perceptron</h3>
         <p className="text-gray-700 mb-3">
           A perceptron is the simplest type of artificial neuron. It takes inputs, multiplies them by weights, 
           adds a bias, and produces an output through an activation function.
         </p>
-        <div className="bg-white rounded-lg p-4 border border-blue-200">
+        <div className="bg-white rounded-lg p-4 border border-gray-300">
           <p className="text-sm font-mono text-gray-800">
             output = activate(w₁·x + w₂·y + b)
           </p>
@@ -225,7 +225,7 @@ export default function SimplePerceptronVisualizer() {
         />
         <div className="mt-4 flex items-center gap-6 text-sm">
           <div className="flex items-center gap-2">
-            <div className="w-4 h-4 rounded-full bg-blue-500 border-2 border-gray-900"></div>
+            <div className="w-4 h-4 rounded-full bg-gray-1000 border-2 border-gray-900"></div>
             <span className="text-gray-700">Class 0 (Below line)</span>
           </div>
           <div className="flex items-center gap-2">
@@ -320,7 +320,7 @@ export default function SimplePerceptronVisualizer() {
             className={`px-6 py-2 rounded-lg font-medium transition-colors ${
               isTraining
                 ? 'bg-red-600 text-white hover:bg-red-700'
-                : 'bg-indigo-600 text-white hover:bg-indigo-700'
+                : 'bg-black text-white hover:bg-gray-800'
             }`}
           >
             {isTraining ? 'Stop Training' : 'Start Training'}
@@ -328,7 +328,7 @@ export default function SimplePerceptronVisualizer() {
           <button
             onClick={trainEpoch}
             disabled={isTraining}
-            className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
+            className="px-6 py-2 bg-black text-white rounded-lg hover:bg-gray-800 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
           >
             Train 1 Epoch
           </button>
@@ -347,7 +347,7 @@ export default function SimplePerceptronVisualizer() {
           <button
             onClick={() => generateData()}
             disabled={isTraining}
-            className="px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
+            className="px-6 py-2 bg-black text-white rounded-lg hover:bg-gray-800 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
           >
             New Data
           </button>
@@ -355,28 +355,28 @@ export default function SimplePerceptronVisualizer() {
       </div>
 
       {/* Training Stats */}
-      <div className="bg-gradient-to-r from-indigo-50 to-purple-50 border border-indigo-200 rounded-lg p-6">
+      <div className="bg-gradient-to-r from-gray-50 to-gray-100 border border-gray-300 rounded-lg p-6">
         <h3 className="text-lg font-semibold text-gray-900 mb-4">Training Statistics</h3>
         
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div className="bg-white rounded-lg p-4 border border-indigo-100">
+          <div className="bg-white rounded-lg p-4 border border-gray-200">
             <div className="text-xs text-gray-500 mb-1">Epoch</div>
-            <div className="text-2xl font-bold text-indigo-600">{epoch}</div>
+            <div className="text-2xl font-bold text-gray-900">{epoch}</div>
           </div>
           
-          <div className="bg-white rounded-lg p-4 border border-indigo-100">
+          <div className="bg-white rounded-lg p-4 border border-gray-200">
             <div className="text-xs text-gray-500 mb-1">Accuracy</div>
             <div className="text-2xl font-bold text-green-600">{accuracy.toFixed(1)}%</div>
           </div>
           
-          <div className="bg-white rounded-lg p-4 border border-indigo-100">
+          <div className="bg-white rounded-lg p-4 border border-gray-200">
             <div className="text-xs text-gray-500 mb-1">Data Points</div>
-            <div className="text-2xl font-bold text-blue-600">{dataPoints.length}</div>
+            <div className="text-2xl font-bold text-gray-900">{dataPoints.length}</div>
           </div>
           
-          <div className="bg-white rounded-lg p-4 border border-indigo-100">
+          <div className="bg-white rounded-lg p-4 border border-gray-200">
             <div className="text-xs text-gray-500 mb-1">Status</div>
-            <div className="text-sm font-semibold text-purple-600">
+            <div className="text-sm font-semibold text-gray-900">
               {isTraining ? 'Training...' : 'Ready'}
             </div>
           </div>
@@ -388,25 +388,25 @@ export default function SimplePerceptronVisualizer() {
         <h3 className="text-lg font-semibold text-gray-900 mb-4">How the Perceptron Learns</h3>
         <div className="space-y-4 text-sm text-gray-700">
           <div className="flex items-start gap-3">
-            <span className="flex-shrink-0 w-6 h-6 bg-indigo-100 text-indigo-700 rounded-full flex items-center justify-center font-semibold">1</span>
+            <span className="flex-shrink-0 w-6 h-6 bg-gray-200 text-gray-800 rounded-full flex items-center justify-center font-semibold">1</span>
             <div>
               <strong>Forward Pass:</strong> Calculate output = activate(w₁·x + w₂·y + b)
             </div>
           </div>
           <div className="flex items-start gap-3">
-            <span className="flex-shrink-0 w-6 h-6 bg-indigo-100 text-indigo-700 rounded-full flex items-center justify-center font-semibold">2</span>
+            <span className="flex-shrink-0 w-6 h-6 bg-gray-200 text-gray-800 rounded-full flex items-center justify-center font-semibold">2</span>
             <div>
               <strong>Calculate Error:</strong> error = actual_label - predicted_label
             </div>
           </div>
           <div className="flex items-start gap-3">
-            <span className="flex-shrink-0 w-6 h-6 bg-indigo-100 text-indigo-700 rounded-full flex items-center justify-center font-semibold">3</span>
+            <span className="flex-shrink-0 w-6 h-6 bg-gray-200 text-gray-800 rounded-full flex items-center justify-center font-semibold">3</span>
             <div>
               <strong>Update Weights:</strong> w₁ = w₁ + learning_rate × error × x
             </div>
           </div>
           <div className="flex items-start gap-3">
-            <span className="flex-shrink-0 w-6 h-6 bg-indigo-100 text-indigo-700 rounded-full flex items-center justify-center font-semibold">4</span>
+            <span className="flex-shrink-0 w-6 h-6 bg-gray-200 text-gray-800 rounded-full flex items-center justify-center font-semibold">4</span>
             <div>
               <strong>Repeat:</strong> Continue until accuracy is satisfactory
             </div>

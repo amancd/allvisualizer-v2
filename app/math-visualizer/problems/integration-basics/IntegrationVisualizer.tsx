@@ -122,7 +122,7 @@ export default function IntegrationVisualizer() {
             Upper Bound: x = {upperBound.toFixed(2)}
           </label>
           <div className="flex items-center gap-4">
-            <span className="text-sm font-semibold text-indigo-600">
+            <span className="text-sm font-semibold text-gray-900">
               ∫₀^{upperBound.toFixed(2)} x² dx = {definiteIntegral.toFixed(3)}
             </span>
           </div>
@@ -222,14 +222,14 @@ export default function IntegrationVisualizer() {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
-          <div className="text-xs text-blue-600 font-medium mb-1">Function</div>
-          <div className="text-sm font-semibold text-blue-900">f(x) = x²</div>
+        <div className="bg-gray-100 border border-gray-300 rounded-lg p-3">
+          <div className="text-xs text-gray-900 font-medium mb-1">Function</div>
+          <div className="text-sm font-semibold text-gray-900">f(x) = x²</div>
         </div>
         
-        <div className="bg-purple-50 border border-purple-200 rounded-lg p-3">
-          <div className="text-xs text-purple-600 font-medium mb-1">Antiderivative</div>
-          <div className="text-sm font-semibold text-purple-900">F(x) = x³/3</div>
+        <div className="bg-gray-100 border border-gray-300 rounded-lg p-3">
+          <div className="text-xs text-gray-900 font-medium mb-1">Antiderivative</div>
+          <div className="text-sm font-semibold text-gray-900">F(x) = x³/3</div>
         </div>
         
         <div className="bg-green-50 border border-green-200 rounded-lg p-3">

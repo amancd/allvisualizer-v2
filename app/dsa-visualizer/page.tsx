@@ -90,7 +90,7 @@ export default function DSAVisualizer() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="py-16 md:py-24">
+      <section className="pt-32 md:pt-40 pb-16 md:pb-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-6">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
@@ -141,11 +141,11 @@ export default function DSAVisualizer() {
 
           <div className="space-y-4">
             <Link href="/dsa-visualizer/problems/two-sum" className="block group">
-              <div className="p-6 bg-white border border-gray-200 rounded-lg hover:border-indigo-300 hover:shadow-sm transition-all">
+              <div className="p-6 bg-white border border-gray-200 rounded-lg hover:border-gray-400 hover:shadow-sm transition-all">
                 <div className="flex items-start justify-between">
                   <div>
                     <div className="flex items-center gap-3 mb-2">
-                      <h3 className="text-lg font-semibold text-gray-900 group-hover:text-indigo-600">
+                      <h3 className="text-lg font-semibold text-gray-900 group-hover:text-gray-900">
                         Two Sum
                       </h3>
                       <span className="px-2 py-0.5 bg-green-100 text-green-700 rounded text-xs font-medium">
@@ -156,7 +156,7 @@ export default function DSAVisualizer() {
                       Find two numbers in an array that add up to a target value.
                     </p>
                   </div>
-                  <svg className="w-5 h-5 text-gray-400 group-hover:text-indigo-600 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-gray-400 group-hover:text-gray-900 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                   </svg>
                 </div>
@@ -185,12 +185,12 @@ export default function DSAVisualizer() {
                   <div className="flex items-start justify-between mb-3">
                     <div className="flex items-center gap-3">
                       <span className="text-2xl">{category.icon}</span>
-                      <h3 className="text-lg font-semibold text-gray-900 group-hover:text-indigo-600">
+                      <h3 className="text-lg font-semibold text-gray-900 group-hover:text-gray-900">
                         {category.title}
                       </h3>
                     </div>
                     {category.isAvailable ? (
-                      <svg className="w-5 h-5 text-gray-400 group-hover:text-indigo-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-5 h-5 text-gray-400 group-hover:text-gray-900 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                       </svg>
                     ) : (
@@ -226,7 +226,7 @@ export default function DSAVisualizer() {
                 <Link
                   key={index}
                   href={`/dsa-visualizer/${category.slug}`}
-                  className="group block p-5 bg-white border border-gray-200 rounded-lg hover:border-indigo-300 hover:shadow-sm transition-all"
+                  className="group block p-5 bg-white border border-gray-200 rounded-lg hover:border-gray-400 hover:shadow-sm transition-all"
                 >
                   {CardContent}
                 </Link>

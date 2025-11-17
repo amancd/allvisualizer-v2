@@ -334,7 +334,7 @@ export default function ProjectileMotionVisualizer() {
         <button
           onClick={handleStart}
           disabled={isAnimating}
-          className="px-6 py-2 bg-indigo-600 text-white rounded-lg font-medium hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+          className="px-6 py-2 bg-black text-white rounded-lg font-medium hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
         >
           {isAnimating ? 'Animating...' : 'Launch'}
         </button>
@@ -358,9 +358,9 @@ export default function ProjectileMotionVisualizer() {
       
       {/* Real-time Data */}
       <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-3">
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
-          <div className="text-xs text-blue-600 font-medium mb-1">Time Elapsed</div>
-          <div className="text-lg font-bold text-blue-900">{currentTime.toFixed(2)} s</div>
+        <div className="bg-gray-100 border border-gray-300 rounded-lg p-3">
+          <div className="text-xs text-gray-900 font-medium mb-1">Time Elapsed</div>
+          <div className="text-lg font-bold text-gray-900">{currentTime.toFixed(2)} s</div>
         </div>
         
         <div className="bg-green-50 border border-green-200 rounded-lg p-3">
@@ -368,9 +368,9 @@ export default function ProjectileMotionVisualizer() {
           <div className="text-lg font-bold text-green-900">{currentPoint.y.toFixed(2)} m</div>
         </div>
         
-        <div className="bg-purple-50 border border-purple-200 rounded-lg p-3">
-          <div className="text-xs text-purple-600 font-medium mb-1">Horizontal Distance</div>
-          <div className="text-lg font-bold text-purple-900">{currentPoint.x.toFixed(2)} m</div>
+        <div className="bg-gray-100 border border-gray-300 rounded-lg p-3">
+          <div className="text-xs text-gray-900 font-medium mb-1">Horizontal Distance</div>
+          <div className="text-lg font-bold text-gray-900">{currentPoint.x.toFixed(2)} m</div>
         </div>
         
         <div className="bg-orange-50 border border-orange-200 rounded-lg p-3">
@@ -405,9 +405,9 @@ export default function ProjectileMotionVisualizer() {
         
         <div className="border-t border-gray-200 pt-3 mt-3">
           <div className="text-xs text-gray-600 space-y-1">
-            <div>• <span className="text-purple-600 font-semibold">Purple arrow</span>: Initial velocity vector</div>
+            <div>• <span className="text-gray-900 font-semibold">Purple arrow</span>: Initial velocity vector</div>
             <div>• <span className="text-red-600 font-semibold">Red arrow</span>: Current velocity vector</div>
-            <div>• <span className="text-blue-600 font-semibold">Blue</span>: Horizontal component (constant)</div>
+            <div>• <span className="text-gray-900 font-semibold">Blue</span>: Horizontal component (constant)</div>
             <div>• <span className="text-green-600 font-semibold">Green</span>: Vertical component (changes with gravity)</div>
           </div>
         </div>

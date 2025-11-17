@@ -71,7 +71,7 @@ export default function AboutPage() {
               share insights, and learn together.
             </p>
 
-              <div className="border-l-4 border-indigo-600 pl-6 mt-8">
+              <div className="border-l-4 border-gray-900 pl-6 mt-8">
                 <p className="text-lg text-gray-700 italic">
                   "Learning should be engaging, interactive, and accessible to everyone. That's the vision 
                   behind AllVisualizer."

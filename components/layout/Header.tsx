@@ -63,7 +63,7 @@ export default function Header() {
                 <div className="py-2">
                   <Link 
                     href="/dsa-visualizer" 
-                    className="flex items-center gap-3 px-4 py-3 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors group/item"
+                    className="flex items-center gap-3 px-4 py-3 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition-colors group/item"
                   >
                     <div className="w-8 h-8 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center text-white text-xs font-semibold">
                       DS
@@ -159,32 +159,32 @@ export default function Header() {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="lg:hidden pb-6 pt-4 border-t border-gray-100 mt-2 slide-down">
+          <div className="lg:hidden pb-6 pt-4 border-t border-gray-100 mt-2 slide-down bg-white">
             <div className="flex flex-col space-y-1">
               <Link 
                 href="/" 
-                className="px-4 py-3 text-sm font-medium text-gray-700 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition-all"
+                className="px-4 py-3 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-all"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Home
               </Link>
               <Link 
                 href="/dsa-visualizer" 
-                className="px-4 py-3 text-sm font-medium text-gray-700 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition-all"
+                className="px-4 py-3 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-all"
                 onClick={() => setIsMenuOpen(false)}
               >
                 DSA Visualizer
               </Link>
               <Link 
                 href="/about" 
-                className="px-4 py-3 text-sm font-medium text-gray-700 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition-all"
+                className="px-4 py-3 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-all"
                 onClick={() => setIsMenuOpen(false)}
               >
                 About
               </Link>
               <Link 
                 href="/contact" 
-                className="px-4 py-3 text-sm font-medium text-gray-700 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition-all"
+                className="px-4 py-3 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-all"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Contact
@@ -192,7 +192,7 @@ export default function Header() {
               <div className="pt-4 mt-2 border-t border-gray-100">
                 <Link
                   href="/dsa-visualizer"
-                  className="block px-4 py-3 bg-indigo-600 text-white text-sm font-semibold rounded-lg text-center hover:bg-indigo-700 transition-all"
+                  className="block px-4 py-3 bg-black text-white text-sm font-semibold rounded-lg text-center hover:bg-gray-800 transition-all"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Get Started

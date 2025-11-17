@@ -256,13 +256,13 @@ Optimization Steps:
   };
 
   return (
-    <div className="min-h-screen bg-white pt-20">
+    <div className="min-h-screen bg-white pt-28">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <nav className="mb-8 text-sm">
           <ol className="flex items-center gap-2 text-gray-500">
-            <li><Link href="/" className="hover:text-indigo-600">Home</Link></li>
+            <li><Link href="/" className="hover:text-gray-900">Home</Link></li>
             <li>/</li>
-            <li><Link href="/math-visualizer" className="hover:text-indigo-600">Math Visualizer</Link></li>
+            <li><Link href="/math-visualizer" className="hover:text-gray-900">Math Visualizer</Link></li>
             <li>/</li>
             <li className="text-gray-900 font-medium">Optimization</li>
           </ol>
@@ -271,7 +271,7 @@ Optimization Steps:
         <article className="space-y-8">
           <header className="space-y-4 pb-8 border-b border-gray-200">
             <div className="flex items-center gap-2 text-sm">
-              <span className="px-2 py-1 bg-blue-100 text-blue-700 rounded font-medium">Calculus</span>
+              <span className="px-2 py-1 bg-gray-200 text-gray-900 rounded font-medium">Calculus</span>
               <span className="text-gray-400">•</span>
               <span className="text-gray-500">Intermediate</span>
             </div>
@@ -312,8 +312,8 @@ Optimization Steps:
                 At these optimal points, the derivative equals zero (horizontal tangent), making them <strong>critical points</strong>.
               </p>
               
-              <div className="bg-blue-50 border-l-4 border-blue-500 p-4 my-4">
-                <p className="text-sm text-blue-900">
+              <div className="bg-gray-100 border-l-4 border-gray-900 p-4 my-4">
+                <p className="text-sm text-gray-900">
                   <strong>Key Concept:</strong> To optimize f(x), find where f'(x) = 0 (critical points), then use the 
                   second derivative test: if f''(x) &lt; 0, it's a maximum; if f''(x) &gt; 0, it's a minimum.
                 </p>
@@ -324,9 +324,9 @@ Optimization Steps:
                 Since A''(w) = -2 &lt; 0, this is indeed a maximum. Interestingly, the optimal shape is a <strong>square</strong>!
               </p>
 
-              <div className="bg-purple-50 border border-purple-200 rounded-lg p-4 my-4">
-                <h4 className="font-semibold text-purple-900 mb-2">General Strategy:</h4>
-                <ol className="text-sm text-purple-800 space-y-1 list-decimal list-inside">
+              <div className="bg-gray-100 border border-gray-300 rounded-lg p-4 my-4">
+                <h4 className="font-semibold text-gray-900 mb-2">General Strategy:</h4>
+                <ol className="text-sm text-gray-900 space-y-1 list-decimal list-inside">
                   <li>Identify constraint and objective function</li>
                   <li>Express objective in terms of one variable</li>
                   <li>Find derivative and set equal to zero</li>
@@ -354,7 +354,7 @@ Optimization Steps:
                   onClick={() => setSelectedLanguage('python')}
                   className={`px-3 py-1.5 text-sm font-medium rounded-lg transition-colors ${
                     selectedLanguage === 'python'
-                      ? 'bg-indigo-600 text-white'
+                      ? 'bg-black text-white'
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                   }`}
                 >
@@ -364,7 +364,7 @@ Optimization Steps:
                   onClick={() => setSelectedLanguage('javascript')}
                   className={`px-3 py-1.5 text-sm font-medium rounded-lg transition-colors ${
                     selectedLanguage === 'javascript'
-                      ? 'bg-indigo-600 text-white'
+                      ? 'bg-black text-white'
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                   }`}
                 >
@@ -374,7 +374,7 @@ Optimization Steps:
                   onClick={() => setSelectedLanguage('mathematical')}
                   className={`px-3 py-1.5 text-sm font-medium rounded-lg transition-colors ${
                     selectedLanguage === 'mathematical'
-                      ? 'bg-indigo-600 text-white'
+                      ? 'bg-black text-white'
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                   }`}
                 >
@@ -400,12 +400,12 @@ Optimization Steps:
           <section className="space-y-4">
             <h2 className="text-2xl font-bold text-gray-900">Classic Optimization Problems</h2>
             <div className="grid md:grid-cols-2 gap-4">
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                <h3 className="font-semibold text-blue-900 mb-2">Box Volume</h3>
-                <p className="text-blue-800 text-sm mb-2">
+              <div className="bg-gray-100 border border-gray-300 rounded-lg p-4">
+                <h3 className="font-semibold text-gray-900 mb-2">Box Volume</h3>
+                <p className="text-gray-900 text-sm mb-2">
                   Maximize volume by cutting corners from a square sheet
                 </p>
-                <p className="text-blue-700 text-xs">
+                <p className="text-gray-900 text-xs">
                   V(x) = x(a-2x)², find optimal cut size x
                 </p>
               </div>
@@ -420,12 +420,12 @@ Optimization Steps:
                 </p>
               </div>
 
-              <div className="bg-purple-50 border border-purple-200 rounded-lg p-4">
-                <h3 className="font-semibold text-purple-900 mb-2">Can Design</h3>
-                <p className="text-purple-800 text-sm mb-2">
+              <div className="bg-gray-100 border border-gray-300 rounded-lg p-4">
+                <h3 className="font-semibold text-gray-900 mb-2">Can Design</h3>
+                <p className="text-gray-900 text-sm mb-2">
                   Minimize surface area for fixed volume (cylinder)
                 </p>
-                <p className="text-purple-700 text-xs">
+                <p className="text-gray-900 text-xs">
                   A = 2πr² + 2πrh with V = πr²h constant
                 </p>
               </div>
@@ -445,21 +445,21 @@ Optimization Steps:
           <section className="space-y-4">
             <h2 className="text-2xl font-bold text-gray-900">Related Topics</h2>
             <div className="grid sm:grid-cols-2 gap-3">
-              <Link href="/math-visualizer/problems/derivatives" className="border border-gray-200 rounded-lg p-4 hover:border-indigo-300 transition-colors group">
-                <h3 className="font-semibold text-gray-900 mb-1 group-hover:text-indigo-600">
+              <Link href="/math-visualizer/problems/derivatives" className="border border-gray-200 rounded-lg p-4 hover:border-gray-400 transition-colors group">
+                <h3 className="font-semibold text-gray-900 mb-1 group-hover:text-gray-900">
                   Derivatives
                 </h3>
                 <p className="text-sm text-gray-600">Foundation for finding critical points</p>
               </Link>
               
-              <Link href="/math-visualizer/problems/chain-rule" className="border border-gray-200 rounded-lg p-4 hover:border-indigo-300 transition-colors group">
-                <h3 className="font-semibold text-gray-900 mb-1 group-hover:text-indigo-600">
+              <Link href="/math-visualizer/problems/chain-rule" className="border border-gray-200 rounded-lg p-4 hover:border-gray-400 transition-colors group">
+                <h3 className="font-semibold text-gray-900 mb-1 group-hover:text-gray-900">
                   Chain Rule
                 </h3>
                 <p className="text-sm text-gray-600">Useful for complex optimization problems</p>
               </Link>
               
-              <div className="border border-gray-200 rounded-lg p-4 hover:border-indigo-300 transition-colors opacity-60 cursor-not-allowed">
+              <div className="border border-gray-200 rounded-lg p-4 hover:border-gray-400 transition-colors opacity-60 cursor-not-allowed">
                 <h3 className="font-semibold text-gray-700 mb-1 flex items-center justify-between">
                   Lagrange Multipliers
                   <span className="text-xs text-gray-500">Coming Soon</span>
@@ -467,7 +467,7 @@ Optimization Steps:
                 <p className="text-sm text-gray-500">Optimization with multiple constraints</p>
               </div>
               
-              <div className="border border-gray-200 rounded-lg p-4 hover:border-indigo-300 transition-colors opacity-60 cursor-not-allowed">
+              <div className="border border-gray-200 rounded-lg p-4 hover:border-gray-400 transition-colors opacity-60 cursor-not-allowed">
                 <h3 className="font-semibold text-gray-700 mb-1 flex items-center justify-between">
                   Linear Programming
                   <span className="text-xs text-gray-500">Coming Soon</span>

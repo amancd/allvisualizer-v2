@@ -165,7 +165,7 @@ export default function TermsAndConditionsPage() {
                 Email: nkcoderz@gmail.com
               </p>
 
-              <div className="border-l-4 border-indigo-600 pl-6 mt-8">
+              <div className="border-l-4 border-gray-900 pl-6 mt-8">
                 <p className="text-gray-700">
                   <strong>Note:</strong> By using AllVisualizer, you acknowledge that you have read and understood 
                   these Terms and Conditions and agree to be bound by them.

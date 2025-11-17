@@ -214,13 +214,13 @@ As n → ∞, the approximation becomes exact.`
   };
 
   return (
-    <div className="min-h-screen bg-white pt-20">
+    <div className="min-h-screen bg-white pt-28">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <nav className="mb-8 text-sm">
           <ol className="flex items-center gap-2 text-gray-500">
-            <li><Link href="/" className="hover:text-indigo-600">Home</Link></li>
+            <li><Link href="/" className="hover:text-gray-900">Home</Link></li>
             <li>/</li>
-            <li><Link href="/math-visualizer" className="hover:text-indigo-600">Math Visualizer</Link></li>
+            <li><Link href="/math-visualizer" className="hover:text-gray-900">Math Visualizer</Link></li>
             <li>/</li>
             <li className="text-gray-900 font-medium">Integration Basics</li>
           </ol>
@@ -229,7 +229,7 @@ As n → ∞, the approximation becomes exact.`
         <article className="space-y-8">
           <header className="space-y-4 pb-8 border-b border-gray-200">
             <div className="flex items-center gap-2 text-sm">
-              <span className="px-2 py-1 bg-blue-100 text-blue-700 rounded font-medium">Calculus</span>
+              <span className="px-2 py-1 bg-gray-200 text-gray-900 rounded font-medium">Calculus</span>
               <span className="text-gray-400">•</span>
               <span className="text-gray-500">Beginner</span>
             </div>
@@ -272,8 +272,8 @@ As n → ∞, the approximation becomes exact.`
                 function f(x) and the x-axis from a to b.
               </p>
               
-              <div className="bg-blue-50 border-l-4 border-blue-500 p-4 my-4">
-                <p className="text-sm text-blue-900">
+              <div className="bg-gray-100 border-l-4 border-gray-900 p-4 my-4">
+                <p className="text-sm text-gray-900">
                   <strong>Key Concept:</strong> The Fundamental Theorem of Calculus connects differentiation and integration. 
                   If F'(x) = f(x), then ∫ₐᵇ f(x) dx = F(b) - F(a). This means we can find areas by finding antiderivatives!
                 </p>
@@ -284,9 +284,9 @@ As n → ∞, the approximation becomes exact.`
                 we evaluate F(2) - F(0) = 8/3 - 0 = 8/3 ≈ 2.667.
               </p>
 
-              <div className="bg-purple-50 border border-purple-200 rounded-lg p-4 my-4">
-                <h4 className="font-semibold text-purple-900 mb-2">Riemann Sums:</h4>
-                <p className="text-sm text-purple-800">
+              <div className="bg-gray-100 border border-gray-300 rounded-lg p-4 my-4">
+                <h4 className="font-semibold text-gray-900 mb-2">Riemann Sums:</h4>
+                <p className="text-sm text-gray-900">
                   We can approximate the area using rectangles (Riemann sums). As we use more rectangles, 
                   the approximation gets closer to the exact integral value.
                 </p>
@@ -310,7 +310,7 @@ As n → ∞, the approximation becomes exact.`
                   onClick={() => setSelectedLanguage('python')}
                   className={`px-3 py-1.5 text-sm font-medium rounded-lg transition-colors ${
                     selectedLanguage === 'python'
-                      ? 'bg-indigo-600 text-white'
+                      ? 'bg-black text-white'
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                   }`}
                 >
@@ -320,7 +320,7 @@ As n → ∞, the approximation becomes exact.`
                   onClick={() => setSelectedLanguage('javascript')}
                   className={`px-3 py-1.5 text-sm font-medium rounded-lg transition-colors ${
                     selectedLanguage === 'javascript'
-                      ? 'bg-indigo-600 text-white'
+                      ? 'bg-black text-white'
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                   }`}
                 >
@@ -330,7 +330,7 @@ As n → ∞, the approximation becomes exact.`
                   onClick={() => setSelectedLanguage('mathematical')}
                   className={`px-3 py-1.5 text-sm font-medium rounded-lg transition-colors ${
                     selectedLanguage === 'mathematical'
-                      ? 'bg-indigo-600 text-white'
+                      ? 'bg-black text-white'
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                   }`}
                 >
@@ -356,12 +356,12 @@ As n → ∞, the approximation becomes exact.`
           <section className="space-y-4">
             <h2 className="text-2xl font-bold text-gray-900">Key Properties</h2>
             <div className="grid md:grid-cols-2 gap-4">
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                <h3 className="font-semibold text-blue-900 mb-2">Linearity</h3>
-                <p className="text-blue-800 text-sm mb-2">
+              <div className="bg-gray-100 border border-gray-300 rounded-lg p-4">
+                <h3 className="font-semibold text-gray-900 mb-2">Linearity</h3>
+                <p className="text-gray-900 text-sm mb-2">
                   ∫[af(x) + bg(x)]dx = a∫f(x)dx + b∫g(x)dx
                 </p>
-                <p className="text-blue-700 text-xs">
+                <p className="text-gray-900 text-xs">
                   Constants and sums can be separated
                 </p>
               </div>
@@ -376,12 +376,12 @@ As n → ∞, the approximation becomes exact.`
                 </p>
               </div>
 
-              <div className="bg-purple-50 border border-purple-200 rounded-lg p-4">
-                <h3 className="font-semibold text-purple-900 mb-2">Additivity</h3>
-                <p className="text-purple-800 text-sm mb-2">
+              <div className="bg-gray-100 border border-gray-300 rounded-lg p-4">
+                <h3 className="font-semibold text-gray-900 mb-2">Additivity</h3>
+                <p className="text-gray-900 text-sm mb-2">
                   ∫ₐᶜf(x)dx = ∫ₐᵇf(x)dx + ∫ᵇᶜf(x)dx
                 </p>
-                <p className="text-purple-700 text-xs">
+                <p className="text-gray-900 text-xs">
                   Areas can be split and combined
                 </p>
               </div>
@@ -401,14 +401,14 @@ As n → ∞, the approximation becomes exact.`
           <section className="space-y-4">
             <h2 className="text-2xl font-bold text-gray-900">Related Topics</h2>
             <div className="grid sm:grid-cols-2 gap-3">
-              <Link href="/math-visualizer/problems/derivatives" className="border border-gray-200 rounded-lg p-4 hover:border-indigo-300 transition-colors group">
-                <h3 className="font-semibold text-gray-900 mb-1 group-hover:text-indigo-600">
+              <Link href="/math-visualizer/problems/derivatives" className="border border-gray-200 rounded-lg p-4 hover:border-gray-400 transition-colors group">
+                <h3 className="font-semibold text-gray-900 mb-1 group-hover:text-gray-900">
                   Derivatives
                 </h3>
                 <p className="text-sm text-gray-600">The inverse operation of integration</p>
               </Link>
               
-              <div className="border border-gray-200 rounded-lg p-4 hover:border-indigo-300 transition-colors opacity-60 cursor-not-allowed">
+              <div className="border border-gray-200 rounded-lg p-4 hover:border-gray-400 transition-colors opacity-60 cursor-not-allowed">
                 <h3 className="font-semibold text-gray-700 mb-1 flex items-center justify-between">
                   Substitution Rule
                   <span className="text-xs text-gray-500">Coming Soon</span>
@@ -416,7 +416,7 @@ As n → ∞, the approximation becomes exact.`
                 <p className="text-sm text-gray-500">Integration technique for composite functions</p>
               </div>
               
-              <div className="border border-gray-200 rounded-lg p-4 hover:border-indigo-300 transition-colors opacity-60 cursor-not-allowed">
+              <div className="border border-gray-200 rounded-lg p-4 hover:border-gray-400 transition-colors opacity-60 cursor-not-allowed">
                 <h3 className="font-semibold text-gray-700 mb-1 flex items-center justify-between">
                   Integration by Parts
                   <span className="text-xs text-gray-500">Coming Soon</span>
@@ -424,7 +424,7 @@ As n → ∞, the approximation becomes exact.`
                 <p className="text-sm text-gray-500">Integration technique for products</p>
               </div>
               
-              <div className="border border-gray-200 rounded-lg p-4 hover:border-indigo-300 transition-colors opacity-60 cursor-not-allowed">
+              <div className="border border-gray-200 rounded-lg p-4 hover:border-gray-400 transition-colors opacity-60 cursor-not-allowed">
                 <h3 className="font-semibold text-gray-700 mb-1 flex items-center justify-between">
                   Applications
                   <span className="text-xs text-gray-500">Coming Soon</span>

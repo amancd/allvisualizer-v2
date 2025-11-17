@@ -68,7 +68,7 @@ export default function MatrixOperationsVisualizer() {
               type="number"
               value={val}
               onChange={(e) => setters[idx](Number(e.target.value))}
-              className="w-16 px-2 py-2 text-center border border-gray-300 rounded focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+              className="w-16 px-2 py-2 text-center border border-gray-300 rounded focus:ring-2 focus:ring-gray-500 focus:border-transparent"
             />
           ))}
         </div>
@@ -119,7 +119,7 @@ export default function MatrixOperationsVisualizer() {
             onClick={() => setOperation('add')}
             className={`px-4 py-2 rounded-lg font-medium transition-colors ${
               operation === 'add'
-                ? 'bg-indigo-600 text-white'
+                ? 'bg-black text-white'
                 : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
             }`}
           >
@@ -129,7 +129,7 @@ export default function MatrixOperationsVisualizer() {
             onClick={() => setOperation('multiply')}
             className={`px-4 py-2 rounded-lg font-medium transition-colors ${
               operation === 'multiply'
-                ? 'bg-indigo-600 text-white'
+                ? 'bg-black text-white'
                 : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
             }`}
           >
@@ -139,7 +139,7 @@ export default function MatrixOperationsVisualizer() {
             onClick={() => setOperation('scalar')}
             className={`px-4 py-2 rounded-lg font-medium transition-colors ${
               operation === 'scalar'
-                ? 'bg-indigo-600 text-white'
+                ? 'bg-black text-white'
                 : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
             }`}
           >
@@ -163,7 +163,7 @@ export default function MatrixOperationsVisualizer() {
               type="number"
               value={scalar}
               onChange={(e) => setScalar(Number(e.target.value))}
-              className="w-24 px-3 py-2 text-center text-lg font-semibold border border-gray-300 rounded focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+              className="w-24 px-3 py-2 text-center text-lg font-semibold border border-gray-300 rounded focus:ring-2 focus:ring-gray-500 focus:border-transparent"
             />
           </div>
         ) : (
@@ -190,16 +190,16 @@ export default function MatrixOperationsVisualizer() {
             <p className="text-gray-700">Matrix addition: Add corresponding elements</p>
             <div className="grid grid-cols-2 gap-2 font-mono text-xs bg-white p-3 rounded border border-gray-200">
               <div>
-                <span className="text-blue-600">C[1,1]</span> = A[1,1] + B[1,1] = {a11} + {b11} = <span className="font-bold text-green-600">{result.r11}</span>
+                <span className="text-gray-900">C[1,1]</span> = A[1,1] + B[1,1] = {a11} + {b11} = <span className="font-bold text-green-600">{result.r11}</span>
               </div>
               <div>
-                <span className="text-blue-600">C[1,2]</span> = A[1,2] + B[1,2] = {a12} + {b12} = <span className="font-bold text-green-600">{result.r12}</span>
+                <span className="text-gray-900">C[1,2]</span> = A[1,2] + B[1,2] = {a12} + {b12} = <span className="font-bold text-green-600">{result.r12}</span>
               </div>
               <div>
-                <span className="text-blue-600">C[2,1]</span> = A[2,1] + B[2,1] = {a21} + {b21} = <span className="font-bold text-green-600">{result.r21}</span>
+                <span className="text-gray-900">C[2,1]</span> = A[2,1] + B[2,1] = {a21} + {b21} = <span className="font-bold text-green-600">{result.r21}</span>
               </div>
               <div>
-                <span className="text-blue-600">C[2,2]</span> = A[2,2] + B[2,2] = {a22} + {b22} = <span className="font-bold text-green-600">{result.r22}</span>
+                <span className="text-gray-900">C[2,2]</span> = A[2,2] + B[2,2] = {a22} + {b22} = <span className="font-bold text-green-600">{result.r22}</span>
               </div>
             </div>
           </div>
@@ -210,16 +210,16 @@ export default function MatrixOperationsVisualizer() {
             <p className="text-gray-700">Matrix multiplication: Row × Column dot product</p>
             <div className="grid grid-cols-2 gap-2 font-mono text-xs bg-white p-3 rounded border border-gray-200">
               <div>
-                <span className="text-blue-600">C[1,1]</span> = A[1,•] · B[•,1] = ({a11}×{b11}) + ({a12}×{b21}) = <span className="font-bold text-green-600">{result.r11}</span>
+                <span className="text-gray-900">C[1,1]</span> = A[1,•] · B[•,1] = ({a11}×{b11}) + ({a12}×{b21}) = <span className="font-bold text-green-600">{result.r11}</span>
               </div>
               <div>
-                <span className="text-blue-600">C[1,2]</span> = A[1,•] · B[•,2] = ({a11}×{b12}) + ({a12}×{b22}) = <span className="font-bold text-green-600">{result.r12}</span>
+                <span className="text-gray-900">C[1,2]</span> = A[1,•] · B[•,2] = ({a11}×{b12}) + ({a12}×{b22}) = <span className="font-bold text-green-600">{result.r12}</span>
               </div>
               <div>
-                <span className="text-blue-600">C[2,1]</span> = A[2,•] · B[•,1] = ({a21}×{b11}) + ({a22}×{b21}) = <span className="font-bold text-green-600">{result.r21}</span>
+                <span className="text-gray-900">C[2,1]</span> = A[2,•] · B[•,1] = ({a21}×{b11}) + ({a22}×{b21}) = <span className="font-bold text-green-600">{result.r21}</span>
               </div>
               <div>
-                <span className="text-blue-600">C[2,2]</span> = A[2,•] · B[•,2] = ({a21}×{b12}) + ({a22}×{b22}) = <span className="font-bold text-green-600">{result.r22}</span>
+                <span className="text-gray-900">C[2,2]</span> = A[2,•] · B[•,2] = ({a21}×{b12}) + ({a22}×{b22}) = <span className="font-bold text-green-600">{result.r22}</span>
               </div>
             </div>
           </div>
@@ -230,16 +230,16 @@ export default function MatrixOperationsVisualizer() {
             <p className="text-gray-700">Scalar multiplication: Multiply each element by the scalar</p>
             <div className="grid grid-cols-2 gap-2 font-mono text-xs bg-white p-3 rounded border border-gray-200">
               <div>
-                <span className="text-blue-600">C[1,1]</span> = k × A[1,1] = {scalar} × {a11} = <span className="font-bold text-green-600">{result.r11}</span>
+                <span className="text-gray-900">C[1,1]</span> = k × A[1,1] = {scalar} × {a11} = <span className="font-bold text-green-600">{result.r11}</span>
               </div>
               <div>
-                <span className="text-blue-600">C[1,2]</span> = k × A[1,2] = {scalar} × {a12} = <span className="font-bold text-green-600">{result.r12}</span>
+                <span className="text-gray-900">C[1,2]</span> = k × A[1,2] = {scalar} × {a12} = <span className="font-bold text-green-600">{result.r12}</span>
               </div>
               <div>
-                <span className="text-blue-600">C[2,1]</span> = k × A[2,1] = {scalar} × {a21} = <span className="font-bold text-green-600">{result.r21}</span>
+                <span className="text-gray-900">C[2,1]</span> = k × A[2,1] = {scalar} × {a21} = <span className="font-bold text-green-600">{result.r21}</span>
               </div>
               <div>
-                <span className="text-blue-600">C[2,2]</span> = k × A[2,2] = {scalar} × {a22} = <span className="font-bold text-green-600">{result.r22}</span>
+                <span className="text-gray-900">C[2,2]</span> = k × A[2,2] = {scalar} × {a22} = <span className="font-bold text-green-600">{result.r22}</span>
               </div>
             </div>
           </div>
@@ -250,13 +250,13 @@ export default function MatrixOperationsVisualizer() {
       <div className="grid sm:grid-cols-3 gap-3">
         {operation === 'add' && (
           <>
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
-              <div className="text-xs text-blue-600 font-medium mb-1">Commutative</div>
-              <div className="text-sm text-blue-900">A + B = B + A</div>
+            <div className="bg-gray-100 border border-gray-300 rounded-lg p-3">
+              <div className="text-xs text-gray-900 font-medium mb-1">Commutative</div>
+              <div className="text-sm text-gray-900">A + B = B + A</div>
             </div>
-            <div className="bg-purple-50 border border-purple-200 rounded-lg p-3">
-              <div className="text-xs text-purple-600 font-medium mb-1">Associative</div>
-              <div className="text-sm text-purple-900">(A + B) + C = A + (B + C)</div>
+            <div className="bg-gray-100 border border-gray-300 rounded-lg p-3">
+              <div className="text-xs text-gray-900 font-medium mb-1">Associative</div>
+              <div className="text-sm text-gray-900">(A + B) + C = A + (B + C)</div>
             </div>
             <div className="bg-orange-50 border border-orange-200 rounded-lg p-3">
               <div className="text-xs text-orange-600 font-medium mb-1">Identity</div>
@@ -271,9 +271,9 @@ export default function MatrixOperationsVisualizer() {
               <div className="text-xs text-red-600 font-medium mb-1">Not Commutative</div>
               <div className="text-sm text-red-900">A × B ≠ B × A</div>
             </div>
-            <div className="bg-purple-50 border border-purple-200 rounded-lg p-3">
-              <div className="text-xs text-purple-600 font-medium mb-1">Associative</div>
-              <div className="text-sm text-purple-900">(AB)C = A(BC)</div>
+            <div className="bg-gray-100 border border-gray-300 rounded-lg p-3">
+              <div className="text-xs text-gray-900 font-medium mb-1">Associative</div>
+              <div className="text-sm text-gray-900">(AB)C = A(BC)</div>
             </div>
             <div className="bg-orange-50 border border-orange-200 rounded-lg p-3">
               <div className="text-xs text-orange-600 font-medium mb-1">Identity</div>
@@ -284,13 +284,13 @@ export default function MatrixOperationsVisualizer() {
         
         {operation === 'scalar' && (
           <>
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
-              <div className="text-xs text-blue-600 font-medium mb-1">Distributive</div>
-              <div className="text-sm text-blue-900">k(A + B) = kA + kB</div>
+            <div className="bg-gray-100 border border-gray-300 rounded-lg p-3">
+              <div className="text-xs text-gray-900 font-medium mb-1">Distributive</div>
+              <div className="text-sm text-gray-900">k(A + B) = kA + kB</div>
             </div>
-            <div className="bg-purple-50 border border-purple-200 rounded-lg p-3">
-              <div className="text-xs text-purple-600 font-medium mb-1">Associative</div>
-              <div className="text-sm text-purple-900">(kl)A = k(lA)</div>
+            <div className="bg-gray-100 border border-gray-300 rounded-lg p-3">
+              <div className="text-xs text-gray-900 font-medium mb-1">Associative</div>
+              <div className="text-sm text-gray-900">(kl)A = k(lA)</div>
             </div>
             <div className="bg-orange-50 border border-orange-200 rounded-lg p-3">
               <div className="text-xs text-orange-600 font-medium mb-1">Identity</div>

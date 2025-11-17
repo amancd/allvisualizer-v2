@@ -467,13 +467,13 @@ export default async function CategoryPage({ params }: PageProps) {
   };
 
   return (
-    <div className="min-h-screen bg-white pt-16">
+    <div className="min-h-screen bg-white pt-24">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Breadcrumb */}
         <nav className="flex items-center gap-2 text-sm text-gray-600 mb-8">
-          <Link href="/" className="hover:text-indigo-600">Home</Link>
+          <Link href="/" className="hover:text-gray-900">Home</Link>
           <span>/</span>
-          <Link href="/dsa-visualizer" className="hover:text-indigo-600">DSA</Link>
+          <Link href="/dsa-visualizer" className="hover:text-gray-900">DSA</Link>
           <span>/</span>
           <span className="text-gray-900">{category.title}</span>
         </nav>
@@ -497,7 +497,7 @@ export default async function CategoryPage({ params }: PageProps) {
           <ul className="space-y-2 text-gray-700">
             {category.keyPoints.map((point, index) => (
               <li key={index} className="flex items-start gap-3">
-                <svg className="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-5 h-5 text-gray-900 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
                 <span>{point}</span>
@@ -514,7 +514,7 @@ export default async function CategoryPage({ params }: PageProps) {
               <div
                 key={index}
                 className={`border border-gray-200 rounded-lg p-4 ${
-                  problem.isAvailable ? 'hover:border-indigo-500 hover:shadow-md' : 'opacity-60'
+                  problem.isAvailable ? 'hover:border-gray-600 hover:shadow-md' : 'opacity-60'
                 } transition-all`}
               >
                 <div className="flex items-start justify-between gap-4">
@@ -523,7 +523,7 @@ export default async function CategoryPage({ params }: PageProps) {
                       {problem.isAvailable ? (
                         <Link
                           href={`/dsa-visualizer/problems/${problem.slug}`}
-                          className="text-lg font-semibold text-gray-900 hover:text-indigo-600"
+                          className="text-lg font-semibold text-gray-900 hover:text-gray-900"
                         >
                           {problem.title}
                         </Link>
@@ -553,7 +553,7 @@ export default async function CategoryPage({ params }: PageProps) {
                   {problem.isAvailable && (
                     <Link
                       href={`/dsa-visualizer/problems/${problem.slug}`}
-                      className="text-indigo-600 hover:text-indigo-700 flex-shrink-0"
+                      className="text-gray-900 hover:text-gray-800 flex-shrink-0"
                     >
                       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
@@ -570,7 +570,7 @@ export default async function CategoryPage({ params }: PageProps) {
         <div className="pt-8 border-t border-gray-200">
           <Link
             href="/dsa-visualizer"
-            className="inline-flex items-center gap-2 text-indigo-600 hover:text-indigo-700"
+            className="inline-flex items-center gap-2 text-gray-900 hover:text-gray-800"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />

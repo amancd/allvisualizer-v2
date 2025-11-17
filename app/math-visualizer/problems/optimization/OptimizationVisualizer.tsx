@@ -83,7 +83,7 @@ export default function OptimizationVisualizer() {
             <span className="text-sm text-gray-600">
               Height: {currentHeight.toFixed(2)} units
             </span>
-            <span className={`text-sm font-semibold ${currentArea === maxArea ? 'text-green-600' : 'text-indigo-600'}`}>
+            <span className={`text-sm font-semibold ${currentArea === maxArea ? 'text-green-600' : 'text-gray-900'}`}>
               Area: {currentArea.toFixed(2)} sq units
             </span>
           </div>
@@ -254,14 +254,14 @@ export default function OptimizationVisualizer() {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-4 gap-3 pt-2">
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
-          <div className="text-xs text-blue-600 font-medium mb-1">Constraint</div>
-          <div className="text-sm font-semibold text-blue-900">2w + 2h = 16</div>
+        <div className="bg-gray-100 border border-gray-300 rounded-lg p-3">
+          <div className="text-xs text-gray-900 font-medium mb-1">Constraint</div>
+          <div className="text-sm font-semibold text-gray-900">2w + 2h = 16</div>
         </div>
         
-        <div className="bg-purple-50 border border-purple-200 rounded-lg p-3">
-          <div className="text-xs text-purple-600 font-medium mb-1">Objective</div>
-          <div className="text-sm font-semibold text-purple-900">A = w·h</div>
+        <div className="bg-gray-100 border border-gray-300 rounded-lg p-3">
+          <div className="text-xs text-gray-900 font-medium mb-1">Objective</div>
+          <div className="text-sm font-semibold text-gray-900">A = w·h</div>
         </div>
         
         <div className="bg-orange-50 border border-orange-200 rounded-lg p-3">

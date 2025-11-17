@@ -70,7 +70,7 @@ export default function DeterminantVisualizer() {
             onClick={() => setMatrixSize(2)}
             className={`px-4 py-2 rounded-lg font-medium transition-colors ${
               matrixSize === 2
-                ? 'bg-indigo-600 text-white'
+                ? 'bg-black text-white'
                 : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
             }`}
           >
@@ -80,7 +80,7 @@ export default function DeterminantVisualizer() {
             onClick={() => setMatrixSize(3)}
             className={`px-4 py-2 rounded-lg font-medium transition-colors ${
               matrixSize === 3
-                ? 'bg-indigo-600 text-white'
+                ? 'bg-black text-white'
                 : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
             }`}
           >
@@ -100,20 +100,20 @@ export default function DeterminantVisualizer() {
               type="number"
               value={a11}
               onChange={(e) => setA11(Number(e.target.value))}
-              className="w-16 px-2 py-2 text-center border border-gray-300 rounded focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+              className="w-16 px-2 py-2 text-center border border-gray-300 rounded focus:ring-2 focus:ring-gray-500 focus:border-transparent"
             />
             <input
               type="number"
               value={a12}
               onChange={(e) => setA12(Number(e.target.value))}
-              className="w-16 px-2 py-2 text-center border border-gray-300 rounded focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+              className="w-16 px-2 py-2 text-center border border-gray-300 rounded focus:ring-2 focus:ring-gray-500 focus:border-transparent"
             />
             {matrixSize === 3 && (
               <input
                 type="number"
                 value={a13}
                 onChange={(e) => setA13(Number(e.target.value))}
-                className="w-16 px-2 py-2 text-center border border-gray-300 rounded focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                className="w-16 px-2 py-2 text-center border border-gray-300 rounded focus:ring-2 focus:ring-gray-500 focus:border-transparent"
               />
             )}
             
@@ -122,20 +122,20 @@ export default function DeterminantVisualizer() {
               type="number"
               value={a21}
               onChange={(e) => setA21(Number(e.target.value))}
-              className="w-16 px-2 py-2 text-center border border-gray-300 rounded focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+              className="w-16 px-2 py-2 text-center border border-gray-300 rounded focus:ring-2 focus:ring-gray-500 focus:border-transparent"
             />
             <input
               type="number"
               value={a22}
               onChange={(e) => setA22(Number(e.target.value))}
-              className="w-16 px-2 py-2 text-center border border-gray-300 rounded focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+              className="w-16 px-2 py-2 text-center border border-gray-300 rounded focus:ring-2 focus:ring-gray-500 focus:border-transparent"
             />
             {matrixSize === 3 && (
               <input
                 type="number"
                 value={a23}
                 onChange={(e) => setA23(Number(e.target.value))}
-                className="w-16 px-2 py-2 text-center border border-gray-300 rounded focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                className="w-16 px-2 py-2 text-center border border-gray-300 rounded focus:ring-2 focus:ring-gray-500 focus:border-transparent"
               />
             )}
             
@@ -146,19 +146,19 @@ export default function DeterminantVisualizer() {
                   type="number"
                   value={a31}
                   onChange={(e) => setA31(Number(e.target.value))}
-                  className="w-16 px-2 py-2 text-center border border-gray-300 rounded focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                  className="w-16 px-2 py-2 text-center border border-gray-300 rounded focus:ring-2 focus:ring-gray-500 focus:border-transparent"
                 />
                 <input
                   type="number"
                   value={a32}
                   onChange={(e) => setA32(Number(e.target.value))}
-                  className="w-16 px-2 py-2 text-center border border-gray-300 rounded focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                  className="w-16 px-2 py-2 text-center border border-gray-300 rounded focus:ring-2 focus:ring-gray-500 focus:border-transparent"
                 />
                 <input
                   type="number"
                   value={a33}
                   onChange={(e) => setA33(Number(e.target.value))}
-                  className="w-16 px-2 py-2 text-center border border-gray-300 rounded focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                  className="w-16 px-2 py-2 text-center border border-gray-300 rounded focus:ring-2 focus:ring-gray-500 focus:border-transparent"
                 />
               </>
             )}
@@ -180,7 +180,7 @@ export default function DeterminantVisualizer() {
             ) : determinant > 0 ? (
               <span className="text-green-600">✓ Matrix is invertible (preserves orientation)</span>
             ) : (
-              <span className="text-blue-600">✓ Matrix is invertible (reverses orientation)</span>
+              <span className="text-gray-900">✓ Matrix is invertible (reverses orientation)</span>
             )}
           </div>
         </div>
@@ -202,10 +202,10 @@ export default function DeterminantVisualizer() {
                 </div>
                 <div className="space-y-1">
                   <div className="text-gray-700">
-                    det(A) = <span className="text-blue-600">({a11})</span> × <span className="text-blue-600">({a22})</span> - <span className="text-red-600">({a12})</span> × <span className="text-red-600">({a21})</span>
+                    det(A) = <span className="text-gray-900">({a11})</span> × <span className="text-gray-900">({a22})</span> - <span className="text-red-600">({a12})</span> × <span className="text-red-600">({a21})</span>
                   </div>
                   <div className="text-gray-700 ml-16">
-                    = <span className="text-blue-600">{a11 * a22}</span> - <span className="text-red-600">{a12 * a21}</span>
+                    = <span className="text-gray-900">{a11 * a22}</span> - <span className="text-red-600">{a12 * a21}</span>
                   </div>
                   <div className="text-gray-700 ml-16 font-bold text-green-600">
                     = {determinant}
@@ -224,7 +224,7 @@ export default function DeterminantVisualizer() {
               
               <div className="space-y-2 border-t border-gray-200 pt-2">
                 <div>
-                  <span className="text-blue-600">M₁₁</span> = |{a22} {a23}| = ({a22})×({a33}) - ({a23})×({a32}) = <span className="font-bold">{det2x2(a22, a23, a32, a33)}</span>
+                  <span className="text-gray-900">M₁₁</span> = |{a22} {a23}| = ({a22})×({a33}) - ({a23})×({a32}) = <span className="font-bold">{det2x2(a22, a23, a32, a33)}</span>
                   <br />
                   <span className="ml-8">|{a32} {a33}|</span>
                 </div>
@@ -236,14 +236,14 @@ export default function DeterminantVisualizer() {
                 </div>
                 
                 <div>
-                  <span className="text-purple-600">M₁₃</span> = |{a21} {a22}| = ({a21})×({a32}) - ({a22})×({a31}) = <span className="font-bold">{det2x2(a21, a22, a31, a32)}</span>
+                  <span className="text-gray-900">M₁₃</span> = |{a21} {a22}| = ({a21})×({a32}) - ({a22})×({a31}) = <span className="font-bold">{det2x2(a21, a22, a31, a32)}</span>
                   <br />
                   <span className="ml-8">|{a31} {a32}|</span>
                 </div>
               </div>
               
               <div className="border-t border-gray-200 pt-2">
-                det(A) = <span className="text-blue-600">({a11})</span> × <span className="text-blue-600">({det2x2(a22, a23, a32, a33)})</span> - <span className="text-red-600">({a12})</span> × <span className="text-red-600">({det2x2(a21, a23, a31, a33)})</span> + <span className="text-purple-600">({a13})</span> × <span className="text-purple-600">({det2x2(a21, a22, a31, a32)})</span>
+                det(A) = <span className="text-gray-900">({a11})</span> × <span className="text-gray-900">({det2x2(a22, a23, a32, a33)})</span> - <span className="text-red-600">({a12})</span> × <span className="text-red-600">({det2x2(a21, a23, a31, a33)})</span> + <span className="text-gray-900">({a13})</span> × <span className="text-gray-900">({det2x2(a21, a22, a31, a32)})</span>
                 <br />
                 <span className="ml-[60px]">= {a11 * det2x2(a22, a23, a32, a33)} - {a12 * det2x2(a21, a23, a31, a33)} + {a13 * det2x2(a21, a22, a31, a32)}</span>
                 <br />
@@ -258,8 +258,8 @@ export default function DeterminantVisualizer() {
       {matrixSize === 2 && parallelogram && (
         <div className="space-y-3">
           <h3 className="text-sm font-semibold text-gray-900">Geometric Interpretation</h3>
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-            <p className="text-sm text-blue-900 mb-3">
+          <div className="bg-gray-100 border border-gray-300 rounded-lg p-4">
+            <p className="text-sm text-gray-900 mb-3">
               For a 2×2 matrix, the determinant represents the <strong>signed area</strong> of the parallelogram 
               formed by the column vectors.
             </p>
@@ -327,7 +327,7 @@ export default function DeterminantVisualizer() {
             </svg>
             
             <div className="mt-3 text-sm text-gray-700 space-y-1">
-              <div>• <span className="text-blue-600 font-semibold">Blue vector</span>: First column [{a11}, {a21}]</div>
+              <div>• <span className="text-gray-900 font-semibold">Blue vector</span>: First column [{a11}, {a21}]</div>
               <div>• <span className="text-red-600 font-semibold">Red vector</span>: Second column [{a12}, {a22}]</div>
               <div>• <span className={`font-semibold ${determinant >= 0 ? 'text-green-600' : 'text-red-600'}`}>Area</span>: |det(A)| = |{determinant}| = {Math.abs(determinant)}</div>
               <div>• <span className="font-semibold">Sign</span>: {determinant > 0 ? 'Positive (counterclockwise)' : determinant < 0 ? 'Negative (clockwise)' : 'Zero (vectors are collinear)'}</div>
@@ -338,14 +338,14 @@ export default function DeterminantVisualizer() {
 
       {/* Properties */}
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
-          <div className="text-xs text-blue-600 font-medium mb-1">Multiplicative</div>
-          <div className="text-sm text-blue-900">det(AB) = det(A)×det(B)</div>
+        <div className="bg-gray-100 border border-gray-300 rounded-lg p-3">
+          <div className="text-xs text-gray-900 font-medium mb-1">Multiplicative</div>
+          <div className="text-sm text-gray-900">det(AB) = det(A)×det(B)</div>
         </div>
         
-        <div className="bg-purple-50 border border-purple-200 rounded-lg p-3">
-          <div className="text-xs text-purple-600 font-medium mb-1">Transpose</div>
-          <div className="text-sm text-purple-900">det(Aᵀ) = det(A)</div>
+        <div className="bg-gray-100 border border-gray-300 rounded-lg p-3">
+          <div className="text-xs text-gray-900 font-medium mb-1">Transpose</div>
+          <div className="text-sm text-gray-900">det(Aᵀ) = det(A)</div>
         </div>
         
         <div className="bg-orange-50 border border-orange-200 rounded-lg p-3">
@@ -363,8 +363,8 @@ export default function DeterminantVisualizer() {
           <div className="text-sm text-red-900">Swapping rows negates det</div>
         </div>
         
-        <div className="bg-indigo-50 border border-indigo-200 rounded-lg p-3">
-          <div className="text-xs text-indigo-600 font-medium mb-1">Invertibility</div>
+        <div className="bg-gray-100 border border-gray-300 rounded-lg p-3">
+          <div className="text-xs text-gray-900 font-medium mb-1">Invertibility</div>
           <div className="text-sm text-indigo-900">det(A) ≠ 0 ⟺ A is invertible</div>
         </div>
       </div>

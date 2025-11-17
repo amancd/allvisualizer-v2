@@ -119,18 +119,18 @@ public:
         </svg>
       </button>
 
-      <div className="pt-20 pb-12">
+      <div className="pt-28 pb-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex gap-8">
             {/* Table of Contents - Sidebar */}
             <aside className={`${showTOC ? 'block' : 'hidden'} lg:block fixed lg:sticky top-20 left-0 w-64 bg-white p-6 rounded-2xl border border-gray-200 shadow-sm h-fit z-40 lg:z-0 m-4 lg:m-0`}>
               <h3 className="text-sm font-bold text-gray-900 mb-4 uppercase tracking-wide">On This Page</h3>
               <nav className="space-y-2">
-                <a href="#problem" className="block text-sm text-gray-600 hover:text-indigo-600 transition-colors py-1">Problem Statement</a>
-                <a href="#examples" className="block text-sm text-gray-600 hover:text-indigo-600 transition-colors py-1">Examples</a>
-                <a href="#approach" className="block text-sm text-gray-600 hover:text-indigo-600 transition-colors py-1">Approach</a>
-                <a href="#solution" className="block text-sm text-gray-600 hover:text-indigo-600 transition-colors py-1">Solution</a>
-                <a href="#complexity" className="block text-sm text-gray-600 hover:text-indigo-600 transition-colors py-1">Complexity Analysis</a>
+                <a href="#problem" className="block text-sm text-gray-600 hover:text-gray-900 transition-colors py-1">Problem Statement</a>
+                <a href="#examples" className="block text-sm text-gray-600 hover:text-gray-900 transition-colors py-1">Examples</a>
+                <a href="#approach" className="block text-sm text-gray-600 hover:text-gray-900 transition-colors py-1">Approach</a>
+                <a href="#solution" className="block text-sm text-gray-600 hover:text-gray-900 transition-colors py-1">Solution</a>
+                <a href="#complexity" className="block text-sm text-gray-600 hover:text-gray-900 transition-colors py-1">Complexity Analysis</a>
               </nav>
             </aside>
 
@@ -138,15 +138,15 @@ public:
             <main className="flex-1 max-w-4xl">
               {/* Breadcrumb */}
               <div className="flex items-center gap-2 text-sm text-gray-600 mb-6 animate-fade-in">
-                <Link href="/" className="hover:text-indigo-600 transition-colors">Home</Link>
+                <Link href="/" className="hover:text-gray-900 transition-colors">Home</Link>
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
-                <Link href="/dsa-visualizer" className="hover:text-indigo-600 transition-colors">DSA Visualizer</Link>
+                <Link href="/dsa-visualizer" className="hover:text-gray-900 transition-colors">DSA Visualizer</Link>
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
-                <Link href="/dsa-visualizer/arrays" className="hover:text-indigo-600 transition-colors">Arrays</Link>
+                <Link href="/dsa-visualizer/arrays" className="hover:text-gray-900 transition-colors">Arrays</Link>
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
@@ -154,7 +154,7 @@ public:
               </div>
 
               {/* Hero Section */}
-              <div className="bg-gradient-to-br from-blue-50 via-cyan-50 to-white p-6 md:p-8 rounded-2xl border border-blue-200 mb-8 animate-fade-in">
+              <div className="bg-gradient-to-br from-gray-50 via-gray-100 to-white p-6 md:p-8 rounded-2xl border border-gray-300 mb-8 animate-fade-in">
                 <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4">
                   <div>
                     <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
@@ -164,10 +164,10 @@ public:
                       <span className="px-3 py-1 bg-green-100 text-green-700 rounded-lg text-sm font-semibold border border-green-200">
                         Easy
                       </span>
-                      <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-lg text-sm font-semibold">
+                      <span className="px-3 py-1 bg-gray-200 text-gray-900 rounded-lg text-sm font-semibold">
                         Array
                       </span>
-                      <span className="px-3 py-1 bg-purple-100 text-purple-700 rounded-lg text-sm font-semibold">
+                      <span className="px-3 py-1 bg-gray-200 text-gray-900 rounded-lg text-sm font-semibold">
                         Dynamic Programming
                       </span>
                       <span className="px-3 py-1 bg-cyan-100 text-cyan-700 rounded-lg text-sm font-semibold">
@@ -251,7 +251,7 @@ public:
                   
                   <div className="space-y-4">
                     <div className="flex items-start gap-3">
-                      <div className="w-8 h-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center flex-shrink-0 font-bold text-sm">1</div>
+                      <div className="w-8 h-8 bg-gray-200 text-gray-900 rounded-full flex items-center justify-center flex-shrink-0 font-bold text-sm">1</div>
                       <div className="flex-1">
                         <h4 className="font-semibold text-gray-900 mb-1 text-sm md:text-base">Track Minimum Price</h4>
                         <p className="text-gray-700 text-sm md:text-base">Keep track of the minimum price seen so far as we iterate through the array. This represents the best day to buy.</p>
@@ -259,7 +259,7 @@ public:
                     </div>
 
                     <div className="flex items-start gap-3">
-                      <div className="w-8 h-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center flex-shrink-0 font-bold text-sm">2</div>
+                      <div className="w-8 h-8 bg-gray-200 text-gray-900 rounded-full flex items-center justify-center flex-shrink-0 font-bold text-sm">2</div>
                       <div className="flex-1">
                         <h4 className="font-semibold text-gray-900 mb-1 text-sm md:text-base">Calculate Potential Profit</h4>
                         <p className="text-gray-700 text-sm md:text-base">For each price, calculate the profit if we sell at the current price (current price - minimum price).</p>
@@ -267,7 +267,7 @@ public:
                     </div>
 
                     <div className="flex items-start gap-3">
-                      <div className="w-8 h-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center flex-shrink-0 font-bold text-sm">3</div>
+                      <div className="w-8 h-8 bg-gray-200 text-gray-900 rounded-full flex items-center justify-center flex-shrink-0 font-bold text-sm">3</div>
                       <div className="flex-1">
                         <h4 className="font-semibold text-gray-900 mb-1 text-sm md:text-base">Update Maximum Profit</h4>
                         <p className="text-gray-700 text-sm md:text-base">Keep track of the maximum profit encountered so far. This greedy approach ensures we find the optimal solution in one pass.</p>
@@ -335,10 +335,10 @@ public:
                       <p className="text-sm text-gray-600">We traverse the array once, performing constant time operations at each step.</p>
                     </div>
 
-                    <div className="p-4 md:p-6 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl border-2 border-blue-200">
+                    <div className="p-4 md:p-6 bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl border-2 border-gray-300">
                       <div className="flex items-center justify-between mb-2">
                         <span className="text-sm font-bold text-gray-700">Space Complexity</span>
-                        <code className="px-3 py-1 bg-blue-100 text-blue-700 rounded-md font-mono text-sm font-semibold">O(1)</code>
+                        <code className="px-3 py-1 bg-gray-200 text-gray-900 rounded-md font-mono text-sm font-semibold">O(1)</code>
                       </div>
                       <p className="text-sm text-gray-600">We only use two variables (minPrice and maxProfit) regardless of input size.</p>
                     </div>
@@ -355,7 +355,7 @@ public:
                 <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
                   <Link
                     href="/dsa-visualizer/arrays"
-                    className="inline-flex items-center justify-center gap-2 px-4 sm:px-6 py-3 bg-white text-blue-600 rounded-xl font-semibold text-sm md:text-base hover:bg-gray-50 transition-all hover:-translate-y-0.5 hover:shadow-lg"
+                    className="inline-flex items-center justify-center gap-2 px-4 sm:px-6 py-3 bg-white text-gray-900 rounded-xl font-semibold text-sm md:text-base hover:bg-gray-50 transition-all hover:-translate-y-0.5 hover:shadow-lg"
                   >
                     More Array Problems
                     <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

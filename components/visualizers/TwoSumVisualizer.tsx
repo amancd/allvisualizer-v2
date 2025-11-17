@@ -188,7 +188,7 @@ export default function TwoSumVisualizer() {
               value={customInput}
               onChange={(e) => setCustomInput(e.target.value)}
               placeholder="e.g., 2,7,11,15"
-              className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all text-sm"
+              className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-gray-500 focus:border-gray-500 transition-all text-sm"
             />
           </div>
           <div>
@@ -200,7 +200,7 @@ export default function TwoSumVisualizer() {
               value={customTarget}
               onChange={(e) => setCustomTarget(e.target.value)}
               placeholder="e.g., 9"
-              className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all text-sm"
+              className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-gray-500 focus:border-gray-500 transition-all text-sm"
             />
           </div>
         </div>
@@ -227,12 +227,12 @@ export default function TwoSumVisualizer() {
 
       {/* Current State Display */}
       <div className="mb-8 grid sm:grid-cols-2 gap-4">
-        <div className="p-4 bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl border border-indigo-200">
-          <div className="text-xs font-semibold text-indigo-600 mb-1 uppercase tracking-wide">Array</div>
+        <div className="p-4 bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl border border-gray-300">
+          <div className="text-xs font-semibold text-gray-900 mb-1 uppercase tracking-wide">Array</div>
           <div className="font-mono text-lg font-bold text-gray-900">[{nums.join(', ')}]</div>
         </div>
-        <div className="p-4 bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl border border-purple-200">
-          <div className="text-xs font-semibold text-purple-600 mb-1 uppercase tracking-wide">Target</div>
+        <div className="p-4 bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl border border-gray-300">
+          <div className="text-xs font-semibold text-gray-900 mb-1 uppercase tracking-wide">Target</div>
           <div className="font-mono text-lg font-bold text-gray-900">{target}</div>
         </div>
       </div>
@@ -246,12 +246,12 @@ export default function TwoSumVisualizer() {
                 {/* Pointer indicators - positioned absolutely above */}
                 {currentStepData.i === index && (
                   <div className="absolute -top-16 left-1/2 -translate-x-1/2 flex flex-col items-center z-10">
-                    <div className="w-8 h-8 bg-indigo-500 rounded-full flex items-center justify-center mb-1 animate-bounce">
+                    <div className="w-8 h-8 bg-gray-1000 rounded-full flex items-center justify-center mb-1 animate-bounce">
                       <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
                       </svg>
                     </div>
-                    <div className="text-xs font-bold text-indigo-600 whitespace-nowrap bg-indigo-100 px-3 py-1 rounded-full shadow-md">
+                    <div className="text-xs font-bold text-gray-900 whitespace-nowrap bg-gray-200 px-3 py-1 rounded-full shadow-md">
                       Checking
                     </div>
                   </div>
@@ -281,7 +281,7 @@ export default function TwoSumVisualizer() {
                         : 'bg-gradient-to-br from-amber-400 to-orange-500 text-white scale-105 shadow-xl ring-4 ring-amber-200'
                       : result && (result[0] === index || result[1] === index)
                       ? 'bg-gradient-to-br from-green-50 to-emerald-50 text-green-700 border-2 border-green-400 shadow-lg'
-                      : 'bg-white border-2 border-gray-200 text-gray-700 hover:border-indigo-300 hover:shadow-lg hover:scale-105'
+                      : 'bg-white border-2 border-gray-200 text-gray-700 hover:border-gray-400 hover:shadow-lg hover:scale-105'
                   }`}
                 >
                   {num}
@@ -300,7 +300,7 @@ export default function TwoSumVisualizer() {
       <div className="mb-6 p-6 bg-white rounded-xl border-2 border-gray-200 shadow-sm">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-3">
           <div className="flex items-center gap-2">
-            <div className="w-2 h-2 bg-indigo-500 rounded-full animate-pulse"></div>
+            <div className="w-2 h-2 bg-gray-1000 rounded-full animate-pulse"></div>
             <span className="text-sm font-bold text-gray-700 uppercase tracking-wide">
               Step {currentStep + 1} of {steps.length}
             </span>
@@ -333,7 +333,7 @@ export default function TwoSumVisualizer() {
         <button
           onClick={handlePrevious}
           disabled={currentStep === 0}
-          className="px-4 sm:px-5 py-2.5 bg-indigo-600 text-white rounded-xl font-semibold hover:bg-indigo-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-all hover:-translate-y-0.5 hover:shadow-lg disabled:hover:translate-y-0 disabled:hover:shadow-none flex items-center gap-2 text-sm"
+          className="px-4 sm:px-5 py-2.5 bg-black text-white rounded-xl font-semibold hover:bg-gray-800 disabled:bg-gray-300 disabled:cursor-not-allowed transition-all hover:-translate-y-0.5 hover:shadow-lg disabled:hover:translate-y-0 disabled:hover:shadow-none flex items-center gap-2 text-sm"
         >
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -366,7 +366,7 @@ export default function TwoSumVisualizer() {
         <button
           onClick={handleNext}
           disabled={currentStep >= steps.length - 1}
-          className="px-4 sm:px-5 py-2.5 bg-indigo-600 text-white rounded-xl font-semibold hover:bg-indigo-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-all hover:-translate-y-0.5 hover:shadow-lg disabled:hover:translate-y-0 disabled:hover:shadow-none flex items-center gap-2 text-sm"
+          className="px-4 sm:px-5 py-2.5 bg-black text-white rounded-xl font-semibold hover:bg-gray-800 disabled:bg-gray-300 disabled:cursor-not-allowed transition-all hover:-translate-y-0.5 hover:shadow-lg disabled:hover:translate-y-0 disabled:hover:shadow-none flex items-center gap-2 text-sm"
         >
           Next
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -406,7 +406,7 @@ export default function TwoSumVisualizer() {
       <div className="mt-6">
         <div className="flex items-center justify-between mb-2">
           <span className="text-xs font-semibold text-gray-600">Progress</span>
-          <span className="text-xs font-semibold text-indigo-600">
+          <span className="text-xs font-semibold text-gray-900">
             {Math.round(((currentStep + 1) / steps.length) * 100)}%
           </span>
         </div>

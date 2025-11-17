@@ -371,13 +371,13 @@ Used in:
   };
 
   return (
-    <div className="min-h-screen bg-white pt-20">
+    <div className="min-h-screen bg-white pt-28">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <nav className="mb-8 text-sm">
           <ol className="flex items-center gap-2 text-gray-500">
-            <li><Link href="/" className="hover:text-indigo-600">Home</Link></li>
+            <li><Link href="/" className="hover:text-gray-900">Home</Link></li>
             <li>/</li>
-            <li><Link href="/math-visualizer" className="hover:text-indigo-600">Math Visualizer</Link></li>
+            <li><Link href="/math-visualizer" className="hover:text-gray-900">Math Visualizer</Link></li>
             <li>/</li>
             <li className="text-gray-900 font-medium">Matrix Operations</li>
           </ol>
@@ -386,7 +386,7 @@ Used in:
         <article className="space-y-8">
           <header className="space-y-4 pb-8 border-b border-gray-200">
             <div className="flex items-center gap-2 text-sm">
-              <span className="px-2 py-1 bg-purple-100 text-purple-700 rounded font-medium">Linear Algebra</span>
+              <span className="px-2 py-1 bg-gray-200 text-gray-900 rounded font-medium">Linear Algebra</span>
               <span className="text-gray-400">•</span>
               <span className="text-gray-500">Beginner</span>
             </div>
@@ -439,21 +439,21 @@ Used in:
           <section className="space-y-4">
             <h2 className="text-2xl font-bold text-gray-900">Understanding the Operations</h2>
             <div className="space-y-4">
-              <div className="bg-blue-50 border-l-4 border-blue-500 p-4">
-                <h3 className="font-semibold text-blue-900 mb-2">Matrix Addition</h3>
-                <p className="text-sm text-blue-800">
+              <div className="bg-gray-100 border-l-4 border-gray-900 p-4">
+                <h3 className="font-semibold text-gray-900 mb-2">Matrix Addition</h3>
+                <p className="text-sm text-gray-900">
                   Add corresponding elements element-wise. Both matrices must have the same dimensions. 
                   Simple and intuitive: A + B means add each element in A to the corresponding element in B.
                 </p>
               </div>
 
-              <div className="bg-purple-50 border-l-4 border-purple-500 p-4">
-                <h3 className="font-semibold text-purple-900 mb-2">Matrix Multiplication</h3>
-                <p className="text-sm text-purple-800 mb-2">
+              <div className="bg-gray-100 border-l-4 border-gray-900 p-4">
+                <h3 className="font-semibold text-gray-900 mb-2">Matrix Multiplication</h3>
+                <p className="text-sm text-gray-900 mb-2">
                   More complex: multiply rows of first matrix by columns of second matrix using dot product. 
                   For A×B, the number of columns in A must equal the number of rows in B.
                 </p>
-                <p className="text-sm text-purple-800">
+                <p className="text-sm text-gray-900">
                   <strong>Important:</strong> Matrix multiplication is NOT commutative! A×B ≠ B×A in general.
                 </p>
               </div>
@@ -476,7 +476,7 @@ Used in:
                   onClick={() => setSelectedLanguage('python')}
                   className={`px-3 py-1.5 text-sm font-medium rounded-lg transition-colors ${
                     selectedLanguage === 'python'
-                      ? 'bg-indigo-600 text-white'
+                      ? 'bg-black text-white'
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                   }`}
                 >
@@ -486,7 +486,7 @@ Used in:
                   onClick={() => setSelectedLanguage('javascript')}
                   className={`px-3 py-1.5 text-sm font-medium rounded-lg transition-colors ${
                     selectedLanguage === 'javascript'
-                      ? 'bg-indigo-600 text-white'
+                      ? 'bg-black text-white'
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                   }`}
                 >
@@ -496,7 +496,7 @@ Used in:
                   onClick={() => setSelectedLanguage('mathematical')}
                   className={`px-3 py-1.5 text-sm font-medium rounded-lg transition-colors ${
                     selectedLanguage === 'mathematical'
-                      ? 'bg-indigo-600 text-white'
+                      ? 'bg-black text-white'
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                   }`}
                 >
@@ -522,9 +522,9 @@ Used in:
           <section className="space-y-4">
             <h2 className="text-2xl font-bold text-gray-900">Real-World Applications</h2>
             <div className="grid md:grid-cols-2 gap-4">
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                <h3 className="font-semibold text-blue-900 mb-2">Computer Graphics</h3>
-                <p className="text-blue-800 text-sm">
+              <div className="bg-gray-100 border border-gray-300 rounded-lg p-4">
+                <h3 className="font-semibold text-gray-900 mb-2">Computer Graphics</h3>
+                <p className="text-gray-900 text-sm">
                   3D transformations (rotation, scaling, translation) use matrix multiplication
                 </p>
               </div>
@@ -536,9 +536,9 @@ Used in:
                 </p>
               </div>
 
-              <div className="bg-purple-50 border border-purple-200 rounded-lg p-4">
-                <h3 className="font-semibold text-purple-900 mb-2">Image Processing</h3>
-                <p className="text-purple-800 text-sm">
+              <div className="bg-gray-100 border border-gray-300 rounded-lg p-4">
+                <h3 className="font-semibold text-gray-900 mb-2">Image Processing</h3>
+                <p className="text-gray-900 text-sm">
                   Images are matrices; filters and transformations use matrix operations
                 </p>
               </div>
@@ -555,7 +555,7 @@ Used in:
           <section className="space-y-4">
             <h2 className="text-2xl font-bold text-gray-900">Related Topics</h2>
             <div className="grid sm:grid-cols-2 gap-3">
-              <div className="border border-gray-200 rounded-lg p-4 hover:border-indigo-300 transition-colors opacity-60 cursor-not-allowed">
+              <div className="border border-gray-200 rounded-lg p-4 hover:border-gray-400 transition-colors opacity-60 cursor-not-allowed">
                 <h3 className="font-semibold text-gray-700 mb-1 flex items-center justify-between">
                   Determinants
                   <span className="text-xs text-gray-500">Coming Soon</span>
@@ -563,7 +563,7 @@ Used in:
                 <p className="text-sm text-gray-500">Calculate matrix determinants and their properties</p>
               </div>
               
-              <div className="border border-gray-200 rounded-lg p-4 hover:border-indigo-300 transition-colors opacity-60 cursor-not-allowed">
+              <div className="border border-gray-200 rounded-lg p-4 hover:border-gray-400 transition-colors opacity-60 cursor-not-allowed">
                 <h3 className="font-semibold text-gray-700 mb-1 flex items-center justify-between">
                   Matrix Inverse
                   <span className="text-xs text-gray-500">Coming Soon</span>
@@ -571,7 +571,7 @@ Used in:
                 <p className="text-sm text-gray-500">Finding inverse matrices and solving equations</p>
               </div>
               
-              <div className="border border-gray-200 rounded-lg p-4 hover:border-indigo-300 transition-colors opacity-60 cursor-not-allowed">
+              <div className="border border-gray-200 rounded-lg p-4 hover:border-gray-400 transition-colors opacity-60 cursor-not-allowed">
                 <h3 className="font-semibold text-gray-700 mb-1 flex items-center justify-between">
                   Eigenvalues & Eigenvectors
                   <span className="text-xs text-gray-500">Coming Soon</span>
@@ -579,7 +579,7 @@ Used in:
                 <p className="text-sm text-gray-500">Understanding matrix transformations</p>
               </div>
               
-              <div className="border border-gray-200 rounded-lg p-4 hover:border-indigo-300 transition-colors opacity-60 cursor-not-allowed">
+              <div className="border border-gray-200 rounded-lg p-4 hover:border-gray-400 transition-colors opacity-60 cursor-not-allowed">
                 <h3 className="font-semibold text-gray-700 mb-1 flex items-center justify-between">
                   Linear Transformations
                   <span className="text-xs text-gray-500">Coming Soon</span>

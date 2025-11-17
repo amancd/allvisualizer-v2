@@ -42,7 +42,7 @@ export default function Footer() {
                   href="https://twitter.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-9 h-9 bg-gray-200 hover:bg-blue-500 text-gray-600 hover:text-white rounded-lg flex items-center justify-center transition-all"
+                  className="w-9 h-9 bg-gray-200 hover:bg-gray-900 text-gray-600 hover:text-white rounded-lg flex items-center justify-center transition-all"
                   aria-label="Twitter"
                 >
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -53,7 +53,7 @@ export default function Footer() {
                   href="https://discord.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-9 h-9 bg-gray-200 hover:bg-indigo-600 text-gray-600 hover:text-white rounded-lg flex items-center justify-center transition-all"
+                  className="w-9 h-9 bg-gray-200 hover:bg-gray-900 text-gray-600 hover:text-white rounded-lg flex items-center justify-center transition-all"
                   aria-label="Discord"
                 >
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -68,17 +68,17 @@ export default function Footer() {
               <h3 className="text-sm font-semibold text-gray-900 mb-4">Product</h3>
               <ul className="space-y-3 text-sm">
                 <li>
-                  <Link href="/dsa-visualizer" className="text-gray-600 hover:text-indigo-600 transition-colors">
+                  <Link href="/dsa-visualizer" className="text-gray-600 hover:text-gray-900 transition-colors">
                     Visualizers
                   </Link>
                 </li>
                 <li>
-                  <Link href="/about" className="text-gray-600 hover:text-indigo-600 transition-colors">
+                  <Link href="/about" className="text-gray-600 hover:text-gray-900 transition-colors">
                     About
                   </Link>
                 </li>
                 <li>
-                  <Link href="/contact" className="text-gray-600 hover:text-indigo-600 transition-colors">
+                  <Link href="/contact" className="text-gray-600 hover:text-gray-900 transition-colors">
                     Contact
                   </Link>
                 </li>
@@ -90,22 +90,22 @@ export default function Footer() {
               <h3 className="text-sm font-semibold text-gray-900 mb-4">Categories</h3>
               <ul className="space-y-3 text-sm">
                 <li>
-                  <Link href="/dsa-visualizer" className="text-gray-600 hover:text-indigo-600 transition-colors">
+                  <Link href="/dsa-visualizer" className="text-gray-600 hover:text-gray-900 transition-colors">
                     DSA
                   </Link>
                 </li>
                 <li>
-                  <Link href="/math-visualizer" className="text-gray-600 hover:text-indigo-600 transition-colors">
+                  <Link href="/math-visualizer" className="text-gray-600 hover:text-gray-900 transition-colors">
                     Mathematics
                   </Link>
                 </li>
                 <li>
-                  <Link href="/physics-visualizer" className="text-gray-600 hover:text-indigo-600 transition-colors">
+                  <Link href="/physics-visualizer" className="text-gray-600 hover:text-gray-900 transition-colors">
                     Physics
                   </Link>
                 </li>
                 <li>
-                  <Link href="/ai-ml-visualizer" className="text-gray-600 hover:text-indigo-600 transition-colors">
+                  <Link href="/ai-ml-visualizer" className="text-gray-600 hover:text-gray-900 transition-colors">
                     AI & ML
                   </Link>
                 </li>
@@ -117,22 +117,22 @@ export default function Footer() {
               <h3 className="text-sm font-semibold text-gray-900 mb-4">Resources</h3>
               <ul className="space-y-3 text-sm">
                 <li>
-                  <a href="https://github.com/amancd/allvisualizer-v2" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-indigo-600 transition-colors">
+                  <a href="https://github.com/amancd/allvisualizer-v2" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-gray-900 transition-colors">
                     Documentation
                   </a>
                 </li>
                 <li>
-                  <a href="https://github.com/amancd/allvisualizer-v2" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-indigo-600 transition-colors">
+                  <a href="https://github.com/amancd/allvisualizer-v2" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-gray-900 transition-colors">
                     GitHub
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-gray-600 hover:text-indigo-600 transition-colors">
+                  <a href="#" className="text-gray-600 hover:text-gray-900 transition-colors">
                     Community
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-gray-600 hover:text-indigo-600 transition-colors">
+                  <a href="#" className="text-gray-600 hover:text-gray-900 transition-colors">
                     Support
                   </a>
                 </li>
@@ -144,12 +144,12 @@ export default function Footer() {
               <h3 className="text-sm font-semibold text-gray-900 mb-4">Legal</h3>
               <ul className="space-y-3 text-sm">
                 <li>
-                  <Link href="/privacy-policy" className="text-gray-600 hover:text-indigo-600 transition-colors">
+                  <Link href="/privacy-policy" className="text-gray-600 hover:text-gray-900 transition-colors">
                     Privacy
                   </Link>
                 </li>
                 <li>
-                  <Link href="/terms-and-conditions" className="text-gray-600 hover:text-indigo-600 transition-colors">
+                  <Link href="/terms-and-conditions" className="text-gray-600 hover:text-gray-900 transition-colors">
                     Terms
                   </Link>
                 </li>

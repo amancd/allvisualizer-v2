@@ -196,18 +196,18 @@ public:
         </svg>
       </button>
 
-      <div className="pt-20 pb-12">
+      <div className="pt-28 pb-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex gap-8">
             {/* Table of Contents - Sidebar */}
             <aside className={`${showTOC ? 'block' : 'hidden'} lg:block fixed lg:sticky top-20 left-0 w-64 bg-white p-6 rounded-2xl border border-gray-200 shadow-sm h-fit z-40 lg:z-0 m-4 lg:m-0`}>
               <h3 className="text-sm font-bold text-gray-900 mb-4 uppercase tracking-wide">On This Page</h3>
               <nav className="space-y-2">
-                <a href="#problem" className="block text-sm text-gray-600 hover:text-purple-600 transition-colors py-1">Problem Statement</a>
-                <a href="#examples" className="block text-sm text-gray-600 hover:text-purple-600 transition-colors py-1">Examples</a>
-                <a href="#approach" className="block text-sm text-gray-600 hover:text-purple-600 transition-colors py-1">Approach</a>
-                <a href="#solution" className="block text-sm text-gray-600 hover:text-purple-600 transition-colors py-1">Solution</a>
-                <a href="#complexity" className="block text-sm text-gray-600 hover:text-purple-600 transition-colors py-1">Complexity Analysis</a>
+                <a href="#problem" className="block text-sm text-gray-600 hover:text-gray-900 transition-colors py-1">Problem Statement</a>
+                <a href="#examples" className="block text-sm text-gray-600 hover:text-gray-900 transition-colors py-1">Examples</a>
+                <a href="#approach" className="block text-sm text-gray-600 hover:text-gray-900 transition-colors py-1">Approach</a>
+                <a href="#solution" className="block text-sm text-gray-600 hover:text-gray-900 transition-colors py-1">Solution</a>
+                <a href="#complexity" className="block text-sm text-gray-600 hover:text-gray-900 transition-colors py-1">Complexity Analysis</a>
               </nav>
             </aside>
 
@@ -215,15 +215,15 @@ public:
             <main className="flex-1 max-w-4xl">
               {/* Breadcrumb */}
               <div className="flex items-center gap-2 text-sm text-gray-600 mb-6 animate-fade-in">
-                <Link href="/" className="hover:text-purple-600 transition-colors">Home</Link>
+                <Link href="/" className="hover:text-gray-900 transition-colors">Home</Link>
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
-                <Link href="/dsa-visualizer" className="hover:text-purple-600 transition-colors">DSA Visualizer</Link>
+                <Link href="/dsa-visualizer" className="hover:text-gray-900 transition-colors">DSA Visualizer</Link>
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
-                <Link href="/dsa-visualizer/linked-lists" className="hover:text-purple-600 transition-colors">Linked Lists</Link>
+                <Link href="/dsa-visualizer/linked-lists" className="hover:text-gray-900 transition-colors">Linked Lists</Link>
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
@@ -231,7 +231,7 @@ public:
               </div>
 
               {/* Hero Section */}
-              <div className="bg-gradient-to-br from-purple-50 via-pink-50 to-white p-6 md:p-8 rounded-2xl border border-purple-200 mb-8 animate-fade-in">
+              <div className="bg-gradient-to-br from-gray-50 via-gray-100 to-white p-6 md:p-8 rounded-2xl border border-gray-300 mb-8 animate-fade-in">
                 <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4">
                   <div>
                     <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
@@ -241,13 +241,13 @@ public:
                       <span className="px-3 py-1 bg-green-100 text-green-700 rounded-lg text-sm font-semibold border border-green-200">
                         Easy
                       </span>
-                      <span className="px-3 py-1 bg-purple-100 text-purple-700 rounded-lg text-sm font-semibold">
+                      <span className="px-3 py-1 bg-gray-200 text-gray-900 rounded-lg text-sm font-semibold">
                         Linked List
                       </span>
                       <span className="px-3 py-1 bg-pink-100 text-pink-700 rounded-lg text-sm font-semibold">
                         Recursion
                       </span>
-                      <span className="px-3 py-1 bg-indigo-100 text-indigo-700 rounded-lg text-sm font-semibold">
+                      <span className="px-3 py-1 bg-gray-200 text-gray-800 rounded-lg text-sm font-semibold">
                         Pointers
                       </span>
                     </div>
@@ -326,7 +326,7 @@ public:
                     <h4 className="font-bold text-gray-900 mb-3 text-base md:text-lg">Iterative Approach:</h4>
                     <div className="space-y-4">
                       <div className="flex items-start gap-3">
-                        <div className="w-8 h-8 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center flex-shrink-0 font-bold text-sm">1</div>
+                        <div className="w-8 h-8 bg-gray-200 text-gray-900 rounded-full flex items-center justify-center flex-shrink-0 font-bold text-sm">1</div>
                         <div className="flex-1">
                           <h4 className="font-semibold text-gray-900 mb-1 text-sm md:text-base">Initialize Pointers</h4>
                           <p className="text-gray-700 text-sm md:text-base">Start with <code className="px-2 py-1 bg-gray-100 rounded text-xs">prev = null</code> and <code className="px-2 py-1 bg-gray-100 rounded text-xs">current = head</code></p>
@@ -334,7 +334,7 @@ public:
                       </div>
 
                       <div className="flex items-start gap-3">
-                        <div className="w-8 h-8 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center flex-shrink-0 font-bold text-sm">2</div>
+                        <div className="w-8 h-8 bg-gray-200 text-gray-900 rounded-full flex items-center justify-center flex-shrink-0 font-bold text-sm">2</div>
                         <div className="flex-1">
                           <h4 className="font-semibold text-gray-900 mb-1 text-sm md:text-base">Iterate Through List</h4>
                           <p className="text-gray-700 text-sm md:text-base">For each node, save the next node, reverse the current node's pointer to point to prev, then move both pointers forward.</p>
@@ -342,7 +342,7 @@ public:
                       </div>
 
                       <div className="flex items-start gap-3">
-                        <div className="w-8 h-8 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center flex-shrink-0 font-bold text-sm">3</div>
+                        <div className="w-8 h-8 bg-gray-200 text-gray-900 rounded-full flex items-center justify-center flex-shrink-0 font-bold text-sm">3</div>
                         <div className="flex-1">
                           <h4 className="font-semibold text-gray-900 mb-1 text-sm md:text-base">Return New Head</h4>
                           <p className="text-gray-700 text-sm md:text-base">When iteration completes, prev will point to the new head of the reversed list.</p>
@@ -443,10 +443,10 @@ public:
                           <p className="text-sm text-gray-600">We visit each node exactly once.</p>
                         </div>
 
-                        <div className="p-4 md:p-6 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl border-2 border-blue-200">
+                        <div className="p-4 md:p-6 bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl border-2 border-gray-300">
                           <div className="flex items-center justify-between mb-2">
                             <span className="text-sm font-bold text-gray-700">Space Complexity</span>
-                            <code className="px-3 py-1 bg-blue-100 text-blue-700 rounded-md font-mono text-sm font-semibold">O(1)</code>
+                            <code className="px-3 py-1 bg-gray-200 text-gray-900 rounded-md font-mono text-sm font-semibold">O(1)</code>
                           </div>
                           <p className="text-sm text-gray-600">Only using a constant amount of extra space for pointers.</p>
                         </div>
@@ -480,13 +480,13 @@ public:
               {/* Next Steps */}
               <div className="bg-gradient-to-br from-purple-600 via-pink-600 to-purple-700 rounded-2xl p-6 md:p-8 text-white animate-fade-in" style={{ animationDelay: '0.35s' }}>
                 <h3 className="text-2xl md:text-3xl font-bold mb-4">Ready for More Challenges?</h3>
-                <p className="text-sm md:text-base text-purple-100 mb-6">
+                <p className="text-sm md:text-base text-gray-100 mb-6">
                   Continue mastering linked list operations with more problems.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
                   <Link
                     href="/dsa-visualizer/linked-lists"
-                    className="inline-flex items-center justify-center gap-2 px-4 sm:px-6 py-3 bg-white text-purple-600 rounded-xl font-semibold text-sm md:text-base hover:bg-gray-50 transition-all hover:-translate-y-0.5 hover:shadow-lg"
+                    className="inline-flex items-center justify-center gap-2 px-4 sm:px-6 py-3 bg-white text-gray-900 rounded-xl font-semibold text-sm md:text-base hover:bg-gray-50 transition-all hover:-translate-y-0.5 hover:shadow-lg"
                   >
                     More Linked List Problems
                     <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -95,7 +95,7 @@ export default function TwoSumVisualizer() {
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-gray-500 focus:border-transparent"
             placeholder="2,7,11,15"
           />
         </div>
@@ -105,13 +105,13 @@ export default function TwoSumVisualizer() {
             type="text"
             value={targetInput}
             onChange={(e) => setTargetInput(e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-gray-500 focus:border-transparent"
             placeholder="9"
           />
         </div>
         <button
           onClick={handleApply}
-          className="px-4 py-2 bg-indigo-600 text-white rounded-lg text-sm font-medium hover:bg-indigo-700"
+          className="px-4 py-2 bg-black text-white rounded-lg text-sm font-medium hover:bg-gray-800"
         >
           Apply
         </button>
@@ -128,7 +128,7 @@ export default function TwoSumVisualizer() {
                   step?.i === idx
                     ? step.found
                       ? 'bg-green-500 text-white ring-2 ring-green-300'
-                      : 'bg-indigo-500 text-white ring-2 ring-indigo-300'
+                      : 'bg-gray-1000 text-white ring-2 ring-indigo-300'
                     : result && result.includes(idx)
                     ? 'bg-green-100 text-green-700 border-2 border-green-400'
                     : 'bg-white border-2 border-gray-300 text-gray-700'
@@ -195,7 +195,7 @@ export default function TwoSumVisualizer() {
         </button>
         <button
           onClick={() => setIsPlaying(!isPlaying)}
-          className="px-6 py-2 bg-indigo-600 text-white rounded-lg text-sm font-medium hover:bg-indigo-700"
+          className="px-6 py-2 bg-black text-white rounded-lg text-sm font-medium hover:bg-gray-800"
         >
           {isPlaying ? 'Pause' : currentStep >= steps.length - 1 ? 'Replay' : 'Play'}
         </button>
@@ -216,7 +216,7 @@ export default function TwoSumVisualizer() {
         </div>
         <div className="w-full bg-gray-200 rounded-full h-1.5">
           <div
-            className="bg-indigo-600 h-1.5 rounded-full transition-all"
+            className="bg-black h-1.5 rounded-full transition-all"
             style={{ width: `${((currentStep + 1) / steps.length) * 100}%` }}
           />
         </div>

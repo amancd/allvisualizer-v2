@@ -81,7 +81,7 @@ export default function DerivativeVisualizer() {
             <span className="text-sm text-gray-600">
               f({xPoint.toFixed(2)}) = {yPoint.toFixed(2)}
             </span>
-            <span className="text-sm font-semibold text-indigo-600">
+            <span className="text-sm font-semibold text-gray-900">
               f'({xPoint.toFixed(2)}) = {derivative(xPoint).toFixed(2)}
             </span>
           </div>
@@ -162,9 +162,9 @@ export default function DerivativeVisualizer() {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
-          <div className="text-xs text-blue-600 font-medium mb-1">Function</div>
-          <div className="text-sm font-semibold text-blue-900">f(x) = x²</div>
+        <div className="bg-gray-100 border border-gray-300 rounded-lg p-3">
+          <div className="text-xs text-gray-900 font-medium mb-1">Function</div>
+          <div className="text-sm font-semibold text-gray-900">f(x) = x²</div>
         </div>
         
         <div className="bg-red-50 border border-red-200 rounded-lg p-3">

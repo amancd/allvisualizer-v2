@@ -92,7 +92,7 @@ export default function ChainRuleVisualizer() {
             <span className="text-sm text-gray-600">
               h({xPoint.toFixed(2)}) = {yPoint.toFixed(2)}
             </span>
-            <span className="text-sm font-semibold text-indigo-600">
+            <span className="text-sm font-semibold text-gray-900">
               h'({xPoint.toFixed(2)}) = {hPrime(xPoint).toFixed(2)}
             </span>
           </div>
@@ -173,16 +173,16 @@ export default function ChainRuleVisualizer() {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-        <div className="bg-purple-50 border border-purple-200 rounded-lg p-3">
-          <div className="text-xs text-purple-600 font-medium mb-1">Inner Function</div>
-          <div className="text-sm font-semibold text-purple-900">g(x) = x²</div>
-          <div className="text-xs text-purple-700 mt-1">g({xPoint.toFixed(2)}) = {gValue.toFixed(2)}</div>
+        <div className="bg-gray-100 border border-gray-300 rounded-lg p-3">
+          <div className="text-xs text-gray-900 font-medium mb-1">Inner Function</div>
+          <div className="text-sm font-semibold text-gray-900">g(x) = x²</div>
+          <div className="text-xs text-gray-900 mt-1">g({xPoint.toFixed(2)}) = {gValue.toFixed(2)}</div>
         </div>
         
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
-          <div className="text-xs text-blue-600 font-medium mb-1">Outer Function</div>
-          <div className="text-sm font-semibold text-blue-900">f(u) = u + 1</div>
-          <div className="text-xs text-blue-700 mt-1">f({gValue.toFixed(2)}) = {yPoint.toFixed(2)}</div>
+        <div className="bg-gray-100 border border-gray-300 rounded-lg p-3">
+          <div className="text-xs text-gray-900 font-medium mb-1">Outer Function</div>
+          <div className="text-sm font-semibold text-gray-900">f(u) = u + 1</div>
+          <div className="text-xs text-gray-900 mt-1">f({gValue.toFixed(2)}) = {yPoint.toFixed(2)}</div>
         </div>
         
         <div className="bg-orange-50 border border-orange-200 rounded-lg p-3">
