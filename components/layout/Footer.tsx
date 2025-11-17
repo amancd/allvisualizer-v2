@@ -13,8 +13,8 @@ export default function Footer() {
             <div className="col-span-2 md:col-span-2">
               <Link href="/" className="inline-flex items-center space-x-2 mb-4 group">
                 <div className="relative">
-                  <div className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-lg blur opacity-25 group-hover:opacity-40 transition-opacity"></div>
-                  <div className="relative w-10 h-10 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-lg flex items-center justify-center">
+                  <div className="absolute inset-0 bg-black rounded-lg blur opacity-25 group-hover:opacity-40 transition-opacity"></div>
+                  <div className="relative w-10 h-10 bg-black rounded-lg flex items-center justify-center">
                     <span className="text-white font-bold text-xl">A</span>
                   </div>
                 </div>
@@ -28,7 +28,7 @@ export default function Footer() {
               {/* Social Links */}
               <div className="flex items-center gap-3">
                 <a
-                  href="https://github.com"
+                  href="https://github.com/amancd/allvisualizer-v2"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-9 h-9 bg-gray-200 hover:bg-gray-900 text-gray-600 hover:text-white rounded-lg flex items-center justify-center transition-all"
@@ -95,13 +95,19 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <span className="text-gray-400 cursor-not-allowed">Mathematics</span>
+                  <Link href="/math-visualizer" className="text-gray-600 hover:text-indigo-600 transition-colors">
+                    Mathematics
+                  </Link>
                 </li>
                 <li>
-                  <span className="text-gray-400 cursor-not-allowed">Physics</span>
+                  <Link href="/physics-visualizer" className="text-gray-600 hover:text-indigo-600 transition-colors">
+                    Physics
+                  </Link>
                 </li>
                 <li>
-                  <span className="text-gray-400 cursor-not-allowed">AI & ML</span>
+                  <Link href="/ai-ml-visualizer" className="text-gray-600 hover:text-indigo-600 transition-colors">
+                    AI & ML
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -111,12 +117,12 @@ export default function Footer() {
               <h3 className="text-sm font-semibold text-gray-900 mb-4">Resources</h3>
               <ul className="space-y-3 text-sm">
                 <li>
-                  <a href="https://github.com" className="text-gray-600 hover:text-indigo-600 transition-colors">
+                  <a href="https://github.com/amancd/allvisualizer-v2" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-indigo-600 transition-colors">
                     Documentation
                   </a>
                 </li>
                 <li>
-                  <a href="https://github.com" className="text-gray-600 hover:text-indigo-600 transition-colors">
+                  <a href="https://github.com/amancd/allvisualizer-v2" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-indigo-600 transition-colors">
                     GitHub
                   </a>
                 </li>

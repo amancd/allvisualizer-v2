@@ -26,8 +26,8 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2 group">
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-lg blur opacity-25 group-hover:opacity-40 transition-opacity"></div>
-              <div className="relative w-10 h-10 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-lg flex items-center justify-center transform group-hover:scale-105 transition-transform">
+              <div className="absolute inset-0 bg-black rounded-lg blur opacity-25 group-hover:opacity-40 transition-opacity"></div>
+              <div className="relative w-10 h-10 bg-black rounded-lg flex items-center justify-center transform group-hover:scale-105 transition-transform">
                 <span className="text-white font-bold text-xl">A</span>
               </div>
             </div>
@@ -65,11 +65,40 @@ export default function Header() {
                     href="/dsa-visualizer" 
                     className="flex items-center gap-3 px-4 py-3 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors group/item"
                   >
+                    <div className="w-8 h-8 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center text-white text-xs font-semibold">
+                      DS
+                    </div>
                     <div>
                       <div className="font-medium">DSA Visualizer</div>
                       <div className="text-xs text-gray-500">Data Structures & Algorithms</div>
                     </div>
                   </Link>
+                                    <Link
+                    href="/math-visualizer"
+                    className="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 rounded-lg transition-colors"
+                  >
+                    <div className="p-2 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg">
+                      <span className="text-white text-lg">∫</span>
+                    </div>
+                    <div>
+                      <div className="font-medium text-gray-900">Math Visualizer</div>
+                      <div className="text-sm text-gray-500">Calculus, Linear Algebra</div>
+                    </div>
+                  </Link>
+                  
+                  <Link
+                    href="/physics-visualizer"
+                    className="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 rounded-lg transition-colors"
+                  >
+                    <div className="p-2 bg-gradient-to-br from-red-500 to-pink-500 rounded-lg">
+                      <span className="text-white text-lg">⚡</span>
+                    </div>
+                    <div>
+                      <div className="font-medium text-gray-900">Physics Visualizer</div>
+                      <div className="text-sm text-gray-500">Mechanics, Waves, Energy</div>
+                    </div>
+                  </Link>
+                  
                   <div className="border-t border-gray-100 mt-2 pt-2">
                     <div className="px-4 py-2 text-xs text-gray-400 flex items-center gap-2">
                       <span className="w-1.5 h-1.5 bg-yellow-400 rounded-full animate-pulse"></span>

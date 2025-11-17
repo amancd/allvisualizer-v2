@@ -2,87 +2,75 @@ import type { Metadata } from "next";
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: "DSA Visualizer - Data Structures & Algorithms | AllVisualizer",
-  description: "Master Data Structures and Algorithms through interactive visualizations. Learn Arrays, Linked Lists, Trees, Graphs, Dynamic Programming, and more with step-by-step execution.",
-  keywords: ["DSA visualizer", "data structures", "algorithms", "sorting algorithms", "graph algorithms", "tree traversal", "dynamic programming"],
+  title: "Math Visualizer - Interactive Mathematics | AllVisualizer",
+  description: "Master mathematics through interactive visualizations. Learn Calculus, Linear Algebra, Trigonometry, and more with step-by-step visual representations.",
+  keywords: ["math visualizer", "calculus", "linear algebra", "trigonometry", "matrix operations", "derivatives", "integrals"],
   openGraph: {
-    title: "DSA Visualizer - Interactive Learning | AllVisualizer",
-    description: "Master DSA concepts through interactive visualizations",
+    title: "Math Visualizer - Interactive Learning | AllVisualizer",
+    description: "Master math concepts through interactive visualizations",
   },
 };
 
-export default function DSAVisualizer() {
-  const dsaCategories = [
+export default function MathVisualizer() {
+  const mathCategories = [
     {
-      title: 'Arrays',
-      description: 'Visualize array operations, sorting, and searching algorithms',
-      icon: '[]',
+      title: 'Calculus',
+      description: 'Visualize derivatives, integrals, and limits',
+      icon: '∫',
       color: 'from-blue-500 to-cyan-500',
-      topics: ['Sorting', 'Searching', 'Two Pointers', 'Sliding Window'],
-      slug: 'arrays',
-      isAvailable: true
+      topics: ['Derivatives', 'Integrals', 'Limits', 'Series'],
+      slug: 'calculus',
+      isAvailable: true,
+      problems: [
+        { title: 'Derivatives', slug: 'derivatives' }
+      ]
     },
     {
-      title: 'Linked Lists',
-      description: 'Understand pointer manipulation and list operations',
-      icon: '→',
+      title: 'Linear Algebra',
+      description: 'Understand matrices, vectors, and transformations',
+      icon: '⊞',
       color: 'from-purple-500 to-pink-500',
-      topics: ['Insertion', 'Deletion', 'Reversal', 'Cycle Detection'],
-      slug: 'linked-lists',
-      isAvailable: true
+      topics: ['Matrix Operations', 'Vectors', 'Eigenvalues', 'Transformations'],
+      slug: 'linear-algebra',
+      isAvailable: true,
+      problems: [
+        { title: 'Matrix Operations', slug: 'matrix-operations' }
+      ]
     },
     {
-      title: 'Stacks & Queues',
-      description: 'Learn LIFO and FIFO data structures',
-      icon: '||',
+      title: 'Trigonometry',
+      description: 'Explore angles, circles, and wave functions',
+      icon: '○',
       color: 'from-emerald-500 to-teal-500',
-      topics: ['Push/Pop', 'Enqueue/Dequeue', 'Applications'],
-      slug: 'stacks-queues',
-      isAvailable: true
+      topics: ['Unit Circle', 'Trigonometric Functions', 'Identities', 'Waves'],
+      slug: 'trigonometry',
+      isAvailable: false
     },
     {
-      title: 'Trees',
-      description: 'Explore binary trees, BST, and tree traversals',
-      icon: '⊤',
-      color: 'from-green-500 to-lime-500',
-      topics: ['Traversals', 'BST Operations', 'AVL Trees', 'Heaps'],
-      slug: 'trees',
-      isAvailable: true
-    },
-    {
-      title: 'Graphs',
-      description: 'Understand graph representations and algorithms',
-      icon: '⬡',
+      title: 'Geometry',
+      description: 'Visualize shapes, transformations, and proofs',
+      icon: '△',
       color: 'from-orange-500 to-amber-500',
-      topics: ['BFS', 'DFS', 'Dijkstra', 'MST'],
-      slug: 'graphs',
-      isAvailable: true
-    },
-    {
-      title: 'Dynamic Programming',
-      description: 'Master optimization and memoization techniques',
-      icon: 'DP',
-      color: 'from-yellow-500 to-orange-500',
-      topics: ['Fibonacci', 'Knapsack', 'LCS', 'Edit Distance'],
-      slug: 'dynamic-programming',
+      topics: ['Euclidean Geometry', 'Transformations', 'Proofs', 'Coordinate Geometry'],
+      slug: 'geometry',
       isAvailable: false
     },
     {
-      title: 'Recursion',
-      description: 'Visualize recursive calls and backtracking',
-      icon: '↻',
+      title: 'Statistics',
+      description: 'Learn probability distributions and data analysis',
+      icon: '📊',
+      color: 'from-green-500 to-lime-500',
+      topics: ['Distributions', 'Hypothesis Testing', 'Regression', 'Probability'],
+      slug: 'statistics',
+      isAvailable: false
+    },
+    {
+      title: 'Number Theory',
+      description: 'Explore prime numbers and mathematical patterns',
+      icon: '№',
       color: 'from-indigo-500 to-purple-500',
-      topics: ['Base Cases', 'Backtracking', 'Tree Recursion'],
-      slug: 'recursion',
-      isAvailable: false
-    },
-    {
-      title: 'Hashing',
-      description: 'Learn hash tables and collision resolution',
-      icon: '#',
-      color: 'from-pink-500 to-rose-500',
-      topics: ['Hash Functions', 'Collision Handling', 'Applications'],
-      slug: 'hashing',
+      topics: ['Prime Numbers', 'GCD/LCM', 'Modular Arithmetic', 'Sequences'],
+      slug: 'number-theory',
       isAvailable: false
     }
   ];
@@ -94,19 +82,19 @@ export default function DSAVisualizer() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-6">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
-              Data Structures & Algorithms Visualizer
+              Mathematics Visualizer
             </h1>
             
             <p className="text-xl text-gray-600 leading-relaxed">
-              Master DSA concepts through interactive visualizations. Watch algorithms execute step-by-step, experiment with your own data, and build deep understanding.
+              Master math concepts through interactive visualizations. See calculus, algebra, and geometry come to life with step-by-step animations.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
               <Link
-                href="/dsa-visualizer/problems/two-sum"
+                href="/math-visualizer/calculus"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-black text-white rounded-lg font-medium hover:bg-gray-800 transition-colors"
               >
-                Try Practice Problems
+                Start Learning
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
@@ -127,45 +115,6 @@ export default function DSAVisualizer() {
         </div>
       </section>
 
-      {/* Practice Problems Section */}
-      <section className="py-16 md:py-20 border-t border-gray-200">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-3">
-              Practice Problems
-            </h2>
-            <p className="text-lg text-gray-600">
-              Solve real problems with complete explanations, solutions, and interactive visualizations
-            </p>
-          </div>
-
-          <div className="space-y-4">
-            <Link href="/dsa-visualizer/problems/two-sum" className="block group">
-              <div className="p-6 bg-white border border-gray-200 rounded-lg hover:border-indigo-300 hover:shadow-sm transition-all">
-                <div className="flex items-start justify-between">
-                  <div>
-                    <div className="flex items-center gap-3 mb-2">
-                      <h3 className="text-lg font-semibold text-gray-900 group-hover:text-indigo-600">
-                        Two Sum
-                      </h3>
-                      <span className="px-2 py-0.5 bg-green-100 text-green-700 rounded text-xs font-medium">
-                        Easy
-                      </span>
-                    </div>
-                    <p className="text-gray-600">
-                      Find two numbers in an array that add up to a target value.
-                    </p>
-                  </div>
-                  <svg className="w-5 h-5 text-gray-400 group-hover:text-indigo-600 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                  </svg>
-                </div>
-              </div>
-            </Link>
-          </div>
-        </div>
-      </section>
-
       {/* Categories Grid */}
       <section className="py-16 md:py-20 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -174,12 +123,12 @@ export default function DSAVisualizer() {
               Browse Topics
             </h2>
             <p className="text-lg text-gray-600">
-              Explore DSA concepts organized by category
+              Explore mathematics concepts organized by category
             </p>
           </div>
 
           <div className="grid sm:grid-cols-2 gap-4">
-            {dsaCategories.map((category, index) => {
+            {mathCategories.map((category, index) => {
               const CardContent = (
                 <div>
                   <div className="flex items-start justify-between mb-3">
@@ -225,7 +174,7 @@ export default function DSAVisualizer() {
               return category.isAvailable ? (
                 <Link
                   key={index}
-                  href={`/dsa-visualizer/${category.slug}`}
+                  href={`/math-visualizer/${category.slug}`}
                   className="group block p-5 bg-white border border-gray-200 rounded-lg hover:border-indigo-300 hover:shadow-sm transition-all"
                 >
                   {CardContent}
@@ -242,8 +191,6 @@ export default function DSAVisualizer() {
           </div>
         </div>
       </section>
-
-
     </div>
   );
 }

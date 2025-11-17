@@ -13,11 +13,19 @@ export default function Home() {
           <p className="text-lg md:text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto">
             Master complex concepts with interactive visual learning experiences. See algorithms come to life step-by-step.
           </p>
+
+          {/* Einstein Quote */}
+          <div className="pt-2">
+            <blockquote className="text-base md:text-lg italic text-gray-500">
+              "Imagination is more important than knowledge."
+              <span className="block text-sm mt-1 not-italic text-gray-400">— Albert Einstein</span>
+            </blockquote>
+          </div>
               
           <div className="pt-4">
             <Link
               href="/dsa-visualizer"
-              className="inline-flex items-center justify-center px-8 py-3 bg-indigo-600 text-white rounded-lg font-medium hover:bg-indigo-700 transition-colors"
+              className="inline-flex items-center justify-center px-8 py-3 bg-black text-white rounded-lg font-medium hover:bg-gray-800 transition-colors"
             >
               Start Learning
             </Link>
@@ -40,71 +48,88 @@ export default function Home() {
           <div className="space-y-4">
             {/* DSA - Available */}
             <Link href="/dsa-visualizer" className="block group">
-              <div className="bg-white border border-gray-200 rounded-lg p-6 hover:border-indigo-500 hover:shadow-md transition-all">
+              <div className="bg-white border-2 border-gray-300 rounded-xl p-6 hover:border-indigo-500 hover:shadow-lg transition-all">
                 <div className="flex items-start justify-between">
                   <div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-indigo-600 transition-colors">
+                    <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-indigo-600 transition-colors">
                       Data Structures & Algorithms
                     </h3>
-                    <p className="text-gray-600">
+                    <p className="text-gray-700 font-medium">
                       Learn sorting, searching, trees, graphs, and essential CS concepts
                     </p>
                   </div>
-                  <svg className="w-6 h-6 text-gray-400 group-hover:text-indigo-600 group-hover:translate-x-1 transition-all flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-6 h-6 text-gray-500 group-hover:text-indigo-600 group-hover:translate-x-1 transition-all flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                   </svg>
                 </div>
               </div>
             </Link>
 
-            {/* Coming Soon Categories */}
-            <div className="bg-white border border-gray-200 rounded-lg p-6 opacity-60 cursor-not-allowed">
-              <div className="flex items-start justify-between">
-                <div>
-                  <div className="flex items-center gap-2 mb-2">
-                    <h3 className="text-xl font-semibold text-gray-700">
-                      Mathematics
-                    </h3>
-                    <span className="px-2 py-1 bg-gray-100 text-gray-600 text-xs font-medium rounded">Coming Soon</span>
+            {/* Mathematics - Preview */}
+            <Link href="/math-visualizer" className="block group">
+              <div className="bg-white border-2 border-gray-300 rounded-xl p-6 hover:border-indigo-500 hover:shadow-lg transition-all">
+                <div className="flex items-start justify-between">
+                  <div>
+                    <div className="flex items-center gap-2 mb-2">
+                      <h3 className="text-xl font-bold text-gray-900 group-hover:text-indigo-600 transition-colors">
+                        Mathematics
+                      </h3>
+                      <span className="px-3 py-1 bg-yellow-100 text-yellow-800 text-xs font-bold rounded-full border border-yellow-300">Preview</span>
+                    </div>
+                    <p className="text-gray-700 font-medium">
+                      Visualize calculus, linear algebra, and mathematical concepts
+                    </p>
                   </div>
-                  <p className="text-gray-500">
-                    Visualize calculus, linear algebra, and mathematical concepts
-                  </p>
+                  <svg className="w-6 h-6 text-gray-500 group-hover:text-indigo-600 group-hover:translate-x-1 transition-all flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
                 </div>
               </div>
-            </div>
+            </Link>
 
-            <div className="bg-white border border-gray-200 rounded-lg p-6 opacity-60 cursor-not-allowed">
-              <div className="flex items-start justify-between">
-                <div>
-                  <div className="flex items-center gap-2 mb-2">
-                    <h3 className="text-xl font-semibold text-gray-700">
-                      Physics
-                    </h3>
-                    <span className="px-2 py-1 bg-gray-100 text-gray-600 text-xs font-medium rounded">Coming Soon</span>
+            {/* Physics - Preview */}
+            <Link href="/physics-visualizer" className="block group">
+              <div className="bg-white border-2 border-gray-300 rounded-xl p-6 hover:border-indigo-500 hover:shadow-lg transition-all">
+                <div className="flex items-start justify-between">
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2 mb-2">
+                      <h3 className="text-xl font-bold text-gray-900 group-hover:text-indigo-600 transition-colors">
+                        Physics
+                      </h3>
+                      <span className="px-3 py-1 bg-green-100 text-green-800 text-xs font-bold rounded-full border border-green-300">Preview</span>
+                    </div>
+                    <p className="text-gray-700 font-medium">
+                      Simulate mechanics, waves, energy, and forces
+                    </p>
                   </div>
-                  <p className="text-gray-500">
-                    Explore motion, forces, energy, and physics principles
-                  </p>
+                  <svg className="w-6 h-6 text-gray-500 group-hover:text-indigo-600 group-hover:translate-x-1 transition-all flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
                 </div>
               </div>
-            </div>
+            </Link>
 
-            <div className="bg-white border border-gray-200 rounded-lg p-6 opacity-60 cursor-not-allowed">
-              <div className="flex items-start justify-between">
-                <div>
-                  <div className="flex items-center gap-2 mb-2">
-                    <h3 className="text-xl font-semibold text-gray-700">
-                      AI & Machine Learning
-                    </h3>
-                    <span className="px-2 py-1 bg-gray-100 text-gray-600 text-xs font-medium rounded">Coming Soon</span>
+            {/* AI/ML - Preview */}
+            <Link href="/ai-ml-visualizer" className="block group">
+              <div className="bg-white border-2 border-gray-300 rounded-xl p-6 hover:border-indigo-500 hover:shadow-lg transition-all">
+                <div className="flex items-start justify-between">
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2 mb-2">
+                      <h3 className="text-xl font-bold text-gray-900 group-hover:text-indigo-600 transition-colors">
+                        AI & Machine Learning
+                      </h3>
+                      <span className="px-3 py-1 bg-purple-100 text-purple-800 text-xs font-bold rounded-full border border-purple-300">Preview</span>
+                    </div>
+                    <p className="text-gray-700 font-medium">
+                      Understand neural networks and AI algorithms visually
+                    </p>
                   </div>
-                  <p className="text-gray-500">
-                    Understand neural networks and AI algorithms visually
-                  </p>
+                  <svg className="w-6 h-6 text-gray-500 group-hover:text-indigo-600 group-hover:translate-x-1 transition-all flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
                 </div>
               </div>
-            </div>
+            </Link>
           </div>
         </div>
       </section>
@@ -113,14 +138,14 @@ export default function Home() {
       <section className="border-t border-gray-200 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Ready to Start Learning?
+            World's First Open Source Visualizing Platform
           </h2>
           <p className="text-lg text-gray-600 mb-8">
             Join thousands of learners mastering DSA through visualization
           </p>
           <Link
             href="/dsa-visualizer"
-            className="inline-flex items-center justify-center px-8 py-3 bg-indigo-600 text-white rounded-lg font-medium hover:bg-indigo-700 transition-colors"
+            className="inline-flex items-center justify-center px-8 py-3 bg-black text-white rounded-lg font-medium hover:bg-gray-800 transition-colors"
           >
             Get Started Now
           </Link>
