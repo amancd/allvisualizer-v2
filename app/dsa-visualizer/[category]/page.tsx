@@ -55,7 +55,7 @@ const categoryData: Record<string, {
         description: 'Find maximum profit from stock price array',
         topics: ['Dynamic Programming', 'Greedy'],
         slug: 'best-time-to-buy-sell-stock',
-        isAvailable: false
+        isAvailable: true
       },
       {
         title: 'Maximum Subarray',

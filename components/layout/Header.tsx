@@ -65,9 +65,6 @@ export default function Header() {
                     href="/dsa-visualizer" 
                     className="flex items-center gap-3 px-4 py-3 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition-colors group/item"
                   >
-                    <div className="w-8 h-8 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center text-white text-xs font-semibold">
-                      DS
-                    </div>
                     <div>
                       <div className="font-medium">DSA Visualizer</div>
                       <div className="text-xs text-gray-500">Data Structures & Algorithms</div>
@@ -75,27 +72,21 @@ export default function Header() {
                   </Link>
                                     <Link
                     href="/math-visualizer"
-                    className="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 rounded-lg transition-colors"
+                    className="flex items-center gap-3 px-4 py-3 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 rounded-lg transition-colors"
                   >
-                    <div className="p-2 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg">
-                      <span className="text-white text-lg">∫</span>
-                    </div>
                     <div>
-                      <div className="font-medium text-gray-900">Math Visualizer</div>
-                      <div className="text-sm text-gray-500">Calculus, Linear Algebra</div>
+                      <div className="font-medium">Math Visualizer</div>
+                      <div className="text-xs text-gray-500">Calculus, Linear Algebra</div>
                     </div>
                   </Link>
                   
                   <Link
                     href="/physics-visualizer"
-                    className="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 rounded-lg transition-colors"
+                    className="flex items-center gap-3 px-4 py-3 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 rounded-lg transition-colors"
                   >
-                    <div className="p-2 bg-gradient-to-br from-red-500 to-pink-500 rounded-lg">
-                      <span className="text-white text-lg">⚡</span>
-                    </div>
                     <div>
-                      <div className="font-medium text-gray-900">Physics Visualizer</div>
-                      <div className="text-sm text-gray-500">Mechanics, Waves, Energy</div>
+                      <div className="font-medium">Physics Visualizer</div>
+                      <div className="text-xs text-gray-500">Mechanics, Waves, Energy</div>
                     </div>
                   </Link>
                   

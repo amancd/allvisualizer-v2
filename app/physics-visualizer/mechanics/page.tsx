@@ -31,9 +31,9 @@ export default function MechanicsPage() {
       title: 'Elastic Collisions',
       description: 'Analyze momentum and energy conservation in collisions',
       difficulty: 'Intermediate',
-      slug: 'collisions',
+      slug: 'elastic-collisions',
       topics: ['Momentum', 'Energy', '1D Collisions', '2D Collisions'],
-      comingSoon: true
+      comingSoon: false
     },
     {
       title: 'Energy Conservation',
@@ -41,7 +41,7 @@ export default function MechanicsPage() {
       difficulty: 'Beginner',
       slug: 'energy-conservation',
       topics: ['KE', 'PE', 'Work', 'Power'],
-      comingSoon: true
+      comingSoon: false
     }
   ];
 

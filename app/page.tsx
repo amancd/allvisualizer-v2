@@ -7,7 +7,7 @@ export default function Home() {
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 md:pt-40 pb-16 md:pb-24">
         <div className="text-center space-y-6">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
-            Learn Data Structures & Algorithms Through Visualization
+            World's 1st Open Source Visualization Platform
           </h1>
           
           <p className="text-lg md:text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto">
@@ -138,10 +138,10 @@ export default function Home() {
       <section className="border-t border-gray-200 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            World's First Open Source Visualizing Platform
+            Start Your Learning Journey Today
           </h2>
           <p className="text-lg text-gray-600 mb-8">
-            Join thousands of learners mastering DSA through visualization
+            Master complex concepts with interactive visualizations and step-by-step explanations
           </p>
           <Link
             href="/dsa-visualizer"

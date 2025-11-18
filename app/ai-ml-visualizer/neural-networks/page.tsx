@@ -25,7 +25,7 @@ export default function NeuralNetworksPage() {
       difficulty: 'Intermediate',
       slug: 'backpropagation',
       topics: ['Chain Rule', 'Gradients', 'Weight Updates', 'Learning'],
-      comingSoon: true
+      comingSoon: false
     },
     {
       title: 'Activation Functions',

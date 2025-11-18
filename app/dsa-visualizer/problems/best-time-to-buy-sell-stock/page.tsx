@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import BestTimeToBuySellStockVisualizer from './BestTimeToBuySellStockVisualizer';
 
 export default function BestTimeToBuySellStockPage() {
   const [showTOC, setShowTOC] = useState(false);
@@ -234,6 +235,21 @@ public:
                       </div>
                     </div>
                   </div>
+                </div>
+              </section>
+
+              {/* Interactive Visualizer */}
+              <section id="visualizer" className="scroll-mt-24 mb-8 animate-fade-in" style={{ animationDelay: '0.17s' }}>
+                <div className="bg-gradient-to-br from-blue-50 to-purple-50 p-6 md:p-8 rounded-2xl border-2 border-blue-200 shadow-sm">
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
+                      </svg>
+                    </div>
+                    <h2 className="text-xl md:text-2xl font-bold text-gray-900">Interactive Visualizer</h2>
+                  </div>
+                  <BestTimeToBuySellStockVisualizer />
                 </div>
               </section>
 
