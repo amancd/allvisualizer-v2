@@ -4,12 +4,12 @@
 
 ### Interactive Learning Through Visualization
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc/4.0/)
 [![Next.js](https://img.shields.io/badge/Next.js-14+-black)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-blue)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.0+-38B2AC)](https://tailwindcss.com/)
 
-[Live Demo](https://allvisualizer.vercel.app) · [Report Bug](https://github.com/amancd/allvisualizer-v2/issues) · [Request Feature](https://github.com/amancd/allvisualizer-v2/issues)
+[Live Demo](https://allvisualizer.com) · [Report Bug](https://github.com/amancd/allvisualizer-v2/issues) · [Request Feature](https://github.com/amancd/allvisualizer-v2/issues)
 
 </div>
 
@@ -19,9 +19,15 @@
 
 AllVisualizer is an open-source educational platform that transforms abstract concepts into intuitive visual experiences. Built with modern web technologies, it provides interactive visualizations across Computer Science, Mathematics, Physics, and Artificial Intelligence to enhance learning and comprehension.
 
+**Live Platform**: [https://allvisualizer.com](https://allvisualizer.com)
+
 ### Mission
 
 To democratize quality education by making complex concepts accessible through interactive visualization, enabling learners worldwide to develop deeper understanding through visual and hands-on learning experiences.
+
+### Sustainability Model
+
+AllVisualizer is free to use and open source. To maintain and improve the platform, we display non-intrusive Google AdSense advertisements that help cover hosting costs and development expenses. This allows us to keep the platform accessible to everyone while ensuring long-term sustainability.
 
 ## Key Features
 
@@ -61,7 +67,8 @@ To democratize quality education by making complex concepts accessible through i
 - [Configuration](#configuration)
 - [Contributing](#contributing)
 - [Roadmap](#roadmap)
-- [License](#license)
+- [License and Usage](#license-and-usage)
+- [Support the Project](#support-the-project)
 - [Contact](#contact)
 
 ## Getting Started
@@ -340,19 +347,64 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 This project is licensed under the MIT License.
 
+## License and Usage
+
+This project is licensed under the **Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0)**.
+
+### What This Means
+
+**You are free to:**
+- Share — copy and redistribute the material in any medium or format
+- Adapt — remix, transform, and build upon the material for non-commercial purposes
+- Use the code for learning, education, and personal projects
+
+**Under the following terms:**
+- **Attribution** — You must give appropriate credit, provide a link to the license, and indicate if changes were made
+- **NonCommercial** — You may not use the material for commercial purposes without explicit permission
+
+### Commercial Use
+
+If you wish to use AllVisualizer or its codebase for commercial purposes, please contact us at nkcoderz@gmail.com for licensing arrangements.
+
+**Why Non-Commercial?**
+The platform is sustained through Google AdSense revenue to cover hosting and development costs. Allowing unrestricted commercial use would undermine this sustainability model and the platform's accessibility mission.
+
+For full license details, see the [LICENSE](LICENSE) file or visit [Creative Commons BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/).
+
+## Support the Project
+
+AllVisualizer is free to use and will always remain accessible to learners worldwide. To sustain and improve the platform, we rely on:
+
+### Current Support Model
+- **Google AdSense**: Non-intrusive advertisements help cover hosting costs and development expenses
+- **Community Contributions**: Bug reports, feature requests, and code contributions
+
+### How You Can Help
+1. **Use and Share**: Share AllVisualizer with students, educators, and learners
+2. **Contribute**: Submit bug reports, feature requests, or pull requests
+3. **Provide Feedback**: Help us improve by sharing your learning experience
+4. **Support Development**: The ads displayed on the platform directly fund ongoing development
+
+Every bit of support helps us maintain free, quality educational resources for everyone.
+
 ## Contact
 
+**Project Maintainer**: Aman Singh
+
+- GitHub: [@amancd](https://github.com/amancd)
 - Email: nkcoderz@gmail.com
-- Discord: https://discord.gg/z4TgSrJQ
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme).
-
-Check out the [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Website: [https://allvisualizer.com](https://allvisualizer.com)
+- Discord Community: [Join our Discord](https://discord.gg/z4TgSrJQ)
+- Repository: [allvisualizer-v2](https://github.com/amancd/allvisualizer-v2)
 
 ---
 
-**Note**: This is the initial setup. Individual visualizers will be implemented in subsequent updates.
+<div align="center">
 
-Built with ❤️ for learners worldwide who want to master complex concepts through visualization.
+**Built with dedication for learners worldwide**
+
+*Making complex concepts accessible through visualization*
+
+[⬆ Back to Top](#allvisualizer)
+
+</div>
