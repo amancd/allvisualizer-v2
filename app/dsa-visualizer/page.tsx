@@ -84,6 +84,15 @@ export default function DSAVisualizer() {
       topics: ['Hash Functions', 'Collision Handling', 'Applications'],
       slug: 'hashing',
       isAvailable: false
+    },
+    {
+      title: 'Strings',
+      description: 'Master string manipulation and pattern matching',
+      icon: '""',
+      color: 'from-red-500 to-orange-500',
+      topics: ['Palindromes', 'Substrings', 'Pattern Matching', 'Anagrams'],
+      slug: 'strings',
+      isAvailable: true
     }
   ];
 
@@ -154,6 +163,29 @@ export default function DSAVisualizer() {
                     </div>
                     <p className="text-gray-600">
                       Find two numbers in an array that add up to a target value.
+                    </p>
+                  </div>
+                  <svg className="w-5 h-5 text-gray-400 group-hover:text-gray-900 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </div>
+              </div>
+            </Link>
+
+            <Link href="/dsa-visualizer/problems/valid-palindrome" className="block group">
+              <div className="p-6 bg-white border border-gray-200 rounded-lg hover:border-gray-400 hover:shadow-sm transition-all">
+                <div className="flex items-start justify-between">
+                  <div>
+                    <div className="flex items-center gap-3 mb-2">
+                      <h3 className="text-lg font-semibold text-gray-900 group-hover:text-gray-900">
+                        Valid Palindrome
+                      </h3>
+                      <span className="px-2 py-0.5 bg-green-100 text-green-700 rounded text-xs font-medium">
+                        Easy
+                      </span>
+                    </div>
+                    <p className="text-gray-600">
+                      Determine if a string is a palindrome using two pointers.
                     </p>
                   </div>
                   <svg className="w-5 h-5 text-gray-400 group-hover:text-gray-900 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -426,6 +426,91 @@ const categoryData: Record<string, {
         link: '#'
       }
     ]
+  },
+  'strings': {
+    title: 'Strings',
+    description: 'Master string manipulation and pattern matching',
+    icon: '📝',
+    color: 'red',
+    gradient: 'from-red-500 to-orange-500',
+    overview: 'Strings are sequences of characters and one of the most commonly used data types in programming. Understanding string manipulation, searching, and pattern matching is essential for solving a wide variety of real-world problems.',
+    keyPoints: [
+      'Immutable in many languages (Java, Python)',
+      'Common operations: concatenation, substring, search',
+      'Two pointers technique for palindromes and anagrams',
+      'Pattern matching with KMP, Rabin-Karp algorithms',
+      'String building with StringBuilder for efficiency'
+    ],
+    problems: [
+      {
+        title: 'Valid Palindrome',
+        difficulty: 'Easy',
+        description: 'Check if a string is a palindrome ignoring non-alphanumeric characters',
+        topics: ['Two Pointers', 'String Manipulation'],
+        slug: 'valid-palindrome',
+        isAvailable: true
+      },
+      {
+        title: 'Valid Anagram',
+        difficulty: 'Easy',
+        description: 'Determine if two strings are anagrams of each other',
+        topics: ['Hash Map', 'Sorting'],
+        slug: 'valid-anagram',
+        isAvailable: false
+      },
+      {
+        title: 'Longest Substring Without Repeating',
+        difficulty: 'Medium',
+        description: 'Find length of longest substring without repeating characters',
+        topics: ['Sliding Window', 'Hash Map'],
+        slug: 'longest-substring',
+        isAvailable: false
+      },
+      {
+        title: 'Longest Palindromic Substring',
+        difficulty: 'Medium',
+        description: 'Find the longest palindromic substring in a string',
+        topics: ['Dynamic Programming', 'Expand Around Center'],
+        slug: 'longest-palindrome',
+        isAvailable: false
+      },
+      {
+        title: 'Group Anagrams',
+        difficulty: 'Medium',
+        description: 'Group strings that are anagrams of each other',
+        topics: ['Hash Map', 'Sorting'],
+        slug: 'group-anagrams',
+        isAvailable: false
+      },
+      {
+        title: 'Minimum Window Substring',
+        difficulty: 'Hard',
+        description: 'Find minimum window containing all characters of another string',
+        topics: ['Sliding Window', 'Hash Map'],
+        slug: 'minimum-window',
+        isAvailable: false
+      }
+    ],
+    resources: [
+      {
+        title: 'String Algorithms Guide',
+        type: 'Article',
+        description: 'Comprehensive guide to string manipulation techniques',
+        link: '#'
+      },
+      {
+        title: 'Two Pointers Pattern',
+        type: 'Video',
+        description: 'Master the two pointers technique for strings',
+        link: '#'
+      },
+      {
+        title: 'String Pattern Practice',
+        type: 'Practice',
+        description: 'Practice problems on palindromes, anagrams, and substrings',
+        link: '#'
+      }
+    ]
   }
 };
 
