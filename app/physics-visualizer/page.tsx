@@ -32,7 +32,10 @@ export default function PhysicsVisualizerPage() {
       color: 'from-yellow-500 to-orange-500',
       topics: ['Electric Fields', 'Magnetic Fields', 'Circuits', 'EM Waves'],
       slug: 'electromagnetism',
-      isAvailable: false
+      isAvailable: true,
+      problems: [
+        { title: 'Electric Field Lines', slug: 'electric-field-lines' }
+      ]
     },
     {
       title: 'Waves & Optics',
@@ -40,8 +43,11 @@ export default function PhysicsVisualizerPage() {
       icon: '🌊',
       color: 'from-teal-500 to-green-500',
       topics: ['Wave Motion', 'Interference', 'Diffraction', 'Refraction'],
-      slug: 'waves',
-      isAvailable: false
+      slug: 'waves-optics',
+      isAvailable: true,
+      problems: [
+        { title: 'Wave Interference', slug: 'wave-interference' }
+      ]
     },
     {
       title: 'Thermodynamics',
@@ -50,16 +56,22 @@ export default function PhysicsVisualizerPage() {
       color: 'from-red-500 to-pink-500',
       topics: ['Heat Transfer', 'Gas Laws', 'Entropy', 'Engines'],
       slug: 'thermodynamics',
-      isAvailable: false
+      isAvailable: true,
+      problems: [
+        { title: 'Ideal Gas Law', slug: 'ideal-gas-law' }
+      ]
     },
     {
       title: 'Modern Physics',
       description: 'Relativity and quantum mechanics',
-      icon: '🔬',
+      icon: '⚛️',
       color: 'from-purple-500 to-indigo-500',
       topics: ['Relativity', 'Quantum', 'Atomic', 'Nuclear'],
-      slug: 'modern',
-      isAvailable: false
+      slug: 'modern-physics',
+      isAvailable: true,
+      problems: [
+        { title: 'Photoelectric Effect', slug: 'photoelectric-effect' }
+      ]
     },
     {
       title: 'Oscillations',
