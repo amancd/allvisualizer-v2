@@ -67,8 +67,7 @@ export default function AboutPage() {
               </h2>
             <p className="text-lg text-gray-700 mb-6">
               Join thousands of learners, students, and professionals who use AllVisualizer to master 
-              complex concepts. Connect with fellow learners on our Discord community to discuss topics, 
-              share insights, and learn together.
+              complex concepts. Share insights and learn together as part of our growing community.
             </p>
 
               <div className="border-l-4 border-gray-900 pl-6 mt-8">

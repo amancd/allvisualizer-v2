@@ -55,7 +55,7 @@ export default function BohrModelPage() {
         {/* Theory Section */}
         <div className="prose max-w-none">
           <section className="mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">⚛️ The Bohr Model</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">The Bohr Model</h2>
             <p className="text-gray-700 mb-4">
               Proposed by Niels Bohr in 1913, the Bohr model was the first successful quantum model of the atom. 
               It explained the discrete spectral lines of hydrogen by postulating that electrons orbit the nucleus 
@@ -68,7 +68,7 @@ export default function BohrModelPage() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">📐 Key Postulates</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">Key Postulates</h2>
             <div className="space-y-4">
               <div className="border-l-4 border-blue-500 pl-4 py-2 bg-blue-50">
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">1. Quantized Orbits</h3>

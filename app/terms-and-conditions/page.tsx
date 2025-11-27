@@ -64,7 +64,7 @@ export default function TermsAndConditionsPage() {
             <div>
               <h2 className="text-2xl font-bold text-gray-900 mb-4">User Content and Conduct</h2>
               <p className="text-gray-700 mb-6">
-                When using our Service, including our Discord community, you agree to:
+                When using our Service, you agree to:
               </p>
               <ul className="list-disc list-inside text-gray-700 mb-6 space-y-2">
                 <li>Not post content that is illegal, harmful, or offensive</li>
@@ -90,7 +90,7 @@ export default function TermsAndConditionsPage() {
             <div>
               <h2 className="text-2xl font-bold text-gray-900 mb-4">Third-Party Links and Services</h2>
               <p className="text-gray-700 mb-6">
-                Our Service may contain links to third-party websites or services, including Discord, that are 
+                Our Service may contain links to third-party websites or services that are 
                 not owned or controlled by AllVisualizer. We have no control over, and assume no responsibility 
                 for, the content, privacy policies, or practices of any third-party websites or services.
               </p>

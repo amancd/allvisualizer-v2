@@ -322,7 +322,7 @@ export default function TimeDilationVisualizer() {
 
       {/* Lorentz Factor Info */}
       <div className="border border-gray-200 rounded-lg p-4 bg-purple-50">
-        <div className="text-sm font-semibold text-gray-900 mb-3">📊 Lorentz Factor Analysis</div>
+        <div className="text-sm font-semibold text-gray-900 mb-3">Lorentz Factor Analysis</div>
         <div className="grid md:grid-cols-3 gap-3 text-sm">
           <div className="bg-white p-3 rounded">
             <div className="text-xs text-gray-600 mb-1">Lorentz Factor (γ)</div>

@@ -107,7 +107,7 @@ export default function EnergyConservationPage() {
               </p>
             </div>
             <div className="bg-white p-4 rounded-lg border border-purple-200">
-              <h3 className="font-semibold text-purple-900 mb-2">📐 Ramp</h3>
+              <h3 className="font-semibold text-purple-900 mb-2">Ramp</h3>
               <p className="text-sm text-purple-800">
                 See how PE converts to KE as the ball rolls down the incline. 
                 The angle affects acceleration but not final energy.
@@ -182,7 +182,7 @@ export default function EnergyConservationPage() {
 
         {/* Energy Equations Reference */}
         <div className="mt-8 bg-gray-50 border-2 border-gray-300 rounded-lg p-6">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">📐 Energy Equations Reference</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">Energy Equations Reference</h2>
           <div className="space-y-3">
             <div className="bg-white p-3 rounded border border-gray-300">
               <h3 className="font-semibold text-gray-900 mb-1">Total Mechanical Energy</h3>

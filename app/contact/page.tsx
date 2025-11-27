@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { Button } from '@/components/ui';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -12,9 +13,16 @@ export default function ContactPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Add form submission logic here
-    alert('Thank you for your message! We will get back to you soon.');
-    setFormData({ name: '', email: '', subject: '', message: '' });
+    
+    // Construct mailto link with form data
+    const subject = encodeURIComponent(formData.subject || 'Contact Form Submission');
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+    );
+    const mailtoLink = `mailto:nkcoderz@gmail.com?subject=${subject}&body=${body}`;
+    
+    // Open default mail client
+    window.location.href = mailtoLink;
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -107,12 +115,9 @@ export default function ContactPage() {
                   />
                 </div>
 
-                <button
-                  type="submit"
-                  className="w-full bg-black text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors"
-                >
+                <Button type="submit" fullWidth size="lg">
                   Send Message
-                </button>
+                </Button>
               </form>
             </div>
 
@@ -134,34 +139,7 @@ export default function ContactPage() {
                         <p className="text-gray-600">nkcoderz@gmail.com</p>
                       </div>
                   </div>
-
-                  <div className="flex items-start">
-                    <div className="flex-shrink-0">
-                      <svg className="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
-                      </svg>
-                    </div>
-                    <div className="ml-4">
-                      <h3 className="text-lg font-semibold text-gray-900">Discord Community</h3>
-                      <p className="text-gray-600">Join our Discord server for real-time support</p>
-                    </div>
-                  </div>
                 </div>
-              </div>
-
-              <div className="border border-gray-200 rounded-lg p-8">
-                <h3 className="text-xl font-bold text-gray-900 mb-4">Join Our Community</h3>
-                <p className="text-gray-600 mb-6">
-                  Connect with other learners, share your experiences, and get help from the community on Discord.
-                </p>
-                <a
-                  href="https://discord.gg/z4TgSrJQ"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block bg-black text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors w-full text-center"
-                >
-                  Join Discord
-                </a>
               </div>
             </div>
           </div>

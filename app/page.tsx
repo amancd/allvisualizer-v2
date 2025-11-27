@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { Button } from '@/components/ui';
 
 export default function Home() {
   return (
@@ -23,12 +24,18 @@ export default function Home() {
           </div>
               
           <div className="pt-4">
-            <Link
-              href="/dsa-visualizer"
-              className="inline-flex items-center justify-center px-8 py-3 bg-black text-white rounded-lg font-medium hover:bg-gray-800 transition-colors"
-            >
-              Start Learning
-            </Link>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="/categories">
+                <Button size="lg">
+                  Browse Categories
+                </Button>
+              </Link>
+              <Link href="/physics-visualizer">
+                <Button variant="outline" size="lg">
+                  Start with Physics
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -38,11 +45,20 @@ export default function Home() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Browse Topics
+              Popular Categories
             </h2>
-            <p className="text-lg text-gray-600">
+            <p className="text-lg text-gray-600 mb-6">
               Start learning with our interactive visualizers
             </p>
+            <Link
+              href="/categories"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-gray-700 hover:text-gray-900 transition-colors"
+            >
+              <span>View all categories</span>
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </Link>
           </div>
 
           <div className="space-y-4">
@@ -143,12 +159,18 @@ export default function Home() {
           <p className="text-lg text-gray-600 mb-8">
             Master complex concepts with interactive visualizations and step-by-step explanations
           </p>
-          <Link
-            href="/dsa-visualizer"
-            className="inline-flex items-center justify-center px-8 py-3 bg-black text-white rounded-lg font-medium hover:bg-gray-800 transition-colors"
-          >
-            Get Started Now
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/categories">
+              <Button size="lg">
+                Explore All Categories
+              </Button>
+            </Link>
+            <Link href="/dsa-visualizer">
+              <Button variant="outline" size="lg">
+                Start with DSA
+              </Button>
+            </Link>
+          </div>
         </div>
       </section>
     </div>

@@ -69,7 +69,7 @@ export default function PhotoelectricEffectPage() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">📐 Einstein's Equation</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">Einstein's Equation</h2>
             <p className="text-gray-700 mb-4">
               Einstein explained the photoelectric effect by proposing that light consists of discrete energy 
               packets called photons. When a photon hits an electron, it transfers all its energy:
@@ -92,7 +92,7 @@ export default function PhotoelectricEffectPage() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">🔍 Key Observations</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">Key Observations</h2>
             <div className="grid md:grid-cols-2 gap-6">
               <div className="bg-blue-50 p-4 rounded-lg">
                 <h3 className="font-semibold text-gray-900 mb-2">Threshold Frequency</h3>

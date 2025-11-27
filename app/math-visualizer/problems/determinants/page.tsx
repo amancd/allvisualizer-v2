@@ -661,14 +661,14 @@ COMPUTATION TIPS
             <h2 className="text-2xl font-bold text-gray-900">Applications</h2>
             <div className="grid md:grid-cols-2 gap-4">
               <div className="bg-gray-100 border border-gray-300 rounded-lg p-4">
-                <h3 className="font-semibold text-indigo-900 mb-2">🔍 System Solvability</h3>
+                <h3 className="font-semibold text-indigo-900 mb-2">System Solvability</h3>
                 <p className="text-gray-900 text-sm">
                   Check if system Ax = b has unique solution (det(A) ≠ 0)
                 </p>
               </div>
               
               <div className="bg-pink-50 border border-pink-200 rounded-lg p-4">
-                <h3 className="font-semibold text-pink-900 mb-2">📐 Area & Volume</h3>
+                <h3 className="font-semibold text-pink-900 mb-2">Area & Volume</h3>
                 <p className="text-pink-800 text-sm">
                   Calculate area of parallelogram or volume of parallelepiped
                 </p>

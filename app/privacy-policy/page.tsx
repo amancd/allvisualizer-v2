@@ -44,7 +44,6 @@ export default function PrivacyPolicyPage() {
               </p>
               <ul className="list-disc list-inside text-gray-700 mb-6 space-y-2">
                 <li>Contact us through our contact form</li>
-                <li>Join our Discord community</li>
                 <li>Subscribe to our newsletter (if applicable)</li>
                 <li>Participate in surveys or feedback forms</li>
               </ul>
@@ -98,7 +97,7 @@ export default function PrivacyPolicyPage() {
             <div>
               <h2 className="text-2xl font-bold text-gray-900 mb-4">Third-Party Services</h2>
               <p className="text-gray-700 mb-6">
-                Our website may contain links to third-party websites and services, including Discord. 
+                Our website may contain links to third-party websites and services. 
                 Please note that we are not responsible for the privacy practices of these third parties. 
                 We encourage you to read their privacy policies.
               </p>

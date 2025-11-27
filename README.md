@@ -394,7 +394,6 @@ Every bit of support helps us maintain free, quality educational resources for e
 - GitHub: [@amancd](https://github.com/amancd)
 - Email: nkcoderz@gmail.com
 - Website: [https://allvisualizer.com](https://allvisualizer.com)
-- Discord Community: [Join our Discord](https://discord.gg/z4TgSrJQ)
 - Repository: [allvisualizer-v2](https://github.com/amancd/allvisualizer-v2)
 
 ---

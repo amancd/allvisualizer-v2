@@ -69,7 +69,7 @@ export default function TimeDilationPage() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">📐 The Time Dilation Formula</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">The Time Dilation Formula</h2>
             <p className="text-gray-700 mb-4">
               The relationship between time measured by a stationary observer (Δt) and a moving observer (Δt₀) is:
             </p>

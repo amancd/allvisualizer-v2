@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
+import { Button } from '@/components/ui';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -45,66 +46,26 @@ export default function Header() {
               Home
             </Link>
             <Link 
-              href="/dsa-visualizer" 
+              href="/categories" 
               className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 rounded-lg hover:bg-gray-50 transition-all"
             >
-              Visualizers
+              Categories
             </Link>
-            
-            {/* Categories Dropdown */}
-            <div className="relative group">
-              <button className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 rounded-lg hover:bg-gray-50 transition-all flex items-center gap-1">
-                Categories
-                <svg className="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-              <div className="absolute left-0 mt-2 w-56 bg-white rounded-xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform scale-95 group-hover:scale-100">
-                <div className="py-2">
-                  <Link 
-                    href="/dsa-visualizer" 
-                    className="flex items-center gap-3 px-4 py-3 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition-colors group/item"
-                  >
-                    <div>
-                      <div className="font-medium">DSA Visualizer</div>
-                      <div className="text-xs text-gray-500">Data Structures & Algorithms</div>
-                    </div>
-                  </Link>
-                                    <Link
-                    href="/math-visualizer"
-                    className="flex items-center gap-3 px-4 py-3 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 rounded-lg transition-colors"
-                  >
-                    <div>
-                      <div className="font-medium">Math Visualizer</div>
-                      <div className="text-xs text-gray-500">Calculus, Linear Algebra</div>
-                    </div>
-                  </Link>
-                  
-                  <Link
-                    href="/physics-visualizer"
-                    className="flex items-center gap-3 px-4 py-3 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 rounded-lg transition-colors"
-                  >
-                    <div>
-                      <div className="font-medium">Physics Visualizer</div>
-                      <div className="text-xs text-gray-500">Mechanics, Waves, Energy</div>
-                    </div>
-                  </Link>
-                  
-                  <div className="border-t border-gray-100 mt-2 pt-2">
-                    <div className="px-4 py-2 text-xs text-gray-400 flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 bg-yellow-400 rounded-full animate-pulse"></span>
-                      More categories coming soon
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
             <Link 
-              href="/about" 
+              href="/search" 
+              className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 rounded-lg hover:bg-gray-50 transition-all flex items-center gap-1"
+              title="Search"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+              Search
+            </Link>
+            <Link 
+              href="/support" 
               className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 rounded-lg hover:bg-gray-50 transition-all"
             >
-              About
+              Support
             </Link>
             <Link 
               href="/contact" 
@@ -160,18 +121,28 @@ export default function Header() {
                 Home
               </Link>
               <Link 
-                href="/dsa-visualizer" 
+                href="/categories" 
                 className="px-4 py-3 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-all"
                 onClick={() => setIsMenuOpen(false)}
               >
-                DSA Visualizer
+                Categories
               </Link>
               <Link 
-                href="/about" 
+                href="/search" 
+                className="px-4 py-3 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-all flex items-center gap-2"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                Search
+              </Link>
+              <Link 
+                href="/support" 
                 className="px-4 py-3 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-all"
                 onClick={() => setIsMenuOpen(false)}
               >
-                About
+                Support
               </Link>
               <Link 
                 href="/contact" 
@@ -181,12 +152,10 @@ export default function Header() {
                 Contact
               </Link>
               <div className="pt-4 mt-2 border-t border-gray-100">
-                <Link
-                  href="/dsa-visualizer"
-                  className="block px-4 py-3 bg-black text-white text-sm font-semibold rounded-lg text-center hover:bg-gray-800 transition-all"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Get Started
+                <Link href="/categories">
+                  <Button fullWidth size="md">
+                    Explore Categories
+                  </Button>
                 </Link>
               </div>
             </div>

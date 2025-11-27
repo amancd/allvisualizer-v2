@@ -118,7 +118,7 @@ export default function CarnotCyclePage() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">📊 Carnot Efficiency</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">Carnot Efficiency</h2>
             <p className="text-gray-700 mb-4">
               The thermal efficiency of a Carnot engine depends only on the temperatures of the hot and cold reservoirs:
             </p>
