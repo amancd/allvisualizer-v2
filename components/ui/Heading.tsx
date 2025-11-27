@@ -13,7 +13,7 @@ export const Heading: React.FC<HeadingProps> = ({
   className = '',
   align = 'left',
 }) => {
-  const Tag = `h${level}` as keyof JSX.IntrinsicElements;
+  const Tag = `h${level}` as keyof React.JSX.IntrinsicElements;
   
   const baseStyles = 'font-bold text-gray-900';
   
