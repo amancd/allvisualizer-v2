@@ -44,7 +44,7 @@ export default function AIMLVisualizer() {
       color: 'from-emerald-500 to-teal-500',
       topics: ['Image Filters', 'Edge Detection', 'Object Detection', 'Segmentation'],
       slug: 'computer-vision',
-      isAvailable: false
+      isAvailable: true
     },
     {
       title: 'Natural Language Processing',

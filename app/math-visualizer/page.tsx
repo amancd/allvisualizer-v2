@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from 'next/link';
 import { Button } from '@/components/ui';
+import { Sigma, Grid3x3, Circle, Triangle, BarChart3, Hash } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: "Math Visualizer - Interactive Mathematics | AllVisualizer",
@@ -17,7 +18,7 @@ export default function MathVisualizer() {
     {
       title: 'Calculus',
       description: 'Visualize derivatives, integrals, and limits',
-      icon: '∫',
+      icon: Sigma,
       color: 'from-blue-500 to-cyan-500',
       topics: ['Derivatives', 'Integrals', 'Limits', 'Series'],
       slug: 'calculus',
@@ -29,7 +30,7 @@ export default function MathVisualizer() {
     {
       title: 'Linear Algebra',
       description: 'Understand matrices, vectors, and transformations',
-      icon: '⊞',
+      icon: Grid3x3,
       color: 'from-purple-500 to-pink-500',
       topics: ['Matrix Operations', 'Vectors', 'Eigenvalues', 'Transformations'],
       slug: 'linear-algebra',
@@ -41,16 +42,16 @@ export default function MathVisualizer() {
     {
       title: 'Trigonometry',
       description: 'Explore angles, circles, and wave functions',
-      icon: '○',
+      icon: Circle,
       color: 'from-emerald-500 to-teal-500',
       topics: ['Unit Circle', 'Trigonometric Functions', 'Identities', 'Waves'],
       slug: 'trigonometry',
-      isAvailable: false
+      isAvailable: true
     },
     {
       title: 'Geometry',
       description: 'Visualize shapes, transformations, and proofs',
-      icon: '△',
+      icon: Triangle,
       color: 'from-orange-500 to-amber-500',
       topics: ['Euclidean Geometry', 'Transformations', 'Proofs', 'Coordinate Geometry'],
       slug: 'geometry',
@@ -59,7 +60,7 @@ export default function MathVisualizer() {
     {
       title: 'Statistics',
       description: 'Learn probability distributions and data analysis',
-      icon: '📊',
+      icon: BarChart3,
       color: 'from-green-500 to-lime-500',
       topics: ['Distributions', 'Hypothesis Testing', 'Regression', 'Probability'],
       slug: 'statistics',
@@ -68,7 +69,7 @@ export default function MathVisualizer() {
     {
       title: 'Number Theory',
       description: 'Explore prime numbers and mathematical patterns',
-      icon: '№',
+      icon: Hash,
       color: 'from-indigo-500 to-purple-500',
       topics: ['Prime Numbers', 'GCD/LCM', 'Modular Arithmetic', 'Sequences'],
       slug: 'number-theory',
@@ -123,7 +124,7 @@ export default function MathVisualizer() {
                 <div>
                   <div className="flex items-start justify-between mb-3">
                     <div className="flex items-center gap-3">
-                      <span className="text-2xl">{category.icon}</span>
+                      <category.icon className="w-6 h-6 text-gray-700" />
                       <h3 className="text-lg font-semibold text-gray-900 group-hover:text-gray-900">
                         {category.title}
                       </h3>
