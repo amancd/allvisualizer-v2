@@ -15,7 +15,7 @@ export default function UnitCircleVisualizer() {
   const [speed, setSpeed] = useState(1);
   
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const animationRef = useRef<number>();
+  const animationRef = useRef<number | undefined>(undefined);
 
   // Convert radians to degrees
   const radToDeg = (rad: number) => (rad * 180 / Math.PI) % 360;

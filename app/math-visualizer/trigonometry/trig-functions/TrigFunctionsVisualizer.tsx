@@ -20,7 +20,7 @@ export default function TrigFunctionsVisualizer() {
   
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const circleCanvasRef = useRef<HTMLCanvasElement>(null);
-  const animationRef = useRef<number>();
+  const animationRef = useRef<number | undefined>(undefined);
 
   // Animation loop
   useEffect(() => {
