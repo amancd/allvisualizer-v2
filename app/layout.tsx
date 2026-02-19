@@ -10,13 +10,13 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "AllVisualizer - Interactive Learning Through Visualization",
-  description: "Learn Data Structures, Algorithms, Mathematics, Physics, and AI through interactive visualizations.",
-  keywords: ["DSA visualizer", "algorithm visualization", "data structures", "interactive learning", "programming education"],
-  authors: [{ name: "AllVisualizer Team" }],
+  title: "90 DSA Patterns – Notes & Code Templates | AllVisualizer",
+  description: "All 90 DSA patterns with notes, explanations, and ready-to-use Python code templates. Two Pointers, Sliding Window, Binary Search, Trees, Graphs, Dynamic Programming and more.",
+  keywords: ["dsa patterns", "coding interview patterns", "leetcode patterns", "algorithm templates", "two pointers", "sliding window", "dynamic programming", "data structures notes", "coding interview prep"],
+  authors: [{ name: "AllVisualizer" }],
   openGraph: {
-    title: "AllVisualizer - Interactive Learning Through Visualization",
-    description: "Master complex concepts through engaging visual learning",
+    title: "90 DSA Patterns – Notes & Code Templates",
+    description: "All 90 DSA patterns with notes and ready-to-use code templates for coding interviews.",
     url: "https://allvisualizer.com",
     siteName: "AllVisualizer",
     images: [
@@ -32,8 +32,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "AllVisualizer - Interactive Learning Through Visualization",
-    description: "Master complex concepts through engaging visual learning",
+    title: "90 DSA Patterns – Notes & Code Templates",
+    description: "All 90 DSA patterns with notes and ready-to-use code templates for coding interviews.",
     images: ["/og-image.png"],
   },
   robots: {
