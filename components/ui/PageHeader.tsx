@@ -1,10 +1,5 @@
 import React from 'react';
-import Link from 'next/link';
-
-interface Crumb {
-  label: string;
-  href?: string;
-}
+import Breadcrumbs, { type Crumb } from './Breadcrumbs';
 
 interface PageHeaderProps {
   title: React.ReactNode;
@@ -33,18 +28,7 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
       <div className="absolute inset-0 hero-glow" aria-hidden />
       <div className={`relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 md:pt-36 pb-14 md:pb-20 ${centered ? 'text-center' : ''}`}>
         {breadcrumbs && breadcrumbs.length > 0 && (
-          <nav aria-label="Breadcrumb" className={`mb-6 flex flex-wrap items-center gap-1.5 text-sm text-ink-muted ${centered ? 'justify-center' : ''}`}>
-            {breadcrumbs.map((c, i) => (
-              <React.Fragment key={c.label}>
-                {i > 0 && <span className="text-ink-faint">/</span>}
-                {c.href ? (
-                  <Link href={c.href} className="hover:text-ink transition-colors">{c.label}</Link>
-                ) : (
-                  <span className="text-ink font-medium">{c.label}</span>
-                )}
-              </React.Fragment>
-            ))}
-          </nav>
+          <Breadcrumbs items={breadcrumbs} className={`mb-6 ${centered ? 'justify-center' : ''}`} />
         )}
         {eyebrow && (
           <div className={`mb-5 flex ${centered ? 'justify-center' : ''}`}>

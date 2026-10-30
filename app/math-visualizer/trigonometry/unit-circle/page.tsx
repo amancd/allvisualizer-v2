@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { DetailPage } from '@/components/content';
 import UnitCircleVisualizer from './UnitCircleVisualizer';
 
 export const metadata: Metadata = {
@@ -8,5 +9,13 @@ export const metadata: Metadata = {
 };
 
 export default function UnitCirclePage() {
-  return <UnitCircleVisualizer />;
+  return (
+    <DetailPage
+      subject="math"
+      item="unit-circle"
+      description="Explore the unit circle interactively. See how angles relate to coordinates and trigonometric functions in real-time."
+    >
+      <UnitCircleVisualizer />
+    </DetailPage>
+  );
 }

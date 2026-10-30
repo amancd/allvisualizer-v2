@@ -1,14 +1,19 @@
-'use client';
+import type { Metadata } from 'next';
+import { Callout, CodeTabs, Complexity, ContentSection, DetailPage, Prose, StepList } from '@/components/content';
 
-import { useState } from 'react';
-import Link from 'next/link';
+export const metadata: Metadata = {
+  title: 'Reverse Linked List - Linked List Algorithm | DSA Visualizer',
+  description:
+    'Learn to reverse a singly linked list using both iterative and recursive approaches. Master pointer manipulation with solutions in multiple programming languages.',
+  keywords: ['reverse linked list', 'linked list', 'pointers', 'recursion', 'leetcode', 'coding interview', 'algorithm visualization'],
+  openGraph: {
+    title: 'Reverse Linked List - Iterative and Recursive Solutions',
+    description: 'Master pointer manipulation by reversing a singly linked list',
+  },
+};
 
-export default function ReverseLinkedListPage() {
-  const [showTOC, setShowTOC] = useState(false);
-  const [selectedLanguage, setSelectedLanguage] = useState<'javascript' | 'python' | 'java' | 'cpp'>('javascript');
-
-  const solutions = {
-    javascript: `// Definition for singly-linked list node
+const solutions = [
+  { label: 'JavaScript', language: 'javascript', code: `// Definition for singly-linked list node
 class ListNode {
     constructor(val, next = null) {
         this.val = val;
@@ -20,7 +25,7 @@ class ListNode {
 function reverseList(head) {
     let prev = null;
     let current = head;
-    
+
     while (current !== null) {
         // Save next node
         let nextTemp = current.next;
@@ -30,7 +35,7 @@ function reverseList(head) {
         prev = current;
         current = nextTemp;
     }
-    
+
     return prev; // New head
 }
 
@@ -40,18 +45,17 @@ function reverseListRecursive(head) {
     if (head === null || head.next === null) {
         return head;
     }
-    
+
     // Recursive call
     let newHead = reverseListRecursive(head.next);
-    
+
     // Reverse the links
     head.next.next = head;
     head.next = null;
-    
-    return newHead;
-}`,
 
-    python: `# Definition for singly-linked list node
+    return newHead;
+}` },
+  { label: 'Python', language: 'python', code: `# Definition for singly-linked list node
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
@@ -61,7 +65,7 @@ class ListNode:
 def reverseList(head):
     prev = None
     current = head
-    
+
     while current is not None:
         # Save next node
         next_temp = current.next
@@ -70,7 +74,7 @@ def reverseList(head):
         # Move pointers forward
         prev = current
         current = next_temp
-    
+
     return prev  # New head
 
 # Recursive Solution
@@ -78,17 +82,16 @@ def reverseListRecursive(head):
     # Base case
     if head is None or head.next is None:
         return head
-    
+
     # Recursive call
     new_head = reverseListRecursive(head.next)
-    
+
     # Reverse the links
     head.next.next = head
     head.next = None
-    
-    return new_head`,
 
-    java: `// Definition for singly-linked list node
+    return new_head` },
+  { label: 'Java', language: 'java', code: `// Definition for singly-linked list node
 class ListNode {
     int val;
     ListNode next;
@@ -104,7 +107,7 @@ class Solution {
     public ListNode reverseList(ListNode head) {
         ListNode prev = null;
         ListNode current = head;
-        
+
         while (current != null) {
             // Save next node
             ListNode nextTemp = current.next;
@@ -114,29 +117,28 @@ class Solution {
             prev = current;
             current = nextTemp;
         }
-        
+
         return prev; // New head
     }
-    
+
     // Recursive Solution
     public ListNode reverseListRecursive(ListNode head) {
         // Base case
         if (head == null || head.next == null) {
             return head;
         }
-        
+
         // Recursive call
         ListNode newHead = reverseListRecursive(head.next);
-        
+
         // Reverse the links
         head.next.next = head;
         head.next = null;
-        
+
         return newHead;
     }
-}`,
-
-    cpp: `// Definition for singly-linked list node
+}` },
+  { label: 'C++', language: 'cpp', code: `// Definition for singly-linked list node
 struct ListNode {
     int val;
     ListNode *next;
@@ -151,7 +153,7 @@ public:
     ListNode* reverseList(ListNode* head) {
         ListNode* prev = nullptr;
         ListNode* current = head;
-        
+
         while (current != nullptr) {
             // Save next node
             ListNode* nextTemp = current->next;
@@ -161,344 +163,117 @@ public:
             prev = current;
             current = nextTemp;
         }
-        
+
         return prev; // New head
     }
-    
+
     // Recursive Solution
     ListNode* reverseListRecursive(ListNode* head) {
         // Base case
         if (head == nullptr || head->next == nullptr) {
             return head;
         }
-        
+
         // Recursive call
         ListNode* newHead = reverseListRecursive(head->next);
-        
+
         // Reverse the links
         head->next->next = head;
         head->next = nullptr;
-        
+
         return newHead;
     }
-};`
-  };
+};` },
+];
 
+export default function ReverseLinkedListPage() {
   return (
-    <div className="min-h-screen bg-subtle">
-      {/* Mobile TOC Toggle */}
-      <button
-        onClick={() => setShowTOC(!showTOC)}
-        className="fixed bottom-6 right-6 z-50 lg:hidden bg-gradient-to-r from-purple-600 to-pink-600 text-white p-4 rounded-full shadow-lg hover:shadow-card-hover transition-all"
-      >
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
+    <DetailPage
+      subject="dsa"
+      item="reverse-linked-list"
+      width="narrow"
+      description="Learn to reverse a singly linked list using both iterative and recursive approaches. Master pointer manipulation fundamentals."
+      meta={<span className="font-mono">Time O(n) · Space O(1) iterative</span>}
+    >
+      <ContentSection title="Problem statement">
+        <Prose>
+          <p>
+            Given the <code>head</code> of a singly linked list, reverse the list, and return the reversed list.
+          </p>
+        </Prose>
+        <Callout tone="example" title="Example 1" className="mt-5">
+          <pre className="whitespace-pre-wrap font-mono text-[13px]">{`Input:  head = [1, 2, 3, 4, 5]
+Output: [5, 4, 3, 2, 1]`}</pre>
+        </Callout>
+        <Callout tone="example" title="Example 2" className="mt-4">
+          <pre className="whitespace-pre-wrap font-mono text-[13px]">{`Input:  head = [1, 2]
+Output: [2, 1]`}</pre>
+        </Callout>
+        <Callout tone="example" title="Example 3" className="mt-4">
+          <pre className="whitespace-pre-wrap font-mono text-[13px]">{`Input:  head = []
+Output: []`}</pre>
+        </Callout>
+      </ContentSection>
 
-      <div className="pt-28 pb-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex gap-8">
-            {/* Table of Contents - Sidebar */}
-            <aside className={`${showTOC ? 'block' : 'hidden'} lg:block fixed lg:sticky top-20 left-0 w-64 bg-white p-6 rounded-card border border-line shadow-sm h-fit z-40 lg:z-0 m-4 lg:m-0`}>
-              <h3 className="text-sm font-bold text-ink mb-4 uppercase tracking-wide">On This Page</h3>
-              <nav className="space-y-2">
-                <a href="#problem" className="block text-sm text-ink-muted hover:text-ink transition-colors py-1">Problem Statement</a>
-                <a href="#examples" className="block text-sm text-ink-muted hover:text-ink transition-colors py-1">Examples</a>
-                <a href="#approach" className="block text-sm text-ink-muted hover:text-ink transition-colors py-1">Approach</a>
-                <a href="#solution" className="block text-sm text-ink-muted hover:text-ink transition-colors py-1">Solution</a>
-                <a href="#complexity" className="block text-sm text-ink-muted hover:text-ink transition-colors py-1">Complexity Analysis</a>
-              </nav>
-            </aside>
+      <ContentSection title="Approach">
+        <h3 className="mb-3 text-lg font-semibold text-ink">Iterative approach</h3>
+        <StepList
+          steps={[
+            <>
+              <strong className="text-ink">Initialize pointers.</strong> Start with{' '}
+              <code className="font-mono text-ink">prev = null</code> and{' '}
+              <code className="font-mono text-ink">current = head</code>.
+            </>,
+            <>
+              <strong className="text-ink">Iterate through the list.</strong> For each node, save the next node, reverse the
+              current node&apos;s pointer to point to prev, then move both pointers forward.
+            </>,
+            <>
+              <strong className="text-ink">Return the new head.</strong> When iteration completes, prev points to the new head
+              of the reversed list.
+            </>,
+          ]}
+        />
 
-            {/* Main Content */}
-            <main className="flex-1 max-w-4xl">
-              {/* Breadcrumb */}
-              <div className="flex items-center gap-2 text-sm text-ink-muted mb-6 animate-fade-in">
-                <Link href="/" className="hover:text-ink transition-colors">Home</Link>
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-                <Link href="/dsa-visualizer" className="hover:text-ink transition-colors">DSA Visualizer</Link>
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-                <Link href="/dsa-visualizer/linked-lists" className="hover:text-ink transition-colors">Linked Lists</Link>
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-                <span className="text-ink font-medium">Reverse Linked List</span>
-              </div>
+        <h3 className="mb-3 mt-8 text-lg font-semibold text-ink">Recursive approach</h3>
+        <StepList
+          steps={[
+            <>
+              <strong className="text-ink">Base case.</strong> If the list is empty or has only one node, return the head.
+            </>,
+            <>
+              <strong className="text-ink">Recursive call.</strong> Recursively reverse the rest of the list starting from
+              head.next.
+            </>,
+            <>
+              <strong className="text-ink">Reverse links.</strong> Make the next node point back to the current node, then set
+              the current node&apos;s next to null.
+            </>,
+          ]}
+        />
+      </ContentSection>
 
-              {/* Hero Section */}
-              <div className="bg-gradient-to-br from-gray-50 via-gray-100 to-white p-6 md:p-8 rounded-2xl border border-line-strong mb-8 animate-fade-in">
-                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4">
-                  <div>
-                    <h1 className="text-3xl md:text-4xl font-bold text-ink mb-3 tracking-tight">
-                      Reverse Linked List
-                    </h1>
-                    <div className="flex flex-wrap items-center gap-3">
-                      <span className="px-3 py-1 bg-green-100 text-green-700 rounded-lg text-sm font-semibold border border-green-200">
-                        Easy
-                      </span>
-                      <span className="px-3 py-1 bg-gray-200 text-ink rounded-lg text-sm font-semibold">
-                        Linked List
-                      </span>
-                      <span className="px-3 py-1 bg-pink-100 text-pink-700 rounded-lg text-sm font-semibold">
-                        Recursion
-                      </span>
-                      <span className="px-3 py-1 bg-gray-200 text-gray-800 rounded-lg text-sm font-semibold">
-                        Pointers
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <p className="text-base md:text-lg text-gray-700 leading-relaxed">
-                  Learn to reverse a singly linked list using both iterative and recursive approaches. Master pointer manipulation fundamentals.
-                </p>
-              </div>
+      <ContentSection title="Solution">
+        <CodeTabs samples={solutions} />
+      </ContentSection>
 
-              {/* Problem Statement */}
-              <section id="problem" className="scroll-mt-24 mb-8 animate-fade-in" style={{ animationDelay: '0.1s' }}>
-                <div className="bg-white p-6 md:p-8 rounded-card border border-line shadow-sm hover:shadow-card-hover transition-shadow">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-600 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                      </svg>
-                    </div>
-                    <h2 className="text-xl md:text-2xl font-bold text-ink">Problem Statement</h2>
-                  </div>
-                  <div className="prose prose-lg max-w-none">
-                    <p className="text-gray-700 mb-4 text-sm md:text-base">
-                      Given the <code className="px-2 py-1 bg-gray-100 rounded text-sm">head</code> of a singly linked list, reverse the list, and return the reversed list.
-                    </p>
-                  </div>
-                </div>
-              </section>
+      <ContentSection title="Time & space complexity">
+        <h3 className="mb-3 text-lg font-semibold text-ink">Iterative approach</h3>
+        <Complexity
+          time="O(n)"
+          timeNote="We visit each node exactly once."
+          space="O(1)"
+          spaceNote="Only a constant amount of extra space for pointers."
+        />
 
-              {/* Examples */}
-              <section id="examples" className="scroll-mt-24 mb-8 animate-fade-in" style={{ animationDelay: '0.15s' }}>
-                <div className="bg-white p-6 md:p-8 rounded-card border border-line shadow-sm hover:shadow-card-hover transition-shadow">
-                  <h3 className="text-lg md:text-xl font-bold text-ink mb-4">Examples</h3>
-                  
-                  <div className="space-y-6">
-                    <div className="p-4 bg-subtle rounded-xl border border-line">
-                      <div className="font-semibold text-ink mb-2 text-sm md:text-base">Example 1:</div>
-                      <div className="font-mono text-xs sm:text-sm space-y-1">
-                        <div><span className="text-ink-muted">Input:</span> head = [1,2,3,4,5]</div>
-                        <div><span className="text-ink-muted">Output:</span> [5,4,3,2,1]</div>
-                      </div>
-                    </div>
-
-                    <div className="p-4 bg-subtle rounded-xl border border-line">
-                      <div className="font-semibold text-ink mb-2 text-sm md:text-base">Example 2:</div>
-                      <div className="font-mono text-xs sm:text-sm space-y-1">
-                        <div><span className="text-ink-muted">Input:</span> head = [1,2]</div>
-                        <div><span className="text-ink-muted">Output:</span> [2,1]</div>
-                      </div>
-                    </div>
-
-                    <div className="p-4 bg-subtle rounded-xl border border-line">
-                      <div className="font-semibold text-ink mb-2 text-sm md:text-base">Example 3:</div>
-                      <div className="font-mono text-xs sm:text-sm space-y-1">
-                        <div><span className="text-ink-muted">Input:</span> head = []</div>
-                        <div><span className="text-ink-muted">Output:</span> []</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </section>
-
-              {/* Approach */}
-              <section id="approach" className="scroll-mt-24 mb-8 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-                <div className="bg-white p-6 md:p-8 rounded-card border border-line shadow-sm hover:shadow-card-hover transition-shadow">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                      </svg>
-                    </div>
-                    <h2 className="text-xl md:text-2xl font-bold text-ink">Approach</h2>
-                  </div>
-                  
-                  <div className="mb-6">
-                    <h4 className="font-bold text-ink mb-3 text-base md:text-lg">Iterative Approach:</h4>
-                    <div className="space-y-4">
-                      <div className="flex items-start gap-3">
-                        <div className="w-8 h-8 bg-gray-200 text-ink rounded-full flex items-center justify-center flex-shrink-0 font-bold text-sm">1</div>
-                        <div className="flex-1">
-                          <h4 className="font-semibold text-ink mb-1 text-sm md:text-base">Initialize Pointers</h4>
-                          <p className="text-gray-700 text-sm md:text-base">Start with <code className="px-2 py-1 bg-gray-100 rounded text-xs">prev = null</code> and <code className="px-2 py-1 bg-gray-100 rounded text-xs">current = head</code></p>
-                        </div>
-                      </div>
-
-                      <div className="flex items-start gap-3">
-                        <div className="w-8 h-8 bg-gray-200 text-ink rounded-full flex items-center justify-center flex-shrink-0 font-bold text-sm">2</div>
-                        <div className="flex-1">
-                          <h4 className="font-semibold text-ink mb-1 text-sm md:text-base">Iterate Through List</h4>
-                          <p className="text-gray-700 text-sm md:text-base">For each node, save the next node, reverse the current node's pointer to point to prev, then move both pointers forward.</p>
-                        </div>
-                      </div>
-
-                      <div className="flex items-start gap-3">
-                        <div className="w-8 h-8 bg-gray-200 text-ink rounded-full flex items-center justify-center flex-shrink-0 font-bold text-sm">3</div>
-                        <div className="flex-1">
-                          <h4 className="font-semibold text-ink mb-1 text-sm md:text-base">Return New Head</h4>
-                          <p className="text-gray-700 text-sm md:text-base">When iteration completes, prev will point to the new head of the reversed list.</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div>
-                    <h4 className="font-bold text-ink mb-3 text-base md:text-lg">Recursive Approach:</h4>
-                    <div className="space-y-4">
-                      <div className="flex items-start gap-3">
-                        <div className="w-8 h-8 bg-pink-100 text-pink-600 rounded-full flex items-center justify-center flex-shrink-0 font-bold text-sm">1</div>
-                        <div className="flex-1">
-                          <h4 className="font-semibold text-ink mb-1 text-sm md:text-base">Base Case</h4>
-                          <p className="text-gray-700 text-sm md:text-base">If the list is empty or has only one node, return the head.</p>
-                        </div>
-                      </div>
-
-                      <div className="flex items-start gap-3">
-                        <div className="w-8 h-8 bg-pink-100 text-pink-600 rounded-full flex items-center justify-center flex-shrink-0 font-bold text-sm">2</div>
-                        <div className="flex-1">
-                          <h4 className="font-semibold text-ink mb-1 text-sm md:text-base">Recursive Call</h4>
-                          <p className="text-gray-700 text-sm md:text-base">Recursively reverse the rest of the list starting from head.next.</p>
-                        </div>
-                      </div>
-
-                      <div className="flex items-start gap-3">
-                        <div className="w-8 h-8 bg-pink-100 text-pink-600 rounded-full flex items-center justify-center flex-shrink-0 font-bold text-sm">3</div>
-                        <div className="flex-1">
-                          <h4 className="font-semibold text-ink mb-1 text-sm md:text-base">Reverse Links</h4>
-                          <p className="text-gray-700 text-sm md:text-base">Make the next node point back to the current node, then set current node's next to null.</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </section>
-
-              {/* Solution */}
-              <section id="solution" className="scroll-mt-24 mb-8 animate-fade-in" style={{ animationDelay: '0.25s' }}>
-                <div className="bg-white p-6 md:p-8 rounded-card border border-line shadow-sm hover:shadow-card-hover transition-shadow">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                      </svg>
-                    </div>
-                    <h2 className="text-xl md:text-2xl font-bold text-ink">Solution</h2>
-                  </div>
-
-                  {/* Language Tabs */}
-                  <div className="flex flex-wrap gap-2 mb-4 border-b border-line pb-4">
-                    {(['javascript', 'python', 'java', 'cpp'] as const).map((lang) => (
-                      <button
-                        key={lang}
-                        onClick={() => setSelectedLanguage(lang)}
-                        className={`px-4 py-2 rounded-lg font-semibold text-sm transition-all ${
-                          selectedLanguage === lang
-                            ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-md'
-                            : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                        }`}
-                      >
-                        {lang === 'cpp' ? 'C++' : lang.charAt(0).toUpperCase() + lang.slice(1)}
-                      </button>
-                    ))}
-                  </div>
-
-                  <div className="bg-gray-900 rounded-xl p-4 md:p-6 overflow-x-auto">
-                    <pre className="text-gray-100 text-xs sm:text-sm font-mono leading-relaxed">
-                      {solutions[selectedLanguage]}
-                    </pre>
-                  </div>
-                </div>
-              </section>
-
-              {/* Complexity */}
-              <section id="complexity" className="scroll-mt-24 mb-8 animate-fade-in" style={{ animationDelay: '0.3s' }}>
-                <div className="bg-white p-6 md:p-8 rounded-card border border-line shadow-sm hover:shadow-card-hover transition-shadow">
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="w-10 h-10 bg-gradient-to-br from-orange-500 to-amber-600 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                      </svg>
-                    </div>
-                    <h2 className="text-xl md:text-2xl font-bold text-ink">Complexity Analysis</h2>
-                  </div>
-
-                  <div className="space-y-6">
-                    <div>
-                      <h4 className="font-bold text-ink mb-3">Iterative Approach:</h4>
-                      <div className="space-y-4">
-                        <div className="p-4 md:p-6 bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl border-2 border-green-200">
-                          <div className="flex items-center justify-between mb-2">
-                            <span className="text-sm font-bold text-gray-700">Time Complexity</span>
-                            <code className="px-3 py-1 bg-green-100 text-green-700 rounded-md font-mono text-sm font-semibold">O(n)</code>
-                          </div>
-                          <p className="text-sm text-ink-muted">We visit each node exactly once.</p>
-                        </div>
-
-                        <div className="p-4 md:p-6 bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl border-2 border-line-strong">
-                          <div className="flex items-center justify-between mb-2">
-                            <span className="text-sm font-bold text-gray-700">Space Complexity</span>
-                            <code className="px-3 py-1 bg-gray-200 text-ink rounded-md font-mono text-sm font-semibold">O(1)</code>
-                          </div>
-                          <p className="text-sm text-ink-muted">Only using a constant amount of extra space for pointers.</p>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div>
-                      <h4 className="font-bold text-ink mb-3">Recursive Approach:</h4>
-                      <div className="space-y-4">
-                        <div className="p-4 md:p-6 bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl border-2 border-green-200">
-                          <div className="flex items-center justify-between mb-2">
-                            <span className="text-sm font-bold text-gray-700">Time Complexity</span>
-                            <code className="px-3 py-1 bg-green-100 text-green-700 rounded-md font-mono text-sm font-semibold">O(n)</code>
-                          </div>
-                          <p className="text-sm text-ink-muted">We visit each node exactly once.</p>
-                        </div>
-
-                        <div className="p-4 md:p-6 bg-gradient-to-br from-yellow-50 to-orange-50 rounded-xl border-2 border-yellow-200">
-                          <div className="flex items-center justify-between mb-2">
-                            <span className="text-sm font-bold text-gray-700">Space Complexity</span>
-                            <code className="px-3 py-1 bg-yellow-100 text-yellow-700 rounded-md font-mono text-sm font-semibold">O(n)</code>
-                          </div>
-                          <p className="text-sm text-ink-muted">Due to the recursion call stack, which can go n levels deep.</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </section>
-
-              {/* Next Steps */}
-              <div className="bg-gradient-to-br from-purple-600 via-pink-600 to-purple-700 rounded-2xl p-6 md:p-8 text-white animate-fade-in" style={{ animationDelay: '0.35s' }}>
-                <h3 className="text-2xl md:text-3xl font-bold mb-4 tracking-tight">Ready for More Challenges?</h3>
-                <p className="text-sm md:text-base text-gray-100 mb-6">
-                  Continue mastering linked list operations with more problems.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
-                  <Link
-                    href="/dsa-visualizer/linked-lists"
-                    className="inline-flex items-center justify-center gap-2 px-4 sm:px-6 py-3 bg-white text-ink rounded-xl font-semibold text-sm md:text-base hover:bg-subtle transition-all hover:-translate-y-0.5 hover:shadow-card-hover"
-                  >
-                    More Linked List Problems
-                    <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                    </svg>
-                  </Link>
-                </div>
-              </div>
-            </main>
-          </div>
-        </div>
-      </div>
-    </div>
+        <h3 className="mb-3 mt-8 text-lg font-semibold text-ink">Recursive approach</h3>
+        <Complexity
+          time="O(n)"
+          timeNote="We visit each node exactly once."
+          space="O(n)"
+          spaceNote="Due to the recursion call stack, which can go n levels deep."
+        />
+      </ContentSection>
+    </DetailPage>
   );
 }

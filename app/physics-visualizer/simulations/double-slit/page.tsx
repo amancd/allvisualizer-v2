@@ -1,133 +1,105 @@
-import type { Metadata } from "next";
-import Link from 'next/link';
+import type { Metadata } from 'next';
+import { Callout, CardGrid, ContentSection, DetailPage, Prose, type CardGridItem } from '@/components/content';
 import DoubleSlitVisualizer from './DoubleSlitVisualizer';
-import GiscusComments from '@/components/ui/GiscusComments';
 
 export const metadata: Metadata = {
-  title: "Double-Slit Experiment - Waves & Optics | AllVisualizer",
-  description: "Experience the famous double-slit experiment that demonstrates wave-particle duality. Visualize interference patterns, diffraction, and the wave nature of light.",
-  keywords: ["double slit experiment", "wave particle duality", "interference pattern", "diffraction", "quantum mechanics", "Young's experiment"],
+  title: 'Double-Slit Experiment - Waves & Optics | AllVisualizer',
+  description:
+    'Experience the famous double-slit experiment that demonstrates wave-particle duality. Visualize interference patterns, diffraction, and the wave nature of light.',
+  keywords: ['double slit experiment', 'wave particle duality', 'interference pattern', 'diffraction', 'quantum mechanics', "Young's experiment"],
 };
+
+const concepts: CardGridItem[] = [
+  {
+    title: 'Coherent sources',
+    description:
+      'The two slits act as coherent sources: they maintain a constant phase relationship because they come from the same light source.',
+  },
+  {
+    title: 'Interference pattern',
+    description:
+      'Alternating bright and dark fringes appear due to constructive and destructive interference of waves from the two slits.',
+  },
+  {
+    title: 'Path difference',
+    description:
+      'The difference in distance traveled by light from each slit determines whether interference is constructive or destructive.',
+  },
+  {
+    title: 'Central maximum',
+    description: 'The brightest fringe, at the center, where the path difference is zero and waves arrive in phase.',
+  },
+];
+
+const parameters: CardGridItem[] = [
+  { title: 'Wavelength (λ)', description: 'Smaller wavelengths (blue) create tighter fringe spacing.' },
+  { title: 'Slit separation (d)', description: 'Larger separation creates tighter fringes.' },
+  { title: 'Screen distance (L)', description: 'Greater distance spreads out the pattern.' },
+  { title: 'Slit width', description: 'Affects the single-slit diffraction envelope.' },
+];
+
+const applications: CardGridItem[] = [
+  { icon: '📏', title: 'Wavelength measurement', description: 'Precisely determine the wavelength of light sources.' },
+  { icon: '🔍', title: 'Optical testing', description: 'Check the quality of lenses and mirrors using interferometry.' },
+  {
+    icon: '🌈',
+    title: 'Spectroscopy',
+    description: 'Diffraction gratings (many slits) separate light by wavelength.',
+  },
+  { icon: '🖼️', title: 'Holography', description: 'Creates 3D images using interference patterns.' },
+  {
+    icon: '⚛️',
+    title: 'Quantum mechanics',
+    description: 'Demonstrates wave-particle duality with electrons and photons.',
+  },
+  { icon: '🔦', title: 'Laser characterization', description: 'Measure coherence length and beam quality.' },
+];
 
 export default function DoubleSlitPage() {
   return (
-    <div className="min-h-screen bg-white pt-24">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Breadcrumb */}
-        <nav className="flex items-center gap-2 text-sm text-ink-muted mb-8">
-          <Link href="/" className="hover:text-ink">Home</Link>
-          <span>/</span>
-          <Link href="/physics-visualizer" className="hover:text-ink">Physics</Link>
-          <span>/</span>
-          <Link href="/physics-visualizer/waves-optics" className="hover:text-ink">Waves & Optics</Link>
-          <span>/</span>
-          <span className="text-ink">Double-Slit Experiment</span>
-        </nav>
+    <DetailPage
+      subject="physics"
+      item="double-slit"
+      description="One of the most famous experiments in physics, demonstrating the wave nature of light."
+    >
+      <DoubleSlitVisualizer />
 
-        {/* Header */}
-        <header className="mb-8">
-          <div className="flex items-center gap-3 mb-4">
-            <h1 className="text-3xl md:text-4xl font-bold text-ink tracking-tight">
-              Double-Slit Experiment
-            </h1>
-            <span className="px-3 py-1 bg-yellow-100 text-yellow-700 rounded-lg text-sm font-medium">
-              Intermediate
-            </span>
-          </div>
-          <p className="text-lg text-ink-muted">
-            One of the most famous experiments in physics, demonstrating the wave nature of light.
+      <ContentSection title="Theory">
+        <Callout tone="formula" title="Young's double-slit experiment">
+          <p>
+            When coherent light passes through two narrow slits, it creates an interference pattern of bright and dark
+            fringes on a screen. This demonstrates that light behaves as a wave.
           </p>
-        </header>
-
-        {/* Visualizer */}
-        <DoubleSlitVisualizer />
-
-        {/* Theory Section */}
-        <div className="mt-12 prose prose-lg max-w-none">
-          <h2 className="text-2xl font-bold text-ink mb-4">Theory</h2>
-          
-          <div className="bg-teal-50 border border-teal-200 rounded-lg p-6 mb-6">
-            <h3 className="text-lg font-semibold text-teal-900 mb-3">Young's Double-Slit Experiment</h3>
-            <p className="text-teal-800 mb-4">
-              When coherent light passes through two narrow slits, it creates an interference pattern of bright 
-              and dark fringes on a screen. This demonstrates that light behaves as a wave.
-            </p>
-            <div className="bg-white rounded p-4 font-mono text-sm space-y-2">
-              <p><strong>Path Difference:</strong> δ = d sin(θ)</p>
-              <p><strong>Bright Fringes:</strong> δ = nλ (n = 0, ±1, ±2, ...)</p>
-              <p><strong>Dark Fringes:</strong> δ = (n + ½)λ</p>
-              <p><strong>Fringe Spacing:</strong> Δy = λL / d</p>
-            </div>
+          <div className="mt-3 space-y-1 font-mono">
+            <p><strong>Path difference:</strong> δ = d sin(θ)</p>
+            <p><strong>Bright fringes:</strong> δ = nλ (n = 0, ±1, ±2, ...)</p>
+            <p><strong>Dark fringes:</strong> δ = (n + ½)λ</p>
+            <p><strong>Fringe spacing:</strong> Δy = λL / d</p>
           </div>
+        </Callout>
+      </ContentSection>
 
-          <h3 className="text-xl font-semibold text-ink mb-3">Key Concepts</h3>
-          
-          <div className="grid md:grid-cols-2 gap-4 mb-6">
-            <div className="bg-subtle border border-line rounded p-4">
-              <h4 className="font-semibold text-ink mb-2">Coherent Sources</h4>
-              <p className="text-sm text-gray-700">
-                The two slits act as coherent sources - they maintain a constant phase relationship 
-                because they come from the same light source.
-              </p>
-            </div>
-            
-            <div className="bg-subtle border border-line rounded p-4">
-              <h4 className="font-semibold text-ink mb-2">Interference Pattern</h4>
-              <p className="text-sm text-gray-700">
-                Alternating bright and dark fringes appear due to constructive and destructive interference 
-                of waves from the two slits.
-              </p>
-            </div>
-            
-            <div className="bg-subtle border border-line rounded p-4">
-              <h4 className="font-semibold text-ink mb-2">Path Difference</h4>
-              <p className="text-sm text-gray-700">
-                The difference in distance traveled by light from each slit determines whether 
-                interference is constructive or destructive.
-              </p>
-            </div>
-            
-            <div className="bg-subtle border border-line rounded p-4">
-              <h4 className="font-semibold text-ink mb-2">Central Maximum</h4>
-              <p className="text-sm text-gray-700">
-                The brightest fringe at the center where path difference is zero and waves arrive in phase.
-              </p>
-            </div>
-          </div>
+      <ContentSection title="Key concepts">
+        <CardGrid items={concepts} />
+      </ContentSection>
 
-          <h3 className="text-xl font-semibold text-ink mb-3">Parameters Explained</h3>
-          <ul className="list-disc list-inside text-gray-700 space-y-2 mb-6">
-            <li><strong>Wavelength (λ):</strong> Smaller wavelengths (blue) create tighter fringe spacing</li>
-            <li><strong>Slit Separation (d):</strong> Larger separation creates tighter fringes</li>
-            <li><strong>Screen Distance (L):</strong> Greater distance spreads out the pattern</li>
-            <li><strong>Slit Width:</strong> Affects the single-slit diffraction envelope</li>
-          </ul>
+      <ContentSection title="Parameters explained">
+        <CardGrid items={parameters} />
+      </ContentSection>
 
-          <h3 className="text-xl font-semibold text-ink mb-3">Historical Significance</h3>
-          <p className="text-gray-700 mb-4">
-            Thomas Young performed this experiment in 1801, providing compelling evidence for the wave 
-            theory of light. It challenged Newton's particle theory and revolutionized our understanding 
-            of light. Later, the experiment would play a crucial role in quantum mechanics by demonstrating 
-            wave-particle duality.
+      <ContentSection title="Historical significance">
+        <Prose>
+          <p>
+            Thomas Young performed this experiment in 1801, providing compelling evidence for the wave theory of light.
+            It challenged Newton&apos;s particle theory and revolutionized our understanding of light. Later, the
+            experiment would play a crucial role in quantum mechanics by demonstrating wave-particle duality.
           </p>
+        </Prose>
+      </ContentSection>
 
-          <h3 className="text-xl font-semibold text-ink mb-3">Applications</h3>
-          <ul className="list-disc list-inside text-gray-700 space-y-2">
-            <li><strong>Wavelength measurement</strong> - Precisely determine wavelength of light sources</li>
-            <li><strong>Optical testing</strong> - Check quality of lenses and mirrors using interferometry</li>
-            <li><strong>Spectroscopy</strong> - Diffraction gratings (many slits) separate light by wavelength</li>
-            <li><strong>Holography</strong> - Creates 3D images using interference patterns</li>
-            <li><strong>Quantum mechanics</strong> - Demonstrates wave-particle duality with electrons and photons</li>
-            <li><strong>Laser characterization</strong> - Measure coherence length and beam quality</li>
-          </ul>
-        </div>
-
-        {/* Discussion Section */}
-        <div className="mt-12">
-          <h2 className="text-2xl font-bold text-ink mb-6">Discussion</h2>
-          <GiscusComments />
-        </div>
-      </div>
-    </div>
+      <ContentSection title="Applications">
+        <CardGrid items={applications} columns={3} />
+      </ContentSection>
+    </DetailPage>
   );
 }

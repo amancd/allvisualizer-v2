@@ -1,8 +1,7 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
-import Link from 'next/link';
-import { Button, GiscusComments } from '@/components/ui';
+import { Button } from '@/components/ui';
 import { Play, Pause, RotateCcw, ZoomIn, ZoomOut } from 'lucide-react';
 
 export default function UnitCircleVisualizer() {
@@ -259,49 +258,9 @@ export default function UnitCircleVisualizer() {
   const step = angleMode === 'degrees' ? 1 : 0.01;
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Breadcrumbs */}
-      <nav className="pt-24 pb-4">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ol className="flex items-center space-x-2 text-sm text-ink-muted">
-            <li>
-              <Link href="/" className="hover:text-ink">
-                Home
-              </Link>
-            </li>
-            <li>/</li>
-            <li>
-              <Link href="/math-visualizer" className="hover:text-ink">
-                Math
-              </Link>
-            </li>
-            <li>/</li>
-            <li>
-              <Link href="/math-visualizer/trigonometry" className="hover:text-ink">
-                Trigonometry
-              </Link>
-            </li>
-            <li>/</li>
-            <li className="text-ink font-medium">Unit Circle</li>
-          </ol>
-        </div>
-      </nav>
-
-      {/* Header */}
-      <section className="pb-12">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl font-bold text-ink mb-4 tracking-tight">
-            Unit Circle Explorer
-          </h1>
-          <p className="text-lg text-ink-muted max-w-3xl">
-            Explore the unit circle interactively. See how angles relate to coordinates and trigonometric functions in real-time.
-          </p>
-        </div>
-      </section>
-
-      {/* Main Content */}
-      <section className="pb-16">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="space-y-12">
+      <section>
+        <div>
           <div className="grid lg:grid-cols-3 gap-8">
             {/* Controls */}
             <div className="lg:col-span-1 space-y-6">
@@ -521,8 +480,8 @@ export default function UnitCircleVisualizer() {
       </section>
 
       {/* Theory Section */}
-      <section className="py-16 bg-subtle">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="border-t border-line pt-12">
+        <div>
           <h2 className="text-3xl font-bold text-ink mb-8 tracking-tight">
             Understanding the Unit Circle
           </h2>
@@ -653,14 +612,6 @@ export default function UnitCircleVisualizer() {
       </section>
 
       {/* Comments */}
-      <section className="py-16">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-ink mb-6">
-            Discussion
-          </h2>
-          <GiscusComments />
-        </div>
-      </section>
     </div>
   );
 }

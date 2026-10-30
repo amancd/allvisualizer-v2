@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { DetailPage } from '@/components/content';
 import TrigFunctionsVisualizer from './TrigFunctionsVisualizer';
 
 export const metadata: Metadata = {
@@ -8,5 +9,13 @@ export const metadata: Metadata = {
 };
 
 export default function TrigFunctionsPage() {
-  return <TrigFunctionsVisualizer />;
+  return (
+    <DetailPage
+      subject="math"
+      item="trig-functions"
+      description="Explore sine, cosine, and tangent functions interactively. Adjust amplitude, frequency, phase shift, and vertical shift to see how they transform the graphs."
+    >
+      <TrigFunctionsVisualizer />
+    </DetailPage>
+  );
 }

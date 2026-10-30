@@ -1,15 +1,23 @@
-'use client';
-
-import { useState } from 'react';
-import Link from 'next/link';
-import GiscusComments from '@/components/ui/GiscusComments';
+import type { Metadata } from 'next';
+import { Callout, CardGrid, type CardGridItem, type CodeSample, CodeTabs, ContentSection, DetailPage, Prose, type RelatedEntry, RelatedItems, StepList } from '@/components/content';
 import OptimizationVisualizer from './OptimizationVisualizer';
 
-export default function OptimizationPage() {
-  const [selectedLanguage, setSelectedLanguage] = useState<'python' | 'javascript' | 'mathematical'>('python');
+export const metadata: Metadata = {
+  title: 'Optimization Problems - Calculus | AllVisualizer',
+  description:
+    'Master optimization using derivatives. Learn to find maximum and minimum values, critical points, and solve real-world optimization problems with interactive visualizations.',
+  keywords: ['optimization', 'calculus', 'maximum', 'minimum', 'critical points', 'second derivative test', 'applied calculus'],
+  openGraph: {
+    title: 'Optimization Problems - Interactive Calculus | AllVisualizer',
+    description: 'Master optimization with derivatives and critical points',
+  },
+};
 
-  const codeExamples = {
-    python: `import numpy as np
+const samples: CodeSample[] = [
+  {
+    label: 'Python',
+    language: 'python',
+    code: `import numpy as np
 import matplotlib.pyplot as plt
 from scipy.optimize import minimize_scalar
 
@@ -81,8 +89,11 @@ def optimization_problem():
 # Run optimization
 width, height, area = optimization_problem()
 print(f"\\nResult: {width} × {height} rectangle with area {area}")`,
-
-    javascript: `// Optimization Problem: Maximize rectangle area with fixed perimeter
+  },
+  {
+    label: 'JavaScript',
+    language: 'javascript',
+    code: `// Optimization Problem: Maximize rectangle area with fixed perimeter
 
 function findOptimalRectangle(perimeter) {
   // Problem Setup
@@ -154,8 +165,11 @@ function findOptimalRectangle(perimeter) {
 // Solve for perimeter = 16
 const result = findOptimalRectangle(16);
 console.log(\`\\nFinal Answer: \${result.width} × \${result.height} with area \${result.area}\`);`,
-
-    mathematical: `OPTIMIZATION PROBLEM
+  },
+  {
+    label: 'Math',
+    language: 'text',
+    code: `OPTIMIZATION PROBLEM
 ━━━━━━━━━━━━━━━━━━━━
 
 Problem: Find dimensions of rectangle with perimeter 16 
@@ -252,237 +266,97 @@ Optimization Steps:
 3. Find derivative, set = 0
 4. Solve for critical points
 5. Verify max/min with second derivative
-6. Check endpoints if domain is bounded`
-  };
+6. Check endpoints if domain is bounded`,
+  },
+];
+const strategy = [
+  'Identify the constraint and the objective function.',
+  'Express the objective in terms of one variable.',
+  'Find the derivative and set it equal to zero.',
+  'Solve for the critical points.',
+  'Verify max/min using the second derivative test.',
+  'Check boundary points if applicable.',
+];
 
+const classicProblems: CardGridItem[] = [
+  { title: 'Box volume', description: <><p>Maximize volume by cutting corners from a square sheet.</p><p>V(x) = x(a − 2x)², find the optimal cut size x.</p></> },
+  { title: 'Fence enclosure', description: <><p>Maximize area with a fixed amount of fencing.</p><p>Similar to the rectangle problem: the optimal shape is a square.</p></> },
+  { title: 'Can design', description: <><p>Minimize surface area for a fixed volume (cylinder).</p><p>A = 2πr² + 2πrh with V = πr²h constant.</p></> },
+  { title: 'Shortest distance', description: <><p>Find the point on a curve closest to a given point.</p><p>Minimize D² = (x − a)² + (f(x) − b)².</p></> },
+];
+
+const relatedTopics: RelatedEntry[] = [
+  { slug: 'derivatives', note: 'Foundation for finding critical points' },
+  { slug: 'chain-rule', note: 'Useful for complex optimization problems' },
+  { title: 'Lagrange Multipliers', note: 'Optimization with multiple constraints' },
+  { title: 'Linear Programming', note: 'Optimization for linear systems' },
+];
+
+export default function OptimizationPage() {
   return (
-    <div className="min-h-screen bg-white pt-28">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <nav className="mb-8 text-sm">
-          <ol className="flex items-center gap-2 text-gray-500">
-            <li><Link href="/" className="hover:text-ink">Home</Link></li>
-            <li>/</li>
-            <li><Link href="/math-visualizer" className="hover:text-ink">Math Visualizer</Link></li>
-            <li>/</li>
-            <li className="text-ink font-medium">Optimization</li>
-          </ol>
-        </nav>
+    <DetailPage
+      subject="math"
+      item="optimization"
+      width="narrow"
+      description="Learn to find maximum and minimum values using derivatives. Master critical points, the second derivative test, and real-world optimization applications."
+    >
+      <ContentSection title="Problem statement">
+        <Prose>
+          <p>
+            Find the dimensions of a rectangle with a <strong>fixed perimeter of 16 units</strong> that maximize the area.
+          </p>
+        </Prose>
+        <Callout tone="example" title="Analysis" className="mt-5">
+          <p><strong>Constraint:</strong> 2w + 2h = 16, so h = 8 − w</p>
+          <p><strong>Objective:</strong> Maximize A(w) = w · h = w(8 − w) = 8w − w²</p>
+          <p><strong>Method:</strong> Find where A&apos;(w) = 0</p>
+          <p><strong>Solution:</strong> w = 4, h = 4 (square), max area = 16</p>
+        </Callout>
+      </ContentSection>
 
-        <article className="space-y-8">
-          <header className="space-y-4 pb-8 border-b border-line">
-            <div className="flex items-center gap-2 text-sm">
-              <span className="px-2 py-1 bg-gray-200 text-ink rounded font-medium">Calculus</span>
-              <span className="text-gray-400">•</span>
-              <span className="text-gray-500">Intermediate</span>
-            </div>
-            
-            <h1 className="text-4xl md:text-5xl font-bold text-ink leading-tight tracking-tight">
-              Optimization Problems
-            </h1>
-            
-            <p className="text-xl text-ink-muted leading-relaxed">
-              Learn to find maximum and minimum values using derivatives. Master critical points, the second derivative test, and real-world optimization applications.
-            </p>
-          </header>
+      <ContentSection title="Intuition">
+        <Prose>
+          <p>
+            Optimization problems use derivatives to find <strong>maximum</strong> or <strong>minimum</strong> values. At
+            these optimal points, the derivative equals zero (horizontal tangent), making them{' '}
+            <strong>critical points</strong>.
+          </p>
+        </Prose>
+        <Callout tone="formula" title="Key concept" className="my-5">
+          To optimize f(x), find where f&apos;(x) = 0 (critical points), then use the second derivative test: if
+          f&apos;&apos;(x) &lt; 0, it&apos;s a maximum; if f&apos;&apos;(x) &gt; 0, it&apos;s a minimum.
+        </Callout>
+        <Prose>
+          <p>
+            For our rectangle problem, A(w) = 8w − w² gives A&apos;(w) = 8 − 2w. Setting this to zero: 8 − 2w = 0, so
+            w = 4. Since A&apos;&apos;(w) = −2 &lt; 0, this is indeed a maximum. Interestingly, the optimal shape is a{' '}
+            <strong>square</strong>!
+          </p>
+        </Prose>
+      </ContentSection>
 
-          <section className="space-y-4">
-            <h2 className="text-2xl font-bold text-ink">Problem Statement</h2>
-            <div className="bg-subtle border border-line rounded-lg p-6 space-y-4">
-              <p className="text-gray-700">
-                Find the dimensions of a rectangle with a <strong>fixed perimeter of 16 units</strong> that maximize the area.
-              </p>
-              
-              <div className="space-y-2">
-                <p className="font-semibold text-ink">Analysis:</p>
-                <div className="space-y-1 text-sm">
-                  <p><span className="font-medium">Constraint:</span> 2w + 2h = 16, so h = 8 - w</p>
-                  <p><span className="font-medium">Objective:</span> Maximize A(w) = w · h = w(8 - w) = 8w - w²</p>
-                  <p><span className="font-medium">Method:</span> Find where A'(w) = 0</p>
-                  <p className="text-ink-muted"><span className="font-medium">Solution:</span> w = 4, h = 4 (square), Max Area = 16</p>
-                </div>
-              </div>
-            </div>
-          </section>
+      <ContentSection title="General strategy" variant="card">
+        <StepList steps={strategy} />
+      </ContentSection>
 
-          <section className="space-y-4">
-            <h2 className="text-2xl font-bold text-ink">Intuition</h2>
-            <div className="prose prose-gray max-w-none">
-              <p className="text-gray-700 leading-relaxed">
-                Optimization problems use derivatives to find <strong>maximum</strong> or <strong>minimum</strong> values. 
-                At these optimal points, the derivative equals zero (horizontal tangent), making them <strong>critical points</strong>.
-              </p>
-              
-              <div className="bg-brand-50/60 border-l-4 border-brand-500 p-4 my-4">
-                <p className="text-sm text-ink">
-                  <strong>Key Concept:</strong> To optimize f(x), find where f'(x) = 0 (critical points), then use the 
-                  second derivative test: if f''(x) &lt; 0, it's a maximum; if f''(x) &gt; 0, it's a minimum.
-                </p>
-              </div>
+      <ContentSection
+        title="Interactive visualization"
+        description="Adjust the rectangle width to see how the area changes. Notice the area is maximized when the rectangle becomes a square (w = h = 4)."
+      >
+        <OptimizationVisualizer />
+      </ContentSection>
 
-              <p className="text-gray-700 leading-relaxed">
-                For our rectangle problem, A(w) = 8w - w² gives A'(w) = 8 - 2w. Setting this to zero: 8 - 2w = 0, so w = 4. 
-                Since A''(w) = -2 &lt; 0, this is indeed a maximum. Interestingly, the optimal shape is a <strong>square</strong>!
-              </p>
+      <ContentSection title="Implementation">
+        <CodeTabs samples={samples} />
+      </ContentSection>
 
-              <div className="bg-gray-100 border border-line-strong rounded-lg p-4 my-4">
-                <h4 className="font-semibold text-ink mb-2">General Strategy:</h4>
-                <ol className="text-sm text-ink space-y-1 list-decimal list-inside">
-                  <li>Identify constraint and objective function</li>
-                  <li>Express objective in terms of one variable</li>
-                  <li>Find derivative and set equal to zero</li>
-                  <li>Solve for critical points</li>
-                  <li>Verify max/min using second derivative test</li>
-                  <li>Check boundary points if applicable</li>
-                </ol>
-              </div>
-            </div>
-          </section>
+      <ContentSection title="Classic optimization problems">
+        <CardGrid items={classicProblems} />
+      </ContentSection>
 
-          <section className="space-y-4">
-            <h2 className="text-2xl font-bold text-ink">Interactive Visualization</h2>
-            <p className="text-ink-muted">
-              Adjust the rectangle width to see how the area changes. Notice the area is maximized when the rectangle becomes a square (w = h = 4).
-            </p>
-            <OptimizationVisualizer />
-          </section>
-
-          <section className="space-y-4">
-            <div className="flex items-center justify-between">
-              <h2 className="text-2xl font-bold text-ink">Implementation</h2>
-              <div className="flex gap-2">
-                <button
-                  onClick={() => setSelectedLanguage('python')}
-                  className={`px-3 py-1.5 text-sm font-medium rounded-lg transition-colors ${
-                    selectedLanguage === 'python'
-                      ? 'bg-brand-600 text-white shadow-brand'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                  }`}
-                >
-                  Python
-                </button>
-                <button
-                  onClick={() => setSelectedLanguage('javascript')}
-                  className={`px-3 py-1.5 text-sm font-medium rounded-lg transition-colors ${
-                    selectedLanguage === 'javascript'
-                      ? 'bg-brand-600 text-white shadow-brand'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                  }`}
-                >
-                  JavaScript
-                </button>
-                <button
-                  onClick={() => setSelectedLanguage('mathematical')}
-                  className={`px-3 py-1.5 text-sm font-medium rounded-lg transition-colors ${
-                    selectedLanguage === 'mathematical'
-                      ? 'bg-brand-600 text-white shadow-brand'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                  }`}
-                >
-                  Math
-                </button>
-              </div>
-            </div>
-
-            <div className="bg-gray-900 rounded-lg overflow-hidden">
-              <div className="px-4 py-3 bg-gray-800 border-b border-gray-700 flex items-center justify-between">
-                <span className="text-sm text-gray-300 font-medium">
-                  {selectedLanguage === 'mathematical' ? 'Mathematical Solution' : selectedLanguage === 'python' ? 'optimization.py' : 'optimization.js'}
-                </span>
-              </div>
-              <pre className="p-4 overflow-x-auto">
-                <code className="text-sm text-gray-100 whitespace-pre-wrap break-words">
-                  {codeExamples[selectedLanguage]}
-                </code>
-              </pre>
-            </div>
-          </section>
-
-          <section className="space-y-4">
-            <h2 className="text-2xl font-bold text-ink">Classic Optimization Problems</h2>
-            <div className="grid md:grid-cols-2 gap-4">
-              <div className="bg-gray-100 border border-line-strong rounded-lg p-4">
-                <h3 className="font-semibold text-ink mb-2">Box Volume</h3>
-                <p className="text-ink text-sm mb-2">
-                  Maximize volume by cutting corners from a square sheet
-                </p>
-                <p className="text-ink text-xs">
-                  V(x) = x(a-2x)², find optimal cut size x
-                </p>
-              </div>
-              
-              <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-                <h3 className="font-semibold text-green-900 mb-2">Fence Enclosure</h3>
-                <p className="text-green-800 text-sm mb-2">
-                  Maximize area with fixed amount of fencing
-                </p>
-                <p className="text-green-700 text-xs">
-                  Similar to rectangle problem, optimal is square
-                </p>
-              </div>
-
-              <div className="bg-gray-100 border border-line-strong rounded-lg p-4">
-                <h3 className="font-semibold text-ink mb-2">Can Design</h3>
-                <p className="text-ink text-sm mb-2">
-                  Minimize surface area for fixed volume (cylinder)
-                </p>
-                <p className="text-ink text-xs">
-                  A = 2πr² + 2πrh with V = πr²h constant
-                </p>
-              </div>
-
-              <div className="bg-orange-50 border border-orange-200 rounded-lg p-4">
-                <h3 className="font-semibold text-orange-900 mb-2">Shortest Distance</h3>
-                <p className="text-orange-800 text-sm mb-2">
-                  Find point on curve closest to a given point
-                </p>
-                <p className="text-orange-700 text-xs">
-                  Minimize D² = (x-a)² + (f(x)-b)²
-                </p>
-              </div>
-            </div>
-          </section>
-
-          <section className="space-y-4">
-            <h2 className="text-2xl font-bold text-ink">Related Topics</h2>
-            <div className="grid sm:grid-cols-2 gap-3">
-              <Link href="/math-visualizer/problems/derivatives" className="border border-line rounded-lg p-4 hover:border-brand-300 transition-colors group">
-                <h3 className="font-semibold text-ink mb-1 group-hover:text-brand-700">
-                  Derivatives
-                </h3>
-                <p className="text-sm text-ink-muted">Foundation for finding critical points</p>
-              </Link>
-              
-              <Link href="/math-visualizer/problems/chain-rule" className="border border-line rounded-lg p-4 hover:border-brand-300 transition-colors group">
-                <h3 className="font-semibold text-ink mb-1 group-hover:text-brand-700">
-                  Chain Rule
-                </h3>
-                <p className="text-sm text-ink-muted">Useful for complex optimization problems</p>
-              </Link>
-              
-              <div className="border border-line rounded-lg p-4 hover:border-brand-300 transition-colors opacity-60 cursor-not-allowed">
-                <h3 className="font-semibold text-gray-700 mb-1 flex items-center justify-between">
-                  Lagrange Multipliers
-                  <span className="text-xs text-gray-500">Coming Soon</span>
-                </h3>
-                <p className="text-sm text-gray-500">Optimization with multiple constraints</p>
-              </div>
-              
-              <div className="border border-line rounded-lg p-4 hover:border-brand-300 transition-colors opacity-60 cursor-not-allowed">
-                <h3 className="font-semibold text-gray-700 mb-1 flex items-center justify-between">
-                  Linear Programming
-                  <span className="text-xs text-gray-500">Coming Soon</span>
-                </h3>
-                <p className="text-sm text-gray-500">Optimization for linear systems</p>
-              </div>
-            </div>
-          </section>
-
-          <section className="pt-8 border-t border-line">
-            <h2 className="text-2xl font-bold text-ink mb-6">Discussion</h2>
-            <GiscusComments />
-          </section>
-        </article>
-      </div>
-    </div>
+      <ContentSection title="Related topics">
+        <RelatedItems subject="math" items={relatedTopics} />
+      </ContentSection>
+    </DetailPage>
   );
 }

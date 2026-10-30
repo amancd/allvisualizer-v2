@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { DetailPage } from '@/components/content';
 import ImageFiltersVisualizer from './ImageFiltersVisualizer';
 
 export const metadata: Metadata = {
@@ -8,5 +9,14 @@ export const metadata: Metadata = {
 };
 
 export default function ImageFiltersPage() {
-  return <ImageFiltersVisualizer />;
+  return (
+    <DetailPage
+      subject="ai-ml"
+      item="image-filters"
+      title="Image Filters & Convolution"
+      description="Explore how convolution kernels transform images. Apply different filters and see the mathematical operations in action."
+    >
+      <ImageFiltersVisualizer />
+    </DetailPage>
+  );
 }

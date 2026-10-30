@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import DSAPatterns from '../DSAPatterns';
+import DSAPatterns from '@/components/dsa-patterns/DSAPatterns';
 
 export const metadata: Metadata = {
   title: 'DSA Patterns – Notes & Code Templates for Coding Interviews',

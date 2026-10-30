@@ -1,6 +1,8 @@
 import type { LucideIcon } from 'lucide-react';
 import { Code2, Calculator, Atom, Brain, TestTube, BarChart3, BookOpen } from 'lucide-react';
 import type { Accent } from '@/components/ui/accents';
+import { countAvailable, getSubject } from '@/config/content';
+import { totalPatterns } from '@/config/dsa-patterns';
 
 export type CategoryStatus = 'Available' | 'New' | 'Preview' | 'Coming Soon';
 
@@ -22,14 +24,14 @@ export const categories: Category[] = [
   {
     id: 'dsa-patterns',
     title: 'DSA Patterns',
-    shortDescription: '43 interview patterns with notes and ready-to-use code templates.',
+    shortDescription: `${totalPatterns} interview patterns with notes and ready-to-use code templates.`,
     description: 'Notes, theory, diagrams and ready-to-use Python code templates for every common coding interview pattern.',
     href: '/dsa-patterns',
     icon: BookOpen,
     accent: 'amber',
     status: 'New',
     topics: ['Two Pointers', 'Sliding Window', 'Binary Search', 'Trees', 'Graphs', 'Dynamic Programming'],
-    count: 43,
+    count: totalPatterns,
     countLabel: 'patterns',
   },
   {
@@ -42,7 +44,7 @@ export const categories: Category[] = [
     accent: 'brand',
     status: 'Available',
     topics: ['Arrays', 'Linked Lists', 'Trees', 'Graphs', 'Sorting', 'Searching', 'Dynamic Programming'],
-    count: 4,
+    count: countAvailable(getSubject('dsa')),
     countLabel: 'visualized problems',
   },
   {
@@ -55,7 +57,7 @@ export const categories: Category[] = [
     accent: 'sky',
     status: 'Available',
     topics: ['Calculus', 'Linear Algebra', 'Trigonometry', 'Derivatives', 'Integration', 'Matrix Operations'],
-    count: 8,
+    count: countAvailable(getSubject('math')),
     countLabel: 'visualizations',
   },
   {
@@ -68,7 +70,7 @@ export const categories: Category[] = [
     accent: 'emerald',
     status: 'Available',
     topics: ['Mechanics', 'Waves & Optics', 'Thermodynamics', 'Electromagnetism', 'Modern Physics'],
-    count: 18,
+    count: countAvailable(getSubject('physics')),
     countLabel: 'simulations',
   },
   {
@@ -81,7 +83,7 @@ export const categories: Category[] = [
     accent: 'violet',
     status: 'Preview',
     topics: ['Neural Networks', 'Backpropagation', 'Perceptrons', 'Computer Vision'],
-    count: 3,
+    count: countAvailable(getSubject('ai-ml')),
     countLabel: 'visualizations',
   },
   {

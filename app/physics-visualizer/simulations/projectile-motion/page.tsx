@@ -1,15 +1,19 @@
-'use client';
-
-import { useState } from 'react';
-import Link from 'next/link';
-import GiscusComments from '@/components/ui/GiscusComments';
+import type { Metadata } from 'next';
+import { Callout, CardGrid, type CardGridItem, type CodeSample, CodeTabs, ContentSection, DetailPage, Prose, type RelatedEntry, RelatedItems } from '@/components/content';
 import ProjectileMotionVisualizer from './ProjectileMotionVisualizer';
 
-export default function ProjectileMotionPage() {
-  const [selectedLanguage, setSelectedLanguage] = useState<'python' | 'javascript' | 'equations'>('python');
+export const metadata: Metadata = {
+  title: 'Projectile Motion - Physics Simulation | AllVisualizer',
+  description:
+    'Interactive projectile motion simulator. Launch projectiles at different angles and velocities to understand parabolic trajectories, range, max height, and time of flight.',
+  keywords: ['projectile motion', 'physics simulation', 'kinematics', 'parabolic trajectory', 'projectile simulator', 'physics education'],
+  openGraph: {
+    title: 'Projectile Motion Simulator - Interactive Physics | AllVisualizer',
+    description: 'Explore 2D motion under gravity with real-time trajectory visualization',
+  },
+};
 
-  const codeExamples = {
-    python: `import numpy as np
+const pythonCode = `import numpy as np
 import matplotlib.pyplot as plt
 
 # Projectile Motion Simulation
@@ -241,9 +245,9 @@ max_range = ranges[max_range_idx]
 print(f"For v0 = {v0} m/s and h0 = {h0} m:")
 print(f"Optimal angle: {optimal_angle:.1f}°")
 print(f"Maximum range: {max_range:.2f} m")
-print(f"\\nNote: For h0 = 0, optimal angle is 45°")`,
+print(f"\\nNote: For h0 = 0, optimal angle is 45°")`;
 
-    javascript: `// Projectile Motion Simulation
+const javascriptCode = `// Projectile Motion Simulation
 
 // ==========================================
 // PARAMETERS
@@ -446,9 +450,9 @@ console.log("\\n" + "=".repeat(40));
 console.log("OPTIMAL LAUNCH ANGLE");
 console.log("=".repeat(40));
 console.log(\`Optimal angle: \${optimal.optimalAngle}°\`);
-console.log(\`Maximum range: \${optimal.maxRange.toFixed(2)} m\`);`,
+console.log(\`Maximum range: \${optimal.maxRange.toFixed(2)} m\`);`;
 
-    equations: `PROJECTILE MOTION EQUATIONS
+const equationsText = `PROJECTILE MOTION EQUATIONS
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Projectile motion describes the path of an object thrown 
@@ -638,232 +642,118 @@ Our equations ignore:
 
 5. Varying gravity
    - Changes with altitude
-   - Only matters at extreme heights`
-  };
+   - Only matters at extreme heights`;
 
+const samples: CodeSample[] = [
+  { label: 'Python', language: 'python', code: pythonCode },
+  { label: 'JavaScript', language: 'javascript', code: javascriptCode },
+  { label: 'Equations', language: 'text', code: equationsText },
+];
+
+const applications: CardGridItem[] = [
+  {
+    icon: '🏀',
+    title: 'Sports',
+    description: 'Basketball shots, football passes, golf swings: all follow projectile motion.',
+  },
+  {
+    icon: '💧',
+    title: 'Water fountains',
+    description: 'Water jets form parabolic arcs based on nozzle angle and pressure.',
+  },
+  {
+    icon: '🚀',
+    title: 'Ballistics',
+    description: 'Artillery shells and rockets follow projectile paths (ignoring air resistance).',
+  },
+  {
+    icon: '🎮',
+    title: 'Game physics',
+    description: 'Video games simulate projectile motion for realistic object throwing.',
+  },
+];
+
+const relatedTopics: RelatedEntry[] = [
+  { slug: 'newtons-laws', note: 'Understand forces and motion principles.' },
+  { slug: 'energy-conservation', note: 'Track kinetic and potential energy transformations.' },
+  { slug: 'elastic-collisions', note: 'Analyze momentum and energy in collisions.' },
+  { title: 'Air Resistance', note: 'See how drag affects trajectory.' },
+];
+
+export default function ProjectileMotionPage() {
   return (
-    <div className="min-h-screen bg-white pt-28">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <nav className="mb-8 text-sm">
-          <ol className="flex items-center gap-2 text-gray-500">
-            <li><Link href="/" className="hover:text-ink">Home</Link></li>
-            <li>/</li>
-            <li><Link href="/physics-visualizer" className="hover:text-ink">Physics Visualizer</Link></li>
-            <li>/</li>
-            <li><Link href="/physics-visualizer/mechanics" className="hover:text-ink">Mechanics</Link></li>
-            <li>/</li>
-            <li className="text-ink font-medium">Projectile Motion</li>
-          </ol>
-        </nav>
+    <DetailPage
+      subject="physics"
+      item="projectile-motion"
+      description="Explore 2D motion under gravity. Launch projectiles at different angles and velocities to understand parabolic trajectories, range, and time of flight."
+    >
+      <ContentSection title="What is projectile motion?" variant="card">
+        <Prose>
+          <p>
+            <strong>Projectile motion</strong> describes the motion of an object thrown or projected into the air,
+            subject only to the acceleration of gravity. The object is called a projectile, and its path is called its
+            trajectory.
+          </p>
+          <p><strong>Key characteristics:</strong></p>
+          <ul>
+            <li><strong>Horizontal motion:</strong> constant velocity (no acceleration)</li>
+            <li><strong>Vertical motion:</strong> constant acceleration due to gravity (g = 9.81 m/s²)</li>
+            <li><strong>Independence:</strong> horizontal and vertical motions are independent</li>
+            <li><strong>Trajectory:</strong> forms a parabolic path</li>
+          </ul>
+        </Prose>
+      </ContentSection>
 
-        <article className="space-y-8">
-          <header className="space-y-4 pb-8 border-b border-line">
-            <div className="flex items-center gap-2 text-sm">
-              <span className="px-2 py-1 bg-gray-200 text-ink rounded font-medium">Mechanics</span>
-              <span className="text-gray-400">•</span>
-              <span className="px-2 py-1 bg-green-100 text-green-700 rounded font-medium">Beginner</span>
-            </div>
-            
-            <h1 className="text-4xl md:text-5xl font-bold text-ink leading-tight tracking-tight">
-              Projectile Motion
-            </h1>
-            
-            <p className="text-xl text-ink-muted leading-relaxed">
-              Explore 2D motion under gravity. Launch projectiles at different angles and velocities to understand parabolic trajectories, range, and time of flight.
+      <ContentSection
+        title="Interactive simulation"
+        description="Adjust the initial velocity, launch angle, and height. Watch the projectile follow its parabolic path and see the velocity vectors change in real time."
+      >
+        <ProjectileMotionVisualizer />
+      </ContentSection>
+
+      <ContentSection title="Understanding the physics">
+        <div className="space-y-4">
+          <Callout tone="formula" title="Velocity components">
+            <p>
+              The initial velocity can be broken into horizontal (v<sub>x</sub>) and vertical (v<sub>y</sub>)
+              components:
             </p>
-          </header>
-
-          <section className="space-y-4">
-            <h2 className="text-2xl font-bold text-ink">What is Projectile Motion?</h2>
-            <div className="bg-subtle border border-line rounded-lg p-6 space-y-4">
-              <p className="text-gray-700">
-                <strong>Projectile motion</strong> describes the motion of an object thrown or projected into the air, 
-                subject only to the acceleration of gravity. The object is called a projectile, and its path is called its trajectory.
+            <div className="mt-2 space-y-1 font-mono">
+              <p>
+                v<sub>x</sub> = v<sub>0</sub> cos(θ) <span className="text-ink-muted">(constant)</span>
               </p>
-              
-              <div className="space-y-2">
-                <p className="font-semibold text-ink">Key Characteristics:</p>
-                <ul className="space-y-1 text-gray-700 list-disc list-inside">
-                  <li><strong>Horizontal motion:</strong> Constant velocity (no acceleration)</li>
-                  <li><strong>Vertical motion:</strong> Constant acceleration due to gravity (g = 9.81 m/s²)</li>
-                  <li><strong>Independence:</strong> Horizontal and vertical motions are independent</li>
-                  <li><strong>Trajectory:</strong> Forms a parabolic path</li>
-                </ul>
-              </div>
+              <p>
+                v<sub>y</sub> = v<sub>0</sub> sin(θ) − gt <span className="text-ink-muted">(decreases with time)</span>
+              </p>
             </div>
-          </section>
+          </Callout>
 
-          <section className="space-y-4">
-            <h2 className="text-2xl font-bold text-ink">Interactive Simulation</h2>
-            <p className="text-ink-muted">
-              Adjust the initial velocity, launch angle, and height. Watch the projectile follow its parabolic path 
-              and see velocity vectors change in real-time.
-            </p>
-            <ProjectileMotionVisualizer />
-          </section>
-
-          <section className="space-y-4">
-            <h2 className="text-2xl font-bold text-ink">Understanding the Physics</h2>
-            <div className="space-y-4">
-              <div className="bg-brand-50/60 border-l-4 border-brand-500 p-4">
-                <h3 className="font-semibold text-ink mb-2">Velocity Components</h3>
-                <p className="text-sm text-ink mb-2">
-                  The initial velocity can be broken into horizontal (v<sub>x</sub>) and vertical (v<sub>y</sub>) components:
-                </p>
-                <div className="bg-white p-3 rounded border border-line-strong font-mono text-sm space-y-1">
-                  <div>v<sub>x</sub> = v<sub>0</sub> cos(θ)  <span className="text-ink-muted">(constant)</span></div>
-                  <div>v<sub>y</sub> = v<sub>0</sub> sin(θ) - gt  <span className="text-ink-muted">(decreases with time)</span></div>
-                </div>
-              </div>
-
-              <div className="bg-brand-50/60 border-l-4 border-brand-500 p-4">
-                <h3 className="font-semibold text-ink mb-2">Position Equations</h3>
-                <p className="text-sm text-ink mb-2">
-                  The position at any time t is given by:
-                </p>
-                <div className="bg-white p-3 rounded border border-line-strong font-mono text-sm space-y-1">
-                  <div>x(t) = v<sub>x</sub> · t</div>
-                  <div>y(t) = h<sub>0</sub> + v<sub>y</sub> · t - ½gt²</div>
-                </div>
-              </div>
-
-              <div className="bg-green-50 border-l-4 border-green-500 p-4">
-                <h3 className="font-semibold text-green-900 mb-2">Optimal Angle</h3>
-                <p className="text-sm text-green-800">
-                  For maximum range on level ground (h<sub>0</sub> = 0), the optimal launch angle is <strong>45°</strong>. 
-                  At this angle, the horizontal and vertical components are equal, maximizing the distance traveled.
-                </p>
-              </div>
+          <Callout tone="formula" title="Position equations">
+            <p>The position at any time t is given by:</p>
+            <div className="mt-2 space-y-1 font-mono">
+              <p>x(t) = v<sub>x</sub> · t</p>
+              <p>y(t) = h<sub>0</sub> + v<sub>y</sub> · t − ½gt²</p>
             </div>
-          </section>
+          </Callout>
 
-          <section className="space-y-4">
-            <div className="flex items-center justify-between">
-              <h2 className="text-2xl font-bold text-ink">Implementation</h2>
-              <div className="flex gap-2">
-                <button
-                  onClick={() => setSelectedLanguage('python')}
-                  className={`px-3 py-1.5 text-sm font-medium rounded-lg transition-colors ${
-                    selectedLanguage === 'python'
-                      ? 'bg-brand-600 text-white shadow-brand'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                  }`}
-                >
-                  Python
-                </button>
-                <button
-                  onClick={() => setSelectedLanguage('javascript')}
-                  className={`px-3 py-1.5 text-sm font-medium rounded-lg transition-colors ${
-                    selectedLanguage === 'javascript'
-                      ? 'bg-brand-600 text-white shadow-brand'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                  }`}
-                >
-                  JavaScript
-                </button>
-                <button
-                  onClick={() => setSelectedLanguage('equations')}
-                  className={`px-3 py-1.5 text-sm font-medium rounded-lg transition-colors ${
-                    selectedLanguage === 'equations'
-                      ? 'bg-brand-600 text-white shadow-brand'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                  }`}
-                >
-                  Equations
-                </button>
-              </div>
-            </div>
+          <Callout tone="tip" title="Optimal angle">
+            For maximum range on level ground (h<sub>0</sub> = 0), the optimal launch angle is <strong>45°</strong>. At
+            this angle the horizontal and vertical components are equal, maximizing the distance traveled.
+          </Callout>
+        </div>
+      </ContentSection>
 
-            <div className="bg-gray-900 rounded-lg overflow-hidden">
-              <div className="px-4 py-3 bg-gray-800 border-b border-gray-700 flex items-center justify-between">
-                <span className="text-sm text-gray-300 font-medium">
-                  {selectedLanguage === 'equations' ? 'Physics Equations' : selectedLanguage === 'python' ? 'projectile.py' : 'projectile.js'}
-                </span>
-              </div>
-              <pre className="p-4 overflow-x-auto max-h-[600px]">
-                <code className="text-sm text-gray-100 whitespace-pre-wrap break-words">
-                  {codeExamples[selectedLanguage]}
-                </code>
-              </pre>
-            </div>
-          </section>
+      <ContentSection title="Implementation">
+        <CodeTabs samples={samples} />
+      </ContentSection>
 
-          <section className="space-y-4">
-            <h2 className="text-2xl font-bold text-ink">Real-World Applications</h2>
-            <div className="grid md:grid-cols-2 gap-4">
-              <div className="bg-gray-100 border border-line-strong rounded-lg p-4">
-                <h3 className="font-semibold text-ink mb-2">🏀 Sports</h3>
-                <p className="text-ink text-sm">
-                  Basketball shots, football passes, golf swings - all follow projectile motion
-                </p>
-              </div>
-              
-              <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-                <h3 className="font-semibold text-green-900 mb-2">💧 Water Fountains</h3>
-                <p className="text-green-800 text-sm">
-                  Water jets form parabolic arcs based on nozzle angle and pressure
-                </p>
-              </div>
+      <ContentSection title="Real-world applications">
+        <CardGrid items={applications} />
+      </ContentSection>
 
-              <div className="bg-gray-100 border border-line-strong rounded-lg p-4">
-                <h3 className="font-semibold text-ink mb-2">🚀 Ballistics</h3>
-                <p className="text-ink text-sm">
-                  Artillery shells and rockets follow projectile paths (ignoring air resistance)
-                </p>
-              </div>
-
-              <div className="bg-orange-50 border border-orange-200 rounded-lg p-4">
-                <h3 className="font-semibold text-orange-900 mb-2">🎮 Game Physics</h3>
-                <p className="text-orange-800 text-sm">
-                  Video games simulate projectile motion for realistic object throwing
-                </p>
-              </div>
-            </div>
-          </section>
-
-          <section className="space-y-4">
-            <h2 className="text-2xl font-bold text-ink">Related Topics</h2>
-            <div className="grid sm:grid-cols-2 gap-3">
-              <div className="border border-line rounded-lg p-4 hover:border-brand-300 transition-colors opacity-60 cursor-not-allowed">
-                <h3 className="font-semibold text-gray-700 mb-1 flex items-center justify-between">
-                  Newton's Laws
-                  <span className="text-xs text-gray-500">Coming Soon</span>
-                </h3>
-                <p className="text-sm text-gray-500">Understand forces and motion principles</p>
-              </div>
-              
-              <div className="border border-line rounded-lg p-4 hover:border-brand-300 transition-colors opacity-60 cursor-not-allowed">
-                <h3 className="font-semibold text-gray-700 mb-1 flex items-center justify-between">
-                  Energy Conservation
-                  <span className="text-xs text-gray-500">Coming Soon</span>
-                </h3>
-                <p className="text-sm text-gray-500">Track kinetic and potential energy transformations</p>
-              </div>
-              
-              <div className="border border-line rounded-lg p-4 hover:border-brand-300 transition-colors opacity-60 cursor-not-allowed">
-                <h3 className="font-semibold text-gray-700 mb-1 flex items-center justify-between">
-                  Air Resistance
-                  <span className="text-xs text-gray-500">Coming Soon</span>
-                </h3>
-                <p className="text-sm text-gray-500">See how drag affects trajectory</p>
-              </div>
-              
-              <div className="border border-line rounded-lg p-4 hover:border-brand-300 transition-colors opacity-60 cursor-not-allowed">
-                <h3 className="font-semibold text-gray-700 mb-1 flex items-center justify-between">
-                  Collisions
-                  <span className="text-xs text-gray-500">Coming Soon</span>
-                </h3>
-                <p className="text-sm text-gray-500">Analyze momentum and energy in collisions</p>
-              </div>
-            </div>
-          </section>
-
-          <section className="pt-8 border-t border-line">
-            <h2 className="text-2xl font-bold text-ink mb-6">Discussion</h2>
-            <GiscusComments />
-          </section>
-        </article>
-      </div>
-    </div>
+      <ContentSection title="Related topics">
+        <RelatedItems subject="physics" items={relatedTopics} />
+      </ContentSection>
+    </DetailPage>
   );
 }

@@ -1,15 +1,23 @@
-'use client';
-
-import { useState } from 'react';
-import Link from 'next/link';
-import GiscusComments from '@/components/ui/GiscusComments';
+import type { Metadata } from 'next';
+import { Callout, CardGrid, type CardGridItem, type CodeSample, CodeTabs, ContentSection, DetailPage, Prose, type RelatedEntry, RelatedItems } from '@/components/content';
 import MatrixOperationsVisualizer from './MatrixOperationsVisualizer';
 
-export default function MatrixOperationsPage() {
-  const [selectedLanguage, setSelectedLanguage] = useState<'python' | 'javascript' | 'mathematical'>('python');
+export const metadata: Metadata = {
+  title: 'Matrix Operations - Linear Algebra | AllVisualizer',
+  description:
+    'Learn matrix operations with interactive visualizations. Master matrix addition, multiplication, scalar multiplication, and understand their properties with step-by-step examples.',
+  keywords: ['matrix operations', 'linear algebra', 'matrix multiplication', 'matrix addition', 'scalar multiplication', 'linear transformations'],
+  openGraph: {
+    title: 'Matrix Operations - Interactive Linear Algebra | AllVisualizer',
+    description: 'Master matrix operations with interactive visualizations',
+  },
+};
 
-  const codeExamples = {
-    python: `import numpy as np
+const samples: CodeSample[] = [
+  {
+    label: 'Python',
+    language: 'python',
+    code: `import numpy as np
 
 # Matrix Operations in Linear Algebra
 
@@ -110,8 +118,11 @@ print(f"\\ndet(A) = {det_A}")
 print(f"det(B) = {det_B}")
 print(f"det(A × B) = {np.linalg.det(A @ B)}")
 print(f"det(A) × det(B) = {det_A * det_B}")`,
-
-    javascript: `// Matrix Operations in Linear Algebra
+  },
+  {
+    label: 'JavaScript',
+    language: 'javascript',
+    code: `// Matrix Operations in Linear Algebra
 
 // Define matrices (2D arrays)
 const A = [
@@ -247,8 +258,11 @@ console.log("\\n=== Additional Operations ===");
 console.log("Identity:", identityMatrix(2));
 console.log("A^T:", transpose(A));
 console.log("det(A):", determinant2x2(A));`,
-
-    mathematical: `MATRIX OPERATIONS
+  },
+  {
+    label: 'Math',
+    language: 'text',
+    code: `MATRIX OPERATIONS
 ━━━━━━━━━━━━━━━━━
 
 Matrices are rectangular arrays of numbers used in 
@@ -367,234 +381,92 @@ Used in:
 • Computer graphics (3D transformations)
 • Machine learning (neural networks)
 • Physics (quantum mechanics)
-• Engineering (systems of equations)`
-  };
+• Engineering (systems of equations)`,
+  },
+];
+const applications: CardGridItem[] = [
+  { title: 'Computer graphics', description: '3D transformations (rotation, scaling, translation) use matrix multiplication.' },
+  { title: 'Machine learning', description: 'Neural networks use matrix operations for forward and backward propagation.' },
+  { title: 'Image processing', description: 'Images are matrices; filters and transformations use matrix operations.' },
+  { title: 'Systems of equations', description: 'Linear systems Ax = b are solved using matrix operations.' },
+];
 
+const relatedTopics: RelatedEntry[] = [
+  { slug: 'determinants', note: 'Calculate matrix determinants and their properties' },
+  { slug: 'matrix-inverse', note: 'Finding inverse matrices and solving equations' },
+  { title: 'Eigenvalues & Eigenvectors', note: 'Understanding matrix transformations' },
+  { title: 'Linear Transformations', note: 'Visualize how matrices transform space' },
+];
+
+export default function MatrixOperationsPage() {
   return (
-    <div className="min-h-screen bg-white pt-28">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <nav className="mb-8 text-sm">
-          <ol className="flex items-center gap-2 text-gray-500">
-            <li><Link href="/" className="hover:text-ink">Home</Link></li>
-            <li>/</li>
-            <li><Link href="/math-visualizer" className="hover:text-ink">Math Visualizer</Link></li>
-            <li>/</li>
-            <li className="text-ink font-medium">Matrix Operations</li>
-          </ol>
-        </nav>
-
-        <article className="space-y-8">
-          <header className="space-y-4 pb-8 border-b border-line">
-            <div className="flex items-center gap-2 text-sm">
-              <span className="px-2 py-1 bg-gray-200 text-ink rounded font-medium">Linear Algebra</span>
-              <span className="text-gray-400">•</span>
-              <span className="text-gray-500">Beginner</span>
+    <DetailPage
+      subject="math"
+      item="matrix-operations"
+      description="Learn fundamental matrix operations: addition, multiplication, and scalar multiplication. Understand how matrices work and their essential properties."
+    >
+      <ContentSection title="What are matrices?" variant="card">
+        <Prose>
+          <p>
+            A <strong>matrix</strong> is a rectangular array of numbers arranged in rows and columns. Matrices are
+            fundamental in linear algebra and used extensively in computer graphics, machine learning, physics, and
+            engineering.
+          </p>
+        </Prose>
+        <Callout tone="example" title="Example matrix (2×2)" className="mt-5">
+          <div className="flex items-center gap-2 font-mono text-lg text-ink">
+            <span>A =</span>
+            <span className="text-2xl text-ink-muted">[</span>
+            <div className="grid grid-cols-2 gap-2">
+              {[2, 1, 3, 4].map((n, i) => (
+                <span key={i} className="w-8 text-center">{n}</span>
+              ))}
             </div>
-            
-            <h1 className="text-4xl md:text-5xl font-bold text-ink leading-tight tracking-tight">
-              Matrix Operations
-            </h1>
-            
-            <p className="text-xl text-ink-muted leading-relaxed">
-              Learn fundamental matrix operations: addition, multiplication, and scalar multiplication. Understand how matrices work and their essential properties.
+            <span className="text-2xl text-ink-muted">]</span>
+          </div>
+          <p className="mt-2">This is a 2×2 matrix (2 rows, 2 columns).</p>
+        </Callout>
+      </ContentSection>
+
+      <ContentSection
+        title="Interactive operations"
+        description="Experiment with matrix addition, multiplication, and scalar multiplication. Change the values and operation to see results in real time."
+      >
+        <MatrixOperationsVisualizer />
+      </ContentSection>
+
+      <ContentSection title="Understanding the operations">
+        <div className="space-y-4">
+          <Callout tone="note" title="Matrix addition">
+            Add corresponding elements element-wise. Both matrices must have the same dimensions. Simple and intuitive:
+            A + B means add each element in A to the corresponding element in B.
+          </Callout>
+          <Callout tone="note" title="Matrix multiplication">
+            <p>
+              More complex: multiply rows of the first matrix by columns of the second matrix using the dot product. For
+              A×B, the number of columns in A must equal the number of rows in B.
             </p>
-          </header>
-
-          <section className="space-y-4">
-            <h2 className="text-2xl font-bold text-ink">What are Matrices?</h2>
-            <div className="bg-subtle border border-line rounded-lg p-6 space-y-4">
-              <p className="text-gray-700">
-                A <strong>matrix</strong> is a rectangular array of numbers arranged in rows and columns. 
-                Matrices are fundamental in linear algebra and used extensively in computer graphics, machine learning, physics, and engineering.
-              </p>
-              
-              <div className="space-y-2">
-                <p className="font-semibold text-ink">Example Matrix (2×2):</p>
-                <div className="flex items-center gap-2 text-lg font-mono">
-                  <span>A =</span>
-                  <div className="flex gap-1">
-                    <span className="text-2xl text-gray-400">[</span>
-                    <div className="grid grid-cols-2 gap-2">
-                      <span className="w-8 text-center">2</span>
-                      <span className="w-8 text-center">1</span>
-                      <span className="w-8 text-center">3</span>
-                      <span className="w-8 text-center">4</span>
-                    </div>
-                    <span className="text-2xl text-gray-400">]</span>
-                  </div>
-                </div>
-                <p className="text-sm text-ink-muted">This is a 2×2 matrix (2 rows, 2 columns)</p>
-              </div>
-            </div>
-          </section>
-
-          <section className="space-y-4">
-            <h2 className="text-2xl font-bold text-ink">Interactive Operations</h2>
-            <p className="text-ink-muted">
-              Experiment with matrix addition, multiplication, and scalar multiplication. Change the values and operation to see results in real-time.
+            <p className="mt-2">
+              <strong>Important:</strong> Matrix multiplication is NOT commutative! A×B ≠ B×A in general.
             </p>
-            <MatrixOperationsVisualizer />
-          </section>
+          </Callout>
+          <Callout tone="note" title="Scalar multiplication">
+            Multiply every element in the matrix by a single number (scalar). This scales the entire matrix uniformly.
+          </Callout>
+        </div>
+      </ContentSection>
 
-          <section className="space-y-4">
-            <h2 className="text-2xl font-bold text-ink">Understanding the Operations</h2>
-            <div className="space-y-4">
-              <div className="bg-brand-50/60 border-l-4 border-brand-500 p-4">
-                <h3 className="font-semibold text-ink mb-2">Matrix Addition</h3>
-                <p className="text-sm text-ink">
-                  Add corresponding elements element-wise. Both matrices must have the same dimensions. 
-                  Simple and intuitive: A + B means add each element in A to the corresponding element in B.
-                </p>
-              </div>
+      <ContentSection title="Implementation">
+        <CodeTabs samples={samples} />
+      </ContentSection>
 
-              <div className="bg-brand-50/60 border-l-4 border-brand-500 p-4">
-                <h3 className="font-semibold text-ink mb-2">Matrix Multiplication</h3>
-                <p className="text-sm text-ink mb-2">
-                  More complex: multiply rows of first matrix by columns of second matrix using dot product. 
-                  For A×B, the number of columns in A must equal the number of rows in B.
-                </p>
-                <p className="text-sm text-ink">
-                  <strong>Important:</strong> Matrix multiplication is NOT commutative! A×B ≠ B×A in general.
-                </p>
-              </div>
+      <ContentSection title="Real-world applications">
+        <CardGrid items={applications} />
+      </ContentSection>
 
-              <div className="bg-orange-50 border-l-4 border-orange-500 p-4">
-                <h3 className="font-semibold text-orange-900 mb-2">Scalar Multiplication</h3>
-                <p className="text-sm text-orange-800">
-                  Multiply every element in the matrix by a single number (scalar). 
-                  This scales the entire matrix uniformly.
-                </p>
-              </div>
-            </div>
-          </section>
-
-          <section className="space-y-4">
-            <div className="flex items-center justify-between">
-              <h2 className="text-2xl font-bold text-ink">Implementation</h2>
-              <div className="flex gap-2">
-                <button
-                  onClick={() => setSelectedLanguage('python')}
-                  className={`px-3 py-1.5 text-sm font-medium rounded-lg transition-colors ${
-                    selectedLanguage === 'python'
-                      ? 'bg-brand-600 text-white shadow-brand'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                  }`}
-                >
-                  Python
-                </button>
-                <button
-                  onClick={() => setSelectedLanguage('javascript')}
-                  className={`px-3 py-1.5 text-sm font-medium rounded-lg transition-colors ${
-                    selectedLanguage === 'javascript'
-                      ? 'bg-brand-600 text-white shadow-brand'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                  }`}
-                >
-                  JavaScript
-                </button>
-                <button
-                  onClick={() => setSelectedLanguage('mathematical')}
-                  className={`px-3 py-1.5 text-sm font-medium rounded-lg transition-colors ${
-                    selectedLanguage === 'mathematical'
-                      ? 'bg-brand-600 text-white shadow-brand'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                  }`}
-                >
-                  Math
-                </button>
-              </div>
-            </div>
-
-            <div className="bg-gray-900 rounded-lg overflow-hidden">
-              <div className="px-4 py-3 bg-gray-800 border-b border-gray-700 flex items-center justify-between">
-                <span className="text-sm text-gray-300 font-medium">
-                  {selectedLanguage === 'mathematical' ? 'Mathematical Notation' : selectedLanguage === 'python' ? 'matrix_ops.py' : 'matrix_ops.js'}
-                </span>
-              </div>
-              <pre className="p-4 overflow-x-auto">
-                <code className="text-sm text-gray-100 whitespace-pre-wrap break-words">
-                  {codeExamples[selectedLanguage]}
-                </code>
-              </pre>
-            </div>
-          </section>
-
-          <section className="space-y-4">
-            <h2 className="text-2xl font-bold text-ink">Real-World Applications</h2>
-            <div className="grid md:grid-cols-2 gap-4">
-              <div className="bg-gray-100 border border-line-strong rounded-lg p-4">
-                <h3 className="font-semibold text-ink mb-2">Computer Graphics</h3>
-                <p className="text-ink text-sm">
-                  3D transformations (rotation, scaling, translation) use matrix multiplication
-                </p>
-              </div>
-              
-              <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-                <h3 className="font-semibold text-green-900 mb-2">Machine Learning</h3>
-                <p className="text-green-800 text-sm">
-                  Neural networks use matrix operations for forward/backward propagation
-                </p>
-              </div>
-
-              <div className="bg-gray-100 border border-line-strong rounded-lg p-4">
-                <h3 className="font-semibold text-ink mb-2">Image Processing</h3>
-                <p className="text-ink text-sm">
-                  Images are matrices; filters and transformations use matrix operations
-                </p>
-              </div>
-
-              <div className="bg-orange-50 border border-orange-200 rounded-lg p-4">
-                <h3 className="font-semibold text-orange-900 mb-2">Systems of Equations</h3>
-                <p className="text-orange-800 text-sm">
-                  Linear systems Ax = b solved using matrix operations
-                </p>
-              </div>
-            </div>
-          </section>
-
-          <section className="space-y-4">
-            <h2 className="text-2xl font-bold text-ink">Related Topics</h2>
-            <div className="grid sm:grid-cols-2 gap-3">
-              <div className="border border-line rounded-lg p-4 hover:border-brand-300 transition-colors opacity-60 cursor-not-allowed">
-                <h3 className="font-semibold text-gray-700 mb-1 flex items-center justify-between">
-                  Determinants
-                  <span className="text-xs text-gray-500">Coming Soon</span>
-                </h3>
-                <p className="text-sm text-gray-500">Calculate matrix determinants and their properties</p>
-              </div>
-              
-              <div className="border border-line rounded-lg p-4 hover:border-brand-300 transition-colors opacity-60 cursor-not-allowed">
-                <h3 className="font-semibold text-gray-700 mb-1 flex items-center justify-between">
-                  Matrix Inverse
-                  <span className="text-xs text-gray-500">Coming Soon</span>
-                </h3>
-                <p className="text-sm text-gray-500">Finding inverse matrices and solving equations</p>
-              </div>
-              
-              <div className="border border-line rounded-lg p-4 hover:border-brand-300 transition-colors opacity-60 cursor-not-allowed">
-                <h3 className="font-semibold text-gray-700 mb-1 flex items-center justify-between">
-                  Eigenvalues & Eigenvectors
-                  <span className="text-xs text-gray-500">Coming Soon</span>
-                </h3>
-                <p className="text-sm text-gray-500">Understanding matrix transformations</p>
-              </div>
-              
-              <div className="border border-line rounded-lg p-4 hover:border-brand-300 transition-colors opacity-60 cursor-not-allowed">
-                <h3 className="font-semibold text-gray-700 mb-1 flex items-center justify-between">
-                  Linear Transformations
-                  <span className="text-xs text-gray-500">Coming Soon</span>
-                </h3>
-                <p className="text-sm text-gray-500">Visualize how matrices transform space</p>
-              </div>
-            </div>
-          </section>
-
-          <section className="pt-8 border-t border-line">
-            <h2 className="text-2xl font-bold text-ink mb-6">Discussion</h2>
-            <GiscusComments />
-          </section>
-        </article>
-      </div>
-    </div>
+      <ContentSection title="Related topics">
+        <RelatedItems subject="math" items={relatedTopics} />
+      </ContentSection>
+    </DetailPage>
   );
 }

@@ -13,3 +13,5 @@ export type { ButtonVariant, ButtonSize } from './Button';
 export { PageHeader, SectionHeader } from './PageHeader';
 export { accents } from './accents';
 export type { Accent } from './accents';
+export { default as Breadcrumbs } from './Breadcrumbs';
+export type { Crumb } from './Breadcrumbs';

@@ -1,10 +1,11 @@
 import type { Metadata } from 'next';
+import { Callout, CardGrid, type CardGridItem, ContentSection, DataTable, DetailPage, Prose } from '@/components/content';
 import PhotoelectricEffectVisualizer from './PhotoelectricEffectVisualizer';
-import GiscusComments from '@/components/ui/GiscusComments';
 
 export const metadata: Metadata = {
   title: 'Photoelectric Effect Visualization | Physics Visualizer',
-  description: 'Interactive visualization of the photoelectric effect. Explore how light frequency and intensity affect electron emission, demonstrating the quantum nature of light.',
+  description:
+    'Interactive visualization of the photoelectric effect. Explore how light frequency and intensity affect electron emission, demonstrating the quantum nature of light.',
   keywords: [
     'photoelectric effect',
     'quantum mechanics',
@@ -15,195 +16,137 @@ export const metadata: Metadata = {
     'frequency',
     'wavelength',
     'physics visualization',
-    'quantum physics'
+    'quantum physics',
   ],
 };
 
+const observations: CardGridItem[] = [
+  {
+    icon: '🚧',
+    title: 'Threshold frequency',
+    description: (
+      <>
+        Below the threshold frequency f<sub>0</sub> = φ/h, no electrons are emitted regardless of light intensity. This
+        was unexplainable by classical wave theory.
+      </>
+    ),
+  },
+  {
+    icon: '⚡',
+    title: 'Instantaneous emission',
+    description:
+      "Electrons are emitted immediately when light above threshold frequency hits the surface. There's no time delay, even at low intensities.",
+  },
+  {
+    icon: '🔆',
+    title: 'Intensity effect',
+    description:
+      "Higher intensity means more photons, resulting in more electrons ejected per second, but doesn't change the maximum kinetic energy of individual electrons.",
+  },
+  {
+    icon: '📈',
+    title: 'Frequency dependence',
+    description:
+      'Higher frequency light (shorter wavelength) produces electrons with higher kinetic energy. The relationship is linear: KE increases linearly with frequency.',
+  },
+];
+
+const workFunctions = [
+  { metal: 'Sodium', phi: '2.28', threshold: '544' },
+  { metal: 'Potassium', phi: '2.30', threshold: '539' },
+  { metal: 'Calcium', phi: '2.87', threshold: '432' },
+  { metal: 'Zinc', phi: '4.33', threshold: '286' },
+  { metal: 'Copper', phi: '4.65', threshold: '267' },
+];
+
+const applications: CardGridItem[] = [
+  { icon: '☀️', title: 'Solar panels', description: 'Photovoltaic cells convert light energy directly to electricity.' },
+  { icon: '🌙', title: 'Night vision devices', description: 'Image intensifiers amplify low light using photoelectric emission.' },
+  { icon: '📷', title: 'Photodetectors', description: 'Light sensors in cameras, barcode scanners, and optical communications.' },
+  { icon: '🧪', title: 'X-ray photoelectron spectroscopy', description: 'A surface analysis technique in materials science.' },
+  { icon: '🔬', title: 'Photoelectron microscopy', description: 'Imaging surfaces at nanometer resolution.' },
+];
+
 export default function PhotoelectricEffectPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 pt-24">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Breadcrumb */}
-        <div className="mb-6 text-sm text-ink-muted">
-          <a href="/" className="hover:text-ink">Home</a>
-          {' / '}
-          <a href="/physics-visualizer" className="hover:text-ink">Physics Visualizer</a>
-          {' / '}
-          <a href="/physics-visualizer/modern-physics" className="hover:text-ink">Modern Physics</a>
-          {' / '}
-          <span className="text-ink">Photoelectric Effect</span>
-        </div>
+    <DetailPage subject="physics" item="photoelectric-effect" icon="💡">
+      <PhotoelectricEffectVisualizer />
 
-        {/* Header */}
-        <div className="mb-8">
-          <div className="flex items-center gap-3 mb-3">
-            <h1 className="text-4xl font-bold text-ink tracking-tight">Photoelectric Effect</h1>
-            <span className="px-3 py-1 bg-yellow-100 text-yellow-800 text-xs font-semibold rounded-full">
-              Medium
-            </span>
-          </div>
-          <p className="text-lg text-gray-700">
-            Discover how light ejects electrons from metal surfaces, proving that light behaves as particles (photons).
+      <ContentSection title="What is the photoelectric effect?">
+        <Prose>
+          <p>
+            The photoelectric effect is the emission of electrons from a metal surface when light shines on it.
+            Discovered by Heinrich Hertz in 1887 and explained by Albert Einstein in 1905, this phenomenon provided
+            crucial evidence for the quantum nature of light.
           </p>
-        </div>
+          <p>
+            Classical wave theory predicted that any frequency of light should eventually eject electrons if the
+            intensity is high enough. However, experiments showed that only light above a certain threshold frequency can
+            cause electron emission, regardless of intensity.
+          </p>
+        </Prose>
+      </ContentSection>
 
-        {/* Interactive Visualizer */}
-        <div className="mb-12">
-          <PhotoelectricEffectVisualizer />
-        </div>
+      <ContentSection title="Einstein's equation">
+        <Prose>
+          <p>
+            Einstein explained the photoelectric effect by proposing that light consists of discrete energy packets
+            called photons. When a photon hits an electron, it transfers all its energy:
+          </p>
+        </Prose>
+        <Callout tone="formula" title="Photon energy and maximum kinetic energy" className="my-4">
+          <div className="space-y-1 font-mono text-base">
+            <p>E<sub>photon</sub> = hf</p>
+            <p>KE<sub>max</sub> = hf - φ</p>
+          </div>
+        </Callout>
+        <Prose>
+          <p>Where:</p>
+          <ul>
+            <li><strong>h</strong> = Planck&apos;s constant (6.626 × 10<sup>-34</sup> J·s)</li>
+            <li><strong>f</strong> = frequency of incident light</li>
+            <li><strong>φ</strong> = work function (minimum energy to eject an electron)</li>
+            <li><strong>KE<sub>max</sub></strong> = maximum kinetic energy of the ejected electron</li>
+          </ul>
+        </Prose>
+      </ContentSection>
 
-        {/* Theory Section */}
-        <div className="prose max-w-none">
-          <section className="mb-8">
-            <h2 className="text-2xl font-bold text-ink mb-4">💡 What is the Photoelectric Effect?</h2>
-            <p className="text-gray-700 mb-4">
-              The photoelectric effect is the emission of electrons from a metal surface when light shines on it. 
-              Discovered by Heinrich Hertz in 1887 and explained by Albert Einstein in 1905, this phenomenon 
-              provided crucial evidence for the quantum nature of light.
-            </p>
-            <p className="text-gray-700 mb-4">
-              Classical wave theory predicted that any frequency of light should eventually eject electrons if 
-              the intensity is high enough. However, experiments showed that only light above a certain threshold 
-              frequency can cause electron emission, regardless of intensity.
-            </p>
-          </section>
+      <ContentSection title="Key observations">
+        <CardGrid items={observations} />
+      </ContentSection>
 
-          <section className="mb-8">
-            <h2 className="text-2xl font-bold text-ink mb-4">Einstein's Equation</h2>
-            <p className="text-gray-700 mb-4">
-              Einstein explained the photoelectric effect by proposing that light consists of discrete energy 
-              packets called photons. When a photon hits an electron, it transfers all its energy:
-            </p>
-            <div className="bg-gray-100 p-4 rounded-lg mb-4">
-              <p className="text-center text-xl font-mono mb-2">
-                E<sub>photon</sub> = hf
-              </p>
-              <p className="text-center text-xl font-mono">
-                KE<sub>max</sub> = hf - φ
-              </p>
-            </div>
-            <p className="text-gray-700 mb-2">Where:</p>
-            <ul className="list-disc list-inside space-y-2 text-gray-700 ml-4">
-              <li><strong>h</strong> = Planck's constant (6.626 × 10<sup>-34</sup> J·s)</li>
-              <li><strong>f</strong> = Frequency of incident light</li>
-              <li><strong>φ</strong> = Work function (minimum energy to eject electron)</li>
-              <li><strong>KE<sub>max</sub></strong> = Maximum kinetic energy of ejected electron</li>
-            </ul>
-          </section>
+      <ContentSection
+        title="Work function values"
+        description="Different metals have different work functions (energy needed to remove an electron):"
+      >
+        <DataTable
+          rows={workFunctions}
+          columns={[
+            { header: 'Metal', cell: 'metal' },
+            { header: 'Work function (eV)', cell: 'phi', numeric: true },
+            { header: 'Threshold wavelength (nm)', cell: 'threshold', numeric: true },
+          ]}
+        />
+      </ContentSection>
 
-          <section className="mb-8">
-            <h2 className="text-2xl font-bold text-ink mb-4">Key Observations</h2>
-            <div className="grid md:grid-cols-2 gap-6">
-              <div className="bg-blue-50 p-4 rounded-lg">
-                <h3 className="font-semibold text-ink mb-2">Threshold Frequency</h3>
-                <p className="text-sm text-gray-700">
-                  Below the threshold frequency f<sub>0</sub> = φ/h, no electrons are emitted regardless 
-                  of light intensity. This was unexplainable by classical wave theory.
-                </p>
-              </div>
-              
-              <div className="bg-green-50 p-4 rounded-lg">
-                <h3 className="font-semibold text-ink mb-2">Instantaneous Emission</h3>
-                <p className="text-sm text-gray-700">
-                  Electrons are emitted immediately when light above threshold frequency hits the surface. 
-                  There's no time delay, even at low intensities.
-                </p>
-              </div>
-              
-              <div className="bg-yellow-50 p-4 rounded-lg">
-                <h3 className="font-semibold text-ink mb-2">Intensity Effect</h3>
-                <p className="text-sm text-gray-700">
-                  Higher intensity means more photons, resulting in more electrons ejected per second, 
-                  but doesn't change the maximum kinetic energy of individual electrons.
-                </p>
-              </div>
-              
-              <div className="bg-purple-50 p-4 rounded-lg">
-                <h3 className="font-semibold text-ink mb-2">Frequency Dependence</h3>
-                <p className="text-sm text-gray-700">
-                  Higher frequency light (shorter wavelength) produces electrons with higher kinetic energy. 
-                  The relationship is linear: KE increases linearly with frequency.
-                </p>
-              </div>
-            </div>
-          </section>
+      <ContentSection title="Real-world applications">
+        <CardGrid items={applications} columns={3} />
+      </ContentSection>
 
-          <section className="mb-8">
-            <h2 className="text-2xl font-bold text-ink mb-4">⚡ Work Function Values</h2>
-            <p className="text-gray-700 mb-4">
-              Different metals have different work functions (energy needed to remove an electron):
-            </p>
-            <div className="overflow-x-auto">
-              <table className="min-w-full bg-white border border-line-strong">
-                <thead className="bg-gray-100">
-                  <tr>
-                    <th className="px-4 py-2 border-b text-left">Metal</th>
-                    <th className="px-4 py-2 border-b text-left">Work Function (eV)</th>
-                    <th className="px-4 py-2 border-b text-left">Threshold Wavelength (nm)</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td className="px-4 py-2 border-b">Sodium</td>
-                    <td className="px-4 py-2 border-b">2.28</td>
-                    <td className="px-4 py-2 border-b">544</td>
-                  </tr>
-                  <tr>
-                    <td className="px-4 py-2 border-b">Potassium</td>
-                    <td className="px-4 py-2 border-b">2.30</td>
-                    <td className="px-4 py-2 border-b">539</td>
-                  </tr>
-                  <tr>
-                    <td className="px-4 py-2 border-b">Calcium</td>
-                    <td className="px-4 py-2 border-b">2.87</td>
-                    <td className="px-4 py-2 border-b">432</td>
-                  </tr>
-                  <tr>
-                    <td className="px-4 py-2 border-b">Zinc</td>
-                    <td className="px-4 py-2 border-b">4.33</td>
-                    <td className="px-4 py-2 border-b">286</td>
-                  </tr>
-                  <tr>
-                    <td className="px-4 py-2 border-b">Copper</td>
-                    <td className="px-4 py-2 border-b">4.65</td>
-                    <td className="px-4 py-2 border-b">267</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </section>
-
-          <section className="mb-8">
-            <h2 className="text-2xl font-bold text-ink mb-4">🌍 Real-World Applications</h2>
-            <ul className="list-disc list-inside space-y-2 text-gray-700 ml-4">
-              <li><strong>Solar Panels:</strong> Photovoltaic cells convert light energy directly to electricity</li>
-              <li><strong>Night Vision Devices:</strong> Image intensifiers amplify low light using photoelectric emission</li>
-              <li><strong>Photodetectors:</strong> Light sensors in cameras, barcode scanners, and optical communications</li>
-              <li><strong>X-ray Photoelectron Spectroscopy:</strong> Surface analysis technique in materials science</li>
-              <li><strong>Photoelectron Microscopy:</strong> Imaging surfaces at nanometer resolution</li>
-            </ul>
-          </section>
-
-          <section className="mb-8">
-            <h2 className="text-2xl font-bold text-ink mb-4">🏆 Historical Significance</h2>
-            <p className="text-gray-700 mb-4">
-              Albert Einstein received the 1921 Nobel Prize in Physics for his explanation of the photoelectric 
-              effect, not for his more famous theory of relativity. This work was crucial because:
-            </p>
-            <ul className="list-disc list-inside space-y-2 text-gray-700 ml-4">
-              <li>It provided strong evidence for the particle nature of light (photons)</li>
-              <li>It helped establish quantum mechanics as a valid theory</li>
-              <li>It showed that light has both wave and particle properties (wave-particle duality)</li>
-              <li>It demonstrated that energy is quantized at the microscopic level</li>
-            </ul>
-          </section>
-        </div>
-
-        {/* Comments */}
-        <div className="mt-12">
-          <GiscusComments />
-        </div>
-      </div>
-    </div>
+      <ContentSection title="Historical significance">
+        <Prose>
+          <p>
+            Albert Einstein received the 1921 Nobel Prize in Physics for his explanation of the photoelectric effect, not
+            for his more famous theory of relativity. This work was crucial because:
+          </p>
+          <ul>
+            <li>It provided strong evidence for the particle nature of light (photons)</li>
+            <li>It helped establish quantum mechanics as a valid theory</li>
+            <li>It showed that light has both wave and particle properties (wave-particle duality)</li>
+            <li>It demonstrated that energy is quantized at the microscopic level</li>
+          </ul>
+        </Prose>
+      </ContentSection>
+    </DetailPage>
   );
 }

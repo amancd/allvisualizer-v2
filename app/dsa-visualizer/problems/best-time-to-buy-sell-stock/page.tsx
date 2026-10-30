@@ -1,18 +1,23 @@
-'use client';
-
-import { useState } from 'react';
-import Link from 'next/link';
+import type { Metadata } from 'next';
+import { Callout, CodeTabs, Complexity, ContentSection, DetailPage, Prose, StepList } from '@/components/content';
 import BestTimeToBuySellStockVisualizer from './BestTimeToBuySellStockVisualizer';
 
-export default function BestTimeToBuySellStockPage() {
-  const [showTOC, setShowTOC] = useState(false);
-  const [selectedLanguage, setSelectedLanguage] = useState<'javascript' | 'python' | 'java' | 'cpp'>('javascript');
+export const metadata: Metadata = {
+  title: 'Best Time to Buy and Sell Stock - Array Algorithm | DSA Visualizer',
+  description:
+    'Learn the Best Time to Buy and Sell Stock problem with interactive visualization. Understand the greedy one-pass approach that tracks the minimum price and maximum profit.',
+  keywords: ['best time to buy and sell stock', 'max profit', 'greedy', 'dynamic programming', 'array algorithm', 'leetcode', 'coding interview', 'algorithm visualization'],
+  openGraph: {
+    title: 'Best Time to Buy and Sell Stock - Interactive Algorithm Visualization',
+    description: 'Master the greedy max-profit approach with step-by-step visualization',
+  },
+};
 
-  const solutions = {
-    javascript: `function maxProfit(prices) {
+const solutions = [
+  { label: 'JavaScript', language: 'javascript', code: `function maxProfit(prices) {
     let minPrice = Infinity;
     let maxProfit = 0;
-    
+
     for (let i = 0; i < prices.length; i++) {
         // Update minimum price seen so far
         if (prices[i] < minPrice) {
@@ -23,18 +28,17 @@ export default function BestTimeToBuySellStockPage() {
             maxProfit = prices[i] - minPrice;
         }
     }
-    
+
     return maxProfit;
 }
 
 // Example usage
 const prices = [7, 1, 5, 3, 6, 4];
-console.log(maxProfit(prices)); // Output: 5`,
-
-    python: `def maxProfit(prices):
+console.log(maxProfit(prices)); // Output: 5` },
+  { label: 'Python', language: 'python', code: `def maxProfit(prices):
     min_price = float('inf')
     max_profit = 0
-    
+
     for price in prices:
         # Update minimum price seen so far
         if price < min_price:
@@ -42,18 +46,17 @@ console.log(maxProfit(prices)); // Output: 5`,
         # Calculate profit if we sell at current price
         elif price - min_price > max_profit:
             max_profit = price - min_price
-    
+
     return max_profit
 
 # Example usage
 prices = [7, 1, 5, 3, 6, 4]
-print(maxProfit(prices))  # Output: 5`,
-
-    java: `class Solution {
+print(maxProfit(prices))  # Output: 5` },
+  { label: 'Java', language: 'java', code: `class Solution {
     public int maxProfit(int[] prices) {
         int minPrice = Integer.MAX_VALUE;
         int maxProfit = 0;
-        
+
         for (int i = 0; i < prices.length; i++) {
             // Update minimum price seen so far
             if (prices[i] < minPrice) {
@@ -64,19 +67,18 @@ print(maxProfit(prices))  # Output: 5`,
                 maxProfit = prices[i] - minPrice;
             }
         }
-        
+
         return maxProfit;
     }
-    
+
     // Example usage
     public static void main(String[] args) {
         Solution solution = new Solution();
         int[] prices = {7, 1, 5, 3, 6, 4};
         System.out.println(solution.maxProfit(prices)); // Output: 5
     }
-}`,
-
-    cpp: `#include <vector>
+}` },
+  { label: 'C++', language: 'cpp', code: `#include <vector>
 #include <algorithm>
 #include <climits>
 using namespace std;
@@ -86,7 +88,7 @@ public:
     int maxProfit(vector<int>& prices) {
         int minPrice = INT_MAX;
         int maxProfit = 0;
-        
+
         for (int i = 0; i < prices.size(); i++) {
             // Update minimum price seen so far
             if (prices[i] < minPrice) {
@@ -97,7 +99,7 @@ public:
                 maxProfit = prices[i] - minPrice;
             }
         }
-        
+
         return maxProfit;
     }
 };
@@ -105,285 +107,81 @@ public:
 // Example usage
 // vector<int> prices = {7, 1, 5, 3, 6, 4};
 // Solution solution;
-// cout << solution.maxProfit(prices); // Output: 5`
-  };
+// cout << solution.maxProfit(prices); // Output: 5` },
+];
 
+export default function BestTimeToBuySellStockPage() {
   return (
-    <div className="min-h-screen bg-subtle">
-      {/* Mobile TOC Toggle */}
-      <button
-        onClick={() => setShowTOC(!showTOC)}
-        className="fixed bottom-6 right-6 z-50 lg:hidden bg-gradient-to-r from-indigo-600 to-purple-600 text-white p-4 rounded-full shadow-lg hover:shadow-card-hover transition-all"
-      >
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
+    <DetailPage
+      subject="dsa"
+      item="best-time-to-buy-sell-stock"
+      width="narrow"
+      description="Find the maximum profit you can achieve from buying and selling a stock once. Learn the greedy approach that tracks the minimum price and maximum profit."
+      meta={<span className="font-mono">Time O(n) · Space O(1)</span>}
+    >
+      <ContentSection title="Problem statement">
+        <Prose>
+          <p>
+            You are given an array <code>prices</code> where <code>prices[i]</code> is the price of a given stock on the{' '}
+            <code>i</code>
+            <sup>th</sup> day.
+          </p>
+          <p>
+            You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the
+            future to sell that stock.
+          </p>
+          <p>
+            Return the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return{' '}
+            <code>0</code>.
+          </p>
+        </Prose>
+        <Callout tone="example" title="Example 1" className="mt-5">
+          <pre className="whitespace-pre-wrap font-mono text-[13px]">{`Input:  prices = [7, 1, 5, 3, 6, 4]
+Output: 5
+Explanation: Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6 - 1 = 5.`}</pre>
+        </Callout>
+        <Callout tone="example" title="Example 2" className="mt-4">
+          <pre className="whitespace-pre-wrap font-mono text-[13px]">{`Input:  prices = [7, 6, 4, 3, 1]
+Output: 0
+Explanation: No transactions are done, i.e. max profit = 0.`}</pre>
+        </Callout>
+      </ContentSection>
 
-      <div className="pt-28 pb-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex gap-8">
-            {/* Table of Contents - Sidebar */}
-            <aside className={`${showTOC ? 'block' : 'hidden'} lg:block fixed lg:sticky top-20 left-0 w-64 bg-white p-6 rounded-card border border-line shadow-sm h-fit z-40 lg:z-0 m-4 lg:m-0`}>
-              <h3 className="text-sm font-bold text-ink mb-4 uppercase tracking-wide">On This Page</h3>
-              <nav className="space-y-2">
-                <a href="#problem" className="block text-sm text-ink-muted hover:text-ink transition-colors py-1">Problem Statement</a>
-                <a href="#examples" className="block text-sm text-ink-muted hover:text-ink transition-colors py-1">Examples</a>
-                <a href="#approach" className="block text-sm text-ink-muted hover:text-ink transition-colors py-1">Approach</a>
-                <a href="#solution" className="block text-sm text-ink-muted hover:text-ink transition-colors py-1">Solution</a>
-                <a href="#complexity" className="block text-sm text-ink-muted hover:text-ink transition-colors py-1">Complexity Analysis</a>
-              </nav>
-            </aside>
+      <ContentSection title="Interactive visualizer" description="See the algorithm run step by step.">
+        <BestTimeToBuySellStockVisualizer />
+      </ContentSection>
 
-            {/* Main Content */}
-            <main className="flex-1 max-w-4xl">
-              {/* Breadcrumb */}
-              <div className="flex items-center gap-2 text-sm text-ink-muted mb-6 animate-fade-in">
-                <Link href="/" className="hover:text-ink transition-colors">Home</Link>
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-                <Link href="/dsa-visualizer" className="hover:text-ink transition-colors">DSA Visualizer</Link>
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-                <Link href="/dsa-visualizer/arrays" className="hover:text-ink transition-colors">Arrays</Link>
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-                <span className="text-ink font-medium">Best Time to Buy and Sell Stock</span>
-              </div>
+      <ContentSection title="Approach">
+        <StepList
+          steps={[
+            <>
+              <strong className="text-ink">Track the minimum price.</strong> Keep track of the minimum price seen so far as
+              we iterate through the array. This represents the best day to buy.
+            </>,
+            <>
+              <strong className="text-ink">Calculate the potential profit.</strong> For each price, calculate the profit if we
+              sell at the current price (current price − minimum price).
+            </>,
+            <>
+              <strong className="text-ink">Update the maximum profit.</strong> Keep track of the maximum profit encountered so
+              far. This greedy approach finds the optimal solution in one pass.
+            </>,
+          ]}
+        />
+      </ContentSection>
 
-              {/* Hero Section */}
-              <div className="bg-gradient-to-br from-gray-50 via-gray-100 to-white p-6 md:p-8 rounded-2xl border border-line-strong mb-8 animate-fade-in">
-                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4">
-                  <div>
-                    <h1 className="text-3xl md:text-4xl font-bold text-ink mb-3 tracking-tight">
-                      Best Time to Buy and Sell Stock
-                    </h1>
-                    <div className="flex flex-wrap items-center gap-3">
-                      <span className="px-3 py-1 bg-green-100 text-green-700 rounded-lg text-sm font-semibold border border-green-200">
-                        Easy
-                      </span>
-                      <span className="px-3 py-1 bg-gray-200 text-ink rounded-lg text-sm font-semibold">
-                        Array
-                      </span>
-                      <span className="px-3 py-1 bg-gray-200 text-ink rounded-lg text-sm font-semibold">
-                        Dynamic Programming
-                      </span>
-                      <span className="px-3 py-1 bg-cyan-100 text-cyan-700 rounded-lg text-sm font-semibold">
-                        Greedy
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <p className="text-base md:text-lg text-gray-700 leading-relaxed">
-                  Find the maximum profit you can achieve from buying and selling a stock once. Learn the greedy approach to track minimum price and maximum profit.
-                </p>
-              </div>
+      <ContentSection title="Solution">
+        <CodeTabs samples={solutions} />
+      </ContentSection>
 
-              {/* Problem Statement */}
-              <section id="problem" className="scroll-mt-24 mb-8 animate-fade-in" style={{ animationDelay: '0.1s' }}>
-                <div className="bg-white p-6 md:p-8 rounded-card border border-line shadow-sm hover:shadow-card-hover transition-shadow">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                      </svg>
-                    </div>
-                    <h2 className="text-xl md:text-2xl font-bold text-ink">Problem Statement</h2>
-                  </div>
-                  <div className="prose prose-lg max-w-none">
-                    <p className="text-gray-700 mb-4 text-sm md:text-base">
-                      You are given an array <code className="px-2 py-1 bg-gray-100 rounded text-sm">prices</code> where <code className="px-2 py-1 bg-gray-100 rounded text-sm">prices[i]</code> is the price of a given stock on the <code className="px-2 py-1 bg-gray-100 rounded text-sm">i<sup>th</sup></code> day.
-                    </p>
-                    <p className="text-gray-700 mb-4 text-sm md:text-base">
-                      You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock.
-                    </p>
-                    <p className="text-gray-700 text-sm md:text-base">
-                      Return the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return <code className="px-2 py-1 bg-gray-100 rounded text-sm">0</code>.
-                    </p>
-                  </div>
-                </div>
-              </section>
-
-              {/* Examples */}
-              <section id="examples" className="scroll-mt-24 mb-8 animate-fade-in" style={{ animationDelay: '0.15s' }}>
-                <div className="bg-white p-6 md:p-8 rounded-card border border-line shadow-sm hover:shadow-card-hover transition-shadow">
-                  <h3 className="text-lg md:text-xl font-bold text-ink mb-4">Examples</h3>
-                  
-                  <div className="space-y-6">
-                    <div className="p-4 bg-subtle rounded-xl border border-line">
-                      <div className="font-semibold text-ink mb-2 text-sm md:text-base">Example 1:</div>
-                      <div className="font-mono text-xs sm:text-sm space-y-1">
-                        <div><span className="text-ink-muted">Input:</span> prices = [7,1,5,3,6,4]</div>
-                        <div><span className="text-ink-muted">Output:</span> 5</div>
-                        <div className="text-ink-muted text-xs mt-2">
-                          <strong>Explanation:</strong> Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-1 = 5.
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="p-4 bg-subtle rounded-xl border border-line">
-                      <div className="font-semibold text-ink mb-2 text-sm md:text-base">Example 2:</div>
-                      <div className="font-mono text-xs sm:text-sm space-y-1">
-                        <div><span className="text-ink-muted">Input:</span> prices = [7,6,4,3,1]</div>
-                        <div><span className="text-ink-muted">Output:</span> 0</div>
-                        <div className="text-ink-muted text-xs mt-2">
-                          <strong>Explanation:</strong> No transactions are done, i.e. max profit = 0.
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </section>
-
-              {/* Interactive Visualizer */}
-              <section id="visualizer" className="scroll-mt-24 mb-8 animate-fade-in" style={{ animationDelay: '0.17s' }}>
-                <div className="bg-gradient-to-br from-blue-50 to-purple-50 p-6 md:p-8 rounded-2xl border-2 border-blue-200 shadow-sm">
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
-                      </svg>
-                    </div>
-                    <h2 className="text-xl md:text-2xl font-bold text-ink">Interactive Visualizer</h2>
-                  </div>
-                  <BestTimeToBuySellStockVisualizer />
-                </div>
-              </section>
-
-              {/* Approach */}
-              <section id="approach" className="scroll-mt-24 mb-8 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-                <div className="bg-white p-6 md:p-8 rounded-card border border-line shadow-sm hover:shadow-card-hover transition-shadow">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-600 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                      </svg>
-                    </div>
-                    <h2 className="text-xl md:text-2xl font-bold text-ink">Approach</h2>
-                  </div>
-                  
-                  <div className="space-y-4">
-                    <div className="flex items-start gap-3">
-                      <div className="w-8 h-8 bg-gray-200 text-ink rounded-full flex items-center justify-center flex-shrink-0 font-bold text-sm">1</div>
-                      <div className="flex-1">
-                        <h4 className="font-semibold text-ink mb-1 text-sm md:text-base">Track Minimum Price</h4>
-                        <p className="text-gray-700 text-sm md:text-base">Keep track of the minimum price seen so far as we iterate through the array. This represents the best day to buy.</p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-3">
-                      <div className="w-8 h-8 bg-gray-200 text-ink rounded-full flex items-center justify-center flex-shrink-0 font-bold text-sm">2</div>
-                      <div className="flex-1">
-                        <h4 className="font-semibold text-ink mb-1 text-sm md:text-base">Calculate Potential Profit</h4>
-                        <p className="text-gray-700 text-sm md:text-base">For each price, calculate the profit if we sell at the current price (current price - minimum price).</p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-3">
-                      <div className="w-8 h-8 bg-gray-200 text-ink rounded-full flex items-center justify-center flex-shrink-0 font-bold text-sm">3</div>
-                      <div className="flex-1">
-                        <h4 className="font-semibold text-ink mb-1 text-sm md:text-base">Update Maximum Profit</h4>
-                        <p className="text-gray-700 text-sm md:text-base">Keep track of the maximum profit encountered so far. This greedy approach ensures we find the optimal solution in one pass.</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </section>
-
-              {/* Solution */}
-              <section id="solution" className="scroll-mt-24 mb-8 animate-fade-in" style={{ animationDelay: '0.25s' }}>
-                <div className="bg-white p-6 md:p-8 rounded-card border border-line shadow-sm hover:shadow-card-hover transition-shadow">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                      </svg>
-                    </div>
-                    <h2 className="text-xl md:text-2xl font-bold text-ink">Solution</h2>
-                  </div>
-
-                  {/* Language Tabs */}
-                  <div className="flex flex-wrap gap-2 mb-4 border-b border-line pb-4">
-                    {(['javascript', 'python', 'java', 'cpp'] as const).map((lang) => (
-                      <button
-                        key={lang}
-                        onClick={() => setSelectedLanguage(lang)}
-                        className={`px-4 py-2 rounded-lg font-semibold text-sm transition-all ${
-                          selectedLanguage === lang
-                            ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-md'
-                            : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                        }`}
-                      >
-                        {lang === 'cpp' ? 'C++' : lang.charAt(0).toUpperCase() + lang.slice(1)}
-                      </button>
-                    ))}
-                  </div>
-
-                  <div className="bg-gray-900 rounded-xl p-4 md:p-6 overflow-x-auto">
-                    <pre className="text-gray-100 text-xs sm:text-sm font-mono leading-relaxed">
-                      {solutions[selectedLanguage]}
-                    </pre>
-                  </div>
-                </div>
-              </section>
-
-              {/* Complexity */}
-              <section id="complexity" className="scroll-mt-24 mb-8 animate-fade-in" style={{ animationDelay: '0.3s' }}>
-                <div className="bg-white p-6 md:p-8 rounded-card border border-line shadow-sm hover:shadow-card-hover transition-shadow">
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="w-10 h-10 bg-gradient-to-br from-orange-500 to-amber-600 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                      </svg>
-                    </div>
-                    <h2 className="text-xl md:text-2xl font-bold text-ink">Complexity Analysis</h2>
-                  </div>
-
-                  <div className="space-y-4">
-                    <div className="p-4 md:p-6 bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl border-2 border-green-200">
-                      <div className="flex items-center justify-between mb-2">
-                        <span className="text-sm font-bold text-gray-700">Time Complexity</span>
-                        <code className="px-3 py-1 bg-green-100 text-green-700 rounded-md font-mono text-sm font-semibold">O(n)</code>
-                      </div>
-                      <p className="text-sm text-ink-muted">We traverse the array once, performing constant time operations at each step.</p>
-                    </div>
-
-                    <div className="p-4 md:p-6 bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl border-2 border-line-strong">
-                      <div className="flex items-center justify-between mb-2">
-                        <span className="text-sm font-bold text-gray-700">Space Complexity</span>
-                        <code className="px-3 py-1 bg-gray-200 text-ink rounded-md font-mono text-sm font-semibold">O(1)</code>
-                      </div>
-                      <p className="text-sm text-ink-muted">We only use two variables (minPrice and maxProfit) regardless of input size.</p>
-                    </div>
-                  </div>
-                </div>
-              </section>
-
-              {/* Next Steps */}
-              <div className="bg-gradient-to-br from-blue-600 via-cyan-600 to-blue-700 rounded-2xl p-6 md:p-8 text-white animate-fade-in" style={{ animationDelay: '0.35s' }}>
-                <h3 className="text-2xl md:text-3xl font-bold mb-4 tracking-tight">Ready for More Challenges?</h3>
-                <p className="text-sm md:text-base text-blue-100 mb-6">
-                  Continue practicing with more array problems and master dynamic programming concepts.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
-                  <Link
-                    href="/dsa-visualizer/arrays"
-                    className="inline-flex items-center justify-center gap-2 px-4 sm:px-6 py-3 bg-white text-ink rounded-xl font-semibold text-sm md:text-base hover:bg-subtle transition-all hover:-translate-y-0.5 hover:shadow-card-hover"
-                  >
-                    More Array Problems
-                    <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                    </svg>
-                  </Link>
-                </div>
-              </div>
-            </main>
-          </div>
-        </div>
-      </div>
-    </div>
+      <ContentSection title="Time & space complexity">
+        <Complexity
+          time="O(n)"
+          timeNote="We traverse the array once, performing constant-time operations at each step."
+          space="O(1)"
+          spaceNote="We only use two variables (minPrice and maxProfit) regardless of input size."
+        />
+      </ContentSection>
+    </DetailPage>
   );
 }

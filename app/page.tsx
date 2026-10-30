@@ -1,13 +1,15 @@
 import Link from 'next/link';
 import { ArrowRight, MousePointerClick, Layers, Github, Sparkles } from 'lucide-react';
 import { PageHeader, SectionHeader, buttonStyles } from '@/components/ui';
+import { CardGrid } from '@/components/content';
 import CategoryCard from '@/components/catalog/CategoryCard';
 import { categories } from '@/config/categories';
+import { totalPatterns } from '@/config/dsa-patterns';
 
 const available = categories.filter((c) => c.status !== 'Coming Soon');
 
 const stats = [
-  { value: '43', label: 'DSA patterns' },
+  { value: String(totalPatterns), label: 'DSA patterns' },
   { value: `${available.filter((c) => c.id !== 'dsa-patterns').reduce((n, c) => n + c.count, 0)}+`, label: 'interactive visualizers' },
   { value: '4', label: 'subjects' },
   { value: '100%', label: 'free & open source' },
@@ -37,7 +39,7 @@ export default function Home() {
   return (
     <div>
       <PageHeader
-        eyebrow={<><Sparkles className="h-3.5 w-3.5" /> New: 43 DSA patterns with code templates</>}
+        eyebrow={<><Sparkles className="h-3.5 w-3.5" /> New: {totalPatterns} DSA patterns with code templates</>}
         title={<>Learn hard concepts by <span className="text-gradient">seeing them move</span></>}
         description="Open-source interactive visualizations for algorithms, mathematics, physics and machine learning. Step through every idea instead of memorizing it."
         actions={
@@ -87,17 +89,7 @@ export default function Home() {
       <section className="border-y border-line bg-subtle py-16 md:py-24">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeader title="Why AllVisualizer" description="Built for the moment a concept finally clicks." />
-          <div className="grid gap-5 md:grid-cols-3">
-            {features.map(({ icon: Icon, title, description }) => (
-              <div key={title} className="rounded-card border border-line bg-white p-6 shadow-card">
-                <span className="grid h-10 w-10 place-items-center rounded-lg bg-brand-50 text-brand-600 ring-1 ring-inset ring-brand-100">
-                  <Icon className="h-5 w-5" />
-                </span>
-                <h3 className="mt-4 font-semibold text-ink">{title}</h3>
-                <p className="mt-1.5 text-sm leading-relaxed text-ink-muted">{description}</p>
-              </div>
-            ))}
-          </div>
+          <CardGrid items={features} columns={3} />
           <figure className="mt-12 text-center">
             <blockquote className="text-lg italic text-ink-muted">&ldquo;Imagination is more important than knowledge.&rdquo;</blockquote>
             <figcaption className="mt-1 text-sm text-ink-faint">Albert Einstein</figcaption>

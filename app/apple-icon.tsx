@@ -1,41 +1,10 @@
-import { ImageResponse } from 'next/og'
- 
-// Image metadata
-export const size = {
-  width: 180,
-  height: 180,
-}
-export const contentType = 'image/png'
- 
-// Image generation
+import { ImageResponse } from 'next/og';
+import { BrandIcon } from '@/components/layout/brand';
+
+export const size = { width: 180, height: 180 };
+export const contentType = 'image/png';
+
+/** Home-screen icon for iOS. iOS rounds the corners itself, so no radius here. */
 export default function AppleIcon() {
-  return new ImageResponse(
-    (
-      <div
-        style={{
-          width: '100%',
-          height: '100%',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          background: '#000000',
-          borderRadius: '20px',
-        }}
-      >
-        <div
-          style={{
-            fontSize: 100,
-            fontWeight: 'bold',
-            color: 'white',
-            fontFamily: 'sans-serif',
-          }}
-        >
-          A
-        </div>
-      </div>
-    ),
-    {
-      ...size,
-    }
-  )
+  return new ImageResponse(<BrandIcon size={size.width} radius={0} />, size);
 }

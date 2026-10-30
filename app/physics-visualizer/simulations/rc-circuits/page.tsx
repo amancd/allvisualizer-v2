@@ -1,215 +1,131 @@
-import type { Metadata } from "next";
+import type { Metadata } from 'next';
+import { Callout, CardGrid, type CardGridItem, ContentSection, DetailPage, Formula, Prose } from '@/components/content';
 import RCCircuitVisualizer from './RCCircuitVisualizer';
-import GiscusComments from "@/components/ui/GiscusComments";
-import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: "Capacitors & RC Circuits - Physics Visualizer | AllVisualizer",
-  description: "Visualize capacitor charging and discharging in RC circuits. Interactive simulation with voltage, current, and charge graphs.",
-  keywords: ["capacitor", "RC circuit", "time constant", "exponential decay", "charging", "discharging", "physics simulation"],
+  title: 'Capacitors & RC Circuits - Physics Visualizer | AllVisualizer',
+  description:
+    'Visualize capacitor charging and discharging in RC circuits. Interactive simulation with voltage, current, and charge graphs.',
+  keywords: ['capacitor', 'RC circuit', 'time constant', 'exponential decay', 'charging', 'discharging', 'physics simulation'],
   openGraph: {
-    title: "RC Circuit Visualizer - Interactive Physics",
-    description: "Master capacitors and RC circuits through interactive visualization",
+    title: 'RC Circuit Visualizer - Interactive Physics',
+    description: 'Master capacitors and RC circuits through interactive visualization',
   },
 };
 
+const concepts: CardGridItem[] = [
+  {
+    title: 'Exponential behavior',
+    description:
+      'Both charging and discharging follow exponential curves, not linear ones. The rate of change is fastest at the beginning and slows down as the capacitor approaches its final state.',
+  },
+  {
+    title: 'Time constant significance',
+    description:
+      'The time constant τ = RC determines how fast the circuit responds. A larger resistance or capacitance increases τ, making the process slower. After 5τ, the process is essentially complete (99.3%).',
+  },
+  {
+    title: 'Current direction',
+    description:
+      'During charging, current flows into the capacitor (positive). During discharging, current flows out of the capacitor (negative). The magnitude decreases exponentially in both cases.',
+  },
+  {
+    title: 'Energy conservation',
+    description:
+      'Energy is stored in the electric field between the capacitor plates. During discharge, this energy is dissipated as heat in the resistor. Half the energy from the battery is always lost to the resistor during charging.',
+  },
+];
+
+const applications: CardGridItem[] = [
+  {
+    title: 'Timing circuits',
+    description: 'RC circuits create precise time delays in electronics, from simple timers to computer clock circuits.',
+  },
+  {
+    title: 'Filters',
+    description: 'Low-pass and high-pass filters use RC circuits to block or pass specific frequencies.',
+  },
+  {
+    title: 'Flash photography',
+    description: 'Camera flashes use capacitors to store energy and release it quickly for bright light.',
+  },
+  {
+    title: 'Power supplies',
+    description: 'Smoothing capacitors in power supplies filter out voltage ripples for stable DC output.',
+  },
+  {
+    title: 'Touchscreens',
+    description: 'Capacitive touchscreens detect finger position by measuring capacitance changes.',
+  },
+  {
+    title: 'Defibrillators',
+    description: 'Medical defibrillators charge capacitors to deliver controlled electric shocks to the heart.',
+  },
+];
+
 export default function RCCircuitPage() {
   return (
-    <div className="min-h-screen bg-white pt-24">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Breadcrumb */}
-        <nav className="flex items-center gap-2 text-sm text-ink-muted mb-8">
-          <Link href="/" className="hover:text-ink">Home</Link>
-          <span>/</span>
-          <Link href="/physics-visualizer" className="hover:text-ink">Physics</Link>
-          <span>/</span>
-          <Link href="/physics-visualizer/electromagnetism" className="hover:text-ink">Electromagnetism</Link>
-          <span>/</span>
-          <span className="text-ink">RC Circuits</span>
-        </nav>
-
-        {/* Header */}
-        <header className="mb-8">
-          <div className="flex items-center gap-3 mb-4">
-            <h1 className="text-3xl md:text-4xl font-bold text-ink tracking-tight">
-              Capacitors & RC Circuits
-            </h1>
-            <span className="px-3 py-1 bg-yellow-100 text-yellow-700 rounded-lg text-sm font-medium">
-              Intermediate
-            </span>
-          </div>
-          <p className="text-lg text-ink-muted">
-            Visualize how capacitors charge and discharge in RC circuits with exponential behavior.
+    <DetailPage
+      subject="physics"
+      item="rc-circuits"
+      description="Visualize how capacitors charge and discharge in RC circuits with exponential behavior."
+    >
+      <ContentSection title="RC circuit theory" variant="card">
+        <Prose>
+          <p>
+            An <strong>RC circuit</strong> consists of a resistor (R) and capacitor (C) connected in series. When
+            connected to a voltage source, the capacitor charges exponentially, and when disconnected, it discharges
+            exponentially through the resistor.
           </p>
-        </header>
 
-        {/* Theory */}
-        <section className="mb-8 p-6 bg-subtle rounded-lg border border-line">
-          <h2 className="text-xl font-bold text-ink mb-3">RC Circuit Theory</h2>
-          
-          <div className="space-y-4 text-gray-700">
-            <p>
-              An <strong>RC circuit</strong> consists of a resistor (R) and capacitor (C) connected in series. 
-              When connected to a voltage source, the capacitor charges exponentially, and when disconnected, 
-              it discharges exponentially through the resistor.
-            </p>
-
-            <div className="bg-white border border-line-strong rounded p-4">
-              <h3 className="font-semibold text-ink mb-2">Charging Equations:</h3>
-              <div className="space-y-2 font-mono text-sm">
-                <div className="bg-gray-100 p-2 rounded">Q(t) = Q₀(1 - e^(-t/τ))</div>
-                <div className="bg-gray-100 p-2 rounded">V(t) = V₀(1 - e^(-t/τ))</div>
-                <div className="bg-gray-100 p-2 rounded">I(t) = (V₀/R)e^(-t/τ)</div>
+          <div className="grid gap-4 sm:grid-cols-2">
+            <Callout tone="formula" title="Charging">
+              <div className="space-y-1 font-mono">
+                <p>Q(t) = Q₀(1 − e^(−t/τ))</p>
+                <p>V(t) = V₀(1 − e^(−t/τ))</p>
+                <p>I(t) = (V₀/R)e^(−t/τ)</p>
               </div>
-            </div>
-
-            <div className="bg-white border border-line-strong rounded p-4">
-              <h3 className="font-semibold text-ink mb-2">Discharging Equations:</h3>
-              <div className="space-y-2 font-mono text-sm">
-                <div className="bg-gray-100 p-2 rounded">Q(t) = Q₀e^(-t/τ)</div>
-                <div className="bg-gray-100 p-2 rounded">V(t) = V₀e^(-t/τ)</div>
-                <div className="bg-gray-100 p-2 rounded">I(t) = -(V₀/R)e^(-t/τ)</div>
+            </Callout>
+            <Callout tone="formula" title="Discharging">
+              <div className="space-y-1 font-mono">
+                <p>Q(t) = Q₀e^(−t/τ)</p>
+                <p>V(t) = V₀e^(−t/τ)</p>
+                <p>I(t) = −(V₀/R)e^(−t/τ)</p>
               </div>
-            </div>
-
-            <div className="bg-white border border-line-strong rounded p-4">
-              <h3 className="font-semibold text-ink mb-2">Time Constant (τ):</h3>
-              <div className="font-mono text-sm bg-gray-100 p-3 rounded mb-2">
-                τ = R × C
-              </div>
-              <ul className="text-sm space-y-1">
-                <li>• At t = τ: 63.2% charged/discharged</li>
-                <li>• At t = 2τ: 86.5% charged/discharged</li>
-                <li>• At t = 3τ: 95.0% charged/discharged</li>
-                <li>• At t = 5τ: 99.3% charged/discharged (effectively complete)</li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="font-semibold text-ink mb-2">Key Properties:</h3>
-              <ul className="list-disc list-inside space-y-1">
-                <li>Capacitance (C) measures charge storage ability (Farads)</li>
-                <li>Larger τ means slower charging/discharging</li>
-                <li>Current is maximum at t=0, decreases exponentially</li>
-                <li>Energy stored: E = ½CV²</li>
-              </ul>
-            </div>
+            </Callout>
           </div>
-        </section>
 
-        {/* Visualizer */}
-        <section className="mb-8">
-          <h2 className="text-xl font-bold text-ink mb-4">Interactive Simulation</h2>
-          <RCCircuitVisualizer />
-        </section>
+          <Callout tone="formula" title="Time constant (τ)">
+            <Formula>τ = R × C</Formula>
+            <ul className="mt-2 space-y-1">
+              <li>At t = τ: 63.2% charged/discharged</li>
+              <li>At t = 2τ: 86.5% charged/discharged</li>
+              <li>At t = 3τ: 95.0% charged/discharged</li>
+              <li>At t = 5τ: 99.3% charged/discharged (effectively complete)</li>
+            </ul>
+          </Callout>
 
-        {/* Key Concepts */}
-        <section className="mb-8 p-6 bg-subtle rounded-lg border border-line">
-          <h2 className="text-xl font-bold text-ink mb-4">Key Concepts</h2>
-          
-          <div className="space-y-4">
-            <div>
-              <h3 className="font-semibold text-ink mb-2">Exponential Behavior:</h3>
-              <p className="text-gray-700 text-sm">
-                Both charging and discharging follow exponential curves, not linear. The rate of change 
-                is fastest at the beginning and slows down as the capacitor approaches its final state.
-              </p>
-            </div>
+          <p><strong>Key properties:</strong></p>
+          <ul>
+            <li>Capacitance (C) measures charge storage ability (farads)</li>
+            <li>Larger τ means slower charging/discharging</li>
+            <li>Current is maximum at t = 0 and decreases exponentially</li>
+            <li>Energy stored: E = ½CV²</li>
+          </ul>
+        </Prose>
+      </ContentSection>
 
-            <div>
-              <h3 className="font-semibold text-ink mb-2">Time Constant Significance:</h3>
-              <p className="text-gray-700 text-sm">
-                The time constant τ = RC determines how fast the circuit responds. A larger resistance 
-                or capacitance increases τ, making the process slower. After 5τ, the process is 
-                essentially complete (99.3%).
-              </p>
-            </div>
+      <ContentSection title="Interactive simulation">
+        <RCCircuitVisualizer />
+      </ContentSection>
 
-            <div>
-              <h3 className="font-semibold text-ink mb-2">Current Direction:</h3>
-              <p className="text-gray-700 text-sm">
-                During charging, current flows into the capacitor (positive). During discharging, 
-                current flows out of the capacitor (negative). The magnitude decreases exponentially 
-                in both cases.
-              </p>
-            </div>
+      <ContentSection title="Key concepts">
+        <CardGrid items={concepts} />
+      </ContentSection>
 
-            <div>
-              <h3 className="font-semibold text-ink mb-2">Energy Conservation:</h3>
-              <p className="text-gray-700 text-sm">
-                Energy is stored in the electric field between capacitor plates. During discharge, 
-                this energy is dissipated as heat in the resistor. Half the energy from the battery 
-                is always lost to the resistor during charging.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Applications */}
-        <section className="mb-8 p-6 bg-subtle rounded-lg border border-line">
-          <h2 className="text-xl font-bold text-ink mb-4">Real-World Applications</h2>
-          <div className="grid sm:grid-cols-2 gap-4">
-            <div className="bg-white border border-line rounded p-3">
-              <h3 className="font-semibold text-ink mb-1">Timing Circuits</h3>
-              <p className="text-sm text-ink-muted">
-                RC circuits create precise time delays in electronics, from simple timers to computer clock circuits
-              </p>
-            </div>
-            <div className="bg-white border border-line rounded p-3">
-              <h3 className="font-semibold text-ink mb-1">Filters</h3>
-              <p className="text-sm text-ink-muted">
-                Low-pass and high-pass filters use RC circuits to block or pass specific frequencies
-              </p>
-            </div>
-            <div className="bg-white border border-line rounded p-3">
-              <h3 className="font-semibold text-ink mb-1">Flash Photography</h3>
-              <p className="text-sm text-ink-muted">
-                Camera flashes use capacitors to store energy and release it quickly for bright light
-              </p>
-            </div>
-            <div className="bg-white border border-line rounded p-3">
-              <h3 className="font-semibold text-ink mb-1">Power Supplies</h3>
-              <p className="text-sm text-ink-muted">
-                Smoothing capacitors in power supplies filter out voltage ripples for stable DC output
-              </p>
-            </div>
-            <div className="bg-white border border-line rounded p-3">
-              <h3 className="font-semibold text-ink mb-1">Touchscreens</h3>
-              <p className="text-sm text-ink-muted">
-                Capacitive touchscreens detect finger position by measuring capacitance changes
-              </p>
-            </div>
-            <div className="bg-white border border-line rounded p-3">
-              <h3 className="font-semibold text-ink mb-1">Defibrillators</h3>
-              <p className="text-sm text-ink-muted">
-                Medical defibrillators charge capacitors to deliver controlled electric shocks to the heart
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Discussion */}
-        <section className="mb-8 pt-8 border-t border-line">
-          <h2 className="text-xl font-bold text-ink mb-4">Discussion</h2>
-          <p className="text-ink-muted mb-6">
-            Have questions about RC circuits? Join the conversation below.
-          </p>
-          <GiscusComments />
-        </section>
-
-        {/* Back Link */}
-        <div className="pt-8 border-t border-line">
-          <Link
-            href="/physics-visualizer/electromagnetism"
-            className="inline-flex items-center gap-2 text-ink hover:text-gray-800"
-          >
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-            Back to Electromagnetism
-          </Link>
-        </div>
-      </div>
-    </div>
+      <ContentSection title="Real-world applications">
+        <CardGrid items={applications} columns={3} />
+      </ContentSection>
+    </DetailPage>
   );
 }

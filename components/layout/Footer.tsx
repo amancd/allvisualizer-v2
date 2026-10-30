@@ -46,6 +46,7 @@ export default function Footer() {
               Open-source interactive visualizations for algorithms, math, physics and machine learning, plus DSA pattern notes for interview prep.
             </p>
 
+            {/* App store badges: hidden for now. Uncomment to show them again.
             <div className="mt-6 flex flex-wrap gap-2.5">
               <a
                 href="https://play.google.com/store/apps/details?id=com.atomdyno.dsavisualizer"
@@ -76,6 +77,7 @@ export default function Footer() {
                 </span>
               </a>
             </div>
+            */}
           </div>
 
           {columns.map((col) => (

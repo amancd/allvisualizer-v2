@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PageHeader } from '@/components/ui';
 
 export const metadata: Metadata = {
   title: "Terms & Conditions - AllVisualizer",
@@ -16,13 +17,14 @@ export const metadata: Metadata = {
 export default function TermsAndConditionsPage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Main Content */}
-      <section className="py-16 md:py-24">
+      <PageHeader
+        align="left"
+        breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Terms & Conditions' }]}
+        title="Terms & Conditions"
+        description="Last updated: November 2, 2025"
+      />
+      <section className="py-12 md:py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-3xl md:text-4xl font-bold text-ink mb-4 tracking-tight">Terms & Conditions</h1>
-          <p className="text-xl text-ink-muted mb-12">
-            Last updated: November 2, 2025
-          </p>
 
           <div className="space-y-8">
             <div>

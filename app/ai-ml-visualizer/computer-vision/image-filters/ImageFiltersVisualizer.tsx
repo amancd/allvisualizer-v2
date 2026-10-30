@@ -1,8 +1,7 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
-import Link from 'next/link';
-import { Button, GiscusComments } from '@/components/ui';
+import { Button } from '@/components/ui';
 import { Upload, RotateCcw, Download } from 'lucide-react';
 
 type FilterType = 'none' | 'blur' | 'sharpen' | 'edge-sobel' | 'edge-laplacian' | 'emboss' | 'custom';
@@ -258,49 +257,9 @@ export default function ImageFiltersVisualizer() {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Breadcrumbs */}
-      <nav className="pt-24 pb-4">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ol className="flex items-center space-x-2 text-sm text-ink-muted">
-            <li>
-              <Link href="/" className="hover:text-ink">
-                Home
-              </Link>
-            </li>
-            <li>/</li>
-            <li>
-              <Link href="/ai-ml-visualizer" className="hover:text-ink">
-                AI & ML
-              </Link>
-            </li>
-            <li>/</li>
-            <li>
-              <Link href="/ai-ml-visualizer/computer-vision" className="hover:text-ink">
-                Computer Vision
-              </Link>
-            </li>
-            <li>/</li>
-            <li className="text-ink font-medium">Image Filters</li>
-          </ol>
-        </div>
-      </nav>
-
-      {/* Header */}
-      <section className="pb-12">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl font-bold text-ink mb-4 tracking-tight">
-            Image Filters & Convolution
-          </h1>
-          <p className="text-lg text-ink-muted max-w-3xl">
-            Explore how convolution kernels transform images. Apply different filters and see the mathematical operations in action.
-          </p>
-        </div>
-      </section>
-
-      {/* Main Content */}
-      <section className="pb-16">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="space-y-12">
+      <section>
+        <div>
           <div className="grid lg:grid-cols-3 gap-8">
             {/* Controls */}
             <div className="lg:col-span-1 space-y-6">
@@ -481,8 +440,8 @@ export default function ImageFiltersVisualizer() {
       </section>
 
       {/* Theory Section */}
-      <section className="py-16 bg-subtle">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="border-t border-line pt-12">
+        <div>
           <h2 className="text-3xl font-bold text-ink mb-8 tracking-tight">
             How Convolution Works
           </h2>
@@ -829,14 +788,6 @@ export default function ImageFiltersVisualizer() {
       </section>
 
       {/* Comments */}
-      <section className="py-16">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-ink mb-6">
-            Discussion
-          </h2>
-          <GiscusComments />
-        </div>
-      </section>
     </div>
   );
 }

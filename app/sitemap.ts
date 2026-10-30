@@ -1,56 +1,23 @@
-import { MetadataRoute } from 'next';
+import type { MetadataRoute } from 'next';
+import { searchIndex } from '@/config/content';
 
+const baseUrl = 'https://allvisualizer.com';
+
+const staticPages: { path: string; priority: number; changeFrequency: MetadataRoute.Sitemap[number]['changeFrequency'] }[] = [
+  { path: '', priority: 1, changeFrequency: 'weekly' },
+  { path: '/categories', priority: 0.9, changeFrequency: 'weekly' },
+  { path: '/about', priority: 0.6, changeFrequency: 'monthly' },
+  { path: '/contact', priority: 0.6, changeFrequency: 'monthly' },
+  { path: '/support', priority: 0.5, changeFrequency: 'monthly' },
+  { path: '/privacy-policy', priority: 0.3, changeFrequency: 'yearly' },
+  { path: '/terms-and-conditions', priority: 0.3, changeFrequency: 'yearly' },
+];
+
+/** Static pages plus every live subject, topic and visualizer from the content registry. */
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://allvisualizer.com';
-  
+  const lastModified = new Date();
   return [
-    {
-      url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/about`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/contact`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/dsa-patterns`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/dsa-visualizer`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/dsa-visualizer/problems/two-sum`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/privacy-policy`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.5,
-    },
-    {
-      url: `${baseUrl}/terms-and-conditions`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.5,
-    },
+    ...staticPages.map(({ path, priority, changeFrequency }) => ({ url: `${baseUrl}${path}`, lastModified, changeFrequency, priority })),
+    ...searchIndex.map((entry) => ({ url: `${baseUrl}${entry.href}`, lastModified, changeFrequency: 'weekly' as const, priority: 0.8 })),
   ];
 }

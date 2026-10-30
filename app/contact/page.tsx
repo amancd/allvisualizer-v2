@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Button } from '@/components/ui';
+import { Button, PageHeader } from '@/components/ui';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -34,13 +34,14 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Main Content */}
-      <section className="py-16 md:py-24">
+      <PageHeader
+        align="left"
+        breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Contact' }]}
+        title="Contact Us"
+        description="We'd love to hear from you"
+      />
+      <section className="py-12 md:py-16">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-3xl md:text-4xl font-bold text-ink mb-4 tracking-tight">Contact Us</h1>
-          <p className="text-xl text-ink-muted mb-12">
-            We'd love to hear from you
-          </p>
 
           <div className="grid md:grid-cols-2 gap-8">
             {/* Contact Form */}

@@ -116,59 +116,76 @@ npm start
 
 ## Project Structure
 
+Content (what pages exist) is kept separate from presentation (how pages look). Most contributions only touch one data file and one page folder.
+
 ```
 allvisualizer-v2/
-├── app/                                    # Next.js App Router
-│   ├── (routes)/
-│   │   ├── about/                         # About page
-│   │   ├── contact/                       # Contact page
-│   │   ├── privacy-policy/                # Privacy policy
-│   │   └── terms-and-conditions/          # Terms of service
-│   ├── dsa-visualizer/                    # DSA section
-│   │   ├── [category]/                    # Dynamic category pages
-│   │   └── problems/                      # Individual problems
-│   │       ├── two-sum/
-│   │       ├── reverse-linked-list/
-│   │       └── best-time-to-buy-sell-stock/
-│   ├── math-visualizer/                   # Mathematics section
-│   │   ├── calculus/
-│   │   ├── linear-algebra/
-│   │   └── problems/
-│   │       ├── derivatives/
-│   │       ├── chain-rule/
-│   │       ├── integration-basics/
-│   │       ├── matrix-operations/
-│   │       ├── determinants/
-│   │       └── optimization/
-│   ├── physics-visualizer/                # Physics section
-│   │   ├── mechanics/
-│   │   └── simulations/
-│   │       ├── projectile-motion/
-│   │       └── newtons-laws/
-│   ├── ai-ml-visualizer/                  # AI/ML section
-│   │   ├── neural-networks/
-│   │   └── visualizations/
-│   │       └── simple-perceptron/
-│   ├── layout.tsx                         # Root layout
-│   ├── page.tsx                           # Homepage
-│   └── globals.css                        # Global styles
+├── app/                          # Next.js App Router: one folder per URL
+│   ├── page.tsx                  # Home page
+│   ├── dsa-patterns/             # DSA Patterns notes
+│   ├── dsa-visualizer/
+│   │   ├── page.tsx              # Subject page  -> <SubjectPage subjectId="dsa" />
+│   │   ├── [category]/page.tsx   # Topic pages   -> <TopicPage ... />
+│   │   └── problems/<slug>/      # One folder per problem: page.tsx + its Visualizer
+│   ├── math-visualizer/          # Same shape: subject page, topic pages, problems/<slug>/
+│   ├── physics-visualizer/       # Same shape, items live in simulations/<slug>/
+│   ├── ai-ml-visualizer/         # Same shape, items live in visualizations/<slug>/
+│   ├── search/  sitemap.ts       # Both generated from config/content
+│   └── icon.tsx  apple-icon.tsx  # Favicons, generated from components/layout/brand.tsx
 ├── components/
-│   ├── layout/
-│   │   ├── Header.tsx                     # Navigation header
-│   │   └── Footer.tsx                     # Site footer
-│   ├── ui/
-│   │   └── GiscusComments.tsx             # GitHub discussions
-│   └── visualizers/
-│       └── TwoSumVisualizer.tsx           # Reusable visualizers
+│   ├── ui/                       # Design-system primitives: Button, Card, Badge, PageHeader, Breadcrumbs…
+│   ├── content/                  # Page building blocks: DetailPage, ContentSection, Callout,
+│   │                             # CardGrid, StepList, PracticeProblem, CodeTabs, Complexity…
+│   ├── dsa-patterns/             # Sidebar, pattern card and page for /dsa-patterns
+│   ├── catalog/                  # Category cards for the home and categories pages
+│   └── layout/                   # Header, Footer, Logo, brand mark
 ├── config/
-│   └── giscus.ts                          # Centralized config
-├── public/                                 # Static assets
-│   └── robots.txt
-├── next.config.ts                         # Next.js configuration
-├── tailwind.config.ts                     # Tailwind configuration
-├── tsconfig.json                          # TypeScript configuration
-└── package.json                           # Dependencies
+│   ├── content/                  # ★ Every subject, topic and visualizer, described once
+│   │   ├── types.ts              #   The content model (read this first)
+│   │   ├── dsa.ts  math.ts  physics.ts  ai-ml.ts
+│   │   └── index.ts              #   Lookup helpers: getItem, breadcrumbsFor, searchIndex…
+│   ├── dsa-patterns/             # DSA Patterns notes, one file per category
+│   ├── categories.ts             # Cards on the home and /categories pages
+│   └── giscus.ts                 # Comments configuration
+└── app/globals.css               # Design tokens: colors, radii, shadows, fonts
 ```
+
+### Adding a visualizer
+
+1. **Register it.** Add an entry to the right topic in `config/content/<subject>.ts`:
+
+   ```ts
+   { slug: 'pendulum', title: 'Simple Pendulum', description: 'Explore period, length and gravity',
+     difficulty: 'Beginner', tags: ['SHM', 'Period', 'Gravity'] },
+   ```
+
+   It now appears on the subject page, the topic page, in search and in the sitemap.
+
+2. **Build the page** at `<topic.itemBasePath>/<slug>/page.tsx`, using the shared blocks:
+
+   ```tsx
+   import { CardGrid, ContentSection, DetailPage, StepList } from '@/components/content';
+   import PendulumVisualizer from './PendulumVisualizer';
+
+   export default function PendulumPage() {
+     return (
+       <DetailPage subject="physics" item="pendulum">
+         <PendulumVisualizer />
+         <ContentSection title="How to use this visualizer" variant="card">
+           <StepList steps={['Drag the bob to set the starting angle.', 'Press play.']} />
+         </ContentSection>
+       </DetailPage>
+     );
+   }
+   ```
+
+   `DetailPage` adds the header, breadcrumbs, difficulty badge and discussion thread for you. See `app/physics-visualizer/simulations/newtons-laws/page.tsx` (simulation) or `app/dsa-visualizer/problems/two-sum/page.tsx` (coding problem) for complete examples.
+
+3. **Style with tokens**, not raw colors: `text-ink`, `text-ink-muted`, `border-line`, `bg-subtle`, `bg-brand-600`. They're defined in `app/globals.css`.
+
+### Adding a DSA pattern
+
+Edit the matching file in `config/dsa-patterns/categories/`. Each pattern has a title, theory bullets, a Python template and practice problems. Diagrams are optional and live in `config/dsa-patterns/diagrams.tsx`, keyed by pattern slug.
 
 ## Available Visualizations
 

@@ -1,15 +1,23 @@
-'use client';
-
-import { useState } from 'react';
-import Link from 'next/link';
-import GiscusComments from '@/components/ui/GiscusComments';
+import type { Metadata } from 'next';
+import { Callout, CardGrid, type CardGridItem, type CodeSample, CodeTabs, ContentSection, DetailPage, Prose, type RelatedEntry, RelatedItems } from '@/components/content';
 import DeterminantVisualizer from './DeterminantVisualizer';
 
-export default function DeterminantsPage() {
-  const [selectedLanguage, setSelectedLanguage] = useState<'python' | 'javascript' | 'mathematical'>('python');
+export const metadata: Metadata = {
+  title: 'Determinants - Linear Algebra | AllVisualizer',
+  description:
+    'Learn to calculate and interpret determinants for 2×2 and 3×3 matrices. Understand invertibility, volume scaling, and geometric meaning with interactive visualizations.',
+  keywords: ['determinants', 'linear algebra', 'matrix determinant', 'cofactor expansion', 'invertibility', '2x2 determinant', '3x3 determinant'],
+  openGraph: {
+    title: 'Determinants - Interactive Linear Algebra | AllVisualizer',
+    description: 'Master determinant calculations with step-by-step visualizations',
+  },
+};
 
-  const codeExamples = {
-    python: `import numpy as np
+const samples: CodeSample[] = [
+  {
+    label: 'Python',
+    language: 'python',
+    code: `import numpy as np
 
 # Computing Determinants in Linear Algebra
 
@@ -176,8 +184,11 @@ singular = np.array([[1, 2], [2, 4]])
 print("\\nSingular matrix:")
 print(singular)
 check_invertibility(singular)`,
-
-    javascript: `// Computing Determinants in Linear Algebra
+  },
+  {
+    label: 'JavaScript',
+    language: 'javascript',
+    code: `// Computing Determinants in Linear Algebra
 
 // ==========================================
 // 2×2 DETERMINANT
@@ -334,8 +345,11 @@ checkInvertibility(A_2x2);
 const singular = [[1, 2], [2, 4]];
 console.log("\\nSingular matrix:");
 checkInvertibility(singular);`,
-
-    mathematical: `DETERMINANTS
+  },
+  {
+    label: 'Math',
+    language: 'text',
+    code: `DETERMINANTS
 ━━━━━━━━━━━━
 
 The determinant is a scalar value that encodes important 
@@ -491,248 +505,97 @@ COMPUTATION TIPS
 • For 3×3: Cofactor expansion or Sarrus
 • For n×n (n>3): Use row reduction to triangular form,
   then multiply diagonal elements
-• Software: Uses LU decomposition for efficiency`
-  };
+• Software: Uses LU decomposition for efficiency`,
+  },
+];
+const properties: CardGridItem[] = [
+  { title: 'Multiplicative', description: <><p>det(AB) = det(A) × det(B)</p><p>The determinant of a product equals the product of the determinants.</p></> },
+  { title: 'Invertibility test', description: <><p>det(A) ≠ 0 ⟺ A is invertible</p><p>A non-zero determinant means the inverse exists.</p></> },
+  { title: 'Transpose invariant', description: <><p>det(Aᵀ) = det(A)</p><p>Transposing doesn&apos;t change the determinant.</p></> },
+  { title: 'Geometric meaning', description: <><p>|det(A)| = volume scaling factor</p><p>The absolute value is the area (2D) or volume (3D) scaling.</p></> },
+];
 
+const applications: CardGridItem[] = [
+  { title: 'System solvability', description: 'Check whether the system Ax = b has a unique solution (det(A) ≠ 0).' },
+  { title: 'Area & volume', description: 'Calculate the area of a parallelogram or the volume of a parallelepiped.' },
+  { icon: '🎯', title: 'Eigenvalues', description: 'Find eigenvalues by solving det(A − λI) = 0.' },
+  { icon: '🔄', title: 'Matrix inverse', description: 'Compute the inverse using A⁻¹ = (1/det(A)) × adj(A).' },
+];
+
+const relatedTopics: RelatedEntry[] = [
+  { slug: 'matrix-operations', note: 'Review matrix multiplication and addition' },
+  { slug: 'matrix-inverse', note: 'Use determinants to find matrix inverses' },
+  { title: 'Eigenvalues & Eigenvectors', note: 'Solve the characteristic equation using determinants' },
+  { title: "Cramer's Rule", note: 'Solve linear systems using determinants' },
+];
+
+export default function DeterminantsPage() {
   return (
-    <div className="min-h-screen bg-white pt-28">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <nav className="mb-8 text-sm">
-          <ol className="flex items-center gap-2 text-gray-500">
-            <li><Link href="/" className="hover:text-ink">Home</Link></li>
-            <li>/</li>
-            <li><Link href="/math-visualizer" className="hover:text-ink">Math Visualizer</Link></li>
-            <li>/</li>
-            <li><Link href="/math-visualizer/linear-algebra" className="hover:text-ink">Linear Algebra</Link></li>
-            <li>/</li>
-            <li className="text-ink font-medium">Determinants</li>
-          </ol>
-        </nav>
+    <DetailPage
+      subject="math"
+      item="determinants"
+      description="Master the computation and interpretation of determinants. Learn how this powerful scalar value reveals matrix properties, invertibility, and geometric transformations."
+    >
+      <ContentSection title="What is a determinant?" variant="card">
+        <Prose>
+          <p>
+            The <strong>determinant</strong> is a scalar value computed from a square matrix that encodes important
+            properties:
+          </p>
+          <ul>
+            <li><strong>Invertibility:</strong> a matrix is invertible if and only if its determinant is non-zero.</li>
+            <li><strong>Volume scaling:</strong> |det(A)| tells how much the transformation scales volumes.</li>
+            <li><strong>Orientation:</strong> the sign indicates whether the transformation preserves or reverses orientation.</li>
+            <li><strong>Linear independence:</strong> a zero determinant means the columns are linearly dependent.</li>
+          </ul>
+        </Prose>
+      </ContentSection>
 
-        <article className="space-y-8">
-          <header className="space-y-4 pb-8 border-b border-line">
-            <div className="flex items-center gap-2 text-sm">
-              <span className="px-2 py-1 bg-gray-200 text-ink rounded font-medium">Linear Algebra</span>
-              <span className="text-gray-400">•</span>
-              <span className="px-2 py-1 bg-yellow-100 text-yellow-700 rounded font-medium">Intermediate</span>
-            </div>
-            
-            <h1 className="text-4xl md:text-5xl font-bold text-ink leading-tight tracking-tight">
-              Determinants
-            </h1>
-            
-            <p className="text-xl text-ink-muted leading-relaxed">
-              Master the computation and interpretation of determinants. Learn how this powerful scalar value reveals matrix properties, invertibility, and geometric transformations.
+      <ContentSection
+        title="Interactive calculator"
+        description="Calculate determinants for 2×2 and 3×3 matrices. See step-by-step calculations and geometric interpretation."
+      >
+        <DeterminantVisualizer />
+      </ContentSection>
+
+      <ContentSection title="Understanding the formula">
+        <div className="space-y-4">
+          <Callout tone="formula" title="2×2 determinant: ad − bc">
+            <p>
+              For a 2×2 matrix, multiply the main diagonal elements and subtract the product of the off-diagonal
+              elements.
             </p>
-          </header>
-
-          <section className="space-y-4">
-            <h2 className="text-2xl font-bold text-ink">What is a Determinant?</h2>
-            <div className="bg-subtle border border-line rounded-lg p-6 space-y-4">
-              <p className="text-gray-700">
-                The <strong>determinant</strong> is a scalar value computed from a square matrix that encodes important properties:
-              </p>
-              
-              <ul className="space-y-2 text-gray-700 list-disc list-inside">
-                <li><strong>Invertibility:</strong> A matrix is invertible if and only if its determinant is non-zero</li>
-                <li><strong>Volume scaling:</strong> |det(A)| tells how much the transformation scales volumes</li>
-                <li><strong>Orientation:</strong> The sign indicates if the transformation preserves or reverses orientation</li>
-                <li><strong>Linear independence:</strong> Zero determinant means columns are linearly dependent</li>
-              </ul>
-            </div>
-          </section>
-
-          <section className="space-y-4">
-            <h2 className="text-2xl font-bold text-ink">Interactive Calculator</h2>
-            <p className="text-ink-muted">
-              Calculate determinants for 2×2 and 3×3 matrices. See step-by-step calculations and geometric interpretation.
+            <pre className="mt-2 rounded-lg border border-line bg-white p-3 font-mono text-[13px] text-ink">{`|a  b|
+|c  d| = (a×d) − (b×c)`}</pre>
+          </Callout>
+          <Callout tone="formula" title="3×3 determinant: cofactor expansion">
+            <p>
+              For a 3×3 matrix, expand along the first row. Each element is multiplied by its <em>minor</em> (the
+              determinant of the 2×2 submatrix) with alternating signs.
             </p>
-            <DeterminantVisualizer />
-          </section>
-
-          <section className="space-y-4">
-            <h2 className="text-2xl font-bold text-ink">Understanding the Formula</h2>
-            <div className="space-y-4">
-              <div className="bg-brand-50/60 border-l-4 border-brand-500 p-4">
-                <h3 className="font-semibold text-ink mb-2">2×2 Determinant: ad - bc</h3>
-                <p className="text-sm text-ink mb-2">
-                  For a 2×2 matrix, multiply the main diagonal elements and subtract the product of the off-diagonal elements.
-                </p>
-                <div className="bg-white p-3 rounded border border-line-strong font-mono text-sm">
-                  |a  b|<br/>
-                  |c  d| = (a×d) - (b×c)
-                </div>
-              </div>
-
-              <div className="bg-brand-50/60 border-l-4 border-brand-500 p-4">
-                <h3 className="font-semibold text-ink mb-2">3×3 Determinant: Cofactor Expansion</h3>
-                <p className="text-sm text-ink mb-2">
-                  For a 3×3 matrix, expand along the first row. Each element is multiplied by its <em>minor</em> (the determinant of the 2×2 submatrix) with alternating signs.
-                </p>
-                <div className="bg-white p-3 rounded border border-line-strong font-mono text-sm">
-                  det(A) = a₁₁M₁₁ - a₁₂M₁₂ + a₁₃M₁₃<br/>
-                  <span className="text-xs text-ink-muted">(+ - + pattern continues)</span>
-                </div>
-              </div>
+            <div className="mt-2 rounded-lg border border-line bg-white p-3 font-mono text-[13px] text-ink">
+              <p>det(A) = a₁₁M₁₁ − a₁₂M₁₂ + a₁₃M₁₃</p>
+              <p className="text-xs text-ink-muted">(+ − + pattern continues)</p>
             </div>
-          </section>
+          </Callout>
+        </div>
+      </ContentSection>
 
-          <section className="space-y-4">
-            <div className="flex items-center justify-between">
-              <h2 className="text-2xl font-bold text-ink">Implementation</h2>
-              <div className="flex gap-2">
-                <button
-                  onClick={() => setSelectedLanguage('python')}
-                  className={`px-3 py-1.5 text-sm font-medium rounded-lg transition-colors ${
-                    selectedLanguage === 'python'
-                      ? 'bg-brand-600 text-white shadow-brand'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                  }`}
-                >
-                  Python
-                </button>
-                <button
-                  onClick={() => setSelectedLanguage('javascript')}
-                  className={`px-3 py-1.5 text-sm font-medium rounded-lg transition-colors ${
-                    selectedLanguage === 'javascript'
-                      ? 'bg-brand-600 text-white shadow-brand'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                  }`}
-                >
-                  JavaScript
-                </button>
-                <button
-                  onClick={() => setSelectedLanguage('mathematical')}
-                  className={`px-3 py-1.5 text-sm font-medium rounded-lg transition-colors ${
-                    selectedLanguage === 'mathematical'
-                      ? 'bg-brand-600 text-white shadow-brand'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                  }`}
-                >
-                  Math
-                </button>
-              </div>
-            </div>
+      <ContentSection title="Implementation">
+        <CodeTabs samples={samples} />
+      </ContentSection>
 
-            <div className="bg-gray-900 rounded-lg overflow-hidden">
-              <div className="px-4 py-3 bg-gray-800 border-b border-gray-700 flex items-center justify-between">
-                <span className="text-sm text-gray-300 font-medium">
-                  {selectedLanguage === 'mathematical' ? 'Mathematical Notation' : selectedLanguage === 'python' ? 'determinants.py' : 'determinants.js'}
-                </span>
-              </div>
-              <pre className="p-4 overflow-x-auto">
-                <code className="text-sm text-gray-100 whitespace-pre-wrap break-words">
-                  {codeExamples[selectedLanguage]}
-                </code>
-              </pre>
-            </div>
-          </section>
+      <ContentSection title="Key properties">
+        <CardGrid items={properties} />
+      </ContentSection>
 
-          <section className="space-y-4">
-            <h2 className="text-2xl font-bold text-ink">Key Properties</h2>
-            <div className="grid md:grid-cols-2 gap-4">
-              <div className="bg-gray-100 border border-line-strong rounded-lg p-4">
-                <h3 className="font-semibold text-ink mb-2">Multiplicative</h3>
-                <p className="text-ink text-sm mb-1">det(AB) = det(A) × det(B)</p>
-                <p className="text-ink text-xs">Determinant of product equals product of determinants</p>
-              </div>
-              
-              <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-                <h3 className="font-semibold text-green-900 mb-2">Invertibility Test</h3>
-                <p className="text-green-800 text-sm mb-1">det(A) ≠ 0 ⟺ A is invertible</p>
-                <p className="text-green-700 text-xs">Non-zero determinant means inverse exists</p>
-              </div>
+      <ContentSection title="Applications">
+        <CardGrid items={applications} />
+      </ContentSection>
 
-              <div className="bg-gray-100 border border-line-strong rounded-lg p-4">
-                <h3 className="font-semibold text-ink mb-2">Transpose Invariant</h3>
-                <p className="text-ink text-sm mb-1">det(Aᵀ) = det(A)</p>
-                <p className="text-ink text-xs">Transposing doesn't change the determinant</p>
-              </div>
-
-              <div className="bg-orange-50 border border-orange-200 rounded-lg p-4">
-                <h3 className="font-semibold text-orange-900 mb-2">Geometric Meaning</h3>
-                <p className="text-orange-800 text-sm mb-1">|det(A)| = volume scaling factor</p>
-                <p className="text-orange-700 text-xs">Absolute value is area (2D) or volume (3D) scaling</p>
-              </div>
-            </div>
-          </section>
-
-          <section className="space-y-4">
-            <h2 className="text-2xl font-bold text-ink">Applications</h2>
-            <div className="grid md:grid-cols-2 gap-4">
-              <div className="bg-gray-100 border border-line-strong rounded-lg p-4">
-                <h3 className="font-semibold text-indigo-900 mb-2">System Solvability</h3>
-                <p className="text-ink text-sm">
-                  Check if system Ax = b has unique solution (det(A) ≠ 0)
-                </p>
-              </div>
-              
-              <div className="bg-pink-50 border border-pink-200 rounded-lg p-4">
-                <h3 className="font-semibold text-pink-900 mb-2">Area & Volume</h3>
-                <p className="text-pink-800 text-sm">
-                  Calculate area of parallelogram or volume of parallelepiped
-                </p>
-              </div>
-
-              <div className="bg-teal-50 border border-teal-200 rounded-lg p-4">
-                <h3 className="font-semibold text-teal-900 mb-2">🎯 Eigenvalues</h3>
-                <p className="text-teal-800 text-sm">
-                  Find eigenvalues by solving det(A - λI) = 0
-                </p>
-              </div>
-
-              <div className="bg-amber-50 border border-amber-200 rounded-lg p-4">
-                <h3 className="font-semibold text-amber-900 mb-2">🔄 Matrix Inverse</h3>
-                <p className="text-amber-800 text-sm">
-                  Compute inverse using A⁻¹ = (1/det(A)) × adj(A)
-                </p>
-              </div>
-            </div>
-          </section>
-
-          <section className="space-y-4">
-            <h2 className="text-2xl font-bold text-ink">Related Topics</h2>
-            <div className="grid sm:grid-cols-2 gap-3">
-              <Link
-                href="/math-visualizer/problems/matrix-operations"
-                className="border border-line rounded-lg p-4 hover:border-brand-300 transition-colors group"
-              >
-                <h3 className="font-semibold text-ink mb-1 group-hover:text-brand-700">← Matrix Operations</h3>
-                <p className="text-sm text-ink-muted">Review matrix multiplication and addition</p>
-              </Link>
-              
-              <div className="border border-line rounded-lg p-4 hover:border-brand-300 transition-colors opacity-60 cursor-not-allowed">
-                <h3 className="font-semibold text-gray-700 mb-1 flex items-center justify-between">
-                  Matrix Inverse
-                  <span className="text-xs text-gray-500">Coming Soon</span>
-                </h3>
-                <p className="text-sm text-gray-500">Use determinants to find matrix inverses</p>
-              </div>
-              
-              <div className="border border-line rounded-lg p-4 hover:border-brand-300 transition-colors opacity-60 cursor-not-allowed">
-                <h3 className="font-semibold text-gray-700 mb-1 flex items-center justify-between">
-                  Eigenvalues & Eigenvectors
-                  <span className="text-xs text-gray-500">Coming Soon</span>
-                </h3>
-                <p className="text-sm text-gray-500">Solve characteristic equation using determinants</p>
-              </div>
-              
-              <div className="border border-line rounded-lg p-4 hover:border-brand-300 transition-colors opacity-60 cursor-not-allowed">
-                <h3 className="font-semibold text-gray-700 mb-1 flex items-center justify-between">
-                  Cramer's Rule
-                  <span className="text-xs text-gray-500">Coming Soon</span>
-                </h3>
-                <p className="text-sm text-gray-500">Solve linear systems using determinants</p>
-              </div>
-            </div>
-          </section>
-
-          <section className="pt-8 border-t border-line">
-            <h2 className="text-2xl font-bold text-ink mb-6">Discussion</h2>
-            <GiscusComments />
-          </section>
-        </article>
-      </div>
-    </div>
+      <ContentSection title="Related topics">
+        <RelatedItems subject="math" items={relatedTopics} />
+      </ContentSection>
+    </DetailPage>
   );
 }

@@ -1,15 +1,23 @@
-'use client';
-
-import { useState } from 'react';
-import Link from 'next/link';
-import GiscusComments from '@/components/ui/GiscusComments';
+import type { Metadata } from 'next';
+import { Callout, CardGrid, type CardGridItem, type CodeSample, CodeTabs, ContentSection, DetailPage, Prose, type RelatedEntry, RelatedItems } from '@/components/content';
 import IntegrationVisualizer from './IntegrationVisualizer';
 
-export default function IntegrationBasicsPage() {
-  const [selectedLanguage, setSelectedLanguage] = useState<'python' | 'javascript' | 'mathematical'>('python');
+export const metadata: Metadata = {
+  title: 'Integration Basics - Calculus | AllVisualizer',
+  description:
+    'Learn integration through interactive visualizations. Master antiderivatives, the Fundamental Theorem of Calculus, and area under curves with step-by-step examples.',
+  keywords: ['integration', 'calculus', 'antiderivatives', 'definite integral', 'fundamental theorem', 'area under curve'],
+  openGraph: {
+    title: 'Integration Basics - Interactive Calculus | AllVisualizer',
+    description: 'Master integration and antiderivatives with interactive visualizations',
+  },
+};
 
-  const codeExamples = {
-    python: `import numpy as np
+const samples: CodeSample[] = [
+  {
+    label: 'Python',
+    language: 'python',
+    code: `import numpy as np
 import matplotlib.pyplot as plt
 from scipy import integrate
 
@@ -66,8 +74,11 @@ plt.title('Integration: Area Under Curve')
 plt.legend()
 plt.grid(True)
 plt.show()`,
-
-    javascript: `// Numerical integration using Riemann sum (midpoint rule)
+  },
+  {
+    label: 'JavaScript',
+    language: 'javascript',
+    code: `// Numerical integration using Riemann sum (midpoint rule)
 function numericalIntegration(f, a, b, n = 1000) {
   // ∫ₐᵇ f(x) dx ≈ Σ f(xᵢ) · Δx
   
@@ -130,8 +141,11 @@ function riemannSum(f, a, b, n = 20) {
 
 const riemann = riemannSum(f, 0, 2, 20);
 console.log(\`Riemann sum (20 rectangles): \${riemann.totalArea.toFixed(4)}\`);`,
-
-    mathematical: `INTEGRATION BASICS
+  },
+  {
+    label: 'Math',
+    language: 'text',
+    code: `INTEGRATION BASICS
 ━━━━━━━━━━━━━━━━━━
 
 Integration is the inverse of differentiation.
@@ -210,236 +224,87 @@ RIEMANN SUM APPROXIMATION
 
 where Δx = (b-a)/n and xᵢ are sample points.
 
-As n → ∞, the approximation becomes exact.`
-  };
+As n → ∞, the approximation becomes exact.`,
+  },
+];
+const properties: CardGridItem[] = [
+  { title: 'Linearity', description: <><p>∫[af(x) + bg(x)]dx = a∫f(x)dx + b∫g(x)dx</p><p>Constants and sums can be separated.</p></> },
+  { title: 'Reverses differentiation', description: <><p>d/dx[∫f(x)dx] = f(x)</p><p>Integration undoes differentiation.</p></> },
+  { title: 'Additivity', description: <><p>∫ₐᶜf(x)dx = ∫ₐᵇf(x)dx + ∫ᵇᶜf(x)dx</p><p>Areas can be split and combined.</p></> },
+  { title: 'Zero width', description: <><p>∫ₐᵃf(x)dx = 0</p><p>No area when the bounds are equal.</p></> },
+];
 
+const relatedTopics: RelatedEntry[] = [
+  { slug: 'derivatives', note: 'The inverse operation of integration' },
+  { title: 'Substitution Rule', note: 'Integration technique for composite functions' },
+  { title: 'Integration by Parts', note: 'Integration technique for products' },
+  { title: 'Applications of Integration', note: 'Volume, work, and physics applications' },
+];
+
+export default function IntegrationBasicsPage() {
   return (
-    <div className="min-h-screen bg-white pt-28">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <nav className="mb-8 text-sm">
-          <ol className="flex items-center gap-2 text-gray-500">
-            <li><Link href="/" className="hover:text-ink">Home</Link></li>
-            <li>/</li>
-            <li><Link href="/math-visualizer" className="hover:text-ink">Math Visualizer</Link></li>
-            <li>/</li>
-            <li className="text-ink font-medium">Integration Basics</li>
-          </ol>
-        </nav>
+    <DetailPage
+      subject="math"
+      item="integration-basics"
+      width="narrow"
+      description="Learn about antiderivatives and the area under curves. Master the Fundamental Theorem of Calculus and understand how integration reverses differentiation."
+    >
+      <ContentSection title="Problem statement">
+        <Prose>
+          <p>
+            Given a function <code>f(x) = x²</code>, find the area under the curve from <code>x = 0</code> to{' '}
+            <code>x = b</code> using integration.
+          </p>
+        </Prose>
+        <Callout tone="example" title="Example" className="mt-5">
+          <p><strong>Input:</strong> f(x) = x², bounds [0, 2]</p>
+          <p><strong>Output:</strong> ∫₀² x² dx = 8/3 ≈ 2.667</p>
+          <p>Method: F(x) = x³/3, so F(2) − F(0) = 8/3</p>
+        </Callout>
+      </ContentSection>
 
-        <article className="space-y-8">
-          <header className="space-y-4 pb-8 border-b border-line">
-            <div className="flex items-center gap-2 text-sm">
-              <span className="px-2 py-1 bg-gray-200 text-ink rounded font-medium">Calculus</span>
-              <span className="text-gray-400">•</span>
-              <span className="text-gray-500">Beginner</span>
-            </div>
-            
-            <h1 className="text-4xl md:text-5xl font-bold text-ink leading-tight tracking-tight">
-              Integration Basics
-            </h1>
-            
-            <p className="text-xl text-ink-muted leading-relaxed">
-              Learn about antiderivatives and the area under curves. Master the Fundamental Theorem of Calculus and understand how integration reverses differentiation.
-            </p>
-          </header>
+      <ContentSection title="Intuition">
+        <Prose>
+          <p>
+            Integration calculates the <strong>area under a curve</strong>. While derivatives measure rates of change,
+            integrals measure accumulation. The definite integral ∫ₐᵇ f(x) dx represents the total area between the
+            function f(x) and the x-axis from a to b.
+          </p>
+        </Prose>
+        <Callout tone="formula" title="Key concept" className="my-5">
+          The Fundamental Theorem of Calculus connects differentiation and integration. If F&apos;(x) = f(x), then
+          ∫ₐᵇ f(x) dx = F(b) − F(a). This means we can find areas by finding antiderivatives!
+        </Callout>
+        <Prose>
+          <p>
+            For f(x) = x², the antiderivative is F(x) = x³/3 (since d/dx[x³/3] = x²). To find the area from 0 to 2, we
+            evaluate F(2) − F(0) = 8/3 − 0 = 8/3 ≈ 2.667.
+          </p>
+        </Prose>
+        <Callout tone="tip" title="Riemann sums" className="mt-5">
+          We can approximate the area using rectangles (Riemann sums). As we use more rectangles, the approximation gets
+          closer to the exact integral value.
+        </Callout>
+      </ContentSection>
 
-          <section className="space-y-4">
-            <h2 className="text-2xl font-bold text-ink">Problem Statement</h2>
-            <div className="bg-subtle border border-line rounded-lg p-6 space-y-4">
-              <p className="text-gray-700">
-                Given a function <code className="px-2 py-0.5 bg-white border border-line rounded text-sm">f(x) = x²</code>, 
-                find the area under the curve from <code className="px-2 py-0.5 bg-white border border-line rounded text-sm">x = 0</code> to 
-                <code className="px-2 py-0.5 bg-white border border-line rounded text-sm">x = b</code> using integration.
-              </p>
-              
-              <div className="space-y-2">
-                <p className="font-semibold text-ink">Example:</p>
-                <div className="space-y-1 text-sm">
-                  <p><span className="font-medium">Input:</span> f(x) = x², bounds [0, 2]</p>
-                  <p><span className="font-medium">Output:</span> ∫₀² x² dx = 8/3 ≈ 2.667</p>
-                  <p className="text-ink-muted">Method: F(x) = x³/3, so F(2) - F(0) = 8/3</p>
-                </div>
-              </div>
-            </div>
-          </section>
+      <ContentSection
+        title="Interactive visualization"
+        description="Drag the upper bound to see how the area under the curve changes. Notice the Riemann rectangles approximating the integral."
+      >
+        <IntegrationVisualizer />
+      </ContentSection>
 
-          <section className="space-y-4">
-            <h2 className="text-2xl font-bold text-ink">Intuition</h2>
-            <div className="prose prose-gray max-w-none">
-              <p className="text-gray-700 leading-relaxed">
-                Integration calculates the <strong>area under a curve</strong>. While derivatives measure rates of change, 
-                integrals measure accumulation. The definite integral ∫ₐᵇ f(x) dx represents the total area between the 
-                function f(x) and the x-axis from a to b.
-              </p>
-              
-              <div className="bg-brand-50/60 border-l-4 border-brand-500 p-4 my-4">
-                <p className="text-sm text-ink">
-                  <strong>Key Concept:</strong> The Fundamental Theorem of Calculus connects differentiation and integration. 
-                  If F'(x) = f(x), then ∫ₐᵇ f(x) dx = F(b) - F(a). This means we can find areas by finding antiderivatives!
-                </p>
-              </div>
+      <ContentSection title="Implementation">
+        <CodeTabs samples={samples} />
+      </ContentSection>
 
-              <p className="text-gray-700 leading-relaxed">
-                For f(x) = x², the antiderivative is F(x) = x³/3 (since d/dx[x³/3] = x²). To find the area from 0 to 2, 
-                we evaluate F(2) - F(0) = 8/3 - 0 = 8/3 ≈ 2.667.
-              </p>
+      <ContentSection title="Key properties">
+        <CardGrid items={properties} />
+      </ContentSection>
 
-              <div className="bg-gray-100 border border-line-strong rounded-lg p-4 my-4">
-                <h4 className="font-semibold text-ink mb-2">Riemann Sums:</h4>
-                <p className="text-sm text-ink">
-                  We can approximate the area using rectangles (Riemann sums). As we use more rectangles, 
-                  the approximation gets closer to the exact integral value.
-                </p>
-              </div>
-            </div>
-          </section>
-
-          <section className="space-y-4">
-            <h2 className="text-2xl font-bold text-ink">Interactive Visualization</h2>
-            <p className="text-ink-muted">
-              Drag the upper bound to see how the area under the curve changes. Notice the Riemann rectangles approximating the integral.
-            </p>
-            <IntegrationVisualizer />
-          </section>
-
-          <section className="space-y-4">
-            <div className="flex items-center justify-between">
-              <h2 className="text-2xl font-bold text-ink">Implementation</h2>
-              <div className="flex gap-2">
-                <button
-                  onClick={() => setSelectedLanguage('python')}
-                  className={`px-3 py-1.5 text-sm font-medium rounded-lg transition-colors ${
-                    selectedLanguage === 'python'
-                      ? 'bg-brand-600 text-white shadow-brand'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                  }`}
-                >
-                  Python
-                </button>
-                <button
-                  onClick={() => setSelectedLanguage('javascript')}
-                  className={`px-3 py-1.5 text-sm font-medium rounded-lg transition-colors ${
-                    selectedLanguage === 'javascript'
-                      ? 'bg-brand-600 text-white shadow-brand'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                  }`}
-                >
-                  JavaScript
-                </button>
-                <button
-                  onClick={() => setSelectedLanguage('mathematical')}
-                  className={`px-3 py-1.5 text-sm font-medium rounded-lg transition-colors ${
-                    selectedLanguage === 'mathematical'
-                      ? 'bg-brand-600 text-white shadow-brand'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                  }`}
-                >
-                  Math
-                </button>
-              </div>
-            </div>
-
-            <div className="bg-gray-900 rounded-lg overflow-hidden">
-              <div className="px-4 py-3 bg-gray-800 border-b border-gray-700 flex items-center justify-between">
-                <span className="text-sm text-gray-300 font-medium">
-                  {selectedLanguage === 'mathematical' ? 'Mathematical Notation' : selectedLanguage === 'python' ? 'integration.py' : 'integration.js'}
-                </span>
-              </div>
-              <pre className="p-4 overflow-x-auto">
-                <code className="text-sm text-gray-100 whitespace-pre-wrap break-words">
-                  {codeExamples[selectedLanguage]}
-                </code>
-              </pre>
-            </div>
-          </section>
-
-          <section className="space-y-4">
-            <h2 className="text-2xl font-bold text-ink">Key Properties</h2>
-            <div className="grid md:grid-cols-2 gap-4">
-              <div className="bg-gray-100 border border-line-strong rounded-lg p-4">
-                <h3 className="font-semibold text-ink mb-2">Linearity</h3>
-                <p className="text-ink text-sm mb-2">
-                  ∫[af(x) + bg(x)]dx = a∫f(x)dx + b∫g(x)dx
-                </p>
-                <p className="text-ink text-xs">
-                  Constants and sums can be separated
-                </p>
-              </div>
-              
-              <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-                <h3 className="font-semibold text-green-900 mb-2">Reverses Differentiation</h3>
-                <p className="text-green-800 text-sm mb-2">
-                  d/dx[∫f(x)dx] = f(x)
-                </p>
-                <p className="text-green-700 text-xs">
-                  Integration undoes differentiation
-                </p>
-              </div>
-
-              <div className="bg-gray-100 border border-line-strong rounded-lg p-4">
-                <h3 className="font-semibold text-ink mb-2">Additivity</h3>
-                <p className="text-ink text-sm mb-2">
-                  ∫ₐᶜf(x)dx = ∫ₐᵇf(x)dx + ∫ᵇᶜf(x)dx
-                </p>
-                <p className="text-ink text-xs">
-                  Areas can be split and combined
-                </p>
-              </div>
-
-              <div className="bg-orange-50 border border-orange-200 rounded-lg p-4">
-                <h3 className="font-semibold text-orange-900 mb-2">Zero Width</h3>
-                <p className="text-orange-800 text-sm mb-2">
-                  ∫ₐᵃf(x)dx = 0
-                </p>
-                <p className="text-orange-700 text-xs">
-                  No area when bounds are equal
-                </p>
-              </div>
-            </div>
-          </section>
-
-          <section className="space-y-4">
-            <h2 className="text-2xl font-bold text-ink">Related Topics</h2>
-            <div className="grid sm:grid-cols-2 gap-3">
-              <Link href="/math-visualizer/problems/derivatives" className="border border-line rounded-lg p-4 hover:border-brand-300 transition-colors group">
-                <h3 className="font-semibold text-ink mb-1 group-hover:text-brand-700">
-                  Derivatives
-                </h3>
-                <p className="text-sm text-ink-muted">The inverse operation of integration</p>
-              </Link>
-              
-              <div className="border border-line rounded-lg p-4 hover:border-brand-300 transition-colors opacity-60 cursor-not-allowed">
-                <h3 className="font-semibold text-gray-700 mb-1 flex items-center justify-between">
-                  Substitution Rule
-                  <span className="text-xs text-gray-500">Coming Soon</span>
-                </h3>
-                <p className="text-sm text-gray-500">Integration technique for composite functions</p>
-              </div>
-              
-              <div className="border border-line rounded-lg p-4 hover:border-brand-300 transition-colors opacity-60 cursor-not-allowed">
-                <h3 className="font-semibold text-gray-700 mb-1 flex items-center justify-between">
-                  Integration by Parts
-                  <span className="text-xs text-gray-500">Coming Soon</span>
-                </h3>
-                <p className="text-sm text-gray-500">Integration technique for products</p>
-              </div>
-              
-              <div className="border border-line rounded-lg p-4 hover:border-brand-300 transition-colors opacity-60 cursor-not-allowed">
-                <h3 className="font-semibold text-gray-700 mb-1 flex items-center justify-between">
-                  Applications
-                  <span className="text-xs text-gray-500">Coming Soon</span>
-                </h3>
-                <p className="text-sm text-gray-500">Volume, work, and physics applications</p>
-              </div>
-            </div>
-          </section>
-
-          <section className="pt-8 border-t border-line">
-            <h2 className="text-2xl font-bold text-ink mb-6">Discussion</h2>
-            <GiscusComments />
-          </section>
-        </article>
-      </div>
-    </div>
+      <ContentSection title="Related topics">
+        <RelatedItems subject="math" items={relatedTopics} />
+      </ContentSection>
+    </DetailPage>
   );
 }

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { Button } from '@/components/ui';
+import { Button, PageHeader } from '@/components/ui';
 import { Github } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -12,19 +12,11 @@ export const metadata: Metadata = {
 export default function SupportPage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <section className="pt-32 md:pt-40 pb-16 md:pb-20 hero-surface border-b border-line">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center space-y-6">
-            <h1 className="text-4xl md:text-5xl font-bold text-ink leading-tight tracking-tight">
-              Support & Community
-            </h1>
-            <p className="text-xl text-ink-muted leading-relaxed max-w-2xl mx-auto">
-              Help us keep AllVisualizer free and accessible for learners worldwide
-            </p>
-          </div>
-        </div>
-      </section>
+      <PageHeader
+        breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Support' }]}
+        title="Support & Community"
+        description="Help us keep AllVisualizer free and accessible for learners worldwide."
+      />
 
       {/* Main Content */}
       <section className="py-16">
