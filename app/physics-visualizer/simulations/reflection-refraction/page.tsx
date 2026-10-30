@@ -41,13 +41,13 @@ const refractiveIndices = [
 ];
 
 const applications: CardGridItem[] = [
-  { icon: '🌐', title: 'Optical fibers', description: 'Use total internal reflection to transmit data over long distances.' },
-  { icon: '🔍', title: 'Lenses', description: 'Cameras, eyeglasses and microscopes all rely on refraction.' },
-  { icon: '🌈', title: 'Rainbows', description: 'Refraction and reflection inside water droplets.' },
-  { icon: '🏜️', title: 'Mirages', description: 'Refraction in air layers of different temperatures.' },
-  { icon: '🔺', title: 'Prisms', description: 'Separate white light into colors due to wavelength-dependent refraction.' },
-  { icon: '🤿', title: 'Underwater vision', description: 'Why things look distorted when viewed from different media.' },
-  { icon: '💎', title: 'Diamonds', description: 'A high refractive index creates brilliance through total internal reflection.' },
+  { title: 'Optical fibers', description: 'Use total internal reflection to transmit data over long distances.' },
+  { title: 'Lenses', description: 'Cameras, eyeglasses and microscopes all rely on refraction.' },
+  { title: 'Rainbows', description: 'Refraction and reflection inside water droplets.' },
+  { title: 'Mirages', description: 'Refraction in air layers of different temperatures.' },
+  { title: 'Prisms', description: 'Separate white light into colors due to wavelength-dependent refraction.' },
+  { title: 'Underwater vision', description: 'Why things look distorted when viewed from different media.' },
+  { title: 'Diamonds', description: 'A high refractive index creates brilliance through total internal reflection.' },
 ];
 
 export default function ReflectionRefractionPage() {

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import { responsiveSurface } from '@/lib/visualization';
 
 interface Ball {
   x: number;
@@ -205,7 +206,7 @@ export default function ElasticCollisionsVisualizer() {
       
       // Mass label
       ctx.fillStyle = '#ffffff';
-      ctx.font = 'bold 14px Inter';
+      ctx.font = 'bold 16px Inter';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
       ctx.fillText(`${ball.mass}kg`, ball.x, ball.y);
@@ -222,7 +223,7 @@ export default function ElasticCollisionsVisualizer() {
         
         // Arrow head
         const angle = Math.atan2(ball.vy, ball.vx);
-        const arrowLength = 10;
+        const arrowLength = 12;
         ctx.beginPath();
         ctx.moveTo(ball.x + ball.vx * scale, ball.y + ball.vy * scale);
         ctx.lineTo(
@@ -244,12 +245,12 @@ export default function ElasticCollisionsVisualizer() {
     const totalKE = newBalls.reduce((sum, ball) => sum + 0.5 * ball.mass * (ball.vx * ball.vx + ball.vy * ball.vy), 0);
     
     ctx.fillStyle = '#1f2937';
-    ctx.font = '12px Inter';
+    ctx.font = '17px Inter';
     ctx.textAlign = 'left';
-    ctx.fillText(`Collisions: ${collisionCount}`, 10, 20);
-    ctx.fillText(`Total Momentum X: ${totalMomentumX.toFixed(1)} kg·m/s`, 10, 40);
-    ctx.fillText(`Total Momentum Y: ${totalMomentumY.toFixed(1)} kg·m/s`, 10, 60);
-    ctx.fillText(`Total KE: ${totalKE.toFixed(1)} J`, 10, 80);
+    ctx.fillText(`Collisions: ${collisionCount}`, 10, 24);
+    ctx.fillText(`Total Momentum X: ${totalMomentumX.toFixed(1)} kg·m/s`, 10, 48);
+    ctx.fillText(`Total Momentum Y: ${totalMomentumY.toFixed(1)} kg·m/s`, 10, 72);
+    ctx.fillText(`Total KE: ${totalKE.toFixed(1)} J`, 10, 96);
     
     animationRef.current = requestAnimationFrame(animate);
   };
@@ -278,20 +279,20 @@ export default function ElasticCollisionsVisualizer() {
   return (
     <div className="space-y-8">
       {/* Canvas */}
-      <div className="bg-white border border-line rounded-lg p-6 shadow-card">
-        <div className="flex justify-center">
+      <div className="bg-white border border-line rounded-lg p-3 sm:p-6 shadow-card">
+        <div className="mx-auto max-w-2xl">
           <canvas
             ref={canvasRef}
             width={WIDTH}
             height={HEIGHT}
-            className="border-2 border-line-strong rounded"
+            className={`${responsiveSurface} border-2 border-line-strong rounded`}
           />
         </div>
       </div>
 
       {/* Controls */}
-      <div className="bg-white border border-line rounded-lg p-6 space-y-6 shadow-card">
-        <div className="flex gap-3">
+      <div className="bg-white border border-line rounded-lg p-4 sm:p-6 space-y-6 shadow-card">
+        <div className="flex flex-wrap gap-3">
           <button
             onClick={() => setIsPlaying(!isPlaying)}
             className="px-6 py-2 bg-brand-600 text-white rounded-lg hover:bg-brand-700 transition-colors font-medium shadow-brand"
@@ -306,7 +307,7 @@ export default function ElasticCollisionsVisualizer() {
           </button>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Ball 1 Controls */}
           <div className="space-y-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
             <h3 className="font-semibold text-blue-900">Ball 1 (Blue)</h3>
@@ -412,7 +413,7 @@ export default function ElasticCollisionsVisualizer() {
             />
           </div>
 
-          <div className="flex gap-4">
+          <div className="flex flex-wrap gap-4">
             <label className="flex items-center gap-2 cursor-pointer">
               <input
                 type="checkbox"

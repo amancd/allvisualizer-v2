@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import { responsiveSurface, toDrawingPoint } from '@/lib/visualization';
 
 export default function EMInductionVisualizer() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -238,7 +239,7 @@ export default function EMInductionVisualizer() {
     
     // Labels on magnet
     ctx.fillStyle = '#ffffff';
-    ctx.font = 'bold 14px sans-serif';
+    ctx.font = 'bold 18px sans-serif';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.fillText('N', coilX, magnetPosition - magnetHeight/4);
@@ -246,11 +247,11 @@ export default function EMInductionVisualizer() {
     
     // Direction indicator
     ctx.fillStyle = '#000000';
-    ctx.font = '12px sans-serif';
+    ctx.font = '17px sans-serif';
     if (magnetVelocity > 0.5) {
-      ctx.fillText('↓ Moving Down', coilX + 80, magnetPosition);
+      ctx.fillText('↓ Moving Down', coilX + 105, magnetPosition);
     } else if (magnetVelocity < -0.5) {
-      ctx.fillText('↑ Moving Up', coilX + 80, magnetPosition);
+      ctx.fillText('↑ Moving Up', coilX + 105, magnetPosition);
     }
     
     // Draw flux indicator through coil
@@ -265,34 +266,33 @@ export default function EMInductionVisualizer() {
     
     // Coil center label
     ctx.fillStyle = '#000000';
-    ctx.font = '11px sans-serif';
+    ctx.font = '16px sans-serif';
     ctx.textAlign = 'right';
-    ctx.fillText(`Coil (${numTurns} turns)`, coilX - coilWidth/2 - 10, coilCenterY);
+    ctx.fillText(`Coil (${numTurns} turns)`, coilX - coilWidth/2 - coilHeight/2 - 8, coilCenterY);
   };
 
-  const handleMouseDown = (e: React.MouseEvent<HTMLCanvasElement>) => {
+  const handleMouseDown = (e: React.PointerEvent<HTMLCanvasElement>) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     
-    const rect = canvas.getBoundingClientRect();
-    const y = e.clientY - rect.top;
+    const { y } = toDrawingPoint(e, canvas);
     
     // Check if clicking near magnet
     if (Math.abs(y - magnetPosition) < 30) {
+      canvas.setPointerCapture(e.pointerId);
       setIsDragging(true);
       setDragStartY(y);
       setAutoMove(false);
     }
   };
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLCanvasElement>) => {
+  const handleMouseMove = (e: React.PointerEvent<HTMLCanvasElement>) => {
     if (!isDragging) return;
     
     const canvas = canvasRef.current;
     if (!canvas) return;
     
-    const rect = canvas.getBoundingClientRect();
-    const y = e.clientY - rect.top;
+    const { y } = toDrawingPoint(e, canvas);
     
     const newPosition = Math.max(50, Math.min(450, y));
     const velocity = (newPosition - magnetPosition) / 0.016;
@@ -308,18 +308,20 @@ export default function EMInductionVisualizer() {
   return (
     <div className="space-y-6">
       {/* Canvas */}
-      <div className="border border-line rounded-lg p-4 bg-subtle">
+      <div className="border border-line rounded-lg p-2 sm:p-4 bg-subtle">
         <div className="text-xs font-semibold text-gray-700 mb-3">Electromagnetic Induction Demonstration</div>
-        <canvas
-          ref={canvasRef}
-          width={canvasWidth}
-          height={canvasHeight}
-          onMouseDown={handleMouseDown}
-          onMouseMove={handleMouseMove}
-          onMouseUp={handleMouseUp}
-          onMouseLeave={handleMouseUp}
-          className="border border-line-strong bg-white mx-auto block cursor-pointer"
-        />
+        <div className="mx-auto max-w-2xl">
+          <canvas
+            ref={canvasRef}
+            width={canvasWidth}
+            height={canvasHeight}
+            onPointerDown={handleMouseDown}
+            onPointerMove={handleMouseMove}
+            onPointerUp={handleMouseUp}
+            onPointerCancel={handleMouseUp}
+            className={`${responsiveSurface} touch-none border border-line-strong bg-white mx-auto cursor-pointer`}
+          />
+        </div>
         <div className="text-xs text-ink-muted text-center mt-2">
           Drag the magnet up and down through the coil
         </div>
@@ -328,7 +330,7 @@ export default function EMInductionVisualizer() {
       {/* Controls */}
       <div className="border border-line rounded-lg p-4 bg-subtle">
         <div className="text-xs font-semibold text-gray-700 mb-3">Parameters</div>
-        <div className="grid sm:grid-cols-2 gap-4 mb-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
           <div>
             <label className="text-sm font-medium text-gray-700 mb-1 block">
               Number of Turns: {numTurns}
@@ -359,7 +361,7 @@ export default function EMInductionVisualizer() {
           </div>
         </div>
 
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
           <button
             onClick={() => setAutoMove(!autoMove)}
             className={`px-4 py-2 rounded-lg text-sm font-medium ${
@@ -420,11 +422,11 @@ export default function EMInductionVisualizer() {
       {fluxHistory.length > 10 && (
         <div className="border border-line rounded-lg p-4 bg-subtle">
           <div className="text-xs font-semibold text-gray-700 mb-3">Graphs</div>
-          <div className="grid sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {/* Flux Graph */}
             <div className="bg-white border border-line rounded p-3">
               <div className="text-sm font-medium text-gray-700 mb-2">Magnetic Flux vs Time</div>
-              <svg width="250" height="150" className="mx-auto">
+              <svg viewBox="0 0 250 160" className="mx-auto block h-auto w-full max-w-sm">
                 <polyline
                   points={fluxHistory.map((f, i) => {
                     const x = (i / fluxHistory.length) * 240 + 5;
@@ -447,7 +449,7 @@ export default function EMInductionVisualizer() {
             {/* EMF Graph */}
             <div className="bg-white border border-line rounded p-3">
               <div className="text-sm font-medium text-gray-700 mb-2">Induced EMF vs Time</div>
-              <svg width="250" height="150" className="mx-auto">
+              <svg viewBox="0 0 250 160" className="mx-auto block h-auto w-full max-w-sm">
                 <polyline
                   points={emfHistory.map((e, i) => {
                     const x = (i / emfHistory.length) * 240 + 5;
@@ -473,9 +475,9 @@ export default function EMInductionVisualizer() {
       {/* Info */}
       <div className="border border-line rounded-lg p-4 bg-purple-50">
         <div className="text-sm text-purple-900">
-          <p className="font-medium mb-2">💡 How to Use:</p>
+          <p className="font-medium mb-2">How to Use:</p>
           <ul className="list-disc list-inside space-y-1 text-sm">
-            <li><strong>Drag the magnet</strong> up and down through the coil with your mouse</li>
+            <li><strong>Drag the magnet</strong> up and down through the coil with your mouse or finger</li>
             <li><strong>Moving faster</strong> creates larger induced EMF and current</li>
             <li><strong>Direction matters:</strong> Moving down induces opposite current from moving up (Lenz's Law)</li>
             <li><strong>More turns</strong> multiply the induced EMF (N times larger)</li>
@@ -490,7 +492,7 @@ export default function EMInductionVisualizer() {
       {/* Lenz's Law Explanation */}
       <div className="border border-line rounded-lg p-4 bg-blue-50">
         <div className="text-sm text-blue-900">
-          <p className="font-medium mb-2">🧲 Lenz's Law in Action:</p>
+          <p className="font-medium mb-2">Lenz's Law in Action:</p>
           <ul className="list-disc list-inside space-y-1 text-sm">
             <li><strong>North pole approaching:</strong> Induced current creates north pole facing magnet (repulsion)</li>
             <li><strong>North pole receding:</strong> Induced current creates south pole facing magnet (attraction)</li>

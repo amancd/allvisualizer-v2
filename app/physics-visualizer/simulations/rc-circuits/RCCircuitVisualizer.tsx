@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import { responsiveSurface } from '@/lib/visualization';
 
 type CircuitMode = 'charging' | 'discharging' | 'idle';
 
@@ -165,11 +166,11 @@ export default function RCCircuitVisualizer() {
     
     // + and - labels
     ctx.fillStyle = '#ef4444';
-    ctx.font = 'bold 16px sans-serif';
+    ctx.font = 'bold 26px sans-serif';
     ctx.textAlign = 'center';
-    ctx.fillText('+', batteryX - 25, batteryY - 15);
+    ctx.fillText('+', batteryX - 28, batteryY - 13);
     ctx.fillStyle = '#3b82f6';
-    ctx.fillText('-', batteryX - 25, batteryY + 25);
+    ctx.fillText('-', batteryX - 28, batteryY + 27);
     
     // Draw Resistor (top)
     const resistorX = centerX;
@@ -185,9 +186,9 @@ export default function RCCircuitVisualizer() {
     
     // Resistor label
     ctx.fillStyle = '#000000';
-    ctx.font = '12px sans-serif';
+    ctx.font = '22px sans-serif';
     ctx.textAlign = 'center';
-    ctx.fillText(`R = ${resistance}Ω`, resistorX, resistorY - 25);
+    ctx.fillText(`R = ${resistance}Ω`, resistorX, resistorY - 22);
     
     // Draw Capacitor (right side)
     const capX = centerX + circuitWidth/2;
@@ -212,6 +213,7 @@ export default function RCCircuitVisualizer() {
     if (currentVoltage > 0.1) {
       const chargePercentage = currentVoltage / voltage;
       const numCharges = Math.floor(chargePercentage * 5);
+      ctx.font = '12px sans-serif';
       
       ctx.fillStyle = '#ef4444';
       for (let i = 0; i < numCharges; i++) {
@@ -234,10 +236,10 @@ export default function RCCircuitVisualizer() {
     
     // Capacitor label
     ctx.fillStyle = '#000000';
-    ctx.font = '12px sans-serif';
+    ctx.font = '22px sans-serif';
     ctx.textAlign = 'center';
-    ctx.fillText(`C = ${capacitance}μF`, capX + 50, capY);
-    ctx.fillText(`V = ${currentVoltage.toFixed(2)}V`, capX + 50, capY + 15);
+    ctx.fillText(`C = ${capacitance}μF`, capX + 75, capY);
+    ctx.fillText(`V = ${currentVoltage.toFixed(2)}V`, capX + 75, capY + 26);
     
     // Draw Switch (bottom)
     const switchX = centerX;
@@ -374,20 +376,22 @@ export default function RCCircuitVisualizer() {
   return (
     <div className="space-y-6">
       {/* Circuit Canvas */}
-      <div className="border border-line rounded-lg p-4 bg-subtle">
+      <div className="border border-line rounded-lg p-2 sm:p-4 bg-subtle">
         <div className="text-xs font-semibold text-gray-700 mb-3">RC Circuit Diagram</div>
-        <canvas
-          ref={canvasRef}
-          width={canvasWidth}
-          height={canvasHeight}
-          className="border border-line-strong bg-white mx-auto block"
-        />
+        <div className="mx-auto max-w-2xl">
+          <canvas
+            ref={canvasRef}
+            width={canvasWidth}
+            height={canvasHeight}
+            className={`${responsiveSurface} border border-line-strong bg-white mx-auto`}
+          />
+        </div>
       </div>
 
       {/* Controls */}
       <div className="border border-line rounded-lg p-4 bg-subtle">
         <div className="text-xs font-semibold text-gray-700 mb-3">Circuit Parameters</div>
-        <div className="grid sm:grid-cols-3 gap-4 mb-4">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-4">
           <div>
             <label className="text-sm font-medium text-gray-700 mb-1 block">
               Voltage (V): {voltage}V
@@ -497,11 +501,11 @@ export default function RCCircuitVisualizer() {
       {voltageHistory.length > 1 && (
         <div className="border border-line rounded-lg p-4 bg-subtle">
           <div className="text-xs font-semibold text-gray-700 mb-3">Graphs</div>
-          <div className="grid sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {/* Voltage Graph */}
             <div className="bg-white border border-line rounded p-3">
               <div className="text-sm font-medium text-gray-700 mb-2">Voltage vs Time</div>
-              <svg width="250" height="150" className="mx-auto">
+              <svg viewBox="0 0 250 160" className="mx-auto block h-auto w-full max-w-sm">
                 <polyline
                   points={voltageHistory.map((v, i) => {
                     const x = (i / voltageHistory.length) * 240 + 5;
@@ -522,7 +526,7 @@ export default function RCCircuitVisualizer() {
             {/* Current Graph */}
             <div className="bg-white border border-line rounded p-3">
               <div className="text-sm font-medium text-gray-700 mb-2">Current vs Time</div>
-              <svg width="250" height="150" className="mx-auto">
+              <svg viewBox="0 0 250 160" className="mx-auto block h-auto w-full max-w-sm">
                 <polyline
                   points={currentHistory.map((c, i) => {
                     const x = (i / currentHistory.length) * 240 + 5;
@@ -548,7 +552,7 @@ export default function RCCircuitVisualizer() {
       {/* Info */}
       <div className="border border-line rounded-lg p-4 bg-blue-50">
         <div className="text-sm text-blue-900">
-          <p className="font-medium mb-2">💡 How to Use:</p>
+          <p className="font-medium mb-2">How to Use:</p>
           <ul className="list-disc list-inside space-y-1 text-sm">
             <li>Adjust voltage, resistance, and capacitance using sliders</li>
             <li>Click "Start Charging" to charge the capacitor</li>
@@ -565,7 +569,8 @@ export default function RCCircuitVisualizer() {
       {mode !== 'idle' && (
         <div className="border border-line rounded-lg p-4 bg-subtle">
           <div className="text-xs font-semibold text-gray-700 mb-2">Time Constant Milestones</div>
-          <div className="grid grid-cols-5 gap-2 text-center text-xs">
+          <div className="overflow-x-auto">
+          <div className="grid min-w-[300px] grid-cols-5 gap-2 text-center text-xs">
             {[1, 2, 3, 4, 5].map(n => (
               <div key={n} className={`p-2 rounded ${time >= n * timeConstant ? 'bg-green-100 border border-green-300' : 'bg-white border border-line'}`}>
                 <div className="font-medium">{n}τ</div>
@@ -573,6 +578,7 @@ export default function RCCircuitVisualizer() {
                 <div className="text-gray-500">{n === 1 ? '63.2%' : n === 2 ? '86.5%' : n === 3 ? '95%' : n === 4 ? '98.2%' : '99.3%'}</div>
               </div>
             ))}
+          </div>
           </div>
         </div>
       )}

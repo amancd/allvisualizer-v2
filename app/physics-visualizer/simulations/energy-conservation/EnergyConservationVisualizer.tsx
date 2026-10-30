@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import { responsiveSurface } from '@/lib/visualization';
 
 interface Ball {
   x: number;
@@ -264,7 +265,7 @@ export default function EnergyConservationVisualizer() {
       
       // Height indicator
       ctx.fillStyle = '#6b7280';
-      ctx.font = '12px Inter';
+      ctx.font = '17px Inter';
       ctx.fillText(`h = ${height}m`, WIDTH / 2 + 20, GROUND - height / 2);
       
     } else if (scenario === 'ramp') {
@@ -382,24 +383,24 @@ export default function EnergyConservationVisualizer() {
       
       // Labels
       ctx.fillStyle = '#1f2937';
-      ctx.font = 'bold 11px Inter';
+      ctx.font = 'bold 16px Inter';
       ctx.textAlign = 'center';
-      ctx.fillText('KE', barX + barWidth / 2, GROUND + 20);
-      ctx.fillText('PE', barX + 50 + barWidth / 2, GROUND + 20);
+      ctx.fillText('KE', barX + barWidth / 2, GROUND + 26);
+      ctx.fillText('PE', barX + 50 + barWidth / 2, GROUND + 26);
       if (scenario === 'spring') {
-        ctx.fillText('SE', barX + 100 + barWidth / 2, GROUND + 20);
+        ctx.fillText('SE', barX + 100 + barWidth / 2, GROUND + 26);
       }
       
       // Energy values
-      ctx.font = '12px Inter';
+      ctx.font = '17px Inter';
       ctx.textAlign = 'left';
-      ctx.fillText(`KE: ${energies.ke.toFixed(1)} J`, 10, 20);
-      ctx.fillText(`PE: ${energies.pe.toFixed(1)} J`, 10, 40);
+      ctx.fillText(`KE: ${energies.ke.toFixed(1)} J`, 10, 24);
+      ctx.fillText(`PE: ${energies.pe.toFixed(1)} J`, 10, 48);
       if (scenario === 'spring') {
-        ctx.fillText(`SE: ${energies.se.toFixed(1)} J`, 10, 60);
-        ctx.fillText(`Total: ${energies.total.toFixed(1)} J`, 10, 80);
+        ctx.fillText(`SE: ${energies.se.toFixed(1)} J`, 10, 72);
+        ctx.fillText(`Total: ${energies.total.toFixed(1)} J`, 10, 96);
       } else {
-        ctx.fillText(`Total: ${energies.total.toFixed(1)} J`, 10, 60);
+        ctx.fillText(`Total: ${energies.total.toFixed(1)} J`, 10, 72);
       }
     }
     
@@ -420,20 +421,20 @@ export default function EnergyConservationVisualizer() {
   return (
     <div className="space-y-8">
       {/* Canvas */}
-      <div className="bg-white border border-line rounded-lg p-6 shadow-card">
-        <div className="flex justify-center">
+      <div className="bg-white border border-line rounded-lg p-3 sm:p-6 shadow-card">
+        <div className="mx-auto max-w-2xl">
           <canvas
             ref={canvasRef}
             width={WIDTH}
             height={HEIGHT}
-            className="border-2 border-line-strong rounded"
+            className={`${responsiveSurface} border-2 border-line-strong rounded`}
           />
         </div>
       </div>
 
       {/* Controls */}
-      <div className="bg-white border border-line rounded-lg p-6 space-y-6 shadow-card">
-        <div className="flex gap-3">
+      <div className="bg-white border border-line rounded-lg p-4 sm:p-6 space-y-6 shadow-card">
+        <div className="flex flex-wrap gap-3">
           <button
             onClick={() => setIsPlaying(!isPlaying)}
             className="px-6 py-2 bg-brand-600 text-white rounded-lg hover:bg-brand-700 transition-colors font-medium shadow-brand"
@@ -471,7 +472,7 @@ export default function EnergyConservationVisualizer() {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Mass Control */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">

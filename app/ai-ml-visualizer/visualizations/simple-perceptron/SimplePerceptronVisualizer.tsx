@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import { responsiveSurface } from '@/lib/visualization';
 
 interface DataPoint {
   x: number;
@@ -148,7 +149,7 @@ export default function SimplePerceptronVisualizer() {
       
       // Label for decision boundary
       ctx.fillStyle = '#6366F1';
-      ctx.font = 'bold 12px Arial';
+      ctx.font = 'bold 20px Arial';
       ctx.fillText('Decision Boundary', padding + 5 * scale, padding - 10);
     }
     
@@ -162,7 +163,7 @@ export default function SimplePerceptronVisualizer() {
       
       // Draw point
       ctx.beginPath();
-      ctx.arc(px, py, 6, 0, 2 * Math.PI);
+      ctx.arc(px, py, 8, 0, 2 * Math.PI);
       
       if (point.label === 1) {
         ctx.fillStyle = isCorrect ? '#10B981' : '#FCA5A5';
@@ -178,7 +179,7 @@ export default function SimplePerceptronVisualizer() {
     
     // Draw axes labels
     ctx.fillStyle = '#6B7280';
-    ctx.font = '14px Arial';
+    ctx.font = '22px Arial';
     ctx.fillText('x', canvas.width - padding + 10, canvas.height - padding + 5);
     ctx.fillText('y', padding - 10, padding - 10);
     
@@ -215,17 +216,19 @@ export default function SimplePerceptronVisualizer() {
       </div>
 
       {/* Canvas */}
-      <div className="bg-white border border-line rounded-lg p-6 shadow-card">
+      <div className="bg-white border border-line rounded-lg p-4 sm:p-6 shadow-card">
         <h3 className="text-lg font-semibold text-ink mb-4">Visualization</h3>
-        <canvas
-          ref={canvasRef}
-          width={600}
-          height={600}
-          className="w-full border border-line-strong rounded"
-        />
-        <div className="mt-4 flex items-center gap-6 text-sm">
+        <div className="mx-auto max-w-[600px]">
+          <canvas
+            ref={canvasRef}
+            width={600}
+            height={600}
+            className={`${responsiveSurface} border border-line-strong rounded`}
+          />
+        </div>
+        <div className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm">
           <div className="flex items-center gap-2">
-            <div className="w-4 h-4 rounded-full bg-gray-1000 border-2 border-gray-900"></div>
+            <div className="w-4 h-4 rounded-full bg-blue-500 border-2 border-gray-900"></div>
             <span className="text-gray-700">Class 0 (Below line)</span>
           </div>
           <div className="flex items-center gap-2">

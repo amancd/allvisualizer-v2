@@ -652,22 +652,18 @@ const samples: CodeSample[] = [
 
 const applications: CardGridItem[] = [
   {
-    icon: '🏀',
     title: 'Sports',
     description: 'Basketball shots, football passes, golf swings: all follow projectile motion.',
   },
   {
-    icon: '💧',
     title: 'Water fountains',
     description: 'Water jets form parabolic arcs based on nozzle angle and pressure.',
   },
   {
-    icon: '🚀',
     title: 'Ballistics',
     description: 'Artillery shells and rockets follow projectile paths (ignoring air resistance).',
   },
   {
-    icon: '🎮',
     title: 'Game physics',
     description: 'Video games simulate projectile motion for realistic object throwing.',
   },

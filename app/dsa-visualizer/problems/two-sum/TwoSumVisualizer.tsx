@@ -88,8 +88,8 @@ export default function TwoSumVisualizer() {
   return (
     <div className="space-y-6">
       {/* Input Controls */}
-      <div className="flex gap-3 items-end">
-        <div className="flex-1">
+      <div className="flex flex-wrap gap-3 items-end">
+        <div className="flex-1 min-w-[10rem]">
           <label className="text-xs font-medium text-gray-700 mb-1 block">Array</label>
           <input
             type="text"
@@ -121,14 +121,14 @@ export default function TwoSumVisualizer() {
       <div className="border border-line rounded-lg p-4 bg-subtle">
         <div className="flex gap-2 overflow-x-auto pb-2">
           {nums.map((num, idx) => (
-            <div key={idx} className="flex flex-col items-center min-w-[60px]">
+            <div key={idx} className="flex flex-col items-center min-w-[44px] sm:min-w-[60px]">
               <div className="text-[10px] text-gray-500 mb-1">i={idx}</div>
               <div
-                className={`w-14 h-14 flex items-center justify-center rounded-lg font-semibold text-lg transition-all ${
+                className={`w-11 h-11 sm:w-14 sm:h-14 flex items-center justify-center rounded-lg font-semibold text-base sm:text-lg transition-all ${
                   step?.i === idx
                     ? step.found
                       ? 'bg-green-500 text-white ring-2 ring-green-300'
-                      : 'bg-gray-1000 text-white ring-2 ring-indigo-300'
+                      : 'bg-brand-600 text-white ring-2 ring-indigo-300'
                     : result && result.includes(idx)
                     ? 'bg-green-100 text-green-700 border-2 border-green-400'
                     : 'bg-white border-2 border-line-strong text-gray-700'
@@ -162,7 +162,7 @@ export default function TwoSumVisualizer() {
         <div className="border border-line rounded-lg p-4 bg-white shadow-card">
           <div className="text-sm text-gray-700">
             {step.found ? (
-              <div className="text-green-700 font-medium">
+              <div className="text-green-700 font-medium break-words">
                 ✓ Found: nums[{step.foundAt}] + nums[{step.i}] = {nums[step.foundAt!]} + {nums[step.i]} = {target}
               </div>
             ) : (
@@ -178,7 +178,7 @@ export default function TwoSumVisualizer() {
       )}
 
       {/* Controls */}
-      <div className="flex gap-2 justify-center">
+      <div className="flex flex-wrap gap-2 justify-center">
         <button
           onClick={() => setCurrentStep(0)}
           disabled={currentStep === 0}

@@ -1,9 +1,14 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import { responsiveSurface } from '@/lib/visualization';
 
 export default function HeatTransferVisualizer() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  // Canvas text is drawn in drawing units; enlarge it when the canvas is shown scaled down (phones).
+  const fontScaleRef = useRef(1);
+  const scaledFont = (font: string) =>
+    font.replace(/(\d+)px/, (_, size) => `${Math.round(Number(size) * fontScaleRef.current)}px`);
   const animationRef = useRef<number | null>(null);
   
   const [transferMode, setTransferMode] = useState<'conduction' | 'convection' | 'radiation'>('conduction');
@@ -87,7 +92,7 @@ export default function HeatTransferVisualizer() {
 
     // Labels
     ctx.fillStyle = '#000000';
-    ctx.font = 'bold 14px sans-serif';
+    ctx.font = scaledFont('bold 14px sans-serif');
     ctx.textAlign = 'center';
     ctx.fillText(`${hotTemp}°C`, barX - 15, barY - 20);
     ctx.fillText(`${coldTemp}°C`, barX + barWidth + 15, barY - 20);
@@ -115,7 +120,7 @@ export default function HeatTransferVisualizer() {
     }
     
     ctx.fillStyle = '#ef4444';
-    ctx.font = '12px sans-serif';
+    ctx.font = scaledFont('12px sans-serif');
     ctx.fillText('Heat Flow →', barX + barWidth / 2, arrowY - 15);
   };
 
@@ -187,11 +192,11 @@ export default function HeatTransferVisualizer() {
 
     // Labels
     ctx.fillStyle = '#000000';
-    ctx.font = 'bold 14px sans-serif';
+    ctx.font = scaledFont('bold 14px sans-serif');
     ctx.textAlign = 'center';
     ctx.fillText(`Heat Source: ${hotTemp}°C`, containerX + containerWidth / 2, containerY + containerHeight + 30);
     
-    ctx.font = '12px sans-serif';
+    ctx.font = scaledFont('12px sans-serif');
     ctx.fillStyle = '#ef4444';
     ctx.fillText('↑ Hot fluid rises', containerX - 50, containerY + 150);
     ctx.fillStyle = '#3b82f6';
@@ -273,12 +278,12 @@ export default function HeatTransferVisualizer() {
 
     // Labels
     ctx.fillStyle = '#000000';
-    ctx.font = 'bold 14px sans-serif';
+    ctx.font = scaledFont('bold 14px sans-serif');
     ctx.textAlign = 'center';
     ctx.fillText(`Source: ${hotTemp}°C`, sourceX, sourceY + sourceRadius + 25);
     ctx.fillText(`Absorber: ${absorbedHeat.toFixed(0)}°C`, targetX, targetY + targetSize / 2 + 25);
     
-    ctx.font = '12px sans-serif';
+    ctx.font = scaledFont('12px sans-serif');
     ctx.fillStyle = '#fbbf24';
     ctx.fillText('Electromagnetic Radiation →', 300, 150);
     ctx.fillText('(No medium required)', 300, 170);
@@ -290,6 +295,7 @@ export default function HeatTransferVisualizer() {
     
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
+    fontScaleRef.current = Math.min(1.4, Math.max(1, canvas.width / (canvas.clientWidth || canvas.width)));
 
     // Clear canvas
     ctx.fillStyle = '#f9fafb';
@@ -297,7 +303,7 @@ export default function HeatTransferVisualizer() {
 
     // Title
     ctx.fillStyle = '#000000';
-    ctx.font = 'bold 16px sans-serif';
+    ctx.font = scaledFont('bold 16px sans-serif');
     ctx.textAlign = 'left';
     const modeTitle = transferMode.charAt(0).toUpperCase() + transferMode.slice(1);
     ctx.fillText(`Heat Transfer: ${modeTitle}`, 20, 30);
@@ -327,12 +333,14 @@ export default function HeatTransferVisualizer() {
       {/* Canvas */}
       <div className="border border-line rounded-lg p-4 bg-subtle">
         <div className="text-xs font-semibold text-gray-700 mb-3">Heat Transfer Visualization</div>
-        <canvas
-          ref={canvasRef}
-          width={canvasWidth}
-          height={canvasHeight}
-          className="border border-line-strong bg-white mx-auto block"
-        />
+        <div className="mx-auto max-w-[600px]">
+          <canvas
+            ref={canvasRef}
+            width={canvasWidth}
+            height={canvasHeight}
+            className={`${responsiveSurface} border border-line-strong bg-white`}
+          />
+        </div>
         <div className="text-xs text-ink-muted text-center mt-2">
           {transferMode === 'conduction' && 'Heat flows through direct contact'}
           {transferMode === 'convection' && 'Heat transfer through fluid circulation'}
@@ -417,7 +425,7 @@ export default function HeatTransferVisualizer() {
               <label className="text-sm font-medium text-gray-700 mb-1 block">
                 Material: {materials[material].name} (k = {materials[material].k} W/(m·K))
               </label>
-              <div className="grid grid-cols-5 gap-2">
+              <div className="grid grid-cols-3 sm:grid-cols-5 gap-2">
                 {Object.entries(materials).map(([key, mat]) => (
                   <button
                     key={key}
@@ -436,7 +444,7 @@ export default function HeatTransferVisualizer() {
           )}
         </div>
 
-        <div className="flex gap-2 mt-4">
+        <div className="flex flex-wrap gap-2 mt-4">
           <button
             onClick={() => setIsPlaying(!isPlaying)}
             className={`px-4 py-2 rounded-lg text-sm font-medium ${
@@ -464,7 +472,7 @@ export default function HeatTransferVisualizer() {
       {/* Info */}
       <div className="border border-line rounded-lg p-4 bg-red-50">
         <div className="text-sm text-red-900">
-          <p className="font-medium mb-2">💡 Key Concepts:</p>
+          <p className="font-medium mb-2">Key Concepts:</p>
           <ul className="list-disc list-inside space-y-1 text-sm">
             <li><strong>Conduction:</strong> Direct contact - metals are good conductors</li>
             <li><strong>Convection:</strong> Fluid motion - hot rises, cold sinks</li>

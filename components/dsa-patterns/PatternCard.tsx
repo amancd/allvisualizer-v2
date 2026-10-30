@@ -24,7 +24,7 @@ export default function PatternCard({ pattern, index }: { pattern: SubPattern; i
         </div>
       </div>
 
-      <div className="space-y-7 border-t border-line px-5 py-6 sm:px-7">
+      <div className="space-y-7 border-t border-line px-4 py-6 sm:px-7">
         {pattern.recall && (
           <Callout tone="note" title="How to recall this pattern">
             {pattern.recall}
@@ -34,7 +34,7 @@ export default function PatternCard({ pattern, index }: { pattern: SubPattern; i
         {diagram && (
           <div>
             <SubHeading>Visual diagram</SubHeading>
-            <div className="flex justify-center rounded-xl border border-line bg-subtle bg-dots p-5">{diagram}</div>
+            <div className="flex justify-center rounded-xl border border-line bg-subtle bg-dots p-2 sm:p-5">{diagram}</div>
           </div>
         )}
 

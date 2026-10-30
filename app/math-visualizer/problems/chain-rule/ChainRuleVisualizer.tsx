@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef } from 'react';
+import { responsiveSurface, toDrawingPoint } from '@/lib/visualization';
 
 export default function ChainRuleVisualizer() {
   const [xPoint, setXPoint] = useState(1);
@@ -70,8 +71,7 @@ export default function ChainRuleVisualizer() {
 
   const handlePointerMove = (e: React.PointerEvent<SVGSVGElement>) => {
     if (!isDragging || !svgRef.current) return;
-    const rect = svgRef.current.getBoundingClientRect();
-    const svgX = e.clientX - rect.left;
+    const { x: svgX } = toDrawingPoint(e, svgRef.current);
     const mathX = toMathX(svgX);
     const clampedX = Math.max(xMin + 0.5, Math.min(xMax - 0.5, mathX));
     setXPoint(Number(clampedX.toFixed(2)));
@@ -82,13 +82,13 @@ export default function ChainRuleVisualizer() {
   };
 
   return (
-    <div className="bg-white border border-line rounded-lg p-6 space-y-4 shadow-card">
+    <div className="bg-white border border-line rounded-lg p-4 sm:p-6 space-y-4 shadow-card">
       <div className="space-y-3">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1">
           <label className="text-sm font-medium text-gray-700">
             Point x = {xPoint.toFixed(2)}
           </label>
-          <div className="flex items-center gap-4">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
             <span className="text-sm text-ink-muted">
               h({xPoint.toFixed(2)}) = {yPoint.toFixed(2)}
             </span>
@@ -109,12 +109,12 @@ export default function ChainRuleVisualizer() {
         />
       </div>
 
-      <div className="bg-subtle rounded-lg p-4 overflow-x-auto">
+      <div className="bg-subtle rounded-lg p-2 sm:p-4">
+        <div className="mx-auto max-w-2xl">
         <svg
           ref={svgRef}
-          width={width}
-          height={height}
-          className="mx-auto touch-none"
+          viewBox={`0 0 ${width} ${height}`}
+          className={`${responsiveSurface} touch-none`}
           onPointerMove={handlePointerMove}
           onPointerUp={handlePointerUp}
           onPointerLeave={handlePointerUp}
@@ -129,20 +129,20 @@ export default function ChainRuleVisualizer() {
           <line x1={padding} y1={toSvgY(0)} x2={width - padding} y2={toSvgY(0)} stroke="#374151" strokeWidth="2" />
           <line x1={toSvgX(0)} y1={padding} x2={toSvgX(0)} y2={height - padding} stroke="#374151" strokeWidth="2" />
           
-          <text x={width - padding + 5} y={toSvgY(0) + 5} fontSize="12" fill="#6b7280">x</text>
-          <text x={toSvgX(0) + 5} y={padding - 5} fontSize="12" fill="#6b7280">y</text>
+          <text x={width - padding + 5} y={toSvgY(0) + 5} fontSize="18" fill="#6b7280">x</text>
+          <text x={toSvgX(0) + 5} y={padding - 5} fontSize="18" fill="#6b7280">y</text>
           
           {[-1, 1, 2].map(x => (
             <g key={x}>
               <line x1={toSvgX(x)} y1={toSvgY(0) - 5} x2={toSvgX(x)} y2={toSvgY(0) + 5} stroke="#374151" strokeWidth="1" />
-              <text x={toSvgX(x)} y={toSvgY(0) + 20} fontSize="11" fill="#6b7280" textAnchor="middle">{x}</text>
+              <text x={toSvgX(x)} y={toSvgY(0) + 20} fontSize="18" fill="#6b7280" textAnchor="middle">{x}</text>
             </g>
           ))}
           
           {[0, 2, 4, 6].map(y => (
             <g key={y}>
               <line x1={toSvgX(0) - 5} y1={toSvgY(y)} x2={toSvgX(0) + 5} y2={toSvgY(y)} stroke="#374151" strokeWidth="1" />
-              <text x={toSvgX(0) - 10} y={toSvgY(y) + 4} fontSize="11" fill="#6b7280" textAnchor="end">{y}</text>
+              <text x={toSvgX(0) - 10} y={toSvgY(y) + 4} fontSize="18" fill="#6b7280" textAnchor="end">{y}</text>
             </g>
           ))}
           
@@ -162,14 +162,15 @@ export default function ChainRuleVisualizer() {
             style={{ touchAction: 'none' }}
           />
           
-          <text x={width / 2} y={height - 10} fontSize="14" fill="#4f46e5" textAnchor="middle" fontWeight="600">
+          <text x={width / 2} y={height - 10} fontSize="20" fill="#4f46e5" textAnchor="middle" fontWeight="600">
             h(x) = x² + 1
           </text>
           
-          <text x={tangent.x2 + 10} y={tangent.y2} fontSize="12" fill="#10b981" fontWeight="500">
+          <text x={tangent.x2 + 10} y={tangent.y2} fontSize="18" fill="#10b981" fontWeight="500">
             slope = {tangent.slope.toFixed(2)}
           </text>
         </svg>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">

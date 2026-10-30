@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import { responsiveSurface } from '@/lib/visualization';
 
 export default function NewtonsLawsVisualizer() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -119,9 +120,9 @@ export default function NewtonsLawsVisualizer() {
     
     // Mass label
     ctx.fillStyle = '#FFFFFF';
-    ctx.font = 'bold 14px Arial';
+    ctx.font = 'bold 20px Arial';
     ctx.textAlign = 'center';
-    ctx.fillText(`${mass} kg`, boxX + boxSize / 2, boxY + boxSize / 2 + 5);
+    ctx.fillText(`${mass} kg`, boxX + boxSize / 2, boxY + boxSize / 2 + 7);
     
     // Draw forces as arrows
     const centerX = boxX + boxSize / 2;
@@ -146,16 +147,16 @@ export default function NewtonsLawsVisualizer() {
     // Net force indicator
     if (Math.abs(netForce) > 0.1) {
       ctx.fillStyle = netForce > 0 ? '#10B981' : '#EF4444';
-      ctx.font = 'bold 16px Arial';
+      ctx.font = 'bold 28px Arial';
       ctx.textAlign = 'left';
-      ctx.fillText(`Net Force: ${netForce.toFixed(1)} N`, 20, 30);
-      ctx.fillText(`Acceleration: ${acceleration.toFixed(2)} m/s²`, 20, 55);
+      ctx.fillText(`Net Force: ${netForce.toFixed(1)} N`, 20, 40);
+      ctx.fillText(`Acceleration: ${acceleration.toFixed(2)} m/s²`, 20, 78);
     } else {
       ctx.fillStyle = '#6B7280';
-      ctx.font = 'bold 16px Arial';
+      ctx.font = 'bold 28px Arial';
       ctx.textAlign = 'left';
-      ctx.fillText('Net Force: 0 N (Equilibrium)', 20, 30);
-      ctx.fillText('Acceleration: 0 m/s²', 20, 55);
+      ctx.fillText('Net Force: 0 N (Equilibrium)', 20, 40);
+      ctx.fillText('Acceleration: 0 m/s²', 20, 78);
     }
     
   }, [position, mass, appliedForce, frictionForce, normalForce, netForce, acceleration, velocity]);
@@ -176,7 +177,7 @@ export default function NewtonsLawsVisualizer() {
     // Arrow line
     ctx.strokeStyle = color;
     ctx.fillStyle = color;
-    ctx.lineWidth = 3;
+    ctx.lineWidth = 4;
     ctx.beginPath();
     ctx.moveTo(startX, startY);
     ctx.lineTo(endX, endY);
@@ -184,7 +185,7 @@ export default function NewtonsLawsVisualizer() {
     
     // Arrow head
     const angle = Math.atan2(dy, dx);
-    const headLength = 10;
+    const headLength = 14;
     ctx.beginPath();
     ctx.moveTo(endX, endY);
     ctx.lineTo(
@@ -200,9 +201,9 @@ export default function NewtonsLawsVisualizer() {
     
     // Label
     ctx.fillStyle = color;
-    ctx.font = 'bold 12px Arial';
+    ctx.font = 'bold 24px Arial';
     ctx.textAlign = 'center';
-    ctx.fillText(label, endX + dx * 0.2, endY + dy * 0.2 - 10);
+    ctx.fillText(label, endX + dx * 0.2, endY + dy * 0.2 + (dy > 0 ? 24 : -10));
   }
   
   const handleStart = () => {
@@ -225,9 +226,9 @@ export default function NewtonsLawsVisualizer() {
   return (
     <div className="space-y-6">
       {/* Law Selector */}
-      <div className="bg-gradient-to-r from-gray-50 to-gray-100 border border-line-strong rounded-lg p-6">
+      <div className="bg-gradient-to-r from-gray-50 to-gray-100 border border-line-strong rounded-lg p-4 sm:p-6">
         <h3 className="text-lg font-semibold text-ink mb-4">Select Newton's Law</h3>
-        <div className="grid md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <button
             onClick={() => setSelectedLaw(1)}
             className={`p-4 rounded-lg border-2 transition-all ${
@@ -236,7 +237,7 @@ export default function NewtonsLawsVisualizer() {
                 : 'border-line bg-white hover:border-brand-300'
             }`}
           >
-            <div className="text-2xl mb-2">1️⃣</div>
+            <div className="mx-auto mb-2 grid h-8 w-8 place-items-center rounded-full bg-brand-50 text-sm font-semibold text-brand-700 ring-1 ring-inset ring-brand-100">1</div>
             <div className="font-semibold text-sm mb-1">First Law</div>
             <div className="text-xs text-ink-muted">Law of Inertia</div>
           </button>
@@ -249,7 +250,7 @@ export default function NewtonsLawsVisualizer() {
                 : 'border-line bg-white hover:border-brand-300'
             }`}
           >
-            <div className="text-2xl mb-2">2️⃣</div>
+            <div className="mx-auto mb-2 grid h-8 w-8 place-items-center rounded-full bg-brand-50 text-sm font-semibold text-brand-700 ring-1 ring-inset ring-brand-100">2</div>
             <div className="font-semibold text-sm mb-1">Second Law</div>
             <div className="text-xs text-ink-muted">F = ma</div>
           </button>
@@ -262,7 +263,7 @@ export default function NewtonsLawsVisualizer() {
                 : 'border-line bg-white hover:border-brand-300'
             }`}
           >
-            <div className="text-2xl mb-2">3️⃣</div>
+            <div className="mx-auto mb-2 grid h-8 w-8 place-items-center rounded-full bg-brand-50 text-sm font-semibold text-brand-700 ring-1 ring-inset ring-brand-100">3</div>
             <div className="font-semibold text-sm mb-1">Third Law</div>
             <div className="text-xs text-ink-muted">Action-Reaction</div>
           </button>
@@ -300,20 +301,20 @@ export default function NewtonsLawsVisualizer() {
       </div>
 
       {/* Canvas */}
-      <div className="bg-white border border-line rounded-lg p-6 shadow-card">
+      <div className="bg-white border border-line rounded-lg p-3 sm:p-6 shadow-card">
         <canvas
           ref={canvasRef}
           width={800}
           height={400}
-          className="w-full border border-line-strong rounded"
+          className={`${responsiveSurface} border border-line-strong rounded`}
         />
       </div>
 
       {/* Controls */}
-      <div className="bg-white border border-line rounded-lg p-6 shadow-card">
+      <div className="bg-white border border-line rounded-lg p-4 sm:p-6 shadow-card">
         <h3 className="text-lg font-semibold text-ink mb-4">Parameters</h3>
         
-        <div className="grid md:grid-cols-2 gap-6 mb-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           {/* Mass */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -379,7 +380,7 @@ export default function NewtonsLawsVisualizer() {
         </div>
 
         {/* Action Buttons */}
-        <div className="flex gap-3">
+        <div className="flex flex-wrap gap-3">
           <button
             onClick={handleStart}
             disabled={isAnimating}
@@ -397,44 +398,44 @@ export default function NewtonsLawsVisualizer() {
       </div>
 
       {/* Physics Data */}
-      <div className="bg-gradient-to-r from-gray-50 to-gray-100 border border-line-strong rounded-lg p-6">
+      <div className="bg-gradient-to-r from-gray-50 to-gray-100 border border-line-strong rounded-lg p-4 sm:p-6">
         <h3 className="text-lg font-semibold text-ink mb-4">Physics Data</h3>
         
-        <div className="grid md:grid-cols-3 gap-4">
-          <div className="bg-white rounded-lg p-4 border border-line shadow-card">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
+          <div className="bg-white rounded-lg p-3 sm:p-4 border border-line shadow-card">
             <div className="text-xs text-gray-500 mb-1">Position</div>
-            <div className="text-2xl font-bold text-ink">{position.toFixed(2)} m</div>
+            <div className="text-lg sm:text-2xl font-bold text-ink">{position.toFixed(2)} m</div>
           </div>
           
-          <div className="bg-white rounded-lg p-4 border border-line shadow-card">
+          <div className="bg-white rounded-lg p-3 sm:p-4 border border-line shadow-card">
             <div className="text-xs text-gray-500 mb-1">Velocity</div>
-            <div className="text-2xl font-bold text-ink">{velocity.toFixed(2)} m/s</div>
+            <div className="text-lg sm:text-2xl font-bold text-ink">{velocity.toFixed(2)} m/s</div>
           </div>
           
-          <div className="bg-white rounded-lg p-4 border border-line shadow-card">
+          <div className="bg-white rounded-lg p-3 sm:p-4 border border-line shadow-card">
             <div className="text-xs text-gray-500 mb-1">Acceleration</div>
-            <div className="text-2xl font-bold text-cyan-600">{acceleration.toFixed(2)} m/s²</div>
+            <div className="text-lg sm:text-2xl font-bold text-cyan-600">{acceleration.toFixed(2)} m/s²</div>
           </div>
           
-          <div className="bg-white rounded-lg p-4 border border-line shadow-card">
+          <div className="bg-white rounded-lg p-3 sm:p-4 border border-line shadow-card">
             <div className="text-xs text-gray-500 mb-1">Net Force</div>
-            <div className="text-2xl font-bold text-green-600">{netForce.toFixed(2)} N</div>
+            <div className="text-lg sm:text-2xl font-bold text-green-600">{netForce.toFixed(2)} N</div>
           </div>
           
-          <div className="bg-white rounded-lg p-4 border border-line shadow-card">
+          <div className="bg-white rounded-lg p-3 sm:p-4 border border-line shadow-card">
             <div className="text-xs text-gray-500 mb-1">Friction Force</div>
-            <div className="text-2xl font-bold text-red-600">{frictionForce.toFixed(2)} N</div>
+            <div className="text-lg sm:text-2xl font-bold text-red-600">{frictionForce.toFixed(2)} N</div>
           </div>
           
-          <div className="bg-white rounded-lg p-4 border border-line shadow-card">
+          <div className="bg-white rounded-lg p-3 sm:p-4 border border-line shadow-card">
             <div className="text-xs text-gray-500 mb-1">Time</div>
-            <div className="text-2xl font-bold text-ink">{currentTime.toFixed(2)} s</div>
+            <div className="text-lg sm:text-2xl font-bold text-ink">{currentTime.toFixed(2)} s</div>
           </div>
         </div>
       </div>
 
       {/* Formulas */}
-      <div className="bg-white border border-line rounded-lg p-6 shadow-card">
+      <div className="bg-white border border-line rounded-lg p-4 sm:p-6 shadow-card">
         <h3 className="text-lg font-semibold text-ink mb-4">Key Formulas</h3>
         <div className="space-y-3 text-sm">
           <div className="flex items-start gap-3">

@@ -52,13 +52,13 @@ const harmonics = [
 ];
 
 const applications: CardGridItem[] = [
-  { icon: '🎸', title: 'Musical instruments', description: 'Guitar strings, violin, piano: all use standing waves to produce sound.' },
-  { icon: '🎺', title: 'Wind instruments', description: 'Flutes, organs and trumpets use standing waves in air columns.' },
-  { icon: '🍲', title: 'Microwave ovens', description: 'Standing electromagnetic waves heat food.' },
-  { icon: '🔦', title: 'Laser cavities', description: 'Standing light waves form between mirrors.' },
-  { icon: '📡', title: 'Radio antennas', description: 'Designed to resonate at specific frequencies.' },
-  { icon: '🏢', title: 'Earthquake engineering', description: 'Buildings can experience standing wave patterns during seismic events.' },
-  { icon: '🎧', title: 'Acoustic treatment', description: 'Understanding nodes helps in soundproofing and studio design.' },
+  { title: 'Musical instruments', description: 'Guitar strings, violin, piano: all use standing waves to produce sound.' },
+  { title: 'Wind instruments', description: 'Flutes, organs and trumpets use standing waves in air columns.' },
+  { title: 'Microwave ovens', description: 'Standing electromagnetic waves heat food.' },
+  { title: 'Laser cavities', description: 'Standing light waves form between mirrors.' },
+  { title: 'Radio antennas', description: 'Designed to resonate at specific frequencies.' },
+  { title: 'Earthquake engineering', description: 'Buildings can experience standing wave patterns during seismic events.' },
+  { title: 'Acoustic treatment', description: 'Understanding nodes helps in soundproofing and studio design.' },
 ];
 
 export default function StandingWavesPage() {

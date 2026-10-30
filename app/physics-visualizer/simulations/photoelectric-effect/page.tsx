@@ -22,7 +22,6 @@ export const metadata: Metadata = {
 
 const observations: CardGridItem[] = [
   {
-    icon: '🚧',
     title: 'Threshold frequency',
     description: (
       <>
@@ -32,19 +31,16 @@ const observations: CardGridItem[] = [
     ),
   },
   {
-    icon: '⚡',
     title: 'Instantaneous emission',
     description:
       "Electrons are emitted immediately when light above threshold frequency hits the surface. There's no time delay, even at low intensities.",
   },
   {
-    icon: '🔆',
     title: 'Intensity effect',
     description:
       "Higher intensity means more photons, resulting in more electrons ejected per second, but doesn't change the maximum kinetic energy of individual electrons.",
   },
   {
-    icon: '📈',
     title: 'Frequency dependence',
     description:
       'Higher frequency light (shorter wavelength) produces electrons with higher kinetic energy. The relationship is linear: KE increases linearly with frequency.',
@@ -60,16 +56,16 @@ const workFunctions = [
 ];
 
 const applications: CardGridItem[] = [
-  { icon: '☀️', title: 'Solar panels', description: 'Photovoltaic cells convert light energy directly to electricity.' },
-  { icon: '🌙', title: 'Night vision devices', description: 'Image intensifiers amplify low light using photoelectric emission.' },
-  { icon: '📷', title: 'Photodetectors', description: 'Light sensors in cameras, barcode scanners, and optical communications.' },
-  { icon: '🧪', title: 'X-ray photoelectron spectroscopy', description: 'A surface analysis technique in materials science.' },
-  { icon: '🔬', title: 'Photoelectron microscopy', description: 'Imaging surfaces at nanometer resolution.' },
+  { title: 'Solar panels', description: 'Photovoltaic cells convert light energy directly to electricity.' },
+  { title: 'Night vision devices', description: 'Image intensifiers amplify low light using photoelectric emission.' },
+  { title: 'Photodetectors', description: 'Light sensors in cameras, barcode scanners, and optical communications.' },
+  { title: 'X-ray photoelectron spectroscopy', description: 'A surface analysis technique in materials science.' },
+  { title: 'Photoelectron microscopy', description: 'Imaging surfaces at nanometer resolution.' },
 ];
 
 export default function PhotoelectricEffectPage() {
   return (
-    <DetailPage subject="physics" item="photoelectric-effect" icon="💡">
+    <DetailPage subject="physics" item="photoelectric-effect">
       <PhotoelectricEffectVisualizer />
 
       <ContentSection title="What is the photoelectric effect?">

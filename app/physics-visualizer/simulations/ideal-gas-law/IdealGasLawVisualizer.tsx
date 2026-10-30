@@ -1,9 +1,14 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import { responsiveSurface } from '@/lib/visualization';
 
 export default function IdealGasLawVisualizer() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  // Canvas text is drawn in drawing units; enlarge it when the canvas is shown scaled down (phones).
+  const fontScaleRef = useRef(1);
+  const scaledFont = (font: string) =>
+    font.replace(/(\d+)px/, (_, size) => `${Math.round(Number(size) * fontScaleRef.current)}px`);
   const animationRef = useRef<number | null>(null);
   
   // Gas parameters
@@ -105,6 +110,7 @@ export default function IdealGasLawVisualizer() {
     
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
+    fontScaleRef.current = Math.min(1.4, Math.max(1, canvas.width / (canvas.clientWidth || canvas.width)));
 
     // Clear canvas
     ctx.fillStyle = '#f9fafb';
@@ -147,11 +153,11 @@ export default function IdealGasLawVisualizer() {
 
     // Labels
     ctx.fillStyle = '#000000';
-    ctx.font = 'bold 14px sans-serif';
+    ctx.font = scaledFont('bold 14px sans-serif');
     ctx.fillText('Gas Container', 10, 30);
     
     // Volume indicator
-    ctx.font = '12px sans-serif';
+    ctx.font = scaledFont('12px sans-serif');
     ctx.fillStyle = '#6b7280';
     ctx.save();
     ctx.translate(80, 200);
@@ -161,7 +167,7 @@ export default function IdealGasLawVisualizer() {
 
     // Pressure indicator
     ctx.fillStyle = '#ef4444';
-    ctx.font = '11px sans-serif';
+    ctx.font = scaledFont('11px sans-serif');
     ctx.fillText(`P = ${pressure.toFixed(2)} atm`, 300, pistonY - 20);
   };
 
@@ -208,12 +214,14 @@ export default function IdealGasLawVisualizer() {
       {/* Canvas */}
       <div className="border border-line rounded-lg p-4 bg-subtle">
         <div className="text-xs font-semibold text-gray-700 mb-3">Gas Particle Simulation</div>
-        <canvas
-          ref={canvasRef}
-          width={canvasWidth}
-          height={canvasHeight}
-          className="border border-line-strong bg-white mx-auto block"
-        />
+        <div className="mx-auto max-w-[600px]">
+          <canvas
+            ref={canvasRef}
+            width={canvasWidth}
+            height={canvasHeight}
+            className={`${responsiveSurface} border border-line-strong bg-white`}
+          />
+        </div>
         <div className="text-xs text-ink-muted text-center mt-2">
           Particle speed represents temperature • Container size represents volume
         </div>
@@ -347,7 +355,7 @@ export default function IdealGasLawVisualizer() {
         <div className="bg-white border border-line rounded-lg p-4 shadow-card">
           <div className="font-mono text-sm space-y-2">
             <p className="text-lg font-bold text-center mb-3">PV = nRT</p>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <p className="text-ink-muted">Left Side (PV):</p>
                 <p className="font-semibold">{pressure.toFixed(2)} × {volume.toFixed(1)} = {(pressure * volume).toFixed(2)}</p>
@@ -358,7 +366,7 @@ export default function IdealGasLawVisualizer() {
               </div>
             </div>
             <p className="text-center text-xs text-gray-500 mt-3">
-              Both sides equal: {Math.abs((pressure * volume) - (moles * R * temperature)) < 0.01 ? '✓ Verified' : '⚠️ Check'}
+              Both sides equal: {Math.abs((pressure * volume) - (moles * R * temperature)) < 0.01 ? '✓ Verified' : 'Check'}
             </p>
           </div>
         </div>
@@ -394,7 +402,7 @@ export default function IdealGasLawVisualizer() {
       {/* Info */}
       <div className="border border-line rounded-lg p-4 bg-red-50">
         <div className="text-sm text-red-900">
-          <p className="font-medium mb-2">💡 How to Use:</p>
+          <p className="font-medium mb-2">How to Use:</p>
           <ul className="list-disc list-inside space-y-1 text-sm">
             <li><strong>Free Control:</strong> Adjust any parameter independently</li>
             <li><strong>Isothermal (Boyle's Law):</strong> Temperature fixed, P and V inversely related</li>

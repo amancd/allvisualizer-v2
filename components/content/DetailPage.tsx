@@ -13,7 +13,8 @@ interface DetailPageProps {
   title?: React.ReactNode;
   /** Intro paragraph under the title. Defaults to the registry description. */
   description?: React.ReactNode;
-  icon?: LucideIcon | string;
+  /** Defaults to the topic's icon. */
+  icon?: LucideIcon;
   /** Extra header badges, shown after the difficulty badge. */
   meta?: React.ReactNode;
   /** Show the Giscus discussion at the end. */
@@ -35,13 +36,13 @@ export default function DetailPage({
   discussion = true,
   children,
 }: DetailPageProps) {
-  const { item } = getItem(subject, slug);
+  const { topic, item } = getItem(subject, slug);
 
   return (
     <article>
       <ContentHeader
         breadcrumbs={breadcrumbsFor(subject, undefined, slug)}
-        icon={icon}
+        icon={icon ?? topic.icon}
         title={title ?? item.title}
         description={description ?? item.description}
         meta={

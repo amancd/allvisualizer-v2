@@ -79,13 +79,13 @@ const conductivities = [
 ];
 
 const applications: CardGridItem[] = [
-  { icon: '🏠', title: 'Building insulation', description: 'Minimize heat loss/gain through walls and roofs.' },
-  { icon: '🍳', title: 'Cooking', description: 'Conduction (pan), convection (oven), radiation (broiler).' },
-  { icon: '💻', title: 'Electronics cooling', description: 'Heat sinks use conduction and convection.' },
-  { icon: '🌡️', title: 'Climate control', description: 'HVAC systems use all three mechanisms.' },
-  { icon: '☀️', title: 'Solar panels', description: 'Capture radiant energy from the sun.' },
-  { icon: '🚀', title: 'Thermal protection', description: 'Spacecraft heat shields during re-entry.' },
-  { icon: '🏭', title: 'Industrial processes', description: 'Heat exchangers, furnaces, refrigeration.' },
+  { title: 'Building insulation', description: 'Minimize heat loss/gain through walls and roofs.' },
+  { title: 'Cooking', description: 'Conduction (pan), convection (oven), radiation (broiler).' },
+  { title: 'Electronics cooling', description: 'Heat sinks use conduction and convection.' },
+  { title: 'Climate control', description: 'HVAC systems use all three mechanisms.' },
+  { title: 'Solar panels', description: 'Capture radiant energy from the sun.' },
+  { title: 'Thermal protection', description: 'Spacecraft heat shields during re-entry.' },
+  { title: 'Industrial processes', description: 'Heat exchangers, furnaces, refrigeration.' },
 ];
 
 export default function HeatTransferPage() {

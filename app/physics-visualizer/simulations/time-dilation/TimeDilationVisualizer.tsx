@@ -1,9 +1,14 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import { responsiveSurface } from '@/lib/visualization';
 
 export default function TimeDilationVisualizer() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  // Canvas text is drawn in drawing units; enlarge it when the canvas is shown scaled down (phones).
+  const fontScaleRef = useRef(1);
+  const scaledFont = (font: string) =>
+    font.replace(/(\d+)px/, (_, size) => `${Math.round(Number(size) * fontScaleRef.current)}px`);
   const animationRef = useRef<number | null>(null);
   
   const [velocity, setVelocity] = useState(0.5); // Fraction of speed of light
@@ -56,6 +61,7 @@ export default function TimeDilationVisualizer() {
     
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
+    fontScaleRef.current = Math.min(1.4, Math.max(1, canvas.width / (canvas.clientWidth || canvas.width)));
 
     // Clear canvas
     ctx.fillStyle = '#0f172a';
@@ -80,10 +86,10 @@ export default function TimeDilationVisualizer() {
     ctx.fill();
     
     ctx.fillStyle = '#ffffff';
-    ctx.font = 'bold 14px sans-serif';
+    ctx.font = scaledFont('bold 14px sans-serif');
     ctx.textAlign = 'center';
     ctx.fillText('Earth', earthX, earthY + 55);
-    ctx.font = '12px monospace';
+    ctx.font = scaledFont('12px monospace');
     ctx.fillText(`t = ${earthTime.toFixed(1)} s`, earthX, earthY + 75);
 
     // Draw spaceship (moving observer)
@@ -120,10 +126,10 @@ export default function TimeDilationVisualizer() {
     }
     
     ctx.fillStyle = '#ffffff';
-    ctx.font = 'bold 14px sans-serif';
+    ctx.font = scaledFont('bold 14px sans-serif');
     ctx.textAlign = 'center';
     ctx.fillText('Spaceship', shipX, shipY + 55);
-    ctx.font = '12px monospace';
+    ctx.font = scaledFont('12px monospace');
     ctx.fillText(`t = ${shipTime.toFixed(1)} s`, shipX, shipY + 75);
 
     // Velocity indicator
@@ -145,7 +151,7 @@ export default function TimeDilationVisualizer() {
     ctx.closePath();
     ctx.fill();
     
-    ctx.font = '12px sans-serif';
+    ctx.font = scaledFont('12px sans-serif');
     ctx.textAlign = 'center';
     ctx.fillText(`v = ${(velocity * 100).toFixed(0)}% c`, (earthX + shipX) / 2, earthY - 70);
 
@@ -176,7 +182,7 @@ export default function TimeDilationVisualizer() {
       ctx.fill();
       
       // Label
-      ctx.font = '11px sans-serif';
+      ctx.font = scaledFont('11px sans-serif');
       ctx.textAlign = 'center';
       ctx.fillText(label, x, y - 35);
     };
@@ -203,11 +209,11 @@ export default function TimeDilationVisualizer() {
 
     // Title and info
     ctx.fillStyle = '#ffffff';
-    ctx.font = 'bold 18px sans-serif';
+    ctx.font = scaledFont('bold 18px sans-serif');
     ctx.textAlign = 'left';
     ctx.fillText('Time Dilation Visualization', 20, 30);
     
-    ctx.font = '14px sans-serif';
+    ctx.font = scaledFont('14px sans-serif');
     ctx.fillText(`Lorentz Factor γ = ${gamma.toFixed(3)}`, 20, 355);
     ctx.fillText(`Time Ratio: ${(earthTime / (shipTime || 0.01)).toFixed(2)}:1`, 20, 375);
   };
@@ -225,12 +231,14 @@ export default function TimeDilationVisualizer() {
     <div className="space-y-6">
       {/* Canvas */}
       <div className="border border-line rounded-lg p-4 bg-subtle">
-        <canvas
-          ref={canvasRef}
-          width={canvasWidth}
-          height={canvasHeight}
-          className="border border-line-strong bg-gray-900 mx-auto block"
-        />
+        <div className="mx-auto max-w-[600px]">
+          <canvas
+            ref={canvasRef}
+            width={canvasWidth}
+            height={canvasHeight}
+            className={`${responsiveSurface} border border-line-strong bg-gray-900`}
+          />
+        </div>
       </div>
 
       {/* Controls */}
@@ -253,7 +261,7 @@ export default function TimeDilationVisualizer() {
           />
         </div>
 
-        <div className="grid grid-cols-6 gap-2 mb-4">
+        <div className="grid grid-cols-3 sm:grid-cols-6 gap-2 mb-4">
           {velocityPresets.map(preset => (
             <button
               key={preset.label}
@@ -266,7 +274,7 @@ export default function TimeDilationVisualizer() {
           ))}
         </div>
 
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
           <button
             onClick={() => setIsPlaying(!isPlaying)}
             className={`px-4 py-2 rounded-lg text-sm font-medium ${
@@ -303,7 +311,7 @@ export default function TimeDilationVisualizer() {
 
       {/* Time Comparison */}
       <div className="border border-line rounded-lg p-4 bg-gradient-to-r from-blue-50 to-red-50">
-        <div className="text-sm font-semibold text-ink mb-3">⏱️ Time Comparison</div>
+        <div className="text-sm font-semibold text-ink mb-3">Time Comparison</div>
         <div className="grid md:grid-cols-2 gap-4 mb-3">
           <div className="bg-white p-3 rounded border border-blue-200">
             <div className="text-xs text-ink-muted mb-1">Earth Observer (Stationary)</div>
@@ -344,7 +352,7 @@ export default function TimeDilationVisualizer() {
 
       {/* Twin Paradox Example */}
       <div className="border border-line rounded-lg p-4 bg-subtle">
-        <div className="text-sm font-semibold text-ink mb-3">👥 Twin Paradox Scenario</div>
+        <div className="text-sm font-semibold text-ink mb-3">Twin Paradox Scenario</div>
         <div className="text-sm text-gray-700 space-y-2">
           <p>
             If the spaceship travels for <strong>10 years</strong> Earth time at the current speed:
@@ -368,7 +376,7 @@ export default function TimeDilationVisualizer() {
       {/* Info */}
       <div className="border border-line rounded-lg p-4 bg-blue-50">
         <div className="text-sm text-blue-900">
-          <p className="font-medium mb-2">💡 Key Insights:</p>
+          <p className="font-medium mb-2">Key Insights:</p>
           <ul className="list-disc list-inside space-y-1 text-sm">
             <li>Time passes slower for objects moving at high speeds</li>
             <li>Effect is negligible at everyday speeds but dramatic near light speed</li>

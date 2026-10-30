@@ -39,20 +39,18 @@ const parameters: CardGridItem[] = [
 ];
 
 const applications: CardGridItem[] = [
-  { icon: '📏', title: 'Wavelength measurement', description: 'Precisely determine the wavelength of light sources.' },
-  { icon: '🔍', title: 'Optical testing', description: 'Check the quality of lenses and mirrors using interferometry.' },
+  { title: 'Wavelength measurement', description: 'Precisely determine the wavelength of light sources.' },
+  { title: 'Optical testing', description: 'Check the quality of lenses and mirrors using interferometry.' },
   {
-    icon: '🌈',
     title: 'Spectroscopy',
     description: 'Diffraction gratings (many slits) separate light by wavelength.',
   },
-  { icon: '🖼️', title: 'Holography', description: 'Creates 3D images using interference patterns.' },
+  { title: 'Holography', description: 'Creates 3D images using interference patterns.' },
   {
-    icon: '⚛️',
     title: 'Quantum mechanics',
     description: 'Demonstrates wave-particle duality with electrons and photons.',
   },
-  { icon: '🔦', title: 'Laser characterization', description: 'Measure coherence length and beam quality.' },
+  { title: 'Laser characterization', description: 'Measure coherence length and beam quality.' },
 ];
 
 export default function DoubleSlitPage() {

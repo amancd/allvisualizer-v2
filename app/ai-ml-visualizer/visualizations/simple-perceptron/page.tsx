@@ -28,7 +28,6 @@ export default function SimplePerceptronPage() {
     <DetailPage
       subject="ai-ml"
       item="simple-perceptron"
-      icon="🧠"
       description="The perceptron is the fundamental building block of neural networks. Watch it learn to classify data points by adjusting its weights and bias."
     >
       <SimplePerceptronVisualizer />

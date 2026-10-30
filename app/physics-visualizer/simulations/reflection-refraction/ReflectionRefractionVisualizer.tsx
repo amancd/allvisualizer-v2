@@ -1,9 +1,14 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import { responsiveSurface } from '@/lib/visualization';
 
 export default function ReflectionRefractionVisualizer() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  // Canvas text is drawn in drawing units; enlarge it when the canvas is shown scaled down (phones).
+  const fontScaleRef = useRef(1);
+  const scaledFont = (font: string) =>
+    font.replace(/(\d+)px/, (_, size) => `${Math.round(Number(size) * fontScaleRef.current)}px`);
   
   // Parameters
   const [n1, setN1] = useState(1.0); // Refractive index of medium 1 (air)
@@ -50,6 +55,7 @@ export default function ReflectionRefractionVisualizer() {
     
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
+    fontScaleRef.current = Math.min(1.4, Math.max(1, canvas.width / (canvas.clientWidth || canvas.width)));
 
     // Clear canvas
     ctx.fillStyle = '#ffffff';
@@ -86,7 +92,7 @@ export default function ReflectionRefractionVisualizer() {
       ctx.setLineDash([]);
 
       ctx.fillStyle = '#6b7280';
-      ctx.font = '12px sans-serif';
+      ctx.font = scaledFont('12px sans-serif');
       ctx.fillText('Normal', centerX + 5, 20);
     }
 
@@ -148,7 +154,7 @@ export default function ReflectionRefractionVisualizer() {
 
       // TIR indicator
       ctx.fillStyle = '#8b5cf6';
-      ctx.font = 'bold 14px sans-serif';
+      ctx.font = scaledFont('bold 14px sans-serif');
       ctx.fillText('Total Internal Reflection!', centerX + 50, interfaceY + 30);
     }
 
@@ -168,12 +174,12 @@ export default function ReflectionRefractionVisualizer() {
 
     // Labels for media
     ctx.fillStyle = '#000000';
-    ctx.font = 'bold 14px sans-serif';
+    ctx.font = scaledFont('bold 14px sans-serif');
     ctx.fillText(`Medium 1: n = ${n1.toFixed(2)}`, 10, 30);
     ctx.fillText(`Medium 2: n = ${n2.toFixed(2)}`, 10, interfaceY + 30);
 
     // Ray labels
-    ctx.font = '12px sans-serif';
+    ctx.font = scaledFont('12px sans-serif');
     ctx.fillStyle = '#ef4444';
     ctx.fillText('Incident', incidentStartX - 50, incidentStartY - 10);
     
@@ -218,7 +224,7 @@ export default function ReflectionRefractionVisualizer() {
     const labelY = y + (radius + 15) * Math.sin(labelAngle);
     
     ctx.fillStyle = color;
-    ctx.font = '11px sans-serif';
+    ctx.font = scaledFont('11px sans-serif');
     ctx.fillText(label, labelX - 20, labelY + 5);
   };
 
@@ -235,12 +241,14 @@ export default function ReflectionRefractionVisualizer() {
       {/* Canvas */}
       <div className="border border-line rounded-lg p-4 bg-subtle">
         <div className="text-xs font-semibold text-gray-700 mb-3">Reflection & Refraction Visualization</div>
-        <canvas
-          ref={canvasRef}
-          width={canvasWidth}
-          height={canvasHeight}
-          className="border border-line-strong bg-white mx-auto block"
-        />
+        <div className="mx-auto max-w-[600px]">
+          <canvas
+            ref={canvasRef}
+            width={canvasWidth}
+            height={canvasHeight}
+            className={`${responsiveSurface} border border-line-strong bg-white`}
+          />
+        </div>
         <div className="flex justify-center gap-6 text-xs mt-3">
           <div className="flex items-center gap-2">
             <div className="w-3 h-3 bg-red-500 rounded"></div>
@@ -275,7 +283,7 @@ export default function ReflectionRefractionVisualizer() {
               onChange={(e) => setN1(Number(e.target.value))}
               className="w-full"
             />
-            <div className="flex gap-1 mt-1">
+            <div className="flex flex-wrap gap-1 mt-1">
               <button onClick={() => setN1(1.0)} className="px-2 py-1 text-xs bg-white border rounded hover:bg-subtle">Air</button>
               <button onClick={() => setN1(1.33)} className="px-2 py-1 text-xs bg-white border rounded hover:bg-subtle">Water</button>
               <button onClick={() => setN1(1.5)} className="px-2 py-1 text-xs bg-white border rounded hover:bg-subtle">Glass</button>
@@ -295,7 +303,7 @@ export default function ReflectionRefractionVisualizer() {
               onChange={(e) => setN2(Number(e.target.value))}
               className="w-full"
             />
-            <div className="flex gap-1 mt-1">
+            <div className="flex flex-wrap gap-1 mt-1">
               <button onClick={() => setN2(1.0)} className="px-2 py-1 text-xs bg-white border rounded hover:bg-subtle">Air</button>
               <button onClick={() => setN2(1.33)} className="px-2 py-1 text-xs bg-white border rounded hover:bg-subtle">Water</button>
               <button onClick={() => setN2(1.5)} className="px-2 py-1 text-xs bg-white border rounded hover:bg-subtle">Glass</button>
@@ -319,7 +327,7 @@ export default function ReflectionRefractionVisualizer() {
           </div>
         </div>
 
-        <div className="flex gap-3 mb-4">
+        <div className="flex flex-wrap gap-3 mb-4">
           <label className="flex items-center gap-2 text-sm">
             <input
               type="checkbox"
@@ -404,7 +412,7 @@ export default function ReflectionRefractionVisualizer() {
       {/* Info */}
       <div className="border border-line rounded-lg p-4 bg-teal-50">
         <div className="text-sm text-teal-900">
-          <p className="font-medium mb-2">💡 Tips:</p>
+          <p className="font-medium mb-2">Tips:</p>
           <ul className="list-disc list-inside space-y-1 text-sm">
             <li><strong>Into denser medium (n₂ &gt; n₁):</strong> Light bends toward the normal</li>
             <li><strong>Into less dense (n₂ &lt; n₁):</strong> Light bends away from the normal</li>

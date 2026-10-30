@@ -121,8 +121,8 @@ export default function ValidPalindromeVisualizer() {
   return (
     <div className="space-y-6">
       {/* Input Controls */}
-      <div className="flex gap-3 items-end">
-        <div className="flex-1">
+      <div className="flex flex-wrap gap-3 items-end">
+        <div className="flex-1 min-w-[12rem]">
           <label className="text-xs font-medium text-gray-700 mb-1 block">Input String</label>
           <input
             type="text"
@@ -168,7 +168,7 @@ export default function ValidPalindromeVisualizer() {
               <div key={idx} className="flex flex-col items-center">
                 <div className="text-[10px] text-gray-500 mb-1">{idx}</div>
                 <div
-                  className={`w-10 h-10 flex items-center justify-center rounded border-2 font-mono text-sm transition-all ${bgColor}`}
+                  className={`w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded border-2 font-mono text-sm transition-all ${bgColor}`}
                 >
                   {char === ' ' ? '␣' : char}
                 </div>
@@ -222,7 +222,7 @@ export default function ValidPalindromeVisualizer() {
             ? 'border-green-200 bg-green-50'
             : 'border-line bg-white'
         }`}>
-          <div className={`text-sm font-medium ${
+          <div className={`text-sm font-medium break-words ${
             step.isMatch === false 
               ? 'text-red-700'
               : step.isMatch 
@@ -250,7 +250,7 @@ export default function ValidPalindromeVisualizer() {
       )}
 
       {/* Controls */}
-      <div className="flex gap-2 justify-center">
+      <div className="flex flex-wrap gap-2 justify-center">
         <button
           onClick={() => setCurrentStep(0)}
           disabled={currentStep === 0}

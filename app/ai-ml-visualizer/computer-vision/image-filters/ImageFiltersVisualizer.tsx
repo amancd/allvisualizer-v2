@@ -3,6 +3,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui';
 import { Upload, RotateCcw, Download } from 'lucide-react';
+import { responsiveSurface } from '@/lib/visualization';
 
 type FilterType = 'none' | 'blur' | 'sharpen' | 'edge-sobel' | 'edge-laplacian' | 'emboss' | 'custom';
 
@@ -358,24 +359,25 @@ export default function ImageFiltersVisualizer() {
 
             {/* Canvas Display */}
             <div className="lg:col-span-2 space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Original Image */}
-              <div className="bg-white border border-line rounded-card p-6 shadow-card">
+              <div className="min-w-0 bg-white border border-line rounded-card p-4 sm:p-6 shadow-card">
                 <h3 className="text-lg font-semibold text-ink mb-4">
                   Original Image
                 </h3>
-                <div className="flex justify-center bg-subtle rounded-lg p-4">
+                <div className="bg-subtle rounded-lg p-2 sm:p-4">
                   <canvas
                     ref={sourceCanvasRef}
                     width={400}
                     height={300}
-                    className="border border-line-strong rounded"
+                    className={`${responsiveSurface} mx-auto border border-line-strong rounded`}
                   />
                 </div>
               </div>
 
               {/* Filtered Result */}
-              <div className="bg-white border border-line rounded-card p-6 shadow-card">
-                <div className="flex items-center justify-between mb-4">
+              <div className="min-w-0 bg-white border border-line rounded-card p-4 sm:p-6 shadow-card">
+                <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
                   <h3 className="text-lg font-semibold text-ink">
                     Filtered Result
                   </h3>
@@ -389,12 +391,12 @@ export default function ImageFiltersVisualizer() {
                     Download
                   </Button>
                 </div>
-                <div className="flex justify-center bg-subtle rounded-lg p-4">
+                <div className="bg-subtle rounded-lg p-2 sm:p-4">
                   <canvas
                     ref={resultCanvasRef}
                     width={400}
                     height={300}
-                    className="border border-line-strong rounded"
+                    className={`${responsiveSurface} mx-auto border border-line-strong rounded`}
                   />
                 </div>
                 {isProcessing && (
@@ -402,6 +404,7 @@ export default function ImageFiltersVisualizer() {
                     Processing...
                   </div>
                 )}
+              </div>
               </div>
 
               {/* Kernel Visualization */}
@@ -417,7 +420,7 @@ export default function ImageFiltersVisualizer() {
                           row.map((val, j) => (
                             <div
                               key={`${i}-${j}`}
-                              className="w-16 h-16 flex items-center justify-center bg-white border-2 border-line-strong rounded font-mono text-sm font-semibold"
+                              className="w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center bg-white border-2 border-line-strong rounded font-mono text-sm font-semibold"
                             >
                               {val}
                             </div>
@@ -764,10 +767,10 @@ export default function ImageFiltersVisualizer() {
                     Larger kernels (5×5, 7×7) provide:
                   </p>
                   <ul className="text-xs text-ink-muted space-y-1">
-                    <li>✅ Stronger effects (more blur, better noise reduction)</li>
-                    <li>✅ Wider context for feature detection</li>
-                    <li>❌ Higher computational cost (O(K²) per pixel)</li>
-                    <li>❌ More edge shrinkage</li>
+                    <li>Pro: Stronger effects (more blur, better noise reduction)</li>
+                    <li>Pro: Wider context for feature detection</li>
+                    <li>Con: Higher computational cost (O(K²) per pixel)</li>
+                    <li>Con: More edge shrinkage</li>
                   </ul>
                 </div>
                 <div>

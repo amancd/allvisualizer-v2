@@ -58,15 +58,14 @@ const parameters: CardGridItem[] = [
 
 const applications: CardGridItem[] = [
   {
-    icon: '🎧',
     title: 'Noise-canceling headphones',
     description: 'Use destructive interference to reduce ambient noise.',
   },
-  { icon: '🫧', title: 'Thin film interference', description: 'Creates colors in soap bubbles and oil slicks.' },
-  { icon: '📡', title: 'Radio astronomy', description: 'Interferometers combine signals for higher resolution.' },
-  { icon: '🖼️', title: 'Holography', description: 'Records interference patterns to create 3D images.' },
-  { icon: '🌋', title: 'Seismic analysis', description: 'Understanding how earthquake waves interact.' },
-  { icon: '🎻', title: 'Acoustic engineering', description: 'Designing concert halls and reducing echoes.' },
+  { title: 'Thin film interference', description: 'Creates colors in soap bubbles and oil slicks.' },
+  { title: 'Radio astronomy', description: 'Interferometers combine signals for higher resolution.' },
+  { title: 'Holography', description: 'Records interference patterns to create 3D images.' },
+  { title: 'Seismic analysis', description: 'Understanding how earthquake waves interact.' },
+  { title: 'Acoustic engineering', description: 'Designing concert halls and reducing echoes.' },
 ];
 
 export default function WaveInterferencePage() {

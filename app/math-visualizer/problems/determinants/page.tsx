@@ -518,8 +518,8 @@ const properties: CardGridItem[] = [
 const applications: CardGridItem[] = [
   { title: 'System solvability', description: 'Check whether the system Ax = b has a unique solution (det(A) ≠ 0).' },
   { title: 'Area & volume', description: 'Calculate the area of a parallelogram or the volume of a parallelepiped.' },
-  { icon: '🎯', title: 'Eigenvalues', description: 'Find eigenvalues by solving det(A − λI) = 0.' },
-  { icon: '🔄', title: 'Matrix inverse', description: 'Compute the inverse using A⁻¹ = (1/det(A)) × adj(A).' },
+  { title: 'Eigenvalues', description: 'Find eigenvalues by solving det(A − λI) = 0.' },
+  { title: 'Matrix inverse', description: 'Compute the inverse using A⁻¹ = (1/det(A)) × adj(A).' },
 ];
 
 const relatedTopics: RelatedEntry[] = [

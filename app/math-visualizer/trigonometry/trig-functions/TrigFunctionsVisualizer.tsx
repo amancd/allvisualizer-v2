@@ -3,6 +3,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui';
 import { Play, Pause, RotateCcw } from 'lucide-react';
+import { responsiveSurface } from '@/lib/visualization';
 
 type FunctionType = 'sin' | 'cos' | 'tan' | 'all';
 
@@ -49,6 +50,8 @@ export default function TrigFunctionsVisualizer() {
     const height = canvas.height;
     const centerY = height / 2;
     const scale = 50; // pixels per unit
+    // Keep labels readable when the canvas is scaled down on small screens
+    const labelPx = Math.min(30, Math.max(14, Math.round((12 * width) / Math.max(canvas.clientWidth, 1))));
 
     // Clear canvas
     ctx.fillStyle = '#ffffff';
@@ -92,7 +95,7 @@ export default function TrigFunctionsVisualizer() {
 
     // Axis labels
     ctx.fillStyle = '#000000';
-    ctx.font = '12px sans-serif';
+    ctx.font = `${labelPx}px sans-serif`;
     ctx.textAlign = 'center';
     
     // X-axis labels (in terms of π)
@@ -100,7 +103,7 @@ export default function TrigFunctionsVisualizer() {
     for (let i = 0; i < labels.length; i++) {
       const x = i * scale * Math.PI / 2;
       if (x < width) {
-        ctx.fillText(labels[i], x, centerY + 15);
+        ctx.fillText(labels[i], x, centerY + labelPx + 4);
       }
     }
 
@@ -110,7 +113,7 @@ export default function TrigFunctionsVisualizer() {
       if (i !== 0) {
         const y = centerY - i * scale;
         if (y > 0 && y < height) {
-          ctx.fillText(i.toString(), 20, y + 5);
+          ctx.fillText(i.toString(), labelPx + 6, y + labelPx / 3);
         }
       }
     }
@@ -208,11 +211,11 @@ export default function TrigFunctionsVisualizer() {
 
       legendItems.forEach((item, i) => {
         ctx.fillStyle = item.color;
-        ctx.fillRect(width - 100, 20 + i * 25, 20, 3);
+        ctx.fillRect(width - labelPx * 5, 20 + i * labelPx * 1.4, labelPx, 4);
         ctx.fillStyle = '#000000';
-        ctx.font = '14px sans-serif';
+        ctx.font = `${labelPx}px sans-serif`;
         ctx.textAlign = 'left';
-        ctx.fillText(item.text, width - 75, 25 + i * 25);
+        ctx.fillText(item.text, width - labelPx * 3.7, 22 + labelPx / 3 + i * labelPx * 1.4);
       });
     }
 
@@ -339,7 +342,7 @@ export default function TrigFunctionsVisualizer() {
             {/* Controls */}
             <div className="lg:col-span-1 space-y-6">
               {/* Function Selection */}
-              <div className="bg-white border border-line rounded-card p-6 shadow-card">
+              <div className="bg-white border border-line rounded-card p-4 sm:p-6 shadow-card">
                 <h3 className="text-lg font-semibold text-ink mb-4">
                   Function
                 </h3>
@@ -367,7 +370,7 @@ export default function TrigFunctionsVisualizer() {
               </div>
 
               {/* Parameters */}
-              <div className="bg-white border border-line rounded-card p-6 shadow-card">
+              <div className="bg-white border border-line rounded-card p-4 sm:p-6 shadow-card">
                 <h3 className="text-lg font-semibold text-ink mb-4">
                   Parameters
                 </h3>
@@ -439,7 +442,7 @@ export default function TrigFunctionsVisualizer() {
               </div>
 
               {/* Controls */}
-              <div className="bg-white border border-line rounded-card p-6 shadow-card">
+              <div className="bg-white border border-line rounded-card p-4 sm:p-6 shadow-card">
                 <h3 className="text-lg font-semibold text-ink mb-4">
                   Controls
                 </h3>
@@ -464,7 +467,7 @@ export default function TrigFunctionsVisualizer() {
               </div>
 
               {/* Display Options */}
-              <div className="bg-white border border-line rounded-card p-6 shadow-card">
+              <div className="bg-white border border-line rounded-card p-4 sm:p-6 shadow-card">
                 <h3 className="text-lg font-semibold text-ink mb-4">
                   Display
                 </h3>
@@ -494,12 +497,12 @@ export default function TrigFunctionsVisualizer() {
             {/* Visualization */}
             <div className="lg:col-span-3 space-y-6">
               {/* Equation Display */}
-              <div className="bg-gradient-to-r from-blue-50 to-purple-50 border-2 border-blue-200 rounded-xl p-8">
+              <div className="bg-gradient-to-r from-blue-50 to-purple-50 border-2 border-blue-200 rounded-xl p-4 sm:p-8">
                 <h3 className="text-sm font-medium text-gray-700 mb-3">Current Equation</h3>
-                <div className="text-4xl font-bold text-ink font-mono mb-6 tracking-tight">
+                <div className="text-2xl sm:text-4xl font-bold text-ink font-mono mb-6 tracking-tight break-all">
                   {getEquation()}
                 </div>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mt-6">
                   <div className="bg-white/60 rounded-lg p-3">
                     <div className="text-xs text-ink-muted mb-1">Amplitude</div>
                     <div className="text-lg font-bold text-ink">{Math.abs(amplitude).toFixed(1)}</div>
@@ -525,32 +528,32 @@ export default function TrigFunctionsVisualizer() {
               </div>
 
               {/* Function Graph */}
-              <div className="bg-white border border-line rounded-card p-6 shadow-card">
+              <div className="bg-white border border-line rounded-card p-4 sm:p-6 shadow-card">
                 <h3 className="text-lg font-semibold text-ink mb-4">
                   Graph
                 </h3>
-                <div className="overflow-x-auto">
+                <div>
                   <canvas
                     ref={canvasRef}
                     width={800}
                     height={400}
-                    className="border border-line-strong rounded-lg w-full"
+                    className={`${responsiveSurface} border border-line-strong rounded-lg`}
                   />
                 </div>
               </div>
 
               {/* Unit Circle */}
               {showUnitCircle && (
-                <div className="bg-white border border-line rounded-card p-6 shadow-card">
+                <div className="bg-white border border-line rounded-card p-4 sm:p-6 shadow-card">
                   <h3 className="text-lg font-semibold text-ink mb-4">
                     Unit Circle Connection
                   </h3>
-                  <div className="flex justify-center">
+                  <div className="mx-auto max-w-xs">
                     <canvas
                       ref={circleCanvasRef}
                       width={300}
                       height={300}
-                      className="border border-line-strong rounded-lg"
+                      className={`${responsiveSurface} border border-line-strong rounded-lg`}
                     />
                   </div>
                   <p className="text-sm text-ink-muted text-center mt-4">
@@ -560,7 +563,7 @@ export default function TrigFunctionsVisualizer() {
               )}
 
               {/* Key Properties */}
-              <div className="bg-white border border-line rounded-card p-6 shadow-card">
+              <div className="bg-white border border-line rounded-card p-4 sm:p-6 shadow-card">
                 <h3 className="text-lg font-semibold text-ink mb-4">
                   Key Properties
                 </h3>
@@ -600,7 +603,7 @@ export default function TrigFunctionsVisualizer() {
       {/* Theory Section */}
       <section className="border-t border-line pt-12">
         <div>
-          <h2 className="text-3xl font-bold text-ink mb-8 tracking-tight">
+          <h2 className="text-2xl sm:text-3xl font-bold text-ink mb-8 tracking-tight">
             Understanding Trigonometric Functions
           </h2>
           
@@ -671,7 +674,7 @@ export default function TrigFunctionsVisualizer() {
           </div>
 
           {/* Applications */}
-          <div className="bg-white rounded-card p-8 border border-line shadow-card">
+          <div className="bg-white rounded-card p-5 sm:p-8 border border-line shadow-card">
             <h3 className="text-2xl font-bold text-ink mb-6">
               Real-World Applications
             </h3>

@@ -22,25 +22,21 @@ export const metadata: Metadata = {
 
 const evidence: CardGridItem[] = [
   {
-    icon: '⚛️',
     title: 'Muon decay',
     description:
       "Cosmic ray muons created in the upper atmosphere reach Earth's surface more often than expected. Time dilation extends their lifetime from our perspective, allowing them to travel farther before decaying.",
   },
   {
-    icon: '🕰️',
     title: 'Atomic clocks',
     description:
       'In 1971, Hafele and Keating flew atomic clocks around the world on commercial flights. The traveling clocks showed measurable time differences matching relativistic predictions to within experimental error.',
   },
   {
-    icon: '🌀',
     title: 'Particle accelerators',
     description:
       'Particles in accelerators like the LHC travel at 99.9999% of light speed. Their measured lifetimes are thousands of times longer than when at rest, exactly as relativity predicts.',
   },
   {
-    icon: '🛰️',
     title: 'GPS satellites',
     description:
       'GPS satellites must account for both special and general relativistic time dilation. Without these corrections, GPS would accumulate errors of about 10 kilometers per day.',
@@ -49,19 +45,16 @@ const evidence: CardGridItem[] = [
 
 const keyInsights: CardGridItem[] = [
   {
-    icon: '🚗',
     title: 'Low speeds (v ≪ c)',
     description:
       'At everyday speeds, γ ≈ 1 and time dilation is negligible. For a car at 100 km/h, the effect is only about 1 part in 10¹⁶.',
   },
   {
-    icon: '🚀',
     title: 'High speeds (v → c)',
     description:
       'As velocity approaches light speed, γ increases dramatically. At 99.99% of c, γ ≈ 70.7, meaning time passes 70 times slower for the moving object.',
   },
   {
-    icon: '💡',
     title: 'Speed of light limit',
     description:
       'As v approaches c, γ approaches infinity. This is why nothing with mass can reach or exceed light speed: it would require infinite energy.',
@@ -69,11 +62,11 @@ const keyInsights: CardGridItem[] = [
 ];
 
 const applications: CardGridItem[] = [
-  { icon: '🛰️', title: 'GPS navigation', description: 'Requires relativistic corrections for accurate positioning.' },
-  { icon: '⚛️', title: 'Particle physics', description: 'Understanding decay rates and collision dynamics.' },
-  { icon: '🔭', title: 'Astronomy', description: 'Explaining cosmic ray observations and stellar phenomena.' },
-  { icon: '🔬', title: 'Fundamental research', description: 'Testing the limits of special relativity.' },
-  { icon: '🚀', title: 'Future space travel', description: 'Enabling interstellar journeys through time dilation effects.' },
+  { title: 'GPS navigation', description: 'Requires relativistic corrections for accurate positioning.' },
+  { title: 'Particle physics', description: 'Understanding decay rates and collision dynamics.' },
+  { title: 'Astronomy', description: 'Explaining cosmic ray observations and stellar phenomena.' },
+  { title: 'Fundamental research', description: 'Testing the limits of special relativity.' },
+  { title: 'Future space travel', description: 'Enabling interstellar journeys through time dilation effects.' },
 ];
 
 const misconceptions = [
@@ -99,7 +92,6 @@ export default function TimeDilationPage() {
     <DetailPage
       subject="physics"
       item="time-dilation"
-      icon="⏱️"
       description="Discover how time passes at different rates for observers in relative motion, one of Einstein's most remarkable predictions."
     >
       <TimeDilationVisualizer />

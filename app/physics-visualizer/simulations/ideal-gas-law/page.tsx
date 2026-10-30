@@ -49,13 +49,13 @@ const specialCases: CardGridItem[] = [
 ];
 
 const applications: CardGridItem[] = [
-  { icon: '🎈', title: 'Weather balloons', description: 'Expansion with altitude (decreasing pressure).' },
-  { icon: '🤿', title: 'Scuba diving', description: 'Air consumption and decompression calculations.' },
-  { icon: '🚗', title: 'Internal combustion engines', description: 'Compression and expansion of gases.' },
-  { icon: '🧴', title: 'Aerosol cans', description: 'Pressure-temperature relationships.' },
-  { icon: '🔥', title: 'Hot air balloons', description: 'Volume changes with temperature.' },
-  { icon: '🛞', title: 'Tire pressure', description: 'Temperature effects on pressure.' },
-  { icon: '🫁', title: 'Breathing', description: 'Lung volume and pressure changes.' },
+  { title: 'Weather balloons', description: 'Expansion with altitude (decreasing pressure).' },
+  { title: 'Scuba diving', description: 'Air consumption and decompression calculations.' },
+  { title: 'Internal combustion engines', description: 'Compression and expansion of gases.' },
+  { title: 'Aerosol cans', description: 'Pressure-temperature relationships.' },
+  { title: 'Hot air balloons', description: 'Volume changes with temperature.' },
+  { title: 'Tire pressure', description: 'Temperature effects on pressure.' },
+  { title: 'Breathing', description: 'Lung volume and pressure changes.' },
 ];
 
 export default function IdealGasLawPage() {

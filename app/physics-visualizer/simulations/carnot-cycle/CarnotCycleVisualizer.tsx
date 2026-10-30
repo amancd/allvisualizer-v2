@@ -1,11 +1,16 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import { responsiveSurface } from '@/lib/visualization';
 
 type ProcessPhase = 'isothermal-expansion' | 'adiabatic-expansion' | 'isothermal-compression' | 'adiabatic-compression';
 
 export default function CarnotCycleVisualizer() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  // Canvas text is drawn in drawing units; enlarge it when the canvas is shown scaled down (phones).
+  const fontScaleRef = useRef(1);
+  const scaledFont = (font: string) =>
+    font.replace(/(\d+)px/, (_, size) => `${Math.round(Number(size) * fontScaleRef.current)}px`);
   const animationRef = useRef<number | null>(null);
   
   const [isPlaying, setIsPlaying] = useState(false);
@@ -135,7 +140,7 @@ export default function CarnotCycleVisualizer() {
 
     // Axis labels
     ctx.fillStyle = '#000000';
-    ctx.font = 'bold 13px sans-serif';
+    ctx.font = scaledFont('bold 13px sans-serif');
     ctx.textAlign = 'center';
     ctx.fillText('Volume (V)', offsetX + 180, offsetY + 25);
     ctx.save();
@@ -204,7 +209,7 @@ export default function CarnotCycleVisualizer() {
       ctx.fillStyle = '#ffffff';
       ctx.strokeStyle = '#1f2937';
       ctx.lineWidth = 3;
-      ctx.font = 'bold 15px sans-serif';
+      ctx.font = scaledFont('bold 15px sans-serif');
       ctx.textAlign = 'center';
       
       // Draw labels with background circles for better visibility
@@ -224,7 +229,7 @@ export default function CarnotCycleVisualizer() {
       drawLabel('D', dPos.x - 20, dPos.y + 20);
 
       // Temperature labels with background
-      ctx.font = '11px sans-serif';
+      ctx.font = scaledFont('11px sans-serif');
       ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
       ctx.fillRect(aPos.x + 30, aPos.y - 42, 80, 18);
       ctx.strokeStyle = '#ef4444';
@@ -265,10 +270,10 @@ export default function CarnotCycleVisualizer() {
     ctx.lineWidth = 2;
     ctx.strokeRect(x, y, 140, 38);
     ctx.fillStyle = '#000000';
-    ctx.font = 'bold 12px sans-serif';
+    ctx.font = scaledFont('bold 12px sans-serif');
     ctx.textAlign = 'center';
     ctx.fillText(`Hot Reservoir`, x + 70, y + 14);
-    ctx.font = '11px sans-serif';
+    ctx.font = scaledFont('11px sans-serif');
     ctx.fillText(`TH = ${tempHot}K`, x + 70, y + 28);
 
     // Draw engine
@@ -279,9 +284,9 @@ export default function CarnotCycleVisualizer() {
     ctx.lineWidth = 2.5;
     ctx.strokeRect(x + 20, engineY, 100, 55);
     ctx.fillStyle = '#000000';
-    ctx.font = 'bold 12px sans-serif';
+    ctx.font = scaledFont('bold 12px sans-serif');
     ctx.fillText('Heat Engine', x + 70, engineY + 22);
-    ctx.font = '11px sans-serif';
+    ctx.font = scaledFont('11px sans-serif');
     ctx.fillText(`η = ${efficiency}%`, x + 70, engineY + 40);
 
     // Draw cold reservoir
@@ -292,9 +297,9 @@ export default function CarnotCycleVisualizer() {
     ctx.lineWidth = 2;
     ctx.strokeRect(x, coldY, 140, 38);
     ctx.fillStyle = '#000000';
-    ctx.font = 'bold 12px sans-serif';
+    ctx.font = scaledFont('bold 12px sans-serif');
     ctx.fillText(`Cold Reservoir`, x + 70, coldY + 14);
-    ctx.font = '11px sans-serif';
+    ctx.font = scaledFont('11px sans-serif');
     ctx.fillText(`TC = ${tempCold}K`, x + 70, coldY + 28);
 
     // Draw heat flows
@@ -307,7 +312,7 @@ export default function CarnotCycleVisualizer() {
     ctx.lineTo(x + 70, engineY);
     ctx.stroke();
     ctx.fillStyle = '#ef4444';
-    ctx.font = 'bold 11px sans-serif';
+    ctx.font = scaledFont('bold 11px sans-serif');
     ctx.textAlign = 'left';
     ctx.fillText('QH', x + 78, y + 56);
 
@@ -338,7 +343,7 @@ export default function CarnotCycleVisualizer() {
     ctx.closePath();
     ctx.fill();
     ctx.fillStyle = '#10b981';
-    ctx.font = 'bold 13px sans-serif';
+    ctx.font = scaledFont('bold 13px sans-serif');
     ctx.textAlign = 'center';
     ctx.fillText('W', x + 172, engineY + 33);
   };
@@ -349,6 +354,7 @@ export default function CarnotCycleVisualizer() {
     
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
+    fontScaleRef.current = Math.min(1.25, Math.max(1, canvas.width / (canvas.clientWidth || canvas.width)));
 
     // Clear canvas
     ctx.fillStyle = '#f9fafb';
@@ -362,7 +368,7 @@ export default function CarnotCycleVisualizer() {
     ctx.strokeRect(10, 10, 390, 50);
     
     ctx.fillStyle = '#000000';
-    ctx.font = 'bold 16px sans-serif';
+    ctx.font = scaledFont('bold 16px sans-serif');
     ctx.textAlign = 'left';
     ctx.fillText('Carnot Cycle - PV Diagram', 20, 30);
 
@@ -373,7 +379,7 @@ export default function CarnotCycleVisualizer() {
       'isothermal-compression': '3. Isothermal Compression (C→D)',
       'adiabatic-compression': '4. Adiabatic Compression (D→A)'
     };
-    ctx.font = '13px sans-serif';
+    ctx.font = scaledFont('13px sans-serif');
     ctx.fillText(phaseNames[currentPhase], 20, 50);
 
     // Draw PV diagram
@@ -391,10 +397,10 @@ export default function CarnotCycleVisualizer() {
     ctx.strokeRect(410, 380, 180, 90);
     
     ctx.fillStyle = '#000000';
-    ctx.font = 'bold 12px sans-serif';
+    ctx.font = scaledFont('bold 12px sans-serif');
     ctx.textAlign = 'left';
     ctx.fillText(`Current State:`, 420, 398);
-    ctx.font = '11px sans-serif';
+    ctx.font = scaledFont('11px sans-serif');
     ctx.fillText(`T = ${current.T.toFixed(0)} K`, 420, 418);
     ctx.fillText(`V ∝ ${current.V.toFixed(2)}`, 420, 438);
     ctx.fillText(`P ∝ ${current.P.toFixed(2)}`, 420, 458);
@@ -404,12 +410,14 @@ export default function CarnotCycleVisualizer() {
     <div className="space-y-6">
       {/* Canvas */}
       <div className="border border-line rounded-lg p-4 bg-subtle">
-        <canvas
-          ref={canvasRef}
-          width={canvasWidth}
-          height={canvasHeight}
-          className="border border-line-strong bg-white mx-auto block"
-        />
+        <div className="mx-auto max-w-[600px]">
+          <canvas
+            ref={canvasRef}
+            width={canvasWidth}
+            height={canvasHeight}
+            className={`${responsiveSurface} border border-line-strong bg-white`}
+          />
+        </div>
       </div>
 
       {/* Controls */}
@@ -491,7 +499,7 @@ export default function CarnotCycleVisualizer() {
 
       {/* Efficiency Info */}
       <div className="border border-line rounded-lg p-4 bg-gradient-to-r from-red-50 to-blue-50">
-        <div className="text-sm font-semibold text-ink mb-2">⚡ Carnot Efficiency</div>
+        <div className="text-sm font-semibold text-ink mb-2">Carnot Efficiency</div>
         <div className="text-2xl font-bold text-ink mb-2">
           η = {efficiency}%
         </div>
@@ -499,14 +507,14 @@ export default function CarnotCycleVisualizer() {
           <div>η = 1 - TC/TH = 1 - {tempCold}/{tempHot}</div>
           <div>Maximum theoretical efficiency for these temperatures</div>
           <div className="text-yellow-700 font-medium mt-2">
-            💡 Tip: Increase TH or decrease TC to improve efficiency
+            Tip: Increase TH or decrease TC to improve efficiency
           </div>
         </div>
       </div>
 
       {/* Process Info */}
       <div className="border border-line rounded-lg p-4 bg-subtle">
-        <div className="text-sm font-semibold text-ink mb-3">🔄 Four Reversible Processes</div>
+        <div className="text-sm font-semibold text-ink mb-3">Four Reversible Processes</div>
         <div className="grid md:grid-cols-2 gap-3 text-sm">
           <div className={`p-3 rounded ${currentPhase === 'isothermal-expansion' ? 'bg-red-100 border-2 border-red-500' : 'bg-white border border-line'}`}>
             <div className="font-semibold text-red-700">1. Isothermal Expansion</div>

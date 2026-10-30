@@ -34,22 +34,18 @@ const tips: CardGridItem[] = [
 
 const applications: CardGridItem[] = [
   {
-    icon: '🎱',
     title: 'Billiards and pool',
     description: 'Ball collisions approximate elastic collisions, allowing players to predict ball trajectories.',
   },
   {
-    icon: '⚛️',
     title: 'Particle physics',
     description: 'Collision experiments in particle accelerators use these principles to study subatomic particles.',
   },
   {
-    icon: '💨',
     title: 'Molecular dynamics',
     description: 'Gas molecules collide elastically, helping explain temperature and pressure in thermodynamics.',
   },
   {
-    icon: '🚗',
     title: 'Vehicle safety',
     description: 'Understanding collision physics helps design safer cars and predict crash outcomes.',
   },

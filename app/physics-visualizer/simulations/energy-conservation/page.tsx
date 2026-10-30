@@ -26,25 +26,21 @@ const objectives = [
 
 const scenarios: CardGridItem[] = [
   {
-    icon: '🎯',
     title: 'Pendulum',
     description:
       'Watch energy oscillate between maximum potential (at the peaks) and maximum kinetic (at the bottom). A perfect demonstration of PE ↔ KE transformation.',
   },
   {
-    icon: '⬇️',
     title: 'Free fall',
     description:
       'Observe gravitational PE converting entirely to KE as the object falls. After bouncing, energy gradually dissipates.',
   },
   {
-    icon: '📐',
     title: 'Ramp',
     description:
       'See how PE converts to KE as the ball rolls down the incline. The angle affects acceleration but not the final energy.',
   },
   {
-    icon: '🔄',
     title: 'Spring',
     description:
       'A three-way energy exchange: gravitational PE, kinetic energy, and elastic spring energy all interact.',
@@ -70,32 +66,26 @@ const tips: CardGridItem[] = [
 
 const applications: CardGridItem[] = [
   {
-    icon: '🎢',
     title: 'Roller coasters',
     description: 'Designed using energy conservation: PE at the top converts to KE at the bottom, creating thrilling speeds.',
   },
   {
-    icon: '💧',
     title: 'Hydroelectric dams',
     description: "Water's gravitational PE is converted to electrical energy through turbines.",
   },
   {
-    icon: '🕰️',
     title: 'Pendulum clocks',
     description: 'Rely on consistent energy oscillation between PE and KE for accurate timekeeping.',
   },
   {
-    icon: '🔋',
     title: 'Regenerative braking',
     description: 'Electric vehicles convert kinetic energy back to stored electrical energy when braking.',
   },
   {
-    icon: '🪢',
     title: 'Bungee jumping',
     description: 'Gravitational PE converts to elastic PE in the cord, then back again.',
   },
   {
-    icon: '🛰️',
     title: 'Satellite orbits',
     description: 'Satellites constantly exchange KE and PE as they orbit Earth.',
   },

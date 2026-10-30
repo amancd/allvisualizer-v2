@@ -3,6 +3,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui';
 import { Play, Pause, RotateCcw, ZoomIn, ZoomOut } from 'lucide-react';
+import { responsiveSurface } from '@/lib/visualization';
 
 export default function UnitCircleVisualizer() {
   const [angle, setAngle] = useState(0); // in radians
@@ -119,9 +120,9 @@ export default function UnitCircleVisualizer() {
 
     // Axis labels
     ctx.fillStyle = '#000000';
-    ctx.font = '14px sans-serif';
-    ctx.fillText('x', width - 20, centerY - 10);
-    ctx.fillText('y', centerX + 10, 20);
+    ctx.font = '22px sans-serif';
+    ctx.fillText('x', width - 24, centerY - 16);
+    ctx.fillText('y', centerX + 12, 24);
 
     // Draw unit circle
     ctx.strokeStyle = '#3b82f6';
@@ -144,9 +145,9 @@ export default function UnitCircleVisualizer() {
 
         // Label
         ctx.fillStyle = '#6b7280';
-        ctx.font = '11px sans-serif';
-        const labelX = centerX + (radius + 20) * Math.cos(rad);
-        const labelY = centerY - (radius + 20) * Math.sin(rad);
+        ctx.font = '20px sans-serif';
+        const labelX = centerX + (radius + 30) * Math.cos(rad);
+        const labelY = centerY - (radius + 30) * Math.sin(rad);
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         ctx.fillText(label, labelX, labelY);
@@ -218,14 +219,18 @@ export default function UnitCircleVisualizer() {
     // Draw coordinates if enabled
     if (showCoordinates) {
       ctx.fillStyle = '#000000';
-      ctx.font = 'bold 12px sans-serif';
+      ctx.font = 'bold 22px sans-serif';
       ctx.textAlign = 'left';
-      ctx.fillText(`(${formatNumber(cos)}, ${formatNumber(sin)})`, pointX + 10, pointY - 10);
+      const coordText = `(${formatNumber(cos)}, ${formatNumber(sin)})`;
+      const coordWidth = ctx.measureText(coordText).width;
+      const coordX = cos < 0 ? pointX - 12 - coordWidth : pointX + 12;
+      const coordY = sin < 0 ? pointY + 24 : pointY - 16;
+      ctx.fillText(coordText, Math.max(8, Math.min(width - 8 - coordWidth, coordX)), coordY);
     }
 
     // Draw legend
     const legendX = 20;
-    const legendY = 20;
+    const legendY = 16;
     const legendItems = [
       { color: '#ef4444', text: 'Radius' },
       { color: '#f59e0b', text: 'cos θ' },
@@ -236,11 +241,11 @@ export default function UnitCircleVisualizer() {
 
     legendItems.forEach((item, i) => {
       ctx.fillStyle = item.color;
-      ctx.fillRect(legendX, legendY + i * 20, 15, 3);
+      ctx.fillRect(legendX, legendY + i * 24, 20, 4);
       ctx.fillStyle = '#000000';
-      ctx.font = '12px sans-serif';
+      ctx.font = '18px sans-serif';
       ctx.textAlign = 'left';
-      ctx.fillText(item.text, legendX + 20, legendY + i * 20 + 3);
+      ctx.fillText(item.text, legendX + 26, legendY + i * 24 + 3);
     });
 
   }, [angle, cos, sin, tan, showSpecialAngles, showCoordinates]);
@@ -265,7 +270,7 @@ export default function UnitCircleVisualizer() {
             {/* Controls */}
             <div className="lg:col-span-1 space-y-6">
               {/* Playback Controls */}
-              <div className="bg-white border border-line rounded-card p-6 shadow-card">
+              <div className="bg-white border border-line rounded-card p-4 sm:p-6 shadow-card">
                 <h3 className="text-lg font-semibold text-ink mb-4">
                   Controls
                 </h3>
@@ -309,7 +314,7 @@ export default function UnitCircleVisualizer() {
               </div>
 
               {/* Angle Input */}
-              <div className="bg-white border border-line rounded-card p-6 shadow-card">
+              <div className="bg-white border border-line rounded-card p-4 sm:p-6 shadow-card">
                 <h3 className="text-lg font-semibold text-ink mb-4">
                   Angle
                 </h3>
@@ -376,7 +381,7 @@ export default function UnitCircleVisualizer() {
               </div>
 
               {/* Display Options */}
-              <div className="bg-white border border-line rounded-card p-6 shadow-card">
+              <div className="bg-white border border-line rounded-card p-4 sm:p-6 shadow-card">
                 <h3 className="text-lg font-semibold text-ink mb-4">
                   Display Options
                 </h3>
@@ -415,52 +420,52 @@ export default function UnitCircleVisualizer() {
             {/* Visualization */}
             <div className="lg:col-span-2 space-y-6">
               {/* Canvas */}
-              <div className="bg-white border border-line rounded-card p-6 shadow-card">
+              <div className="bg-white border border-line rounded-card p-4 sm:p-6 shadow-card">
                 <h3 className="text-lg font-semibold text-ink mb-4">
                   Unit Circle
                 </h3>
-                <div className="flex justify-center">
+                <div className="mx-auto max-w-xl">
                   <canvas
                     ref={canvasRef}
                     width={600}
                     height={600}
-                    className="border border-line-strong rounded-lg max-w-full"
+                    className={`${responsiveSurface} border border-line-strong rounded-lg`}
                   />
                 </div>
               </div>
 
               {/* Trig Values */}
-              <div className="bg-white border border-line rounded-card p-6 shadow-card">
+              <div className="bg-white border border-line rounded-card p-4 sm:p-6 shadow-card">
                 <h3 className="text-lg font-semibold text-ink mb-4">
                   Trigonometric Values
                 </h3>
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
                   <div className="bg-orange-50 rounded-lg p-4 border border-orange-200">
                     <div className="text-sm font-medium text-orange-900 mb-1">cos θ</div>
-                    <div className="text-2xl font-bold text-orange-700">{formatNumber(cos)}</div>
+                    <div className="text-xl sm:text-2xl font-bold text-orange-700">{formatNumber(cos)}</div>
                   </div>
                   <div className="bg-purple-50 rounded-lg p-4 border border-purple-200">
                     <div className="text-sm font-medium text-purple-900 mb-1">sin θ</div>
-                    <div className="text-2xl font-bold text-purple-700">{formatNumber(sin)}</div>
+                    <div className="text-xl sm:text-2xl font-bold text-purple-700">{formatNumber(sin)}</div>
                   </div>
                   <div className="bg-pink-50 rounded-lg p-4 border border-pink-200">
                     <div className="text-sm font-medium text-pink-900 mb-1">tan θ</div>
-                    <div className="text-2xl font-bold text-pink-700">{formatNumber(tan)}</div>
+                    <div className="text-xl sm:text-2xl font-bold text-pink-700">{formatNumber(tan)}</div>
                   </div>
                   
                   {showAllFunctions && (
                     <>
                       <div className="bg-blue-50 rounded-lg p-4 border border-blue-200">
                         <div className="text-sm font-medium text-blue-900 mb-1">csc θ</div>
-                        <div className="text-2xl font-bold text-blue-700">{formatNumber(csc)}</div>
+                        <div className="text-xl sm:text-2xl font-bold text-blue-700">{formatNumber(csc)}</div>
                       </div>
                       <div className="bg-green-50 rounded-lg p-4 border border-green-200">
                         <div className="text-sm font-medium text-green-900 mb-1">sec θ</div>
-                        <div className="text-2xl font-bold text-green-700">{formatNumber(sec)}</div>
+                        <div className="text-xl sm:text-2xl font-bold text-green-700">{formatNumber(sec)}</div>
                       </div>
                       <div className="bg-yellow-50 rounded-lg p-4 border border-yellow-200">
                         <div className="text-sm font-medium text-yellow-900 mb-1">cot θ</div>
-                        <div className="text-2xl font-bold text-yellow-700">{formatNumber(cot)}</div>
+                        <div className="text-xl sm:text-2xl font-bold text-yellow-700">{formatNumber(cot)}</div>
                       </div>
                     </>
                   )}
@@ -482,7 +487,7 @@ export default function UnitCircleVisualizer() {
       {/* Theory Section */}
       <section className="border-t border-line pt-12">
         <div>
-          <h2 className="text-3xl font-bold text-ink mb-8 tracking-tight">
+          <h2 className="text-2xl sm:text-3xl font-bold text-ink mb-8 tracking-tight">
             Understanding the Unit Circle
           </h2>
           
@@ -589,7 +594,7 @@ export default function UnitCircleVisualizer() {
           </div>
 
           {/* Fundamental Identity */}
-          <div className="bg-white rounded-card p-8 border border-line shadow-card">
+          <div className="bg-white rounded-card p-5 sm:p-8 border border-line shadow-card">
             <h3 className="text-2xl font-bold text-ink mb-6">
               The Pythagorean Identity
             </h3>

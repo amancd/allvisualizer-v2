@@ -1,9 +1,14 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import { responsiveSurface } from '@/lib/visualization';
 
 export default function BohrModelVisualizer() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  // Canvas text is drawn in drawing units; enlarge it when the canvas is shown scaled down (phones).
+  const fontScaleRef = useRef(1);
+  const scaledFont = (font: string) =>
+    font.replace(/(\d+)px/, (_, size) => `${Math.round(Number(size) * fontScaleRef.current)}px`);
   const animationRef = useRef<number | null>(null);
   
   const [currentLevel, setCurrentLevel] = useState(1);
@@ -123,6 +128,7 @@ export default function BohrModelVisualizer() {
     
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
+    fontScaleRef.current = Math.min(1.4, Math.max(1, canvas.width / (canvas.clientWidth || canvas.width)));
 
     // Clear canvas
     ctx.fillStyle = '#0f172a';
@@ -134,7 +140,7 @@ export default function BohrModelVisualizer() {
     ctx.arc(centerX, centerY, 8, 0, 2 * Math.PI);
     ctx.fill();
     ctx.fillStyle = '#ffffff';
-    ctx.font = 'bold 10px sans-serif';
+    ctx.font = scaledFont('bold 10px sans-serif');
     ctx.textAlign = 'center';
     ctx.fillText('p⁺', centerX, centerY + 3);
 
@@ -154,10 +160,10 @@ export default function BohrModelVisualizer() {
 
       // Energy level labels
       ctx.fillStyle = n === currentLevel ? '#60a5fa' : '#94a3b8';
-      ctx.font = n === currentLevel ? 'bold 12px sans-serif' : '11px sans-serif';
+      ctx.font = scaledFont(n === currentLevel ? 'bold 12px sans-serif' : '11px sans-serif');
       ctx.textAlign = 'left';
       ctx.fillText(`n=${n}`, centerX + radius + 10, centerY);
-      ctx.font = '10px sans-serif';
+      ctx.font = scaledFont('10px sans-serif');
       ctx.fillText(`${getEnergyLevel(n).toFixed(2)} eV`, centerX + radius + 10, centerY + 14);
     }
 
@@ -189,7 +195,7 @@ export default function BohrModelVisualizer() {
     ctx.arc(electronX, electronY, 6, 0, 2 * Math.PI);
     ctx.fill();
     ctx.fillStyle = '#ffffff';
-    ctx.font = 'bold 8px sans-serif';
+    ctx.font = scaledFont('bold 8px sans-serif');
     ctx.textAlign = 'center';
     ctx.fillText('e⁻', electronX, electronY + 2);
 
@@ -221,12 +227,12 @@ export default function BohrModelVisualizer() {
 
     // Draw title
     ctx.fillStyle = '#ffffff';
-    ctx.font = 'bold 18px sans-serif';
+    ctx.font = scaledFont('bold 18px sans-serif');
     ctx.textAlign = 'left';
     ctx.fillText('Bohr Model - Hydrogen Atom', 20, 30);
 
     // Current state info
-    ctx.font = '14px sans-serif';
+    ctx.font = scaledFont('14px sans-serif');
     ctx.fillText(`Current State: n = ${currentLevel}`, 20, 55);
     ctx.fillText(`Energy: ${getEnergyLevel(currentLevel).toFixed(2)} eV`, 20, 75);
     
@@ -240,19 +246,21 @@ export default function BohrModelVisualizer() {
     <div className="space-y-6">
       {/* Canvas */}
       <div className="border border-line rounded-lg p-4 bg-subtle">
-        <canvas
-          ref={canvasRef}
-          width={canvasWidth}
-          height={canvasHeight}
-          className="border border-line-strong bg-gray-900 mx-auto block"
-        />
+        <div className="mx-auto max-w-[600px]">
+          <canvas
+            ref={canvasRef}
+            width={canvasWidth}
+            height={canvasHeight}
+            className={`${responsiveSurface} border border-line-strong bg-gray-900`}
+          />
+        </div>
       </div>
 
       {/* Energy Level Controls */}
       <div className="border border-line rounded-lg p-4 bg-subtle">
         <div className="text-xs font-semibold text-gray-700 mb-3">Electron Energy Level</div>
         
-        <div className="grid grid-cols-6 gap-2 mb-4">
+        <div className="grid grid-cols-3 sm:grid-cols-6 gap-2 mb-4">
           {[1, 2, 3, 4, 5, 6].map(n => (
             <button
               key={n}
@@ -269,7 +277,7 @@ export default function BohrModelVisualizer() {
           ))}
         </div>
 
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
           <button
             onClick={() => setShowOrbits(!showOrbits)}
             className={`px-4 py-2 rounded-lg text-sm font-medium ${
@@ -363,7 +371,7 @@ export default function BohrModelVisualizer() {
       {/* Info */}
       <div className="border border-line rounded-lg p-4 bg-purple-50">
         <div className="text-sm text-purple-900">
-          <p className="font-medium mb-2">💡 Key Concepts:</p>
+          <p className="font-medium mb-2">Key Concepts:</p>
           <ul className="list-disc list-inside space-y-1 text-sm">
             <li>Energy levels are quantized: E<sub>n</sub> = -13.6/n² eV</li>
             <li>Ground state (n=1) has lowest energy at -13.6 eV</li>

@@ -1,9 +1,14 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import { responsiveSurface } from '@/lib/visualization';
 
 export default function WaveInterferenceVisualizer() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  // Canvas text is drawn in drawing units; enlarge it when the canvas is shown scaled down (phones).
+  const fontScaleRef = useRef(1);
+  const scaledFont = (font: string) =>
+    font.replace(/(\d+)px/, (_, size) => `${Math.round(Number(size) * fontScaleRef.current)}px`);
   const animationRef = useRef<number | null>(null);
   
   // Wave parameters
@@ -63,6 +68,7 @@ export default function WaveInterferenceVisualizer() {
     
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
+    fontScaleRef.current = Math.min(1.4, Math.max(1, canvas.width / (canvas.clientWidth || canvas.width)));
 
     ctx.fillStyle = '#f9fafb';
     ctx.fillRect(0, 0, canvasWidth, canvasHeight);
@@ -123,7 +129,7 @@ export default function WaveInterferenceVisualizer() {
 
     // Labels
     ctx.fillStyle = '#000000';
-    ctx.font = '12px sans-serif';
+    ctx.font = scaledFont('12px sans-serif');
     if (showWave1) {
       ctx.fillStyle = '#3b82f6';
       ctx.fillText('Wave 1', 10, 20);
@@ -144,6 +150,7 @@ export default function WaveInterferenceVisualizer() {
     
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
+    fontScaleRef.current = Math.min(1.4, Math.max(1, canvas.width / (canvas.clientWidth || canvas.width)));
 
     const imageData = ctx.createImageData(canvasWidth, canvasHeight);
     const data = imageData.data;
@@ -214,7 +221,7 @@ export default function WaveInterferenceVisualizer() {
 
     // Labels
     ctx.fillStyle = '#000000';
-    ctx.font = 'bold 11px sans-serif';
+    ctx.font = scaledFont('bold 11px sans-serif');
     ctx.fillText('S1', source1X - 8, source1Y - 12);
     ctx.fillText('S2', source2X - 8, source2Y - 12);
   };
@@ -239,9 +246,9 @@ export default function WaveInterferenceVisualizer() {
     <div className="space-y-6">
       {/* Canvas */}
       <div className="border border-line rounded-lg p-4 bg-subtle">
-        <div className="flex items-center justify-between mb-3">
+        <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
           <div className="text-xs font-semibold text-gray-700">Wave Interference Visualization</div>
-          <div className="flex gap-2">
+          <div className="flex flex-wrap gap-2">
             <button
               onClick={() => setViewMode('2D')}
               className={`px-3 py-1 text-xs font-medium rounded ${
@@ -264,12 +271,14 @@ export default function WaveInterferenceVisualizer() {
             </button>
           </div>
         </div>
-        <canvas
-          ref={canvasRef}
-          width={canvasWidth}
-          height={canvasHeight}
-          className="border border-line-strong bg-white mx-auto block"
-        />
+        <div className="mx-auto max-w-[600px]">
+          <canvas
+            ref={canvasRef}
+            width={canvasWidth}
+            height={canvasHeight}
+            className={`${responsiveSurface} border border-line-strong bg-white`}
+          />
+        </div>
         <div className="text-xs text-ink-muted text-center mt-2">
           {viewMode === '2D' ? 'Superposition of two waves' : 'Two-source interference pattern'}
         </div>
@@ -377,7 +386,7 @@ export default function WaveInterferenceVisualizer() {
 
         {/* Display toggles for 2D mode */}
         {viewMode === '2D' && (
-          <div className="mt-4 flex gap-3">
+          <div className="mt-4 flex flex-wrap gap-3">
             <label className="flex items-center gap-2 text-sm">
               <input
                 type="checkbox"
@@ -408,7 +417,7 @@ export default function WaveInterferenceVisualizer() {
           </div>
         )}
 
-        <div className="flex gap-2 mt-4">
+        <div className="flex flex-wrap gap-2 mt-4">
           <button
             onClick={() => setIsPlaying(!isPlaying)}
             className={`px-4 py-2 rounded-lg text-sm font-medium ${
@@ -488,7 +497,7 @@ export default function WaveInterferenceVisualizer() {
             }}
             className="px-3 py-2 bg-white border border-teal-300 rounded text-sm font-medium hover:bg-teal-50"
           >
-            ✅ Constructive
+            Constructive
           </button>
           <button
             onClick={() => {
@@ -501,7 +510,7 @@ export default function WaveInterferenceVisualizer() {
             }}
             className="px-3 py-2 bg-white border border-teal-300 rounded text-sm font-medium hover:bg-teal-50"
           >
-            ❌ Destructive
+            Destructive
           </button>
           <button
             onClick={() => {
@@ -514,7 +523,7 @@ export default function WaveInterferenceVisualizer() {
             }}
             className="px-3 py-2 bg-white border border-teal-300 rounded text-sm font-medium hover:bg-teal-50"
           >
-            🌀 Beat Pattern
+            Beat Pattern
           </button>
         </div>
       </div>

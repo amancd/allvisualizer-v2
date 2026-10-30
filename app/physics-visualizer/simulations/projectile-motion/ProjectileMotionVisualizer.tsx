@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import { responsiveSurface } from '@/lib/visualization';
 
 export default function ProjectileMotionVisualizer() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -250,17 +251,19 @@ export default function ProjectileMotionVisualizer() {
     
     // Labels
     ctx.fillStyle = '#374151';
-    ctx.font = '12px sans-serif';
+    ctx.font = '22px sans-serif';
     
     // X-axis label
-    ctx.fillText('Distance (m)', canvas.width - 80, canvas.height - padding + 25);
+    ctx.textAlign = 'right';
+    ctx.fillText('Distance (m)', canvas.width - padding, canvas.height - padding + 32);
     
     // Y-axis label
     ctx.save();
-    ctx.translate(padding - 30, 60);
+    ctx.translate(padding - 20, padding);
     ctx.rotate(-Math.PI / 2);
     ctx.fillText('Height (m)', 0, 0);
     ctx.restore();
+    ctx.textAlign = 'left';
     
   }, [trajectory, currentPoint, isAnimating, currentTime, range, maxHeight, vx, vy, angleRad, height, gravity]);
   
@@ -277,7 +280,7 @@ export default function ProjectileMotionVisualizer() {
   };
 
   return (
-    <div className="bg-white border border-line rounded-lg p-6 space-y-6 shadow-card">
+    <div className="bg-white border border-line rounded-lg p-4 sm:p-6 space-y-6 shadow-card">
       {/* Controls */}
       <div className="grid md:grid-cols-3 gap-4">
         <div className="space-y-2">
@@ -330,7 +333,7 @@ export default function ProjectileMotionVisualizer() {
       </div>
       
       {/* Animation Controls */}
-      <div className="flex gap-3">
+      <div className="flex flex-wrap gap-3">
         <button
           onClick={handleStart}
           disabled={isAnimating}
@@ -347,17 +350,17 @@ export default function ProjectileMotionVisualizer() {
       </div>
       
       {/* Canvas */}
-      <div className="bg-white border border-line rounded-lg p-4 shadow-card">
+      <div className="bg-white border border-line rounded-lg p-2 sm:p-4 shadow-card">
         <canvas
           ref={canvasRef}
-          width={800}
-          height={400}
-          className="w-full"
+          width={600}
+          height={320}
+          className={responsiveSurface}
         />
       </div>
       
       {/* Real-time Data */}
-      <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-3">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
         <div className="bg-gray-100 border border-line-strong rounded-lg p-3">
           <div className="text-xs text-ink font-medium mb-1">Time Elapsed</div>
           <div className="text-lg font-bold text-ink">{currentTime.toFixed(2)} s</div>
@@ -384,7 +387,7 @@ export default function ProjectileMotionVisualizer() {
       {/* Calculated Results */}
       <div className="bg-subtle rounded-lg p-4 space-y-3">
         <h3 className="text-sm font-semibold text-ink">Calculated Values</h3>
-        <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
           <div>
             <div className="text-ink-muted">Time of Flight</div>
             <div className="font-semibold text-ink">{timeOfFlight.toFixed(2)} s</div>

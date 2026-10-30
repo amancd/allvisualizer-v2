@@ -22,19 +22,16 @@ export const metadata: Metadata = {
 
 const postulates: CardGridItem[] = [
   {
-    icon: '🔵',
     title: '1. Quantized orbits',
     description:
       'Electrons can only occupy certain discrete orbits where angular momentum is quantized: L = nℏ, where n = 1, 2, 3, ... and ℏ = h/2π.',
   },
   {
-    icon: '🟢',
     title: '2. Stationary states',
     description:
       'Electrons in allowed orbits do not radiate energy. They maintain constant energy in these "stationary states" without spiraling into the nucleus.',
   },
   {
-    icon: '🟣',
     title: '3. Quantum jumps',
     description: (
       <>
@@ -53,11 +50,11 @@ const spectralSeries = [
 ];
 
 const applications: CardGridItem[] = [
-  { icon: '🌈', title: 'Spectroscopy', description: 'Identifying elements by their characteristic spectral lines.' },
-  { icon: '🔭', title: 'Astronomy', description: 'Analyzing light from stars and galaxies.' },
-  { icon: '🔦', title: 'Lasers', description: 'Understanding electron transitions in laser media.' },
-  { icon: '🧪', title: 'Quantum chemistry', description: 'Foundation for understanding atomic bonding.' },
-  { icon: '☀️', title: 'Plasma physics', description: 'Studying ionized gases and fusion reactions.' },
+  { title: 'Spectroscopy', description: 'Identifying elements by their characteristic spectral lines.' },
+  { title: 'Astronomy', description: 'Analyzing light from stars and galaxies.' },
+  { title: 'Lasers', description: 'Understanding electron transitions in laser media.' },
+  { title: 'Quantum chemistry', description: 'Foundation for understanding atomic bonding.' },
+  { title: 'Plasma physics', description: 'Studying ionized gases and fusion reactions.' },
 ];
 
 export default function BohrModelPage() {

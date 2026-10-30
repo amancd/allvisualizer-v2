@@ -32,10 +32,10 @@ const laws = [
 ];
 
 const applications = [
-  { icon: '🚗', title: 'Vehicle safety', description: 'Seatbelts and airbags rely on the first law: your body keeps moving when the car stops suddenly.' },
-  { icon: '🚀', title: 'Rocket propulsion', description: 'Expelling gas backward creates a reaction force that pushes the rocket forward (third law).' },
-  { icon: '⚽', title: 'Sports', description: 'How hard you kick a ball sets how fast it accelerates (second law).' },
-  { icon: '🛹', title: 'Friction control', description: 'Ice skates reduce friction for gliding; brakes increase it for stopping.' },
+  { title: 'Vehicle safety', description: 'Seatbelts and airbags rely on the first law: your body keeps moving when the car stops suddenly.' },
+  { title: 'Rocket propulsion', description: 'Expelling gas backward creates a reaction force that pushes the rocket forward (third law).' },
+  { title: 'Sports', description: 'How hard you kick a ball sets how fast it accelerates (second law).' },
+  { title: 'Friction control', description: 'Ice skates reduce friction for gliding; brakes increase it for stopping.' },
 ];
 
 export default function NewtonsLawsPage() {
@@ -43,7 +43,6 @@ export default function NewtonsLawsPage() {
     <DetailPage
       subject="physics"
       item="newtons-laws"
-      icon="⚖️"
       title="Newton's Laws of Motion"
       description="Explore the laws that govern motion and forces. See how force, mass, and acceleration interact."
     >

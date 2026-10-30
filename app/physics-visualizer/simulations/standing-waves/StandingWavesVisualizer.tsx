@@ -1,9 +1,14 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import { responsiveSurface } from '@/lib/visualization';
 
 export default function StandingWavesVisualizer() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  // Canvas text is drawn in drawing units; enlarge it when the canvas is shown scaled down (phones).
+  const fontScaleRef = useRef(1);
+  const scaledFont = (font: string) =>
+    font.replace(/(\d+)px/, (_, size) => `${Math.round(Number(size) * fontScaleRef.current)}px`);
   const animationRef = useRef<number | null>(null);
   
   // Parameters
@@ -86,6 +91,7 @@ export default function StandingWavesVisualizer() {
     
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
+    fontScaleRef.current = Math.min(1.4, Math.max(1, canvas.width / (canvas.clientWidth || canvas.width)));
 
     // Clear canvas
     ctx.fillStyle = '#f9fafb';
@@ -254,7 +260,7 @@ export default function StandingWavesVisualizer() {
 
     // Labels
     ctx.fillStyle = '#000000';
-    ctx.font = '12px sans-serif';
+    ctx.font = scaledFont('12px sans-serif');
     
     const typeLabel = boundaryType === 'string' ? 'String (Both Fixed)' : 
                      boundaryType === 'open-pipe' ? 'Pipe (Both Open)' : 
@@ -309,12 +315,14 @@ export default function StandingWavesVisualizer() {
       {/* Canvas */}
       <div className="border border-line rounded-lg p-4 bg-subtle">
         <div className="text-xs font-semibold text-gray-700 mb-3">Standing Wave Visualization</div>
-        <canvas
-          ref={canvasRef}
-          width={canvasWidth}
-          height={canvasHeight}
-          className="border border-line-strong bg-white mx-auto block"
-        />
+        <div className="mx-auto max-w-[600px]">
+          <canvas
+            ref={canvasRef}
+            width={canvasWidth}
+            height={canvasHeight}
+            className={`${responsiveSurface} border border-line-strong bg-white`}
+          />
+        </div>
         <div className="text-xs text-ink-muted text-center mt-2">
           {boundaryType === 'string' && 'Vibrating string with both ends fixed'}
           {boundaryType === 'open-pipe' && 'Air column in pipe with both ends open'}
@@ -412,7 +420,7 @@ export default function StandingWavesVisualizer() {
           </div>
         </div>
 
-        <div className="flex gap-3 mb-4">
+        <div className="flex flex-wrap gap-3 mb-4">
           <label className="flex items-center gap-2 text-sm">
             <input
               type="checkbox"
@@ -433,7 +441,7 @@ export default function StandingWavesVisualizer() {
           </label>
         </div>
 
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
           <button
             onClick={() => setIsPlaying(!isPlaying)}
             className={`px-4 py-2 rounded-lg text-sm font-medium ${
@@ -497,7 +505,7 @@ export default function StandingWavesVisualizer() {
       {/* Info */}
       <div className="border border-line rounded-lg p-4 bg-teal-50">
         <div className="text-sm text-teal-900">
-          <p className="font-medium mb-2">💡 How to Use:</p>
+          <p className="font-medium mb-2">How to Use:</p>
           <ul className="list-disc list-inside space-y-1 text-sm">
             <li><strong>Harmonic number:</strong> Higher harmonics have more nodes and shorter wavelengths</li>
             <li><strong>String:</strong> Both ends fixed - supports all harmonics (n = 1, 2, 3, ...)</li>

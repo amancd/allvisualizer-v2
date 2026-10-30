@@ -1,9 +1,14 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import { responsiveSurface } from '@/lib/visualization';
 
 export default function DoubleSlitVisualizer() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  // Canvas text is drawn in drawing units; enlarge it when the canvas is shown scaled down (phones).
+  const fontScaleRef = useRef(1);
+  const scaledFont = (font: string) =>
+    font.replace(/(\d+)px/, (_, size) => `${Math.round(Number(size) * fontScaleRef.current)}px`);
   
   // Parameters
   const [wavelength, setWavelength] = useState(550); // nm (green light)
@@ -55,6 +60,7 @@ export default function DoubleSlitVisualizer() {
     
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
+    fontScaleRef.current = Math.min(1.4, Math.max(1, canvas.width / (canvas.clientWidth || canvas.width)));
 
     // Clear canvas
     ctx.fillStyle = '#0a0a0a';
@@ -169,7 +175,7 @@ export default function DoubleSlitVisualizer() {
 
     // Labels
     ctx.fillStyle = '#ffffff';
-    ctx.font = '12px sans-serif';
+    ctx.font = scaledFont('12px sans-serif');
     ctx.fillText('Light Source', 5, centerY - 20);
     ctx.fillText('Slits', slitsX - 20, 20);
     ctx.fillText('Screen', screenX - 20, 20);
@@ -186,7 +192,7 @@ export default function DoubleSlitVisualizer() {
     ctx.setLineDash([]);
 
     ctx.fillStyle = '#888888';
-    ctx.font = '10px sans-serif';
+    ctx.font = scaledFont('10px sans-serif');
     ctx.fillText('d', slitsX + 10, (slit1Y + slit2Y) / 2);
   };
 
@@ -211,12 +217,14 @@ export default function DoubleSlitVisualizer() {
       {/* Canvas */}
       <div className="border border-line rounded-lg p-4 bg-gray-900">
         <div className="text-xs font-semibold text-gray-300 mb-3">Double-Slit Experiment Setup</div>
-        <canvas
-          ref={canvasRef}
-          width={canvasWidth}
-          height={canvasHeight}
-          className="border border-gray-600 mx-auto block"
-        />
+        <div className="mx-auto max-w-[600px]">
+          <canvas
+            ref={canvasRef}
+            width={canvasWidth}
+            height={canvasHeight}
+            className={`${responsiveSurface} border border-gray-600`}
+          />
+        </div>
         <div className="text-xs text-gray-400 text-center mt-2">
           Light passes through two slits and creates an interference pattern
         </div>
@@ -291,7 +299,7 @@ export default function DoubleSlitVisualizer() {
           </div>
         </div>
 
-        <div className="flex gap-3 mb-4">
+        <div className="flex flex-wrap gap-3 mb-4">
           <label className="flex items-center gap-2 text-sm">
             <input
               type="checkbox"
@@ -363,7 +371,7 @@ export default function DoubleSlitVisualizer() {
       {/* Info */}
       <div className="border border-line rounded-lg p-4 bg-teal-50">
         <div className="text-sm text-teal-900">
-          <p className="font-medium mb-2">💡 Experiment Tips:</p>
+          <p className="font-medium mb-2">Experiment Tips:</p>
           <ul className="list-disc list-inside space-y-1 text-sm">
             <li><strong>Wavelength:</strong> Change color to see how different wavelengths affect fringe spacing</li>
             <li><strong>Slit separation:</strong> Smaller separation = wider fringes</li>

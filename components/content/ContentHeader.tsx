@@ -5,8 +5,8 @@ interface ContentHeaderProps {
   breadcrumbs: Crumb[];
   title: React.ReactNode;
   description?: React.ReactNode;
-  /** A Lucide icon component or an emoji string. */
-  icon?: LucideIcon | string;
+  /** A Lucide icon. Emojis are intentionally not supported (see CLAUDE.md). */
+  icon?: LucideIcon;
   /** Badges or metadata shown under the description, e.g. difficulty and complexity. */
   meta?: React.ReactNode;
 }
@@ -19,8 +19,8 @@ export default function ContentHeader({ breadcrumbs, title, description, icon: I
         <Breadcrumbs items={breadcrumbs} className="mb-6" />
         <div className="flex items-start gap-4">
           {Icon && (
-            <span className="mt-1 grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-white text-2xl text-brand-600 shadow-card ring-1 ring-line">
-              {typeof Icon === 'string' ? Icon : <Icon className="h-6 w-6" />}
+            <span className="mt-1 grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-white text-brand-600 shadow-card ring-1 ring-line">
+              <Icon className="h-6 w-6" />
             </span>
           )}
           <div className="min-w-0">

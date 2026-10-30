@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef } from 'react';
+import { responsiveSurface, toDrawingPoint } from '@/lib/visualization';
 
 export default function OptimizationVisualizer() {
   const [baseWidth, setBaseWidth] = useState(4);
@@ -54,8 +55,7 @@ export default function OptimizationVisualizer() {
 
   const handlePointerMove = (e: React.PointerEvent<SVGSVGElement>) => {
     if (!isDragging || !svgRef.current) return;
-    const rect = svgRef.current.getBoundingClientRect();
-    const svgX = e.clientX - rect.left;
+    const { x: svgX } = toDrawingPoint(e, svgRef.current);
     const mathX = toMathX(svgX);
     const clampedX = Math.max(0.5, Math.min(7.5, mathX));
     setBaseWidth(Number(clampedX.toFixed(2)));
@@ -73,13 +73,13 @@ export default function OptimizationVisualizer() {
   const rectHeight = currentHeight * rectScale;
 
   return (
-    <div className="bg-white border border-line rounded-lg p-6 space-y-4 shadow-card">
+    <div className="bg-white border border-line rounded-lg p-4 sm:p-6 space-y-4 shadow-card">
       <div className="space-y-3">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1">
           <label className="text-sm font-medium text-gray-700">
             Width: {baseWidth.toFixed(2)} units
           </label>
-          <div className="flex items-center gap-4">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
             <span className="text-sm text-ink-muted">
               Height: {currentHeight.toFixed(2)} units
             </span>
@@ -102,13 +102,13 @@ export default function OptimizationVisualizer() {
 
       <div className="space-y-4">
         {/* Area Function Graph */}
-        <div className="bg-subtle rounded-lg p-4">
+        <div className="bg-subtle rounded-lg p-2 sm:p-4">
           <h3 className="text-sm font-semibold text-gray-700 mb-2">Area Function: A(w) = w(8-w)</h3>
+          <div className="mx-auto max-w-2xl">
           <svg
             ref={svgRef}
-            width={width}
-            height={height}
-            className="mx-auto touch-none"
+            viewBox={`0 0 ${width} ${height}`}
+            className={`${responsiveSurface} touch-none`}
             onPointerMove={handlePointerMove}
             onPointerUp={handlePointerUp}
             onPointerLeave={handlePointerUp}
@@ -124,21 +124,21 @@ export default function OptimizationVisualizer() {
             <line x1={padding} y1={toSvgY(0)} x2={width - padding} y2={toSvgY(0)} stroke="#374151" strokeWidth="2" />
             <line x1={toSvgX(0)} y1={padding} x2={toSvgX(0)} y2={height - padding} stroke="#374151" strokeWidth="2" />
             
-            <text x={width - padding + 5} y={toSvgY(0) + 5} fontSize="11" fill="#6b7280">w</text>
-            <text x={toSvgX(0) + 5} y={padding - 5} fontSize="11" fill="#6b7280">A</text>
+            <text x={width - padding + 5} y={toSvgY(0) + 5} fontSize="18" fill="#6b7280">w</text>
+            <text x={toSvgX(0) + 5} y={padding - 5} fontSize="18" fill="#6b7280">A</text>
             
             {/* Axis markers */}
             {[0, 2, 4, 6, 8].map(x => (
               <g key={x}>
                 <line x1={toSvgX(x)} y1={toSvgY(0) - 4} x2={toSvgX(x)} y2={toSvgY(0) + 4} stroke="#374151" strokeWidth="1" />
-                <text x={toSvgX(x)} y={toSvgY(0) + 18} fontSize="10" fill="#6b7280" textAnchor="middle">{x}</text>
+                <text x={toSvgX(x)} y={toSvgY(0) + 22} fontSize="18" fill="#6b7280" textAnchor="middle">{x}</text>
               </g>
             ))}
             
             {[0, 5, 10, 15].map(y => (
               <g key={y}>
                 <line x1={toSvgX(0) - 4} y1={toSvgY(y)} x2={toSvgX(0) + 4} y2={toSvgY(y)} stroke="#374151" strokeWidth="1" />
-                <text x={toSvgX(0) - 8} y={toSvgY(y) + 4} fontSize="10" fill="#6b7280" textAnchor="end">{y}</text>
+                <text x={toSvgX(0) - 8} y={toSvgY(y) + 4} fontSize="18" fill="#6b7280" textAnchor="end">{y}</text>
               </g>
             ))}
             
@@ -147,7 +147,7 @@ export default function OptimizationVisualizer() {
             
             {/* Critical point (maximum) */}
             <circle cx={toSvgX(criticalPoint)} cy={toSvgY(maxArea)} r="6" fill="#10b981" stroke="white" strokeWidth="2" />
-            <text x={toSvgX(criticalPoint)} y={toSvgY(maxArea) - 12} fontSize="11" fill="#10b981" fontWeight="600" textAnchor="middle">
+            <text x={toSvgX(criticalPoint)} y={toSvgY(maxArea) - 12} fontSize="18" fill="#10b981" fontWeight="600" textAnchor="middle">
               Max
             </text>
             
@@ -167,13 +167,14 @@ export default function OptimizationVisualizer() {
             {/* Vertical line to x-axis */}
             <line x1={toSvgX(baseWidth)} y1={toSvgY(currentArea)} x2={toSvgX(baseWidth)} y2={toSvgY(0)} stroke="#ef4444" strokeWidth="1" strokeDasharray="3,3" opacity="0.5" />
           </svg>
+          </div>
         </div>
 
         {/* Rectangle Visualization */}
-        <div className="bg-subtle rounded-lg p-4 flex items-center justify-center">
-          <div className="relative">
+        <div className="bg-subtle rounded-lg p-2 sm:p-4 flex items-center justify-center">
+          <div className="relative w-full max-w-xs">
             <h3 className="text-sm font-semibold text-gray-700 mb-4 text-center">Rectangle (Perimeter = 16)</h3>
-            <svg width="280" height="280">
+            <svg viewBox="0 0 280 280" className={`${responsiveSurface} overflow-visible`}>
               {/* Rectangle */}
               <rect
                 x={(280 - rectWidth) / 2}
@@ -200,7 +201,7 @@ export default function OptimizationVisualizer() {
               <text 
                 x={140} 
                 y={(280 - rectHeight) / 2 - 20}
-                fontSize="13"
+                fontSize="14"
                 fill="#4f46e5"
                 fontWeight="600"
                 textAnchor="middle"
@@ -220,7 +221,7 @@ export default function OptimizationVisualizer() {
               <text 
                 x={(280 + rectWidth) / 2 + 20}
                 y={140}
-                fontSize="13"
+                fontSize="14"
                 fill="#10b981"
                 fontWeight="600"
                 textAnchor="start"
@@ -253,7 +254,7 @@ export default function OptimizationVisualizer() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-4 gap-3 pt-2">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 pt-2">
         <div className="bg-gray-100 border border-line-strong rounded-lg p-3">
           <div className="text-xs text-ink font-medium mb-1">Constraint</div>
           <div className="text-sm font-semibold text-ink">2w + 2h = 16</div>

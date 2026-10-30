@@ -3,8 +3,8 @@ import type { LucideIcon } from 'lucide-react';
 export interface CardGridItem {
   title: React.ReactNode;
   description: React.ReactNode;
-  /** A Lucide icon component or an emoji string. */
-  icon?: LucideIcon | string;
+  /** A Lucide icon. Emojis are intentionally not supported (see CLAUDE.md). */
+  icon?: LucideIcon;
 }
 
 const cols = { 2: 'sm:grid-cols-2', 3: 'sm:grid-cols-2 lg:grid-cols-3', 4: 'sm:grid-cols-2 lg:grid-cols-4' } as const;
@@ -21,8 +21,8 @@ export default function CardGrid({ items, columns = 2 }: { items: CardGridItem[]
         return (
           <div key={i} className="rounded-xl border border-line bg-white p-5 shadow-card">
             {Icon && (
-              <span className="mb-3 grid h-9 w-9 place-items-center rounded-lg bg-brand-50 text-lg text-brand-600 ring-1 ring-inset ring-brand-100">
-                {typeof Icon === 'string' ? Icon : <Icon className="h-[18px] w-[18px]" />}
+              <span className="mb-3 grid h-9 w-9 place-items-center rounded-lg bg-brand-50 text-brand-600 ring-1 ring-inset ring-brand-100">
+                <Icon className="h-[18px] w-[18px]" />
               </span>
             )}
             <h3 className="font-semibold text-ink">{item.title}</h3>

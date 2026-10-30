@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import { responsiveSurface, toDrawingPoint } from '@/lib/visualization';
 
 type SourceType = 'wire' | 'loop' | 'dipole';
 
@@ -338,7 +339,7 @@ export default function MagneticFieldVisualizer() {
         
         // Labels
         ctx.fillStyle = '#ffffff';
-        ctx.font = 'bold 12px sans-serif';
+        ctx.font = 'bold 16px sans-serif';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         ctx.fillText('N', -length/4, 0);
@@ -353,14 +354,12 @@ export default function MagneticFieldVisualizer() {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const rect = canvas.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+    const { x, y } = toDrawingPoint(e, canvas);
 
     // Check if clicking on existing source
     for (const source of sources) {
       const dist = Math.sqrt((x - source.x) ** 2 + (y - source.y) ** 2);
-      const threshold = source.type === 'loop' ? 30 : source.type === 'dipole' ? 25 : 15;
+      const threshold = source.type === 'loop' ? 30 : source.type === 'dipole' ? 25 : 22;
       if (dist < threshold) {
         setSelectedSource(source.id);
         return;
@@ -425,14 +424,16 @@ export default function MagneticFieldVisualizer() {
   return (
     <div className="space-y-6">
       {/* Canvas */}
-      <div className="border border-line rounded-lg p-4 bg-subtle">
-        <canvas
-          ref={canvasRef}
-          width={canvasWidth}
-          height={canvasHeight}
-          onClick={handleCanvasClick}
-          className="border border-line-strong bg-white cursor-crosshair mx-auto block"
-        />
+      <div className="border border-line rounded-lg p-2 sm:p-4 bg-subtle">
+        <div className="mx-auto max-w-2xl">
+          <canvas
+            ref={canvasRef}
+            width={canvasWidth}
+            height={canvasHeight}
+            onClick={handleCanvasClick}
+            className={`${responsiveSurface} border border-line-strong bg-white cursor-crosshair mx-auto`}
+          />
+        </div>
       </div>
 
       {/* Controls */}
@@ -499,7 +500,7 @@ export default function MagneticFieldVisualizer() {
           {/* Display Options */}
           <div>
             <div className="text-sm font-medium text-gray-700 mb-2">Display Options</div>
-            <div className="flex gap-4">
+            <div className="flex flex-wrap gap-4">
               <label className="flex items-center gap-2">
                 <input
                   type="checkbox"
@@ -522,7 +523,7 @@ export default function MagneticFieldVisualizer() {
           </div>
 
           {/* Action Buttons */}
-          <div className="flex gap-2">
+          <div className="flex flex-wrap gap-2">
             <button
               onClick={resetToDefault}
               className="px-4 py-2 border border-line-strong rounded-lg text-sm font-medium hover:bg-subtle"
@@ -542,7 +543,7 @@ export default function MagneticFieldVisualizer() {
       {/* Info */}
       <div className="border border-line rounded-lg p-4 bg-purple-50">
         <div className="text-sm text-purple-900">
-          <p className="font-medium mb-2">💡 How to Use:</p>
+          <p className="font-medium mb-2">How to Use:</p>
           <ul className="list-disc list-inside space-y-1 text-sm">
             <li><strong>Current Wire:</strong> Shows circular field lines (⊙ = out, ⊗ = in)</li>
             <li><strong>Current Loop:</strong> Creates dipole field like a bar magnet</li>
@@ -558,7 +559,7 @@ export default function MagneticFieldVisualizer() {
       {sources.length > 0 && (
         <div className="border border-line rounded-lg p-4 bg-subtle">
           <div className="text-xs font-semibold text-gray-700 mb-2">Current Sources ({sources.length})</div>
-          <div className="grid grid-cols-2 gap-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             {sources.map(source => (
               <div
                 key={source.id}
@@ -570,8 +571,8 @@ export default function MagneticFieldVisualizer() {
               >
                 <div className="flex items-center justify-between">
                   <span className="text-sm font-medium">
-                    {source.type === 'wire' ? '🔌 Wire' : 
-                     source.type === 'loop' ? '⭕ Loop' : '🧲 Magnet'} #{source.id}
+                    {source.type === 'wire' ? 'Wire' : 
+                     source.type === 'loop' ? 'Loop' : 'Magnet'} #{source.id}
                   </span>
                   <span className={`px-2 py-0.5 rounded text-xs font-medium ${
                     source.type === 'wire' 

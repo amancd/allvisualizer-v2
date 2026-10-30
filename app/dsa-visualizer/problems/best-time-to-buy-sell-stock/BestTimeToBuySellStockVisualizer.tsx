@@ -70,8 +70,8 @@ export default function BestTimeToBuySellStockVisualizer() {
   return (
     <div className="space-y-6">
       {/* Input Controls */}
-      <div className="flex gap-3 items-end">
-        <div className="flex-1">
+      <div className="flex flex-wrap gap-3 items-end">
+        <div className="flex-1 min-w-[12rem]">
           <label className="text-xs font-medium text-gray-700 mb-1 block">Stock Prices (comma-separated)</label>
           <input
             type="text"
@@ -94,7 +94,8 @@ export default function BestTimeToBuySellStockVisualizer() {
       <div className="border border-line rounded-lg p-4 bg-subtle">
         <div className="text-xs font-semibold text-gray-700 mb-3">Stock Prices</div>
           {/* Bar Chart */}
-          <div className="flex items-end justify-between gap-2 h-80 mb-4">
+          <div className="overflow-x-auto">
+          <div className="flex items-end justify-between gap-1 sm:gap-2 h-64 sm:h-80 mb-4 min-w-full w-max">
             {prices.map((price, index) => {
               const isCurrent = index === currentIndex - 1;
               const isBuyDay = index === buyDay && sellDay >= 0;
@@ -108,17 +109,20 @@ export default function BestTimeToBuySellStockVisualizer() {
               else if (isProcessed) barColor = 'bg-gray-400';
 
               return (
-                <div key={index} className="flex-1 flex flex-col items-center justify-end gap-2">
-                  <div className="text-xs font-semibold text-gray-700 mb-1">${price}</div>
-                  <div 
-                    className={`w-full ${barColor} rounded-t transition-all duration-300 relative min-h-[20px]`}
-                    style={{ height: `${getBarHeight(price)}%` }}
-                  >
-                    {isCurrent && (
-                      <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 text-yellow-600 animate-bounce text-xl">
-                        ↓
-                      </div>
-                    )}
+                <div key={index} className="flex-1 min-w-[2.5rem] h-full flex flex-col items-center justify-end gap-2">
+                  <div className="relative flex-1 w-full mt-8">
+                    <div
+                      className="absolute inset-x-0 bottom-0 flex flex-col items-center justify-end transition-all duration-300"
+                      style={{ height: `${getBarHeight(price)}%` }}
+                    >
+                      {isCurrent && (
+                        <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 text-yellow-600 animate-bounce text-xl">
+                          ↓
+                        </div>
+                      )}
+                      <div className="text-xs font-semibold text-gray-700 mb-1">${price}</div>
+                      <div className={`w-full flex-1 ${barColor} rounded-t transition-all duration-300 min-h-[20px]`} />
+                    </div>
                   </div>
                   <div className={`text-xs font-medium mt-1 ${
                     isBuyDay ? 'text-green-600' : 
@@ -131,6 +135,7 @@ export default function BestTimeToBuySellStockVisualizer() {
                 </div>
               );
             })}
+          </div>
           </div>
       </div>
 
@@ -191,7 +196,7 @@ export default function BestTimeToBuySellStockVisualizer() {
       )}
 
       {/* Controls */}
-      <div className="flex gap-2 justify-center">
+      <div className="flex flex-wrap gap-2 justify-center">
         <button
           onClick={reset}
           disabled={currentIndex === 0}

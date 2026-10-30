@@ -25,12 +25,12 @@ const tips: CardGridItem[] = [
 ];
 
 const applications: CardGridItem[] = [
-  { icon: '🖼️', title: 'Image recognition', description: 'Deep neural networks use backprop to learn features from millions of images for classification tasks.' },
-  { icon: '💬', title: 'Natural language processing', description: 'Language models like GPT use backpropagation to learn word patterns and generate human-like text.' },
-  { icon: '🎙️', title: 'Speech recognition', description: 'Voice assistants train neural networks with backprop to convert speech to text accurately.' },
-  { icon: '🚗', title: 'Autonomous vehicles', description: 'Self-driving cars use neural networks trained with backprop to detect objects and make driving decisions.' },
-  { icon: '🩺', title: 'Medical diagnosis', description: 'AI systems learn to detect diseases from medical images using backpropagation-trained networks.' },
-  { icon: '🎮', title: 'Game AI', description: 'AlphaGo and other game-playing AIs use backprop to learn winning strategies from experience.' },
+  { title: 'Image recognition', description: 'Deep neural networks use backprop to learn features from millions of images for classification tasks.' },
+  { title: 'Natural language processing', description: 'Language models like GPT use backpropagation to learn word patterns and generate human-like text.' },
+  { title: 'Speech recognition', description: 'Voice assistants train neural networks with backprop to convert speech to text accurately.' },
+  { title: 'Autonomous vehicles', description: 'Self-driving cars use neural networks trained with backprop to detect objects and make driving decisions.' },
+  { title: 'Medical diagnosis', description: 'AI systems learn to detect diseases from medical images using backpropagation-trained networks.' },
+  { title: 'Game AI', description: 'AlphaGo and other game-playing AIs use backprop to learn winning strategies from experience.' },
 ];
 
 const concepts: CardGridItem[] = [

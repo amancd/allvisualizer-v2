@@ -23,7 +23,6 @@ export const metadata: Metadata = {
 /** One card per stage of the cycle, with the stage's energy equations underneath. */
 const processes: CardGridItem[] = [
   {
-    icon: '🔴',
     title: '1. Isothermal expansion (A → B)',
     description: (
       <>
@@ -38,7 +37,6 @@ const processes: CardGridItem[] = [
     ),
   },
   {
-    icon: '🔵',
     title: '2. Adiabatic expansion (B → C)',
     description: (
       <>
@@ -53,7 +51,6 @@ const processes: CardGridItem[] = [
     ),
   },
   {
-    icon: '🟢',
     title: '3. Isothermal compression (C → D)',
     description: (
       <>
@@ -68,7 +65,6 @@ const processes: CardGridItem[] = [
     ),
   },
   {
-    icon: '🟣',
     title: '4. Adiabatic compression (D → A)',
     description: (
       <>
@@ -86,19 +82,16 @@ const processes: CardGridItem[] = [
 
 const keyPrinciples: CardGridItem[] = [
   {
-    icon: '↔️',
     title: 'Reversibility',
     description:
       'All processes in the Carnot cycle are reversible, meaning they can proceed in either direction without any entropy increase. This is an idealization impossible to achieve in practice.',
   },
   {
-    icon: '📈',
     title: 'Maximum efficiency',
     description:
       'The Carnot cycle establishes the maximum theoretical efficiency. All real heat engines have lower efficiency due to friction, heat losses, and other irreversibilities.',
   },
   {
-    icon: '📊',
     title: 'PV diagram',
     description: (
       <>
@@ -108,7 +101,6 @@ const keyPrinciples: CardGridItem[] = [
     ),
   },
   {
-    icon: '🌡️',
     title: 'Temperature reservoirs',
     description: (
       <>
@@ -120,11 +112,11 @@ const keyPrinciples: CardGridItem[] = [
 ];
 
 const applications: CardGridItem[] = [
-  { icon: '🏭', title: 'Steam turbines', description: 'Power plants approach Carnot efficiency with high-temperature steam.' },
-  { icon: '❄️', title: 'Refrigerators', description: 'The reverse Carnot cycle is the theoretical model for cooling systems.' },
-  { icon: '⚙️', title: 'Engine design', description: 'Engineers use Carnot efficiency as a benchmark for optimization.' },
-  { icon: '🌋', title: 'Geothermal power', description: 'Efficiency is limited by the temperature difference between ground and surface.' },
-  { icon: '🔬', title: 'Thermodynamic analysis', description: 'The foundation for understanding all heat engines and refrigerators.' },
+  { title: 'Steam turbines', description: 'Power plants approach Carnot efficiency with high-temperature steam.' },
+  { title: 'Refrigerators', description: 'The reverse Carnot cycle is the theoretical model for cooling systems.' },
+  { title: 'Engine design', description: 'Engineers use Carnot efficiency as a benchmark for optimization.' },
+  { title: 'Geothermal power', description: 'Efficiency is limited by the temperature difference between ground and surface.' },
+  { title: 'Thermodynamic analysis', description: 'The foundation for understanding all heat engines and refrigerators.' },
 ];
 
 export default function CarnotCyclePage() {
@@ -132,7 +124,6 @@ export default function CarnotCyclePage() {
     <DetailPage
       subject="physics"
       item="carnot-cycle"
-      icon="🔄"
       description="Visualize the most efficient theoretical heat engine cycle, consisting of four reversible processes."
     >
       <CarnotCycleVisualizer />

@@ -230,11 +230,11 @@ export default function BackpropagationVisualizer() {
   return (
     <div className="space-y-8">
       {/* Network Visualization */}
-      <div className="bg-white border border-line rounded-lg p-8 shadow-card">
-        <svg viewBox="0 0 800 500" className="w-full">
+      <div className="bg-white border border-line rounded-lg p-4 sm:p-8 shadow-card">
+        <svg viewBox="20 0 670 310" className="mx-auto w-full h-auto max-w-3xl">
           {/* Input Layer */}
           <g id="input-layer">
-            <text x="50" y="30" className="text-sm font-semibold" fill="#374151">Input Layer</text>
+            <text x="100" y="30" textAnchor="middle" fontSize="22" className="font-semibold" fill="#374151">Input Layer</text>
             {network.input.activations?.map((activation, i) => (
               <g key={`input-${i}`}>
                 <circle
@@ -245,10 +245,10 @@ export default function BackpropagationVisualizer() {
                   stroke="#1f2937"
                   strokeWidth="2"
                 />
-                <text x="100" y={150 + i * 120 + 5} textAnchor="middle" fill="white" className="text-sm font-bold">
+                <text x="100" y={150 + i * 120 + 7} textAnchor="middle" fill="white" fontSize="20" className="font-bold">
                   {activation.toFixed(2)}
                 </text>
-                <text x="50" y={150 + i * 120 + 5} textAnchor="middle" fill="#6b7280" className="text-xs">
+                <text x="48" y={150 + i * 120 + 6} textAnchor="middle" fill="#6b7280" fontSize="18">
                   x{i + 1}
                 </text>
               </g>
@@ -274,7 +274,7 @@ export default function BackpropagationVisualizer() {
                       x={(130 + 270) / 2}
                       y={(150 + i * 120 + 100 + j * 80) / 2}
                       fill="#6b7280"
-                      className="text-xs"
+                      fontSize="14"
                       textAnchor="middle"
                     >
                       {weight.toFixed(2)}
@@ -287,7 +287,7 @@ export default function BackpropagationVisualizer() {
 
           {/* Hidden Layer */}
           <g id="hidden-layer">
-            <text x="270" y="30" className="text-sm font-semibold" fill="#374151">Hidden Layer</text>
+            <text x="300" y="30" textAnchor="middle" fontSize="22" className="font-semibold" fill="#374151">Hidden Layer</text>
             {network.hidden.activations?.map((activation, i) => (
               <g key={`hidden-${i}`}>
                 <circle
@@ -298,11 +298,11 @@ export default function BackpropagationVisualizer() {
                   stroke="#1f2937"
                   strokeWidth="2"
                 />
-                <text x="300" y={100 + i * 80 + 5} textAnchor="middle" fill="white" className="text-sm font-bold">
+                <text x="300" y={100 + i * 80 + 7} textAnchor="middle" fill="white" fontSize="20" className="font-bold">
                   {activation.toFixed(2)}
                 </text>
                 {showGradients && network.hidden.deltas?.[i] !== 0 && (
-                  <text x="350" y={100 + i * 80 + 5} fill="#ef4444" className="text-xs font-semibold">
+                  <text x="340" y={100 + i * 80 + 6} fill="#ef4444" fontSize="16" className="font-semibold">
                     δ:{network.hidden.deltas?.[i].toFixed(3)}
                   </text>
                 )}
@@ -329,7 +329,7 @@ export default function BackpropagationVisualizer() {
                       x={(330 + 470) / 2}
                       y={(100 + i * 80 + 200) / 2}
                       fill="#6b7280"
-                      className="text-xs"
+                      fontSize="14"
                       textAnchor="middle"
                     >
                       {weight.toFixed(2)}
@@ -342,7 +342,7 @@ export default function BackpropagationVisualizer() {
 
           {/* Output Layer */}
           <g id="output-layer">
-            <text x="470" y="30" className="text-sm font-semibold" fill="#374151">Output Layer</text>
+            <text x="500" y="30" textAnchor="middle" fontSize="22" className="font-semibold" fill="#374151">Output Layer</text>
             {network.output.activations?.map((activation, i) => (
               <g key={`output-${i}`}>
                 <circle
@@ -353,18 +353,18 @@ export default function BackpropagationVisualizer() {
                   stroke="#1f2937"
                   strokeWidth="2"
                 />
-                <text x="500" y={205} textAnchor="middle" fill="white" className="text-sm font-bold">
+                <text x="500" y={207} textAnchor="middle" fill="white" fontSize="20" className="font-bold">
                   {activation.toFixed(2)}
                 </text>
                 {showGradients && network.output.deltas?.[i] !== 0 && (
-                  <text x="550" y={205} fill="#ef4444" className="text-xs font-semibold">
+                  <text x="540" y={206} fill="#ef4444" fontSize="16" className="font-semibold">
                     δ:{network.output.deltas?.[i].toFixed(3)}
                   </text>
                 )}
-                <text x="500" y={245} textAnchor="middle" fill="#6b7280" className="text-xs">
+                <text x="500" y={254} textAnchor="middle" fill="#6b7280" fontSize="18">
                   Target: {targetOutput.toFixed(2)}
                 </text>
-                <text x="500" y={260} textAnchor="middle" fill="#ef4444" className="text-xs font-semibold">
+                <text x="500" y={276} textAnchor="middle" fill="#ef4444" fontSize="18" className="font-semibold">
                   Error: {(targetOutput - activation).toFixed(3)}
                 </text>
               </g>
@@ -372,18 +372,18 @@ export default function BackpropagationVisualizer() {
           </g>
 
           {/* Legend */}
-          <g id="legend" transform="translate(600, 80)">
-            <text x="0" y="0" className="text-xs font-semibold" fill="#374151">Weight Colors:</text>
-            <line x1="0" y1="15" x2="40" y2="15" stroke="rgba(34, 197, 94, 0.8)" strokeWidth="3" />
-            <text x="45" y="20" className="text-xs" fill="#6b7280">Positive</text>
-            <line x1="0" y1="35" x2="40" y2="35" stroke="rgba(239, 68, 68, 0.8)" strokeWidth="3" />
-            <text x="45" y="40" className="text-xs" fill="#6b7280">Negative</text>
+          <g id="legend" transform="translate(560, 70)">
+            <text x="0" y="0" fontSize="18" className="font-semibold" fill="#374151">Weight Colors:</text>
+            <line x1="0" y1="18" x2="30" y2="18" stroke="rgba(34, 197, 94, 0.8)" strokeWidth="3" />
+            <text x="36" y="23" fontSize="18" fill="#6b7280">Positive</text>
+            <line x1="0" y1="44" x2="30" y2="44" stroke="rgba(239, 68, 68, 0.8)" strokeWidth="3" />
+            <text x="36" y="50" fontSize="18" fill="#6b7280">Negative</text>
           </g>
         </svg>
       </div>
 
       {/* Stats */}
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <div className="bg-blue-50 border-2 border-blue-200 rounded-lg p-4">
           <div className="text-sm text-blue-700 font-medium">Epoch</div>
           <div className="text-2xl font-bold text-blue-900">{epoch}</div>
@@ -399,8 +399,8 @@ export default function BackpropagationVisualizer() {
       </div>
 
       {/* Controls */}
-      <div className="bg-white border border-line rounded-lg p-6 space-y-6 shadow-card">
-        <div className="flex gap-3">
+      <div className="bg-white border border-line rounded-lg p-4 sm:p-6 space-y-6 shadow-card">
+        <div className="flex flex-wrap gap-3">
           <button
             onClick={() => setIsTraining(!isTraining)}
             className="px-6 py-2 bg-brand-600 text-white rounded-lg hover:bg-brand-700 transition-colors font-medium shadow-brand"

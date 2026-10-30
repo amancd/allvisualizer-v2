@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import { responsiveSurface, toDrawingPoint } from '@/lib/visualization';
 
 interface Charge {
   id: number;
@@ -111,7 +112,7 @@ export default function ElectricFieldLinesVisualizer() {
       charges.forEach(charge => {
         if (charge.charge > 0) {
           ctx.strokeStyle = '#ef4444';
-          ctx.lineWidth = 1;
+          ctx.lineWidth = 1.5;
           
           // Draw lines emanating from positive charge
           const numLines = 16;
@@ -179,7 +180,7 @@ export default function ElectricFieldLinesVisualizer() {
     // Draw charges
     charges.forEach(charge => {
       ctx.beginPath();
-      ctx.arc(charge.x, charge.y, 12, 0, 2 * Math.PI);
+      ctx.arc(charge.x, charge.y, 15, 0, 2 * Math.PI);
       ctx.fillStyle = charge.charge > 0 ? '#ef4444' : '#3b82f6';
       ctx.fill();
       ctx.strokeStyle = charge.charge > 0 ? '#b91c1c' : '#1d4ed8';
@@ -188,7 +189,7 @@ export default function ElectricFieldLinesVisualizer() {
 
       // Draw + or - sign
       ctx.fillStyle = '#ffffff';
-      ctx.font = 'bold 16px sans-serif';
+      ctx.font = 'bold 22px sans-serif';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
       ctx.fillText(charge.charge > 0 ? '+' : '−', charge.x, charge.y);
@@ -199,14 +200,12 @@ export default function ElectricFieldLinesVisualizer() {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const rect = canvas.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+    const { x, y } = toDrawingPoint(e, canvas);
 
     // Check if clicking on existing charge
     for (const charge of charges) {
       const dist = Math.sqrt((x - charge.x) ** 2 + (y - charge.y) ** 2);
-      if (dist < 12) {
+      if (dist < 20) {
         setSelectedCharge(charge.id);
         return;
       }
@@ -250,14 +249,16 @@ export default function ElectricFieldLinesVisualizer() {
   return (
     <div className="space-y-6">
       {/* Canvas */}
-      <div className="border border-line rounded-lg p-4 bg-subtle">
-        <canvas
-          ref={canvasRef}
-          width={canvasWidth}
-          height={canvasHeight}
-          onClick={handleCanvasClick}
-          className="border border-line-strong bg-white cursor-crosshair mx-auto block"
-        />
+      <div className="border border-line rounded-lg p-2 sm:p-4 bg-subtle">
+        <div className="mx-auto max-w-2xl">
+          <canvas
+            ref={canvasRef}
+            width={canvasWidth}
+            height={canvasHeight}
+            onClick={handleCanvasClick}
+            className={`${responsiveSurface} border border-line-strong bg-white cursor-crosshair mx-auto`}
+          />
+        </div>
       </div>
 
       {/* Controls */}
@@ -267,7 +268,7 @@ export default function ElectricFieldLinesVisualizer() {
           {/* Add Charges */}
           <div>
             <div className="text-sm font-medium text-gray-700 mb-2">Add Charge</div>
-            <div className="flex gap-2">
+            <div className="flex flex-wrap gap-2">
               <button
                 onClick={() => addCharge(1)}
                 className="px-4 py-2 bg-red-500 text-white rounded-lg text-sm font-medium hover:bg-red-600"
@@ -293,7 +294,7 @@ export default function ElectricFieldLinesVisualizer() {
           {/* Display Options */}
           <div>
             <div className="text-sm font-medium text-gray-700 mb-2">Display Options</div>
-            <div className="flex gap-4">
+            <div className="flex flex-wrap gap-4">
               <label className="flex items-center gap-2">
                 <input
                   type="checkbox"
@@ -316,7 +317,7 @@ export default function ElectricFieldLinesVisualizer() {
           </div>
 
           {/* Action Buttons */}
-          <div className="flex gap-2">
+          <div className="flex flex-wrap gap-2">
             <button
               onClick={resetToDefault}
               className="px-4 py-2 border border-line-strong rounded-lg text-sm font-medium hover:bg-subtle"
@@ -336,7 +337,7 @@ export default function ElectricFieldLinesVisualizer() {
       {/* Info */}
       <div className="border border-line rounded-lg p-4 bg-blue-50">
         <div className="text-sm text-blue-900">
-          <p className="font-medium mb-2">💡 How to Use:</p>
+          <p className="font-medium mb-2">How to Use:</p>
           <ul className="list-disc list-inside space-y-1 text-sm">
             <li>Add positive (+) or negative (−) charges to the canvas</li>
             <li>Click on charges to select them, then remove if desired</li>
@@ -351,7 +352,7 @@ export default function ElectricFieldLinesVisualizer() {
       {charges.length > 0 && (
         <div className="border border-line rounded-lg p-4 bg-subtle">
           <div className="text-xs font-semibold text-gray-700 mb-2">Current Charges ({charges.length})</div>
-          <div className="grid grid-cols-2 gap-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             {charges.map(charge => (
               <div
                 key={charge.id}
