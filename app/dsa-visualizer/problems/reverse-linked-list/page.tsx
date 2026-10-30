@@ -191,7 +191,6 @@ export default function ReverseLinkedListPage() {
     <DetailPage
       subject="dsa"
       item="reverse-linked-list"
-      width="narrow"
       description="Learn to reverse a singly linked list using both iterative and recursive approaches. Master pointer manipulation fundamentals."
       meta={<span className="font-mono">Time O(n) · Space O(1) iterative</span>}
     >

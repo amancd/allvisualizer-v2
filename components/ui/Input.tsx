@@ -1,4 +1,5 @@
 import React from 'react';
+import { FieldLabel, fieldStyles } from './Field';
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
@@ -26,21 +27,15 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ) => {
     const generatedId = React.useId();
     const inputId = id || generatedId;
-    const baseStyles = 'h-11 px-3.5 text-sm text-ink placeholder-ink-faint bg-white border rounded-control shadow-card transition-colors focus:outline-none focus:ring-4';
-    const errorStyles = error 
-      ? 'border-red-400 focus:border-red-500 focus:ring-red-100' 
-      : 'border-line-strong focus:border-brand-500 focus:ring-brand-100';
+    const baseStyles = `${fieldStyles} h-11`;
+    const errorStyles = error ? 'border-red-400 focus:border-red-500 focus:ring-red-100' : '';
     const widthClass = fullWidth ? 'w-full' : '';
     const iconPaddingLeft = leftIcon ? 'pl-10' : '';
     const iconPaddingRight = rightIcon ? 'pr-10' : '';
     
     return (
       <div className={fullWidth ? 'w-full' : ''}>
-        {label && (
-          <label htmlFor={inputId} className="block text-sm font-medium text-ink mb-1.5">
-            {label}
-          </label>
-        )}
+        {label && <FieldLabel htmlFor={inputId} required={props.required}>{label}</FieldLabel>}
         
         <div className="relative">
           {leftIcon && (

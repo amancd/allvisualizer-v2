@@ -22,7 +22,7 @@ export default function CategoriesPage() {
       </PageHeader>
 
       <section className="py-14 md:py-20">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="page-container">
           <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
             {categories.map((category) => (
               <CategoryCard key={category.id} category={category} />
@@ -32,7 +32,7 @@ export default function CategoriesPage() {
       </section>
 
       <section className="border-t border-line bg-subtle py-16">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="page-container text-center">
           <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-ink">Can&apos;t find what you&apos;re looking for?</h2>
           <p className="mt-3 text-ink-muted">We add new categories and visualizations regularly. Request a topic or contribute one.</p>
           <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">

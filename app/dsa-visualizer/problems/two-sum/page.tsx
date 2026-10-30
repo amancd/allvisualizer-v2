@@ -83,7 +83,6 @@ export default function TwoSumPage() {
     <DetailPage
       subject="dsa"
       item="two-sum"
-      width="narrow"
       description="Find two numbers in an array that add up to a target value."
       meta={<span className="font-mono">Time O(n) · Space O(n)</span>}
     >

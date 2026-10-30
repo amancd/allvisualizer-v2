@@ -465,7 +465,7 @@ export default function MatrixOperationsPage() {
       </ContentSection>
 
       <ContentSection title="Related topics">
-        <RelatedItems subject="math" items={relatedTopics} />
+        <RelatedItems subject="math" current="matrix-operations" items={relatedTopics} />
       </ContentSection>
     </DetailPage>
   );

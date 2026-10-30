@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
-import { getItem, isAvailable, itemHref, type SubjectId } from '@/config/content';
+import { getItem, isAvailable, itemHref, neighboursOf, type SubjectId } from '@/config/content';
 import Tag from './Tag';
 
 /**
@@ -12,10 +12,15 @@ export type RelatedEntry = { slug: string; note?: string } | { title: string; no
 
 interface RelatedItemsProps {
   subject: SubjectId;
+  /** Slug of the page this is shown on. Items already linked as Previous/Next are left out. */
+  current: string;
   items: RelatedEntry[];
 }
 
-export default function RelatedItems({ subject, items }: RelatedItemsProps) {
+export default function RelatedItems({ subject, current, items }: RelatedItemsProps) {
+  const { prev, next } = neighboursOf(subject, current);
+  const alreadyLinked = new Set([prev?.href, next?.href]);
+
   const cards = items.map((entry) => {
     if ('slug' in entry) {
       const { topic, item } = getItem(subject, entry.slug);
@@ -26,7 +31,9 @@ export default function RelatedItems({ subject, items }: RelatedItemsProps) {
       };
     }
     return { title: entry.title, note: entry.note, href: undefined };
-  });
+  }).filter((card) => !card.href || !alreadyLinked.has(card.href));
+
+  if (cards.length === 0) return null;
 
   return (
     <div className="grid gap-4 sm:grid-cols-2">

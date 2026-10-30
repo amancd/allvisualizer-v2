@@ -7,9 +7,8 @@ import { Search, Menu, X } from 'lucide-react';
 import Logo from './Logo';
 
 const navLinks = [
-  { href: '/categories', label: 'Categories', match: ['/categories', '/dsa-visualizer', '/math-visualizer', '/physics-visualizer', '/ai-ml-visualizer'] },
-  { href: '/dsa-patterns', label: 'DSA Patterns', match: ['/dsa-patterns'] },
-  { href: '/support', label: 'Support', match: ['/support'] },
+  { href: '/categories', label: 'Categories', match: ['/categories', '/dsa-patterns', '/dsa-visualizer', '/math-visualizer', '/physics-visualizer', '/ai-ml-visualizer'] },
+  { href: '/about', label: 'About', match: ['/about'] },
   { href: '/contact', label: 'Contact', match: ['/contact'] },
 ];
 
@@ -35,7 +34,7 @@ export default function Header() {
           : 'bg-white/60 backdrop-blur-md border-transparent'
       }`}
     >
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav className="page-container">
         <div className="flex h-16 items-center justify-between gap-6">
           <Logo />
 

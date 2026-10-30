@@ -1,6 +1,6 @@
 import type { LucideIcon } from 'lucide-react';
 import { breadcrumbsFor, getItem, type SubjectId } from '@/config/content';
-import ContentHeader, { contentWidth } from './ContentHeader';
+import ContentHeader from './ContentHeader';
 import DifficultyBadge from './DifficultyBadge';
 import Discussion from './Discussion';
 import ItemNav from './ItemNav';
@@ -16,8 +16,6 @@ interface DetailPageProps {
   icon?: LucideIcon | string;
   /** Extra header badges, shown after the difficulty badge. */
   meta?: React.ReactNode;
-  /** 'narrow' suits reading-heavy problem pages; 'wide' suits big simulations. */
-  width?: 'narrow' | 'wide';
   /** Show the Giscus discussion at the end. */
   discussion?: boolean;
   children: React.ReactNode;
@@ -34,7 +32,6 @@ export default function DetailPage({
   description,
   icon,
   meta,
-  width = 'wide',
   discussion = true,
   children,
 }: DetailPageProps) {
@@ -47,7 +44,6 @@ export default function DetailPage({
         icon={icon}
         title={title ?? item.title}
         description={description ?? item.description}
-        width={width}
         meta={
           <>
             <DifficultyBadge level={item.difficulty} />
@@ -55,7 +51,7 @@ export default function DetailPage({
           </>
         }
       />
-      <div className={`${contentWidth[width]} mx-auto space-y-12 px-4 sm:px-6 lg:px-8 py-10`}>
+      <div className="page-container space-y-12 py-10">
         {children}
         <ItemNav subject={subject} item={slug} />
         {discussion && <Discussion />}

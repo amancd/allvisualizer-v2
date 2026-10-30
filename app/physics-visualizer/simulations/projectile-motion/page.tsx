@@ -752,7 +752,7 @@ export default function ProjectileMotionPage() {
       </ContentSection>
 
       <ContentSection title="Related topics">
-        <RelatedItems subject="physics" items={relatedTopics} />
+        <RelatedItems subject="physics" current="projectile-motion" items={relatedTopics} />
       </ContentSection>
     </DetailPage>
   );

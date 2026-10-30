@@ -9,17 +9,13 @@ interface ContentHeaderProps {
   icon?: LucideIcon | string;
   /** Badges or metadata shown under the description, e.g. difficulty and complexity. */
   meta?: React.ReactNode;
-  /** Match the width of the content below. */
-  width?: 'narrow' | 'wide';
 }
 
-export const contentWidth = { narrow: 'max-w-3xl', wide: 'max-w-6xl' } as const;
-
 /** Header for topic and detail pages: breadcrumbs, icon, title, description. */
-export default function ContentHeader({ breadcrumbs, title, description, icon: Icon, meta, width = 'wide' }: ContentHeaderProps) {
+export default function ContentHeader({ breadcrumbs, title, description, icon: Icon, meta }: ContentHeaderProps) {
   return (
     <header className="hero-surface border-b border-line">
-      <div className={`${contentWidth[width]} mx-auto px-4 sm:px-6 lg:px-8 pt-24 md:pt-28 pb-10`}>
+      <div className="page-container pt-24 md:pt-28 pb-10">
         <Breadcrumbs items={breadcrumbs} className="mb-6" />
         <div className="flex items-start gap-4">
           {Icon && (

@@ -190,7 +190,6 @@ export default function ChainRulePage() {
     <DetailPage
       subject="math"
       item="chain-rule"
-      width="narrow"
       title="The Chain Rule"
       description="Master the chain rule to find derivatives of composite functions. Learn how to break down complex functions and apply differentiation step by step."
     >
@@ -246,7 +245,7 @@ export default function ChainRulePage() {
       </ContentSection>
 
       <ContentSection title="Related topics">
-        <RelatedItems subject="math" items={relatedTopics} />
+        <RelatedItems subject="math" current="chain-rule" items={relatedTopics} />
       </ContentSection>
     </DetailPage>
   );

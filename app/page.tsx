@@ -43,14 +43,9 @@ export default function Home() {
         title={<>Learn hard concepts by <span className="text-gradient">seeing them move</span></>}
         description="Open-source interactive visualizations for algorithms, mathematics, physics and machine learning. Step through every idea instead of memorizing it."
         actions={
-          <>
-            <Link href="/categories" className={buttonStyles({ size: 'lg' })}>
-              Browse categories <ArrowRight className="h-4 w-4" />
-            </Link>
-            <Link href="/dsa-patterns" className={buttonStyles({ variant: 'outline', size: 'lg' })}>
-              Explore DSA Patterns
-            </Link>
-          </>
+          <Link href="/categories" className={buttonStyles({ size: 'lg' })}>
+            Browse categories <ArrowRight className="h-4 w-4" />
+          </Link>
         }
       >
         <dl className="mx-auto mt-14 grid max-w-3xl grid-cols-2 gap-px overflow-hidden rounded-card border border-line bg-line shadow-card sm:grid-cols-4">
@@ -65,15 +60,10 @@ export default function Home() {
       </PageHeader>
 
       <section className="py-16 md:py-24">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="page-container">
           <SectionHeader
             title="Pick a subject"
             description="Start with whatever you're studying right now."
-            action={
-              <Link href="/categories" className="inline-flex items-center gap-1 text-sm font-semibold text-brand-700 hover:text-brand-800">
-                All categories <ArrowRight className="h-4 w-4" />
-              </Link>
-            }
           />
           <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
             <div className="md:col-span-2">
@@ -86,34 +76,14 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-y border-line bg-subtle py-16 md:py-24">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="border-t border-line bg-subtle py-16 md:py-24">
+        <div className="page-container">
           <SectionHeader title="Why AllVisualizer" description="Built for the moment a concept finally clicks." />
           <CardGrid items={features} columns={3} />
           <figure className="mt-12 text-center">
             <blockquote className="text-lg italic text-ink-muted">&ldquo;Imagination is more important than knowledge.&rdquo;</blockquote>
             <figcaption className="mt-1 text-sm text-ink-faint">Albert Einstein</figcaption>
           </figure>
-        </div>
-      </section>
-
-      <section className="py-16 md:py-24">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative overflow-hidden rounded-3xl border border-brand-100 bg-gradient-to-br from-brand-50 via-white to-fuchsia-50 px-6 py-14 text-center shadow-card sm:px-12">
-            <div className="absolute inset-0 bg-dots [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_70%)] opacity-70" aria-hidden />
-            <div className="relative">
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-ink">Start your learning journey today</h2>
-              <p className="mx-auto mt-3 max-w-xl text-ink-muted">
-                Pick a topic, press play and see the idea unfold step by step.
-              </p>
-              <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-                <Link href="/categories" className={buttonStyles({ size: 'lg' })}>Explore all categories</Link>
-                <Link href="/dsa-visualizer" className={buttonStyles({ variant: 'outline', size: 'lg' })}>
-                  Start with DSA
-                </Link>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
     </div>

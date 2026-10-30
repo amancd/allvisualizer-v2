@@ -297,7 +297,6 @@ export default function OptimizationPage() {
     <DetailPage
       subject="math"
       item="optimization"
-      width="narrow"
       description="Learn to find maximum and minimum values using derivatives. Master critical points, the second derivative test, and real-world optimization applications."
     >
       <ContentSection title="Problem statement">
@@ -355,7 +354,7 @@ export default function OptimizationPage() {
       </ContentSection>
 
       <ContentSection title="Related topics">
-        <RelatedItems subject="math" items={relatedTopics} />
+        <RelatedItems subject="math" current="optimization" items={relatedTopics} />
       </ContentSection>
     </DetailPage>
   );

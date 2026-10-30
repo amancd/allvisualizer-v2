@@ -115,7 +115,6 @@ export default function BestTimeToBuySellStockPage() {
     <DetailPage
       subject="dsa"
       item="best-time-to-buy-sell-stock"
-      width="narrow"
       description="Find the maximum profit you can achieve from buying and selling a stock once. Learn the greedy approach that tracks the minimum price and maximum profit."
       meta={<span className="font-mono">Time O(n) · Space O(1)</span>}
     >

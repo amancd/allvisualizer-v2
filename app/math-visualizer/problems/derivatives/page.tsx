@@ -158,7 +158,6 @@ export default function DerivativesPage() {
     <DetailPage
       subject="math"
       item="derivatives"
-      width="narrow"
       description="Learn how derivatives measure instantaneous rate of change and visualize tangent lines to understand the geometric interpretation of differentiation."
     >
       <ContentSection title="Problem statement">
@@ -219,7 +218,7 @@ export default function DerivativesPage() {
       </ContentSection>
 
       <ContentSection title="Related topics">
-        <RelatedItems subject="math" items={relatedTopics} />
+        <RelatedItems subject="math" current="derivatives" items={relatedTopics} />
       </ContentSection>
     </DetailPage>
   );

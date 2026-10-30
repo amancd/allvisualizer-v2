@@ -77,7 +77,6 @@ export default function ValidPalindromePage() {
     <DetailPage
       subject="dsa"
       item="valid-palindrome"
-      width="narrow"
       description="Check if a string is a palindrome after removing non-alphanumeric characters and ignoring case."
       meta={<span className="font-mono">Time O(n) · Space O(1)</span>}
     >
@@ -146,7 +145,7 @@ Explanation: "raceacar" is not a palindrome.`}</pre>
       </ContentSection>
 
       <ContentSection title="Related problems">
-        <RelatedItems subject="dsa" items={relatedProblems} />
+        <RelatedItems subject="dsa" current="valid-palindrome" items={relatedProblems} />
       </ContentSection>
     </DetailPage>
   );

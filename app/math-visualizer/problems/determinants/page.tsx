@@ -594,7 +594,7 @@ export default function DeterminantsPage() {
       </ContentSection>
 
       <ContentSection title="Related topics">
-        <RelatedItems subject="math" items={relatedTopics} />
+        <RelatedItems subject="math" current="determinants" items={relatedTopics} />
       </ContentSection>
     </DetailPage>
   );

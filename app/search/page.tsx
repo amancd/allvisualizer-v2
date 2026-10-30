@@ -69,7 +69,7 @@ export default function SearchPage() {
       </PageHeader>
 
       <section className="py-12">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="page-container">
           <p className="mb-6 text-sm text-ink-muted">
             <span className="font-semibold text-ink">{results.length}</span> {results.length === 1 ? 'result' : 'results'}
             {query && <> for &ldquo;{query}&rdquo;</>}
@@ -113,7 +113,7 @@ export default function SearchPage() {
 
       {!query && (
         <section className="border-t border-line bg-subtle py-14">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="page-container text-center">
             <h2 className="text-xl font-semibold text-ink">Popular topics</h2>
             <div className="mt-5 flex flex-wrap justify-center gap-2">
               {popular.map((topic) => (

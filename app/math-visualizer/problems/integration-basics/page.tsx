@@ -246,7 +246,6 @@ export default function IntegrationBasicsPage() {
     <DetailPage
       subject="math"
       item="integration-basics"
-      width="narrow"
       description="Learn about antiderivatives and the area under curves. Master the Fundamental Theorem of Calculus and understand how integration reverses differentiation."
     >
       <ContentSection title="Problem statement">
@@ -303,7 +302,7 @@ export default function IntegrationBasicsPage() {
       </ContentSection>
 
       <ContentSection title="Related topics">
-        <RelatedItems subject="math" items={relatedTopics} />
+        <RelatedItems subject="math" current="integration-basics" items={relatedTopics} />
       </ContentSection>
     </DetailPage>
   );

@@ -26,7 +26,7 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
     <section className="relative overflow-hidden border-b border-line">
       <div className="absolute inset-0 bg-dots [mask-image:radial-gradient(ellipse_at_top,black_30%,transparent_75%)]" aria-hidden />
       <div className="absolute inset-0 hero-glow" aria-hidden />
-      <div className={`relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 md:pt-36 pb-14 md:pb-20 ${centered ? 'text-center' : ''}`}>
+      <div className={`relative page-container pt-28 md:pt-36 pb-14 md:pb-20 ${centered ? 'text-center' : ''}`}>
         {breadcrumbs && breadcrumbs.length > 0 && (
           <Breadcrumbs items={breadcrumbs} className={`mb-6 ${centered ? 'justify-center' : ''}`} />
         )}

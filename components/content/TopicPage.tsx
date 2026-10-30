@@ -32,7 +32,7 @@ export default function TopicPage({ subjectId, topicSlug }: { subjectId: Subject
     <div>
       <ContentHeader breadcrumbs={breadcrumbsFor(subjectId, topicSlug)} icon={topic.icon} title={topic.title} description={topic.intro} />
 
-      <div className="max-w-6xl mx-auto space-y-14 px-4 sm:px-6 lg:px-8 py-12">
+      <div className="page-container space-y-14 py-12">
         {topic.concepts && (
           <ContentSection title="Key concepts">
             <CardGrid items={topic.concepts} columns={topic.concepts.length === 3 ? 3 : 4} />
