@@ -55,11 +55,11 @@ export default function WavesOpticsPage() {
         {/* Breadcrumb */}
         <nav className="mb-8 text-sm">
           <ol className="flex items-center gap-2 text-gray-500">
-            <li><Link href="/" className="hover:text-gray-900">Home</Link></li>
+            <li><Link href="/" className="hover:text-ink">Home</Link></li>
             <li>/</li>
-            <li><Link href="/physics-visualizer" className="hover:text-gray-900">Physics Visualizer</Link></li>
+            <li><Link href="/physics-visualizer" className="hover:text-ink">Physics Visualizer</Link></li>
             <li>/</li>
-            <li className="text-gray-900 font-medium">Waves & Optics</li>
+            <li className="text-ink font-medium">Waves & Optics</li>
           </ol>
         </nav>
 
@@ -67,11 +67,11 @@ export default function WavesOpticsPage() {
         <header className="mb-12 space-y-4">
           <div className="flex items-center gap-3">
             <span className="text-4xl">🌊</span>
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900">
+            <h1 className="text-4xl md:text-5xl font-bold text-ink tracking-tight">
               Waves & Optics
             </h1>
           </div>
-          <p className="text-xl text-gray-600 leading-relaxed">
+          <p className="text-xl text-ink-muted leading-relaxed">
             Explore the fascinating world of wave physics and optics. Learn about wave interference, diffraction, 
             refraction, and the wave nature of light through interactive simulations.
           </p>
@@ -79,28 +79,28 @@ export default function WavesOpticsPage() {
 
         {/* Key Concepts */}
         <section className="mb-12">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Key Concepts</h2>
+          <h2 className="text-2xl font-bold text-ink mb-4">Key Concepts</h2>
           <div className="grid sm:grid-cols-2 gap-4">
             <div className="bg-teal-50 border border-teal-200 rounded-lg p-4">
-              <h3 className="font-semibold text-gray-900 mb-2">Wave Interference</h3>
+              <h3 className="font-semibold text-ink mb-2">Wave Interference</h3>
               <p className="text-sm text-gray-700">
                 Superposition of waves creates constructive and destructive interference patterns.
               </p>
             </div>
             <div className="bg-teal-50 border border-teal-200 rounded-lg p-4">
-              <h3 className="font-semibold text-gray-900 mb-2">Refraction</h3>
+              <h3 className="font-semibold text-ink mb-2">Refraction</h3>
               <p className="text-sm text-gray-700">
                 Light bends when passing between media with different refractive indices.
               </p>
             </div>
             <div className="bg-teal-50 border border-teal-200 rounded-lg p-4">
-              <h3 className="font-semibold text-gray-900 mb-2">Diffraction</h3>
+              <h3 className="font-semibold text-ink mb-2">Diffraction</h3>
               <p className="text-sm text-gray-700">
                 Waves bend around obstacles and spread through openings.
               </p>
             </div>
             <div className="bg-teal-50 border border-teal-200 rounded-lg p-4">
-              <h3 className="font-semibold text-gray-900 mb-2">Wave-Particle Duality</h3>
+              <h3 className="font-semibold text-ink mb-2">Wave-Particle Duality</h3>
               <p className="text-sm text-gray-700">
                 Light exhibits both wave and particle properties in quantum mechanics.
               </p>
@@ -110,17 +110,17 @@ export default function WavesOpticsPage() {
 
         {/* Problems Grid */}
         <section className="mb-12">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Simulations</h2>
+          <h2 className="text-2xl font-bold text-ink mb-6">Simulations</h2>
           <div className="space-y-4">
             {problems.map((simulation) => (
               <div
                 key={simulation.slug}
-                className={`border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow ${
+                className={`border border-line rounded-lg p-6 hover:shadow-card-hover transition-shadow ${
                   simulation.comingSoon ? 'opacity-60' : ''
                 }`}
               >
                 <div className="flex items-start justify-between mb-3">
-                  <h3 className="text-xl font-bold text-gray-900">{simulation.title}</h3>
+                  <h3 className="text-xl font-bold text-ink">{simulation.title}</h3>
                   <span className={`px-2 py-1 text-xs font-medium rounded shrink-0 ${
                     simulation.difficulty === 'Beginner' 
                       ? 'bg-green-100 text-green-700'
@@ -132,7 +132,7 @@ export default function WavesOpticsPage() {
                   </span>
                 </div>
 
-                <p className="text-gray-600 mb-4">
+                <p className="text-ink-muted mb-4">
                   {simulation.description}
                 </p>
 
@@ -150,7 +150,7 @@ export default function WavesOpticsPage() {
                 {!simulation.comingSoon ? (
                   <Link
                     href={`/physics-visualizer/simulations/${simulation.slug}`}
-                    className="inline-block w-full px-4 py-2 bg-transparent text-black border border-black text-center rounded-lg hover:bg-gray-50 transition-colors"
+                    className="inline-block w-full px-4 py-2 bg-white text-brand-700 border border-brand-200 shadow-card text-center rounded-lg hover:bg-subtle transition-colors"
                   >
                     Start Simulation →
                   </Link>

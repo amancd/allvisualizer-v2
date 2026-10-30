@@ -249,21 +249,21 @@ export default function PhotoelectricEffectVisualizer() {
   return (
     <div className="space-y-6">
       {/* Canvas */}
-      <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
+      <div className="border border-line rounded-lg p-4 bg-subtle">
         <div className="text-xs font-semibold text-gray-700 mb-3">Photoelectric Effect Demonstration</div>
         <canvas
           ref={canvasRef}
           width={canvasWidth}
           height={canvasHeight}
-          className="border border-gray-300 bg-gray-900 mx-auto block"
+          className="border border-line-strong bg-gray-900 mx-auto block"
         />
-        <div className="text-xs text-gray-600 text-center mt-2">
+        <div className="text-xs text-ink-muted text-center mt-2">
           Photons hit the metal surface. If energy E = hf ≥ work function φ, electrons are ejected.
         </div>
       </div>
 
       {/* Controls */}
-      <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
+      <div className="border border-line rounded-lg p-4 bg-subtle">
         <div className="text-xs font-semibold text-gray-700 mb-3">Light Parameters</div>
         
         <div className="grid md:grid-cols-2 gap-4 mb-4">
@@ -280,7 +280,7 @@ export default function PhotoelectricEffectVisualizer() {
               onChange={(e) => setFrequency(Number(e.target.value))}
               className="w-full"
             />
-            <div className="text-xs text-gray-600 mt-1">
+            <div className="text-xs text-ink-muted mt-1">
               Photon Energy: {getPhotonEnergy(frequency).toFixed(2)} eV
             </div>
           </div>
@@ -298,7 +298,7 @@ export default function PhotoelectricEffectVisualizer() {
               onChange={(e) => setIntensity(Number(e.target.value))}
               className="w-full"
             />
-            <div className="text-xs text-gray-600 mt-1">
+            <div className="text-xs text-ink-muted mt-1">
               More photons per second
             </div>
           </div>
@@ -320,7 +320,7 @@ export default function PhotoelectricEffectVisualizer() {
                 className={`px-3 py-2 text-xs rounded ${
                   metal === m
                     ? 'bg-blue-600 text-white'
-                    : 'bg-white border border-gray-300 hover:bg-gray-50'
+                    : 'bg-white border border-line-strong hover:bg-subtle'
                 }`}
               >
                 {m.charAt(0).toUpperCase() + m.slice(1)}
@@ -346,20 +346,20 @@ export default function PhotoelectricEffectVisualizer() {
               setEjectedCount(0);
               setPhotonTime(0);
             }}
-            className="px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium hover:bg-gray-100"
+            className="px-4 py-2 border border-line-strong rounded-lg text-sm font-medium hover:bg-gray-100"
           >
             Reset
           </button>
         </div>
 
-        <div className="mt-3 text-sm text-gray-600">
+        <div className="mt-3 text-sm text-ink-muted">
           Electrons ejected: {ejectedCount}
         </div>
       </div>
 
       {/* Analysis */}
-      <div className={`border border-gray-200 rounded-lg p-4 ${canEject() ? 'bg-green-50' : 'bg-red-50'}`}>
-        <div className="text-sm font-semibold text-gray-900 mb-2">
+      <div className={`border border-line rounded-lg p-4 ${canEject() ? 'bg-green-50' : 'bg-red-50'}`}>
+        <div className="text-sm font-semibold text-ink mb-2">
           {canEject() ? '✓ Photoelectric Effect Occurs' : '✗ No Photoelectric Effect'}
         </div>
         <div className="text-sm text-gray-700 space-y-2">
@@ -391,7 +391,7 @@ export default function PhotoelectricEffectVisualizer() {
       </div>
 
       {/* Info */}
-      <div className="border border-gray-200 rounded-lg p-4 bg-purple-50">
+      <div className="border border-line rounded-lg p-4 bg-purple-50">
         <div className="text-sm text-purple-900">
           <p className="font-medium mb-2">🎯 Key Insights:</p>
           <ul className="list-disc list-inside space-y-1 text-sm">

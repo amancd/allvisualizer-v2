@@ -325,15 +325,15 @@ export default function HeatTransferVisualizer() {
   return (
     <div className="space-y-6">
       {/* Canvas */}
-      <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
+      <div className="border border-line rounded-lg p-4 bg-subtle">
         <div className="text-xs font-semibold text-gray-700 mb-3">Heat Transfer Visualization</div>
         <canvas
           ref={canvasRef}
           width={canvasWidth}
           height={canvasHeight}
-          className="border border-gray-300 bg-white mx-auto block"
+          className="border border-line-strong bg-white mx-auto block"
         />
-        <div className="text-xs text-gray-600 text-center mt-2">
+        <div className="text-xs text-ink-muted text-center mt-2">
           {transferMode === 'conduction' && 'Heat flows through direct contact'}
           {transferMode === 'convection' && 'Heat transfer through fluid circulation'}
           {transferMode === 'radiation' && 'Heat transfer through electromagnetic waves'}
@@ -341,7 +341,7 @@ export default function HeatTransferVisualizer() {
       </div>
 
       {/* Transfer Mode */}
-      <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
+      <div className="border border-line rounded-lg p-4 bg-subtle">
         <div className="text-xs font-semibold text-gray-700 mb-3">Heat Transfer Mode</div>
         <div className="grid grid-cols-3 gap-2">
           <button
@@ -349,7 +349,7 @@ export default function HeatTransferVisualizer() {
             className={`px-3 py-2 text-sm rounded ${
               transferMode === 'conduction'
                 ? 'bg-red-600 text-white'
-                : 'bg-white border border-gray-300 hover:bg-gray-50'
+                : 'bg-white border border-line-strong hover:bg-subtle'
             }`}
           >
             Conduction
@@ -359,7 +359,7 @@ export default function HeatTransferVisualizer() {
             className={`px-3 py-2 text-sm rounded ${
               transferMode === 'convection'
                 ? 'bg-red-600 text-white'
-                : 'bg-white border border-gray-300 hover:bg-gray-50'
+                : 'bg-white border border-line-strong hover:bg-subtle'
             }`}
           >
             Convection
@@ -369,7 +369,7 @@ export default function HeatTransferVisualizer() {
             className={`px-3 py-2 text-sm rounded ${
               transferMode === 'radiation'
                 ? 'bg-red-600 text-white'
-                : 'bg-white border border-gray-300 hover:bg-gray-50'
+                : 'bg-white border border-line-strong hover:bg-subtle'
             }`}
           >
             Radiation
@@ -378,7 +378,7 @@ export default function HeatTransferVisualizer() {
       </div>
 
       {/* Controls */}
-      <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
+      <div className="border border-line rounded-lg p-4 bg-subtle">
         <div className="text-xs font-semibold text-gray-700 mb-3">Parameters</div>
         
         <div className="grid md:grid-cols-2 gap-4">
@@ -425,7 +425,7 @@ export default function HeatTransferVisualizer() {
                     className={`px-3 py-2 text-xs rounded ${
                       material === key
                         ? 'bg-blue-600 text-white'
-                        : 'bg-white border border-gray-300 hover:bg-gray-50'
+                        : 'bg-white border border-line-strong hover:bg-subtle'
                     }`}
                   >
                     {mat.name}
@@ -454,7 +454,7 @@ export default function HeatTransferVisualizer() {
               setMaterial('copper');
               setTime(0);
             }}
-            className="px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium hover:bg-gray-100"
+            className="px-4 py-2 border border-line-strong rounded-lg text-sm font-medium hover:bg-gray-100"
           >
             Reset
           </button>
@@ -462,7 +462,7 @@ export default function HeatTransferVisualizer() {
       </div>
 
       {/* Info */}
-      <div className="border border-gray-200 rounded-lg p-4 bg-red-50">
+      <div className="border border-line rounded-lg p-4 bg-red-50">
         <div className="text-sm text-red-900">
           <p className="font-medium mb-2">💡 Key Concepts:</p>
           <ul className="list-disc list-inside space-y-1 text-sm">

@@ -77,21 +77,21 @@ export default function BestTimeToBuySellStockVisualizer() {
             type="text"
             value={inputValue}
             onChange={(e) => handleInputChange(e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-gray-500 focus:border-transparent"
+            className="w-full px-3 py-2 border border-line-strong rounded-lg text-sm focus:ring-2 focus:ring-brand-500 focus:border-transparent"
             placeholder="7, 1, 5, 3, 6, 4"
             disabled={isPlaying}
           />
         </div>
         <button
           onClick={reset}
-          className="px-4 py-2 bg-black text-white rounded-lg text-sm font-medium hover:bg-gray-800"
+          className="px-4 py-2 bg-brand-600 text-white rounded-lg text-sm font-medium hover:bg-brand-700 shadow-brand"
         >
           Reset
         </button>
       </div>
 
       {/* Bar Chart Visualization */}
-      <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
+      <div className="border border-line rounded-lg p-4 bg-subtle">
         <div className="text-xs font-semibold text-gray-700 mb-3">Stock Prices</div>
           {/* Bar Chart */}
           <div className="flex items-end justify-between gap-2 h-80 mb-4">
@@ -135,18 +135,18 @@ export default function BestTimeToBuySellStockVisualizer() {
       </div>
 
       {/* Stats */}
-      <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
+      <div className="border border-line rounded-lg p-4 bg-subtle">
         <div className="text-xs font-semibold text-gray-700 mb-3">Statistics</div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-          <div className="bg-white border border-gray-200 rounded-lg p-3">
-            <div className="text-xs text-gray-600 font-medium">Min Price</div>
+          <div className="bg-white border border-line rounded-lg p-3 shadow-card">
+            <div className="text-xs text-ink-muted font-medium">Min Price</div>
             <div className="text-xl font-bold text-green-600">
               {minPrice === Infinity ? '-' : `$${minPrice}`}
             </div>
             {buyDay >= 0 && <div className="text-xs text-gray-500 mt-1">Day {buyDay}</div>}
           </div>
-          <div className="bg-white border border-gray-200 rounded-lg p-3">
-            <div className="text-xs text-gray-600 font-medium">Max Profit</div>
+          <div className="bg-white border border-line rounded-lg p-3 shadow-card">
+            <div className="text-xs text-ink-muted font-medium">Max Profit</div>
             <div className="text-xl font-bold text-blue-600">${maxProfit}</div>
             {sellDay >= 0 && buyDay >= 0 && (
               <div className="text-xs text-gray-500 mt-1">
@@ -154,8 +154,8 @@ export default function BestTimeToBuySellStockVisualizer() {
               </div>
             )}
           </div>
-          <div className="bg-white border border-gray-200 rounded-lg p-3">
-            <div className="text-xs text-gray-600 font-medium">Current Index</div>
+          <div className="bg-white border border-line rounded-lg p-3 shadow-card">
+            <div className="text-xs text-ink-muted font-medium">Current Index</div>
             <div className="text-xl font-bold text-purple-600">
               {currentIndex > 0 ? currentIndex - 1 : '-'}
             </div>
@@ -165,8 +165,8 @@ export default function BestTimeToBuySellStockVisualizer() {
               </div>
             )}
           </div>
-          <div className="bg-white border border-gray-200 rounded-lg p-3">
-            <div className="text-xs text-gray-600 font-medium">Progress</div>
+          <div className="bg-white border border-line rounded-lg p-3 shadow-card">
+            <div className="text-xs text-ink-muted font-medium">Progress</div>
             <div className="text-xl font-bold text-orange-600">
               {currentIndex}/{prices.length}
             </div>
@@ -179,7 +179,7 @@ export default function BestTimeToBuySellStockVisualizer() {
 
       {/* Current Step Info */}
       {currentIndex > 0 && currentIndex <= prices.length && (
-        <div className="border border-gray-200 rounded-lg p-4 bg-white">
+        <div className="border border-line rounded-lg p-4 bg-white shadow-card">
           <div className="text-sm text-gray-700">
             <div>Current Price: ${prices[currentIndex - 1]} (Day {currentIndex - 1})</div>
             <div className="text-xs text-gray-500 mt-1">
@@ -195,21 +195,21 @@ export default function BestTimeToBuySellStockVisualizer() {
         <button
           onClick={reset}
           disabled={currentIndex === 0}
-          className="px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium hover:bg-gray-50 disabled:opacity-50"
+          className="px-4 py-2 border border-line-strong rounded-lg text-sm font-medium hover:bg-subtle disabled:opacity-50"
         >
           Reset
         </button>
         <button
           onClick={step}
           disabled={isPlaying || currentIndex >= prices.length}
-          className="px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium hover:bg-gray-50 disabled:opacity-50"
+          className="px-4 py-2 border border-line-strong rounded-lg text-sm font-medium hover:bg-subtle disabled:opacity-50"
         >
           Step →
         </button>
         <button
           onClick={() => setIsPlaying(!isPlaying)}
           disabled={currentIndex >= prices.length}
-          className="px-6 py-2 bg-black text-white rounded-lg text-sm font-medium hover:bg-gray-800 disabled:opacity-50"
+          className="px-6 py-2 bg-brand-600 text-white rounded-lg text-sm font-medium hover:bg-brand-700 disabled:opacity-50 shadow-brand"
         >
           {isPlaying ? 'Pause' : currentIndex >= prices.length ? 'Completed' : 'Play'}
         </button>
@@ -217,13 +217,13 @@ export default function BestTimeToBuySellStockVisualizer() {
 
       {/* Progress */}
       <div className="space-y-1">
-        <div className="flex justify-between text-xs text-gray-600">
+        <div className="flex justify-between text-xs text-ink-muted">
           <span>Day {currentIndex} / {prices.length}</span>
           <span>{Math.round((currentIndex / prices.length) * 100)}%</span>
         </div>
         <div className="w-full bg-gray-200 rounded-full h-1.5">
           <div
-            className="bg-black h-1.5 rounded-full transition-all"
+            className="bg-brand-600 h-1.5 rounded-full transition-all"
             style={{ width: `${(currentIndex / prices.length) * 100}%` }}
           />
         </div>

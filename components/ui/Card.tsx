@@ -15,9 +15,9 @@ export const Card: React.FC<CardProps> = ({
   padding = 'md',
   border = true,
 }) => {
-  const baseStyles = 'bg-white rounded-xl';
-  const borderStyles = border ? 'border-2 border-gray-200' : '';
-  const hoverStyles = hover ? 'hover:border-gray-400 hover:shadow-lg transition-all' : '';
+  const baseStyles = 'bg-white rounded-card shadow-card';
+  const borderStyles = border ? 'border border-line' : '';
+  const hoverStyles = hover ? 'transition-all duration-200 hover:-translate-y-0.5 hover:border-brand-200 hover:shadow-card-hover' : '';
   
   const paddingStyles = {
     none: '',
@@ -55,7 +55,7 @@ export const CardTitle: React.FC<CardTitleProps> = ({ children, className = '', 
     lg: 'text-2xl',
   };
   
-  return <h3 className={`${sizeStyles[size]} font-bold text-gray-900 ${className}`}>{children}</h3>;
+  return <h3 className={`${sizeStyles[size]} font-semibold text-ink ${className}`}>{children}</h3>;
 };
 
 interface CardDescriptionProps {
@@ -64,7 +64,7 @@ interface CardDescriptionProps {
 }
 
 export const CardDescription: React.FC<CardDescriptionProps> = ({ children, className = '' }) => {
-  return <p className={`text-gray-600 ${className}`}>{children}</p>;
+  return <p className={`text-ink-muted ${className}`}>{children}</p>;
 };
 
 interface CardContentProps {

@@ -239,17 +239,17 @@ export default function BohrModelVisualizer() {
   return (
     <div className="space-y-6">
       {/* Canvas */}
-      <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
+      <div className="border border-line rounded-lg p-4 bg-subtle">
         <canvas
           ref={canvasRef}
           width={canvasWidth}
           height={canvasHeight}
-          className="border border-gray-300 bg-gray-900 mx-auto block"
+          className="border border-line-strong bg-gray-900 mx-auto block"
         />
       </div>
 
       {/* Energy Level Controls */}
-      <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
+      <div className="border border-line rounded-lg p-4 bg-subtle">
         <div className="text-xs font-semibold text-gray-700 mb-3">Electron Energy Level</div>
         
         <div className="grid grid-cols-6 gap-2 mb-4">
@@ -261,7 +261,7 @@ export default function BohrModelVisualizer() {
               className={`px-3 py-2 text-sm rounded ${
                 currentLevel === n
                   ? 'bg-blue-600 text-white'
-                  : 'bg-white border border-gray-300 hover:bg-gray-50 disabled:opacity-50'
+                  : 'bg-white border border-line-strong hover:bg-subtle disabled:opacity-50'
               }`}
             >
               n = {n}
@@ -275,7 +275,7 @@ export default function BohrModelVisualizer() {
             className={`px-4 py-2 rounded-lg text-sm font-medium ${
               showOrbits 
                 ? 'bg-blue-500 text-white' 
-                : 'bg-white border border-gray-300 hover:bg-gray-50'
+                : 'bg-white border border-line-strong hover:bg-subtle'
             }`}
           >
             {showOrbits ? 'Hide' : 'Show'} Orbits
@@ -287,7 +287,7 @@ export default function BohrModelVisualizer() {
               setIsTransitioning(false);
               setEmittedPhotons([]);
             }}
-            className="px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium hover:bg-gray-100"
+            className="px-4 py-2 border border-line-strong rounded-lg text-sm font-medium hover:bg-gray-100"
           >
             Reset to Ground State
           </button>
@@ -295,7 +295,7 @@ export default function BohrModelVisualizer() {
       </div>
 
       {/* Quick Transitions */}
-      <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
+      <div className="border border-line rounded-lg p-4 bg-subtle">
         <div className="text-xs font-semibold text-gray-700 mb-3">Common Transitions</div>
         <div className="grid md:grid-cols-3 gap-2">
           <button
@@ -306,7 +306,7 @@ export default function BohrModelVisualizer() {
               }
             }}
             disabled={isTransitioning}
-            className="px-3 py-2 text-sm bg-white border border-gray-300 rounded hover:bg-gray-50 disabled:opacity-50"
+            className="px-3 py-2 text-sm bg-white border border-line-strong rounded hover:bg-subtle disabled:opacity-50"
           >
             3→2 (Balmer Hα, 656nm)
           </button>
@@ -318,7 +318,7 @@ export default function BohrModelVisualizer() {
               }
             }}
             disabled={isTransitioning}
-            className="px-3 py-2 text-sm bg-white border border-gray-300 rounded hover:bg-gray-50 disabled:opacity-50"
+            className="px-3 py-2 text-sm bg-white border border-line-strong rounded hover:bg-subtle disabled:opacity-50"
           >
             4→2 (Balmer Hβ, 486nm)
           </button>
@@ -330,7 +330,7 @@ export default function BohrModelVisualizer() {
               }
             }}
             disabled={isTransitioning}
-            className="px-3 py-2 text-sm bg-white border border-gray-300 rounded hover:bg-gray-50 disabled:opacity-50"
+            className="px-3 py-2 text-sm bg-white border border-line-strong rounded hover:bg-subtle disabled:opacity-50"
           >
             2→1 (Lyman α, 121nm)
           </button>
@@ -338,9 +338,9 @@ export default function BohrModelVisualizer() {
       </div>
 
       {/* Energy Level Diagram */}
-      <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
+      <div className="border border-line rounded-lg p-4 bg-subtle">
         <div className="text-xs font-semibold text-gray-700 mb-3">Energy Level Diagram</div>
-        <div className="bg-white p-4 rounded border border-gray-200">
+        <div className="bg-white p-4 rounded border border-line">
           {[6, 5, 4, 3, 2, 1].map(n => {
             const energy = getEnergyLevel(n);
             return (
@@ -351,7 +351,7 @@ export default function BohrModelVisualizer() {
                 <div className="w-16 text-sm font-mono text-gray-700">
                   n = {n}
                 </div>
-                <div className="w-32 text-sm text-gray-600">
+                <div className="w-32 text-sm text-ink-muted">
                   {energy.toFixed(2)} eV
                 </div>
               </div>
@@ -361,7 +361,7 @@ export default function BohrModelVisualizer() {
       </div>
 
       {/* Info */}
-      <div className="border border-gray-200 rounded-lg p-4 bg-purple-50">
+      <div className="border border-line rounded-lg p-4 bg-purple-50">
         <div className="text-sm text-purple-900">
           <p className="font-medium mb-2">💡 Key Concepts:</p>
           <ul className="list-disc list-inside space-y-1 text-sm">

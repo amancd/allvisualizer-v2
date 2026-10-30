@@ -89,14 +89,14 @@ export default function PhysicsVisualizerPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="pt-32 md:pt-40 pb-16 md:pb-24">
+      <section className="pt-32 md:pt-40 pb-16 md:pb-24 hero-surface border-b border-line">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-6">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
+            <h1 className="text-4xl md:text-5xl font-bold text-ink leading-tight tracking-tight">
               Physics Visualizer
             </h1>
             
-            <p className="text-xl text-gray-600 leading-relaxed">
+            <p className="text-xl text-ink-muted leading-relaxed">
               Master physics concepts through interactive visualizations. Watch simulations, experiment with parameters, and understand the laws that govern our universe.
             </p>
 
@@ -116,13 +116,13 @@ export default function PhysicsVisualizerPage() {
       </section>
 
       {/* Categories Grid */}
-      <section className="py-16 md:py-20 bg-gray-50">
+      <section className="py-16 md:py-20 bg-subtle">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-3">
+            <h2 className="text-3xl font-bold text-ink mb-3 tracking-tight">
               Browse Topics
             </h2>
-            <p className="text-lg text-gray-600">
+            <p className="text-lg text-ink-muted">
               Explore physics concepts organized by category
             </p>
           </div>
@@ -134,22 +134,22 @@ export default function PhysicsVisualizerPage() {
                 <div className="flex items-start justify-between mb-3">
                   <div className="flex items-center gap-3">
                     <div className="text-gray-700">{category.icon}</div>
-                    <h3 className="text-lg font-semibold text-gray-900 group-hover:text-gray-900">
+                    <h3 className="text-lg font-semibold text-ink group-hover:text-brand-700">
                       {category.title}
                     </h3>
                   </div>
                   {category.isAvailable ? (
-                    <svg className="w-5 h-5 text-gray-400 group-hover:text-gray-900 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5 text-gray-400 group-hover:text-brand-700 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                     </svg>
                   ) : (
-                    <span className="px-2 py-0.5 bg-gray-200 text-gray-600 rounded text-xs font-medium flex-shrink-0">
+                    <span className="px-2 py-0.5 bg-gray-200 text-ink-muted rounded text-xs font-medium flex-shrink-0">
                       Coming Soon
                     </span>
                   )}
                 </div>
 
-                <p className="text-gray-600 text-sm mb-3">
+                <p className="text-ink-muted text-sm mb-3">
                   {category.description}
                 </p>
 
@@ -157,7 +157,7 @@ export default function PhysicsVisualizerPage() {
                   {category.topics.map((topic, i) => (
                     <span
                       key={i}
-                      className="px-2 py-0.5 bg-gray-100 text-gray-600 rounded text-xs"
+                      className="px-2 py-0.5 bg-gray-100 text-ink-muted rounded text-xs"
                     >
                       {topic}
                     </span>
@@ -166,7 +166,7 @@ export default function PhysicsVisualizerPage() {
 
                 {category.isAvailable && category.problems && (
                   <div className="mt-3 pt-3 border-t border-gray-100">
-                    <div className="text-xs text-gray-900 font-medium">
+                    <div className="text-xs text-ink font-medium">
                       {category.problems.length} {category.problems.length === 1 ? 'simulation' : 'simulations'} available
                     </div>
                   </div>
@@ -179,12 +179,12 @@ export default function PhysicsVisualizerPage() {
                 key={index}
                 href={`/physics-visualizer/${category.slug}`}
               >
-                <div className="group p-6 bg-white border border-gray-200 rounded-lg hover:border-gray-400 hover:shadow-sm transition-all">
+                <div className="group p-6 bg-white border border-line rounded-lg hover:border-brand-300 hover:shadow-card-hover transition-all shadow-card">
                   {CardContent}
                 </div>
               </Link>
             ) : (
-              <div key={index} className="p-6 bg-white border border-gray-200 rounded-lg opacity-60">
+              <div key={index} className="p-6 bg-white border border-line rounded-lg opacity-60 shadow-card">
                 {CardContent}
               </div>
             );
@@ -194,13 +194,13 @@ export default function PhysicsVisualizerPage() {
       </section>
 
       {/* Why Physics Section */}
-      <section className="py-16 md:py-20 border-t border-gray-200">
+      <section className="py-16 md:py-20 border-t border-line">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-3">
+            <h2 className="text-3xl font-bold text-ink mb-3 tracking-tight">
               Why Study Physics?
             </h2>
-            <p className="text-lg text-gray-600">
+            <p className="text-lg text-ink-muted">
               Understand the fundamental laws that govern our universe
             </p>
           </div>
@@ -211,8 +211,8 @@ export default function PhysicsVisualizerPage() {
                 <Target className="w-5 h-5 text-gray-700" />
               </div>
               <div>
-                <h3 className="font-semibold text-gray-900 mb-1">Universal Laws</h3>
-                <p className="text-sm text-gray-600">
+                <h3 className="font-semibold text-ink mb-1">Universal Laws</h3>
+                <p className="text-sm text-ink-muted">
                   Understand the fundamental principles that govern everything from atoms to galaxies
                 </p>
               </div>
@@ -223,8 +223,8 @@ export default function PhysicsVisualizerPage() {
                 <Lightbulb className="w-5 h-5 text-gray-700" />
               </div>
               <div>
-                <h3 className="font-semibold text-gray-900 mb-1">Problem Solving</h3>
-                <p className="text-sm text-gray-600">
+                <h3 className="font-semibold text-ink mb-1">Problem Solving</h3>
+                <p className="text-sm text-ink-muted">
                   Develop analytical thinking and mathematical modeling skills
                 </p>
               </div>
@@ -235,8 +235,8 @@ export default function PhysicsVisualizerPage() {
                 <Rocket className="w-5 h-5 text-cyan-700" />
               </div>
               <div>
-                <h3 className="font-semibold text-gray-900 mb-1">Technology</h3>
-                <p className="text-sm text-gray-600">
+                <h3 className="font-semibold text-ink mb-1">Technology</h3>
+                <p className="text-sm text-ink-muted">
                   Foundation for engineering, electronics, computing, and modern innovation
                 </p>
               </div>
@@ -247,8 +247,8 @@ export default function PhysicsVisualizerPage() {
                 <Sparkles className="w-5 h-5 text-gray-700" />
               </div>
               <div>
-                <h3 className="font-semibold text-gray-900 mb-1">Curiosity</h3>
-                <p className="text-sm text-gray-600">
+                <h3 className="font-semibold text-ink mb-1">Curiosity</h3>
+                <p className="text-sm text-ink-muted">
                   Satisfy your curiosity about how the universe works at every scale
                 </p>
               </div>
@@ -258,44 +258,44 @@ export default function PhysicsVisualizerPage() {
       </section>
 
       {/* Features */}
-      <section className="py-16 md:py-20 bg-gray-50">
+      <section className="py-16 md:py-20 bg-subtle">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-3">
+            <h2 className="text-3xl font-bold text-ink mb-3 tracking-tight">
               Learning Features
             </h2>
-            <p className="text-lg text-gray-600">
+            <p className="text-lg text-ink-muted">
               Everything you need to master physics concepts
             </p>
           </div>
 
           <div className="grid sm:grid-cols-3 gap-6">
-            <div className="bg-white border border-gray-200 rounded-lg p-6">
+            <div className="bg-white border border-line rounded-lg p-6 shadow-card">
               <div className="mb-3">
                 <Gamepad2 className="w-8 h-8 text-gray-700" />
               </div>
-              <h3 className="font-semibold text-gray-900 mb-2">Interactive Simulations</h3>
-              <p className="text-sm text-gray-600">
+              <h3 className="font-semibold text-ink mb-2">Interactive Simulations</h3>
+              <p className="text-sm text-ink-muted">
                 Real-time physics engines with adjustable parameters
               </p>
             </div>
             
-            <div className="bg-white border border-gray-200 rounded-lg p-6">
+            <div className="bg-white border border-line rounded-lg p-6 shadow-card">
               <div className="mb-3">
                 <LineChart className="w-8 h-8 text-gray-700" />
               </div>
-              <h3 className="font-semibold text-gray-900 mb-2">Live Graphs</h3>
-              <p className="text-sm text-gray-600">
+              <h3 className="font-semibold text-ink mb-2">Live Graphs</h3>
+              <p className="text-sm text-ink-muted">
                 Visualize position, velocity, acceleration, and energy
               </p>
             </div>
             
-            <div className="bg-white border border-gray-200 rounded-lg p-6">
+            <div className="bg-white border border-line rounded-lg p-6 shadow-card">
               <div className="mb-3">
                 <Calculator className="w-8 h-8 text-gray-700" />
               </div>
-              <h3 className="font-semibold text-gray-900 mb-2">Step-by-Step Math</h3>
-              <p className="text-sm text-gray-600">
+              <h3 className="font-semibold text-ink mb-2">Step-by-Step Math</h3>
+              <p className="text-sm text-ink-muted">
                 See equations and calculations behind each simulation
               </p>
             </div>

@@ -23,13 +23,13 @@ export default function ElasticCollisionsPage() {
         {/* Breadcrumb */}
         <nav className="mb-8 text-sm">
           <ol className="flex items-center gap-2 text-gray-500">
-            <li><Link href="/" className="hover:text-gray-900">Home</Link></li>
+            <li><Link href="/" className="hover:text-ink">Home</Link></li>
             <li>/</li>
-            <li><Link href="/physics-visualizer" className="hover:text-gray-900">Physics</Link></li>
+            <li><Link href="/physics-visualizer" className="hover:text-ink">Physics</Link></li>
             <li>/</li>
-            <li><Link href="/physics-visualizer/mechanics" className="hover:text-gray-900">Mechanics</Link></li>
+            <li><Link href="/physics-visualizer/mechanics" className="hover:text-ink">Mechanics</Link></li>
             <li>/</li>
-            <li className="text-gray-900 font-medium">Elastic Collisions</li>
+            <li className="text-ink font-medium">Elastic Collisions</li>
           </ol>
         </nav>
 
@@ -38,10 +38,10 @@ export default function ElasticCollisionsPage() {
           <div className="inline-block px-3 py-1 bg-orange-100 text-orange-800 rounded-full text-sm font-semibold border border-orange-300">
             Intermediate
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900">
+          <h1 className="text-4xl md:text-5xl font-bold text-ink tracking-tight">
             Elastic Collisions
           </h1>
-          <p className="text-xl text-gray-600 leading-relaxed">
+          <p className="text-xl text-ink-muted leading-relaxed">
             Explore the fundamental principles of momentum and energy conservation through interactive collision simulations.
           </p>
         </header>
@@ -51,7 +51,7 @@ export default function ElasticCollisionsPage() {
           {['Momentum Conservation', 'Energy Conservation', '1D Collisions', 'Physics Simulation'].map((topic) => (
             <span
               key={topic}
-              className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm border border-gray-300"
+              className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm border border-line-strong"
             >
               {topic}
             </span>
@@ -142,7 +142,7 @@ export default function ElasticCollisionsPage() {
         <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-between">
           <Link
             href="/physics-visualizer/simulations/newtons-laws"
-            className="flex items-center gap-2 px-6 py-3 bg-gray-100 text-gray-900 rounded-lg hover:bg-gray-200 transition-colors border-2 border-gray-300"
+            className="flex items-center gap-2 px-6 py-3 bg-gray-100 text-ink rounded-lg hover:bg-gray-200 transition-colors border-2 border-line-strong"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -152,7 +152,7 @@ export default function ElasticCollisionsPage() {
           
           <Link
             href="/physics-visualizer/mechanics"
-            className="flex items-center justify-center gap-2 px-6 py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors font-medium"
+            className="flex items-center justify-center gap-2 px-6 py-3 bg-brand-600 text-white rounded-lg hover:bg-brand-700 transition-colors font-medium shadow-brand"
           >
             <span>Back to Mechanics</span>
           </Link>

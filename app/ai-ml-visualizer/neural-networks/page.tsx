@@ -51,11 +51,11 @@ export default function NeuralNetworksPage() {
         {/* Breadcrumb */}
         <nav className="mb-8 text-sm">
           <ol className="flex items-center gap-2 text-gray-500">
-            <li><Link href="/" className="hover:text-gray-900">Home</Link></li>
+            <li><Link href="/" className="hover:text-ink">Home</Link></li>
             <li>/</li>
-            <li><Link href="/ai-ml-visualizer" className="hover:text-gray-900">AI & ML Visualizer</Link></li>
+            <li><Link href="/ai-ml-visualizer" className="hover:text-ink">AI & ML Visualizer</Link></li>
             <li>/</li>
-            <li className="text-gray-900 font-medium">Neural Networks</li>
+            <li className="text-ink font-medium">Neural Networks</li>
           </ol>
         </nav>
 
@@ -63,11 +63,11 @@ export default function NeuralNetworksPage() {
         <header className="mb-12 space-y-4">
           <div className="flex items-center gap-3">
             <span className="text-4xl">🧠</span>
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900">
+            <h1 className="text-4xl md:text-5xl font-bold text-ink tracking-tight">
               Neural Networks
             </h1>
           </div>
-          <p className="text-xl text-gray-600 leading-relaxed">
+          <p className="text-xl text-ink-muted leading-relaxed">
             Understand how artificial neural networks learn and make predictions. Visualize neurons, 
             weights, activations, and the learning process.
           </p>
@@ -75,18 +75,18 @@ export default function NeuralNetworksPage() {
 
         {/* Key Concepts */}
         <section className="mb-12">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Key Concepts</h2>
+          <h2 className="text-2xl font-bold text-ink mb-4">Key Concepts</h2>
           <div className="grid sm:grid-cols-2 gap-4">
-            <div className="bg-gray-100 border border-gray-300 rounded-lg p-4">
-              <h3 className="font-semibold text-gray-900 mb-2">Neurons & Weights</h3>
-              <p className="text-sm text-gray-900">
+            <div className="bg-gray-100 border border-line-strong rounded-lg p-4">
+              <h3 className="font-semibold text-ink mb-2">Neurons & Weights</h3>
+              <p className="text-sm text-ink">
                 Understand how artificial neurons process inputs with learned weights
               </p>
             </div>
             
-            <div className="bg-gray-100 border border-gray-300 rounded-lg p-4">
-              <h3 className="font-semibold text-gray-900 mb-2">Activation Functions</h3>
-              <p className="text-sm text-gray-900">
+            <div className="bg-gray-100 border border-line-strong rounded-lg p-4">
+              <h3 className="font-semibold text-ink mb-2">Activation Functions</h3>
+              <p className="text-sm text-ink">
                 See how non-linear functions enable networks to learn complex patterns
               </p>
             </div>
@@ -109,7 +109,7 @@ export default function NeuralNetworksPage() {
 
         {/* Problems List */}
         <section>
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Interactive Visualizations</h2>
+          <h2 className="text-2xl font-bold text-ink mb-6">Interactive Visualizations</h2>
           <div className="space-y-4">
             {problems.map((problem, index) => {
               const bgColor = problem.difficulty === 'Beginner' ? 'bg-green-100' : 
@@ -118,30 +118,30 @@ export default function NeuralNetworksPage() {
                                problem.difficulty === 'Intermediate' ? 'text-yellow-700' : 'text-red-700';
 
               const CardContent = (
-                <div className="p-6 bg-white border border-gray-200 rounded-lg hover:border-gray-400 hover:shadow-sm transition-all">
+                <div className="p-6 bg-white border border-line rounded-lg hover:border-brand-300 hover:shadow-card-hover transition-all shadow-card">
                   <div className="flex items-start justify-between mb-3">
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2">
-                        <h3 className="text-lg font-semibold text-gray-900 group-hover:text-gray-900">
+                        <h3 className="text-lg font-semibold text-ink group-hover:text-brand-700">
                           {problem.title}
                         </h3>
                         <span className={`px-2 py-0.5 ${bgColor} ${textColor} rounded text-xs font-medium`}>
                           {problem.difficulty}
                         </span>
                         {problem.comingSoon && (
-                          <span className="px-2 py-0.5 bg-gray-200 text-gray-600 rounded text-xs font-medium">
+                          <span className="px-2 py-0.5 bg-gray-200 text-ink-muted rounded text-xs font-medium">
                             Coming Soon
                           </span>
                         )}
                       </div>
-                      <p className="text-gray-600 text-sm mb-3">
+                      <p className="text-ink-muted text-sm mb-3">
                         {problem.description}
                       </p>
                       <div className="flex flex-wrap gap-1.5">
                         {problem.topics.map((topic, i) => (
                           <span
                             key={i}
-                            className="px-2 py-0.5 bg-gray-100 text-gray-600 rounded text-xs"
+                            className="px-2 py-0.5 bg-gray-100 text-ink-muted rounded text-xs"
                           >
                             {topic}
                           </span>
@@ -149,7 +149,7 @@ export default function NeuralNetworksPage() {
                       </div>
                     </div>
                     {!problem.comingSoon && (
-                      <svg className="w-5 h-5 text-gray-400 group-hover:text-gray-900 flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-5 h-5 text-gray-400 group-hover:text-brand-700 flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                       </svg>
                     )}
@@ -175,35 +175,35 @@ export default function NeuralNetworksPage() {
         </section>
 
         {/* Learning Path */}
-        <section className="mt-12 bg-gradient-to-r from-gray-50 to-gray-100 border border-gray-300 rounded-lg p-6">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Recommended Learning Path</h2>
+        <section className="mt-12 bg-gradient-to-r from-gray-50 to-gray-100 border border-line-strong rounded-lg p-6">
+          <h2 className="text-2xl font-bold text-ink mb-4">Recommended Learning Path</h2>
           <ol className="space-y-3">
             <li className="flex items-start gap-3">
-              <span className="flex-shrink-0 w-6 h-6 bg-black text-white rounded-full flex items-center justify-center text-sm font-semibold">1</span>
+              <span className="flex-shrink-0 w-6 h-6 bg-brand-600 text-white rounded-full flex items-center justify-center text-sm font-semibold">1</span>
               <div>
-                <h3 className="font-semibold text-gray-900">Start with Simple Perceptron</h3>
-                <p className="text-sm text-gray-600">Learn the basic building block and understand weights and bias</p>
+                <h3 className="font-semibold text-ink">Start with Simple Perceptron</h3>
+                <p className="text-sm text-ink-muted">Learn the basic building block and understand weights and bias</p>
               </div>
             </li>
             <li className="flex items-start gap-3">
-              <span className="flex-shrink-0 w-6 h-6 bg-black text-white rounded-full flex items-center justify-center text-sm font-semibold">2</span>
+              <span className="flex-shrink-0 w-6 h-6 bg-brand-600 text-white rounded-full flex items-center justify-center text-sm font-semibold">2</span>
               <div>
-                <h3 className="font-semibold text-gray-900">Explore Activation Functions</h3>
-                <p className="text-sm text-gray-600">See how different functions affect network behavior</p>
+                <h3 className="font-semibold text-ink">Explore Activation Functions</h3>
+                <p className="text-sm text-ink-muted">See how different functions affect network behavior</p>
               </div>
             </li>
             <li className="flex items-start gap-3">
-              <span className="flex-shrink-0 w-6 h-6 bg-black text-white rounded-full flex items-center justify-center text-sm font-semibold">3</span>
+              <span className="flex-shrink-0 w-6 h-6 bg-brand-600 text-white rounded-full flex items-center justify-center text-sm font-semibold">3</span>
               <div>
-                <h3 className="font-semibold text-gray-900">Understand Backpropagation</h3>
-                <p className="text-sm text-gray-600">Watch how networks learn by propagating errors backward</p>
+                <h3 className="font-semibold text-ink">Understand Backpropagation</h3>
+                <p className="text-sm text-ink-muted">Watch how networks learn by propagating errors backward</p>
               </div>
             </li>
             <li className="flex items-start gap-3">
-              <span className="flex-shrink-0 w-6 h-6 bg-black text-white rounded-full flex items-center justify-center text-sm font-semibold">4</span>
+              <span className="flex-shrink-0 w-6 h-6 bg-brand-600 text-white rounded-full flex items-center justify-center text-sm font-semibold">4</span>
               <div>
-                <h3 className="font-semibold text-gray-900">Build Multi-Layer Networks</h3>
-                <p className="text-sm text-gray-600">Combine concepts to create powerful deep networks</p>
+                <h3 className="font-semibold text-ink">Build Multi-Layer Networks</h3>
+                <p className="text-sm text-ink-muted">Combine concepts to create powerful deep networks</p>
               </div>
             </li>
           </ol>

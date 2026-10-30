@@ -374,18 +374,18 @@ export default function RCCircuitVisualizer() {
   return (
     <div className="space-y-6">
       {/* Circuit Canvas */}
-      <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
+      <div className="border border-line rounded-lg p-4 bg-subtle">
         <div className="text-xs font-semibold text-gray-700 mb-3">RC Circuit Diagram</div>
         <canvas
           ref={canvasRef}
           width={canvasWidth}
           height={canvasHeight}
-          className="border border-gray-300 bg-white mx-auto block"
+          className="border border-line-strong bg-white mx-auto block"
         />
       </div>
 
       {/* Controls */}
-      <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
+      <div className="border border-line rounded-lg p-4 bg-subtle">
         <div className="text-xs font-semibold text-gray-700 mb-3">Circuit Parameters</div>
         <div className="grid sm:grid-cols-3 gap-4 mb-4">
           <div>
@@ -459,7 +459,7 @@ export default function RCCircuitVisualizer() {
           </button>
           <button
             onClick={reset}
-            className="px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium hover:bg-gray-100"
+            className="px-4 py-2 border border-line-strong rounded-lg text-sm font-medium hover:bg-gray-100"
           >
             Reset
           </button>
@@ -467,26 +467,26 @@ export default function RCCircuitVisualizer() {
       </div>
 
       {/* Real-time Values */}
-      <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
+      <div className="border border-line rounded-lg p-4 bg-subtle">
         <div className="text-xs font-semibold text-gray-700 mb-3">Real-Time Measurements</div>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-          <div className="bg-white border border-gray-200 rounded-lg p-3">
-            <div className="text-xs text-gray-600 font-medium">Time</div>
+          <div className="bg-white border border-line rounded-lg p-3 shadow-card">
+            <div className="text-xs text-ink-muted font-medium">Time</div>
             <div className="text-lg font-bold text-purple-600">{time.toFixed(3)}s</div>
             <div className="text-xs text-gray-500">τ = {timeConstant.toFixed(3)}s</div>
           </div>
-          <div className="bg-white border border-gray-200 rounded-lg p-3">
-            <div className="text-xs text-gray-600 font-medium">Voltage</div>
+          <div className="bg-white border border-line rounded-lg p-3 shadow-card">
+            <div className="text-xs text-ink-muted font-medium">Voltage</div>
             <div className="text-lg font-bold text-green-600">{currentVoltage.toFixed(2)}V</div>
             <div className="text-xs text-gray-500">{((currentVoltage/voltage)*100).toFixed(1)}% of max</div>
           </div>
-          <div className="bg-white border border-gray-200 rounded-lg p-3">
-            <div className="text-xs text-gray-600 font-medium">Current</div>
+          <div className="bg-white border border-line rounded-lg p-3 shadow-card">
+            <div className="text-xs text-ink-muted font-medium">Current</div>
             <div className="text-lg font-bold text-blue-600">{currentCurrent.toFixed(2)}mA</div>
             <div className="text-xs text-gray-500">{mode === 'idle' ? 'Idle' : mode === 'charging' ? 'Charging' : 'Discharging'}</div>
           </div>
-          <div className="bg-white border border-gray-200 rounded-lg p-3">
-            <div className="text-xs text-gray-600 font-medium">Energy</div>
+          <div className="bg-white border border-line rounded-lg p-3 shadow-card">
+            <div className="text-xs text-ink-muted font-medium">Energy</div>
             <div className="text-lg font-bold text-orange-600">{energy.toFixed(2)}μJ</div>
             <div className="text-xs text-gray-500">Stored</div>
           </div>
@@ -495,11 +495,11 @@ export default function RCCircuitVisualizer() {
 
       {/* Graphs */}
       {voltageHistory.length > 1 && (
-        <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
+        <div className="border border-line rounded-lg p-4 bg-subtle">
           <div className="text-xs font-semibold text-gray-700 mb-3">Graphs</div>
           <div className="grid sm:grid-cols-2 gap-4">
             {/* Voltage Graph */}
-            <div className="bg-white border border-gray-200 rounded p-3">
+            <div className="bg-white border border-line rounded p-3">
               <div className="text-sm font-medium text-gray-700 mb-2">Voltage vs Time</div>
               <svg width="250" height="150" className="mx-auto">
                 <polyline
@@ -520,7 +520,7 @@ export default function RCCircuitVisualizer() {
             </div>
 
             {/* Current Graph */}
-            <div className="bg-white border border-gray-200 rounded p-3">
+            <div className="bg-white border border-line rounded p-3">
               <div className="text-sm font-medium text-gray-700 mb-2">Current vs Time</div>
               <svg width="250" height="150" className="mx-auto">
                 <polyline
@@ -546,7 +546,7 @@ export default function RCCircuitVisualizer() {
       )}
 
       {/* Info */}
-      <div className="border border-gray-200 rounded-lg p-4 bg-blue-50">
+      <div className="border border-line rounded-lg p-4 bg-blue-50">
         <div className="text-sm text-blue-900">
           <p className="font-medium mb-2">💡 How to Use:</p>
           <ul className="list-disc list-inside space-y-1 text-sm">
@@ -563,13 +563,13 @@ export default function RCCircuitVisualizer() {
 
       {/* Time Constant Markers */}
       {mode !== 'idle' && (
-        <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
+        <div className="border border-line rounded-lg p-4 bg-subtle">
           <div className="text-xs font-semibold text-gray-700 mb-2">Time Constant Milestones</div>
           <div className="grid grid-cols-5 gap-2 text-center text-xs">
             {[1, 2, 3, 4, 5].map(n => (
-              <div key={n} className={`p-2 rounded ${time >= n * timeConstant ? 'bg-green-100 border border-green-300' : 'bg-white border border-gray-200'}`}>
+              <div key={n} className={`p-2 rounded ${time >= n * timeConstant ? 'bg-green-100 border border-green-300' : 'bg-white border border-line'}`}>
                 <div className="font-medium">{n}τ</div>
-                <div className="text-gray-600">{(n * timeConstant).toFixed(2)}s</div>
+                <div className="text-ink-muted">{(n * timeConstant).toFixed(2)}s</div>
                 <div className="text-gray-500">{n === 1 ? '63.2%' : n === 2 ? '86.5%' : n === 3 ? '95%' : n === 4 ? '98.2%' : '99.3%'}</div>
               </div>
             ))}

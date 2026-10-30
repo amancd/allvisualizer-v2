@@ -14,27 +14,27 @@ export default function IdealGasLawPage() {
     <div className="min-h-screen bg-white pt-24">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Breadcrumb */}
-        <nav className="flex items-center gap-2 text-sm text-gray-600 mb-8">
-          <Link href="/" className="hover:text-gray-900">Home</Link>
+        <nav className="flex items-center gap-2 text-sm text-ink-muted mb-8">
+          <Link href="/" className="hover:text-ink">Home</Link>
           <span>/</span>
-          <Link href="/physics-visualizer" className="hover:text-gray-900">Physics</Link>
+          <Link href="/physics-visualizer" className="hover:text-ink">Physics</Link>
           <span>/</span>
-          <Link href="/physics-visualizer/thermodynamics" className="hover:text-gray-900">Thermodynamics</Link>
+          <Link href="/physics-visualizer/thermodynamics" className="hover:text-ink">Thermodynamics</Link>
           <span>/</span>
-          <span className="text-gray-900">Ideal Gas Law</span>
+          <span className="text-ink">Ideal Gas Law</span>
         </nav>
 
         {/* Header */}
         <header className="mb-8">
           <div className="flex items-center gap-3 mb-4">
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-900">
+            <h1 className="text-3xl md:text-4xl font-bold text-ink tracking-tight">
               Ideal Gas Law
             </h1>
             <span className="px-3 py-1 bg-green-100 text-green-700 rounded-lg text-sm font-medium">
               Beginner
             </span>
           </div>
-          <p className="text-lg text-gray-600">
+          <p className="text-lg text-ink-muted">
             Explore the fundamental relationship between pressure, volume, temperature, and amount of gas.
           </p>
         </header>
@@ -44,7 +44,7 @@ export default function IdealGasLawPage() {
 
         {/* Theory Section */}
         <div className="mt-12 prose prose-lg max-w-none">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Theory</h2>
+          <h2 className="text-2xl font-bold text-ink mb-4">Theory</h2>
           
           <div className="bg-red-50 border border-red-200 rounded-lg p-6 mb-6">
             <h3 className="text-lg font-semibold text-red-900 mb-3">The Ideal Gas Law</h3>
@@ -65,51 +65,51 @@ export default function IdealGasLawPage() {
             </div>
           </div>
 
-          <h3 className="text-xl font-semibold text-gray-900 mb-3">Special Cases</h3>
+          <h3 className="text-xl font-semibold text-ink mb-3">Special Cases</h3>
           
           <div className="grid md:grid-cols-2 gap-4 mb-6">
-            <div className="bg-gray-50 border border-gray-200 rounded p-4">
-              <h4 className="font-semibold text-gray-900 mb-2">Boyle's Law (Isothermal)</h4>
+            <div className="bg-subtle border border-line rounded p-4">
+              <h4 className="font-semibold text-ink mb-2">Boyle's Law (Isothermal)</h4>
               <p className="text-sm text-gray-700 mb-2">
                 At constant temperature and amount: <strong>P₁V₁ = P₂V₂</strong>
               </p>
-              <p className="text-xs text-gray-600">
+              <p className="text-xs text-ink-muted">
                 Pressure and volume are inversely proportional.
               </p>
             </div>
             
-            <div className="bg-gray-50 border border-gray-200 rounded p-4">
-              <h4 className="font-semibold text-gray-900 mb-2">Charles's Law (Isobaric)</h4>
+            <div className="bg-subtle border border-line rounded p-4">
+              <h4 className="font-semibold text-ink mb-2">Charles's Law (Isobaric)</h4>
               <p className="text-sm text-gray-700 mb-2">
                 At constant pressure and amount: <strong>V₁/T₁ = V₂/T₂</strong>
               </p>
-              <p className="text-xs text-gray-600">
+              <p className="text-xs text-ink-muted">
                 Volume and temperature are directly proportional.
               </p>
             </div>
             
-            <div className="bg-gray-50 border border-gray-200 rounded p-4">
-              <h4 className="font-semibold text-gray-900 mb-2">Gay-Lussac's Law (Isochoric)</h4>
+            <div className="bg-subtle border border-line rounded p-4">
+              <h4 className="font-semibold text-ink mb-2">Gay-Lussac's Law (Isochoric)</h4>
               <p className="text-sm text-gray-700 mb-2">
                 At constant volume and amount: <strong>P₁/T₁ = P₂/T₂</strong>
               </p>
-              <p className="text-xs text-gray-600">
+              <p className="text-xs text-ink-muted">
                 Pressure and temperature are directly proportional.
               </p>
             </div>
             
-            <div className="bg-gray-50 border border-gray-200 rounded p-4">
-              <h4 className="font-semibold text-gray-900 mb-2">Avogadro's Law</h4>
+            <div className="bg-subtle border border-line rounded p-4">
+              <h4 className="font-semibold text-ink mb-2">Avogadro's Law</h4>
               <p className="text-sm text-gray-700 mb-2">
                 At constant temperature and pressure: <strong>V₁/n₁ = V₂/n₂</strong>
               </p>
-              <p className="text-xs text-gray-600">
+              <p className="text-xs text-ink-muted">
                 Volume and moles are directly proportional.
               </p>
             </div>
           </div>
 
-          <h3 className="text-xl font-semibold text-gray-900 mb-3">Kinetic Molecular Theory</h3>
+          <h3 className="text-xl font-semibold text-ink mb-3">Kinetic Molecular Theory</h3>
           <p className="text-gray-700 mb-4">
             The ideal gas law emerges from the kinetic molecular theory, which makes the following assumptions:
           </p>
@@ -121,7 +121,7 @@ export default function IdealGasLawPage() {
             <li>Average kinetic energy is proportional to absolute temperature</li>
           </ul>
 
-          <h3 className="text-xl font-semibold text-gray-900 mb-3">Real vs Ideal Gases</h3>
+          <h3 className="text-xl font-semibold text-ink mb-3">Real vs Ideal Gases</h3>
           <p className="text-gray-700 mb-4">
             Real gases deviate from ideal behavior under certain conditions:
           </p>
@@ -131,7 +131,7 @@ export default function IdealGasLawPage() {
             <li><strong>Near liquefaction:</strong> Condensation effects appear</li>
           </ul>
 
-          <h3 className="text-xl font-semibold text-gray-900 mb-3">Applications</h3>
+          <h3 className="text-xl font-semibold text-ink mb-3">Applications</h3>
           <ul className="list-disc list-inside text-gray-700 space-y-2">
             <li><strong>Weather balloons:</strong> Expansion with altitude (decreasing pressure)</li>
             <li><strong>Scuba diving:</strong> Air consumption and decompression calculations</li>
@@ -145,7 +145,7 @@ export default function IdealGasLawPage() {
 
         {/* Discussion Section */}
         <div className="mt-12">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Discussion</h2>
+          <h2 className="text-2xl font-bold text-ink mb-6">Discussion</h2>
           <GiscusComments />
         </div>
       </div>

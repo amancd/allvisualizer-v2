@@ -109,11 +109,11 @@ public:
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-subtle">
       {/* Mobile TOC Toggle */}
       <button
         onClick={() => setShowTOC(!showTOC)}
-        className="fixed bottom-6 right-6 z-50 lg:hidden bg-gradient-to-r from-indigo-600 to-purple-600 text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all"
+        className="fixed bottom-6 right-6 z-50 lg:hidden bg-gradient-to-r from-indigo-600 to-purple-600 text-white p-4 rounded-full shadow-lg hover:shadow-card-hover transition-all"
       >
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
@@ -124,51 +124,51 @@ public:
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex gap-8">
             {/* Table of Contents - Sidebar */}
-            <aside className={`${showTOC ? 'block' : 'hidden'} lg:block fixed lg:sticky top-20 left-0 w-64 bg-white p-6 rounded-2xl border border-gray-200 shadow-sm h-fit z-40 lg:z-0 m-4 lg:m-0`}>
-              <h3 className="text-sm font-bold text-gray-900 mb-4 uppercase tracking-wide">On This Page</h3>
+            <aside className={`${showTOC ? 'block' : 'hidden'} lg:block fixed lg:sticky top-20 left-0 w-64 bg-white p-6 rounded-card border border-line shadow-sm h-fit z-40 lg:z-0 m-4 lg:m-0`}>
+              <h3 className="text-sm font-bold text-ink mb-4 uppercase tracking-wide">On This Page</h3>
               <nav className="space-y-2">
-                <a href="#problem" className="block text-sm text-gray-600 hover:text-gray-900 transition-colors py-1">Problem Statement</a>
-                <a href="#examples" className="block text-sm text-gray-600 hover:text-gray-900 transition-colors py-1">Examples</a>
-                <a href="#approach" className="block text-sm text-gray-600 hover:text-gray-900 transition-colors py-1">Approach</a>
-                <a href="#solution" className="block text-sm text-gray-600 hover:text-gray-900 transition-colors py-1">Solution</a>
-                <a href="#complexity" className="block text-sm text-gray-600 hover:text-gray-900 transition-colors py-1">Complexity Analysis</a>
+                <a href="#problem" className="block text-sm text-ink-muted hover:text-ink transition-colors py-1">Problem Statement</a>
+                <a href="#examples" className="block text-sm text-ink-muted hover:text-ink transition-colors py-1">Examples</a>
+                <a href="#approach" className="block text-sm text-ink-muted hover:text-ink transition-colors py-1">Approach</a>
+                <a href="#solution" className="block text-sm text-ink-muted hover:text-ink transition-colors py-1">Solution</a>
+                <a href="#complexity" className="block text-sm text-ink-muted hover:text-ink transition-colors py-1">Complexity Analysis</a>
               </nav>
             </aside>
 
             {/* Main Content */}
             <main className="flex-1 max-w-4xl">
               {/* Breadcrumb */}
-              <div className="flex items-center gap-2 text-sm text-gray-600 mb-6 animate-fade-in">
-                <Link href="/" className="hover:text-gray-900 transition-colors">Home</Link>
+              <div className="flex items-center gap-2 text-sm text-ink-muted mb-6 animate-fade-in">
+                <Link href="/" className="hover:text-ink transition-colors">Home</Link>
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
-                <Link href="/dsa-visualizer" className="hover:text-gray-900 transition-colors">DSA Visualizer</Link>
+                <Link href="/dsa-visualizer" className="hover:text-ink transition-colors">DSA Visualizer</Link>
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
-                <Link href="/dsa-visualizer/arrays" className="hover:text-gray-900 transition-colors">Arrays</Link>
+                <Link href="/dsa-visualizer/arrays" className="hover:text-ink transition-colors">Arrays</Link>
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
-                <span className="text-gray-900 font-medium">Best Time to Buy and Sell Stock</span>
+                <span className="text-ink font-medium">Best Time to Buy and Sell Stock</span>
               </div>
 
               {/* Hero Section */}
-              <div className="bg-gradient-to-br from-gray-50 via-gray-100 to-white p-6 md:p-8 rounded-2xl border border-gray-300 mb-8 animate-fade-in">
+              <div className="bg-gradient-to-br from-gray-50 via-gray-100 to-white p-6 md:p-8 rounded-2xl border border-line-strong mb-8 animate-fade-in">
                 <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4">
                   <div>
-                    <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
+                    <h1 className="text-3xl md:text-4xl font-bold text-ink mb-3 tracking-tight">
                       Best Time to Buy and Sell Stock
                     </h1>
                     <div className="flex flex-wrap items-center gap-3">
                       <span className="px-3 py-1 bg-green-100 text-green-700 rounded-lg text-sm font-semibold border border-green-200">
                         Easy
                       </span>
-                      <span className="px-3 py-1 bg-gray-200 text-gray-900 rounded-lg text-sm font-semibold">
+                      <span className="px-3 py-1 bg-gray-200 text-ink rounded-lg text-sm font-semibold">
                         Array
                       </span>
-                      <span className="px-3 py-1 bg-gray-200 text-gray-900 rounded-lg text-sm font-semibold">
+                      <span className="px-3 py-1 bg-gray-200 text-ink rounded-lg text-sm font-semibold">
                         Dynamic Programming
                       </span>
                       <span className="px-3 py-1 bg-cyan-100 text-cyan-700 rounded-lg text-sm font-semibold">
@@ -184,14 +184,14 @@ public:
 
               {/* Problem Statement */}
               <section id="problem" className="scroll-mt-24 mb-8 animate-fade-in" style={{ animationDelay: '0.1s' }}>
-                <div className="bg-white p-6 md:p-8 rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+                <div className="bg-white p-6 md:p-8 rounded-card border border-line shadow-sm hover:shadow-card-hover transition-shadow">
                   <div className="flex items-center gap-3 mb-4">
                     <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-lg flex items-center justify-center flex-shrink-0">
                       <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                       </svg>
                     </div>
-                    <h2 className="text-xl md:text-2xl font-bold text-gray-900">Problem Statement</h2>
+                    <h2 className="text-xl md:text-2xl font-bold text-ink">Problem Statement</h2>
                   </div>
                   <div className="prose prose-lg max-w-none">
                     <p className="text-gray-700 mb-4 text-sm md:text-base">
@@ -209,27 +209,27 @@ public:
 
               {/* Examples */}
               <section id="examples" className="scroll-mt-24 mb-8 animate-fade-in" style={{ animationDelay: '0.15s' }}>
-                <div className="bg-white p-6 md:p-8 rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
-                  <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-4">Examples</h3>
+                <div className="bg-white p-6 md:p-8 rounded-card border border-line shadow-sm hover:shadow-card-hover transition-shadow">
+                  <h3 className="text-lg md:text-xl font-bold text-ink mb-4">Examples</h3>
                   
                   <div className="space-y-6">
-                    <div className="p-4 bg-gray-50 rounded-xl border border-gray-200">
-                      <div className="font-semibold text-gray-900 mb-2 text-sm md:text-base">Example 1:</div>
+                    <div className="p-4 bg-subtle rounded-xl border border-line">
+                      <div className="font-semibold text-ink mb-2 text-sm md:text-base">Example 1:</div>
                       <div className="font-mono text-xs sm:text-sm space-y-1">
-                        <div><span className="text-gray-600">Input:</span> prices = [7,1,5,3,6,4]</div>
-                        <div><span className="text-gray-600">Output:</span> 5</div>
-                        <div className="text-gray-600 text-xs mt-2">
+                        <div><span className="text-ink-muted">Input:</span> prices = [7,1,5,3,6,4]</div>
+                        <div><span className="text-ink-muted">Output:</span> 5</div>
+                        <div className="text-ink-muted text-xs mt-2">
                           <strong>Explanation:</strong> Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-1 = 5.
                         </div>
                       </div>
                     </div>
 
-                    <div className="p-4 bg-gray-50 rounded-xl border border-gray-200">
-                      <div className="font-semibold text-gray-900 mb-2 text-sm md:text-base">Example 2:</div>
+                    <div className="p-4 bg-subtle rounded-xl border border-line">
+                      <div className="font-semibold text-ink mb-2 text-sm md:text-base">Example 2:</div>
                       <div className="font-mono text-xs sm:text-sm space-y-1">
-                        <div><span className="text-gray-600">Input:</span> prices = [7,6,4,3,1]</div>
-                        <div><span className="text-gray-600">Output:</span> 0</div>
-                        <div className="text-gray-600 text-xs mt-2">
+                        <div><span className="text-ink-muted">Input:</span> prices = [7,6,4,3,1]</div>
+                        <div><span className="text-ink-muted">Output:</span> 0</div>
+                        <div className="text-ink-muted text-xs mt-2">
                           <strong>Explanation:</strong> No transactions are done, i.e. max profit = 0.
                         </div>
                       </div>
@@ -247,7 +247,7 @@ public:
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
                       </svg>
                     </div>
-                    <h2 className="text-xl md:text-2xl font-bold text-gray-900">Interactive Visualizer</h2>
+                    <h2 className="text-xl md:text-2xl font-bold text-ink">Interactive Visualizer</h2>
                   </div>
                   <BestTimeToBuySellStockVisualizer />
                 </div>
@@ -255,37 +255,37 @@ public:
 
               {/* Approach */}
               <section id="approach" className="scroll-mt-24 mb-8 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-                <div className="bg-white p-6 md:p-8 rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+                <div className="bg-white p-6 md:p-8 rounded-card border border-line shadow-sm hover:shadow-card-hover transition-shadow">
                   <div className="flex items-center gap-3 mb-4">
                     <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-600 rounded-lg flex items-center justify-center flex-shrink-0">
                       <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                       </svg>
                     </div>
-                    <h2 className="text-xl md:text-2xl font-bold text-gray-900">Approach</h2>
+                    <h2 className="text-xl md:text-2xl font-bold text-ink">Approach</h2>
                   </div>
                   
                   <div className="space-y-4">
                     <div className="flex items-start gap-3">
-                      <div className="w-8 h-8 bg-gray-200 text-gray-900 rounded-full flex items-center justify-center flex-shrink-0 font-bold text-sm">1</div>
+                      <div className="w-8 h-8 bg-gray-200 text-ink rounded-full flex items-center justify-center flex-shrink-0 font-bold text-sm">1</div>
                       <div className="flex-1">
-                        <h4 className="font-semibold text-gray-900 mb-1 text-sm md:text-base">Track Minimum Price</h4>
+                        <h4 className="font-semibold text-ink mb-1 text-sm md:text-base">Track Minimum Price</h4>
                         <p className="text-gray-700 text-sm md:text-base">Keep track of the minimum price seen so far as we iterate through the array. This represents the best day to buy.</p>
                       </div>
                     </div>
 
                     <div className="flex items-start gap-3">
-                      <div className="w-8 h-8 bg-gray-200 text-gray-900 rounded-full flex items-center justify-center flex-shrink-0 font-bold text-sm">2</div>
+                      <div className="w-8 h-8 bg-gray-200 text-ink rounded-full flex items-center justify-center flex-shrink-0 font-bold text-sm">2</div>
                       <div className="flex-1">
-                        <h4 className="font-semibold text-gray-900 mb-1 text-sm md:text-base">Calculate Potential Profit</h4>
+                        <h4 className="font-semibold text-ink mb-1 text-sm md:text-base">Calculate Potential Profit</h4>
                         <p className="text-gray-700 text-sm md:text-base">For each price, calculate the profit if we sell at the current price (current price - minimum price).</p>
                       </div>
                     </div>
 
                     <div className="flex items-start gap-3">
-                      <div className="w-8 h-8 bg-gray-200 text-gray-900 rounded-full flex items-center justify-center flex-shrink-0 font-bold text-sm">3</div>
+                      <div className="w-8 h-8 bg-gray-200 text-ink rounded-full flex items-center justify-center flex-shrink-0 font-bold text-sm">3</div>
                       <div className="flex-1">
-                        <h4 className="font-semibold text-gray-900 mb-1 text-sm md:text-base">Update Maximum Profit</h4>
+                        <h4 className="font-semibold text-ink mb-1 text-sm md:text-base">Update Maximum Profit</h4>
                         <p className="text-gray-700 text-sm md:text-base">Keep track of the maximum profit encountered so far. This greedy approach ensures we find the optimal solution in one pass.</p>
                       </div>
                     </div>
@@ -295,18 +295,18 @@ public:
 
               {/* Solution */}
               <section id="solution" className="scroll-mt-24 mb-8 animate-fade-in" style={{ animationDelay: '0.25s' }}>
-                <div className="bg-white p-6 md:p-8 rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+                <div className="bg-white p-6 md:p-8 rounded-card border border-line shadow-sm hover:shadow-card-hover transition-shadow">
                   <div className="flex items-center gap-3 mb-4">
                     <div className="w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center flex-shrink-0">
                       <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                       </svg>
                     </div>
-                    <h2 className="text-xl md:text-2xl font-bold text-gray-900">Solution</h2>
+                    <h2 className="text-xl md:text-2xl font-bold text-ink">Solution</h2>
                   </div>
 
                   {/* Language Tabs */}
-                  <div className="flex flex-wrap gap-2 mb-4 border-b border-gray-200 pb-4">
+                  <div className="flex flex-wrap gap-2 mb-4 border-b border-line pb-4">
                     {(['javascript', 'python', 'java', 'cpp'] as const).map((lang) => (
                       <button
                         key={lang}
@@ -332,14 +332,14 @@ public:
 
               {/* Complexity */}
               <section id="complexity" className="scroll-mt-24 mb-8 animate-fade-in" style={{ animationDelay: '0.3s' }}>
-                <div className="bg-white p-6 md:p-8 rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+                <div className="bg-white p-6 md:p-8 rounded-card border border-line shadow-sm hover:shadow-card-hover transition-shadow">
                   <div className="flex items-center gap-3 mb-6">
                     <div className="w-10 h-10 bg-gradient-to-br from-orange-500 to-amber-600 rounded-lg flex items-center justify-center flex-shrink-0">
                       <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                       </svg>
                     </div>
-                    <h2 className="text-xl md:text-2xl font-bold text-gray-900">Complexity Analysis</h2>
+                    <h2 className="text-xl md:text-2xl font-bold text-ink">Complexity Analysis</h2>
                   </div>
 
                   <div className="space-y-4">
@@ -348,15 +348,15 @@ public:
                         <span className="text-sm font-bold text-gray-700">Time Complexity</span>
                         <code className="px-3 py-1 bg-green-100 text-green-700 rounded-md font-mono text-sm font-semibold">O(n)</code>
                       </div>
-                      <p className="text-sm text-gray-600">We traverse the array once, performing constant time operations at each step.</p>
+                      <p className="text-sm text-ink-muted">We traverse the array once, performing constant time operations at each step.</p>
                     </div>
 
-                    <div className="p-4 md:p-6 bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl border-2 border-gray-300">
+                    <div className="p-4 md:p-6 bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl border-2 border-line-strong">
                       <div className="flex items-center justify-between mb-2">
                         <span className="text-sm font-bold text-gray-700">Space Complexity</span>
-                        <code className="px-3 py-1 bg-gray-200 text-gray-900 rounded-md font-mono text-sm font-semibold">O(1)</code>
+                        <code className="px-3 py-1 bg-gray-200 text-ink rounded-md font-mono text-sm font-semibold">O(1)</code>
                       </div>
-                      <p className="text-sm text-gray-600">We only use two variables (minPrice and maxProfit) regardless of input size.</p>
+                      <p className="text-sm text-ink-muted">We only use two variables (minPrice and maxProfit) regardless of input size.</p>
                     </div>
                   </div>
                 </div>
@@ -364,14 +364,14 @@ public:
 
               {/* Next Steps */}
               <div className="bg-gradient-to-br from-blue-600 via-cyan-600 to-blue-700 rounded-2xl p-6 md:p-8 text-white animate-fade-in" style={{ animationDelay: '0.35s' }}>
-                <h3 className="text-2xl md:text-3xl font-bold mb-4">Ready for More Challenges?</h3>
+                <h3 className="text-2xl md:text-3xl font-bold mb-4 tracking-tight">Ready for More Challenges?</h3>
                 <p className="text-sm md:text-base text-blue-100 mb-6">
                   Continue practicing with more array problems and master dynamic programming concepts.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
                   <Link
                     href="/dsa-visualizer/arrays"
-                    className="inline-flex items-center justify-center gap-2 px-4 sm:px-6 py-3 bg-white text-gray-900 rounded-xl font-semibold text-sm md:text-base hover:bg-gray-50 transition-all hover:-translate-y-0.5 hover:shadow-lg"
+                    className="inline-flex items-center justify-center gap-2 px-4 sm:px-6 py-3 bg-white text-ink rounded-xl font-semibold text-sm md:text-base hover:bg-subtle transition-all hover:-translate-y-0.5 hover:shadow-card-hover"
                   >
                     More Array Problems
                     <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

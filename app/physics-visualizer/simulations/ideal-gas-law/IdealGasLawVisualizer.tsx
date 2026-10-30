@@ -206,21 +206,21 @@ export default function IdealGasLawVisualizer() {
   return (
     <div className="space-y-6">
       {/* Canvas */}
-      <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
+      <div className="border border-line rounded-lg p-4 bg-subtle">
         <div className="text-xs font-semibold text-gray-700 mb-3">Gas Particle Simulation</div>
         <canvas
           ref={canvasRef}
           width={canvasWidth}
           height={canvasHeight}
-          className="border border-gray-300 bg-white mx-auto block"
+          className="border border-line-strong bg-white mx-auto block"
         />
-        <div className="text-xs text-gray-600 text-center mt-2">
+        <div className="text-xs text-ink-muted text-center mt-2">
           Particle speed represents temperature • Container size represents volume
         </div>
       </div>
 
       {/* Process Type */}
-      <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
+      <div className="border border-line rounded-lg p-4 bg-subtle">
         <div className="text-xs font-semibold text-gray-700 mb-3">Process Type</div>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
           <button
@@ -228,7 +228,7 @@ export default function IdealGasLawVisualizer() {
             className={`px-3 py-2 text-sm rounded ${
               processType === 'free'
                 ? 'bg-blue-600 text-white'
-                : 'bg-white border border-gray-300 hover:bg-gray-50'
+                : 'bg-white border border-line-strong hover:bg-subtle'
             }`}
           >
             Free Control
@@ -238,7 +238,7 @@ export default function IdealGasLawVisualizer() {
             className={`px-3 py-2 text-sm rounded ${
               processType === 'isothermal'
                 ? 'bg-blue-600 text-white'
-                : 'bg-white border border-gray-300 hover:bg-gray-50'
+                : 'bg-white border border-line-strong hover:bg-subtle'
             }`}
           >
             Isothermal (T const)
@@ -248,7 +248,7 @@ export default function IdealGasLawVisualizer() {
             className={`px-3 py-2 text-sm rounded ${
               processType === 'isobaric'
                 ? 'bg-blue-600 text-white'
-                : 'bg-white border border-gray-300 hover:bg-gray-50'
+                : 'bg-white border border-line-strong hover:bg-subtle'
             }`}
           >
             Isobaric (P const)
@@ -258,7 +258,7 @@ export default function IdealGasLawVisualizer() {
             className={`px-3 py-2 text-sm rounded ${
               processType === 'isochoric'
                 ? 'bg-blue-600 text-white'
-                : 'bg-white border border-gray-300 hover:bg-gray-50'
+                : 'bg-white border border-line-strong hover:bg-subtle'
             }`}
           >
             Isochoric (V const)
@@ -267,7 +267,7 @@ export default function IdealGasLawVisualizer() {
       </div>
 
       {/* Controls */}
-      <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
+      <div className="border border-line rounded-lg p-4 bg-subtle">
         <div className="text-xs font-semibold text-gray-700 mb-3">Gas Parameters</div>
         
         <div className="grid md:grid-cols-2 gap-4">
@@ -322,8 +322,8 @@ export default function IdealGasLawVisualizer() {
             <label className="text-sm font-medium text-gray-700 mb-1 block">
               Pressure: {pressure.toFixed(2)} atm (calculated)
             </label>
-            <div className="h-10 flex items-center px-3 bg-gray-100 border border-gray-300 rounded">
-              <span className="text-sm text-gray-600">Auto-calculated from PV=nRT</span>
+            <div className="h-10 flex items-center px-3 bg-gray-100 border border-line-strong rounded">
+              <span className="text-sm text-ink-muted">Auto-calculated from PV=nRT</span>
             </div>
           </div>
         </div>
@@ -335,25 +335,25 @@ export default function IdealGasLawVisualizer() {
             setMoles(2);
             setProcessType('free');
           }}
-          className="mt-4 px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium hover:bg-gray-100"
+          className="mt-4 px-4 py-2 border border-line-strong rounded-lg text-sm font-medium hover:bg-gray-100"
         >
           Reset to Standard Conditions
         </button>
       </div>
 
       {/* Real-time Calculations */}
-      <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
+      <div className="border border-line rounded-lg p-4 bg-subtle">
         <div className="text-xs font-semibold text-gray-700 mb-3">Ideal Gas Law Equation</div>
-        <div className="bg-white border border-gray-200 rounded-lg p-4">
+        <div className="bg-white border border-line rounded-lg p-4 shadow-card">
           <div className="font-mono text-sm space-y-2">
             <p className="text-lg font-bold text-center mb-3">PV = nRT</p>
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <p className="text-gray-600">Left Side (PV):</p>
+                <p className="text-ink-muted">Left Side (PV):</p>
                 <p className="font-semibold">{pressure.toFixed(2)} × {volume.toFixed(1)} = {(pressure * volume).toFixed(2)}</p>
               </div>
               <div>
-                <p className="text-gray-600">Right Side (nRT):</p>
+                <p className="text-ink-muted">Right Side (nRT):</p>
                 <p className="font-semibold">{moles.toFixed(1)} × {R} × {temperature} = {(moles * R * temperature).toFixed(2)}</p>
               </div>
             </div>
@@ -365,26 +365,26 @@ export default function IdealGasLawVisualizer() {
       </div>
 
       {/* Measurements */}
-      <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
+      <div className="border border-line rounded-lg p-4 bg-subtle">
         <div className="text-xs font-semibold text-gray-700 mb-3">Current State</div>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-          <div className="bg-white border border-gray-200 rounded-lg p-3">
-            <div className="text-xs text-gray-600 font-medium">Pressure (P)</div>
+          <div className="bg-white border border-line rounded-lg p-3 shadow-card">
+            <div className="text-xs text-ink-muted font-medium">Pressure (P)</div>
             <div className="text-lg font-bold text-red-600">{pressure.toFixed(2)} atm</div>
             <div className="text-xs text-gray-500">{(pressure * 101.325).toFixed(1)} kPa</div>
           </div>
-          <div className="bg-white border border-gray-200 rounded-lg p-3">
-            <div className="text-xs text-gray-600 font-medium">Volume (V)</div>
+          <div className="bg-white border border-line rounded-lg p-3 shadow-card">
+            <div className="text-xs text-ink-muted font-medium">Volume (V)</div>
             <div className="text-lg font-bold text-blue-600">{volume.toFixed(1)} L</div>
             <div className="text-xs text-gray-500">{(volume / 1000).toFixed(4)} m³</div>
           </div>
-          <div className="bg-white border border-gray-200 rounded-lg p-3">
-            <div className="text-xs text-gray-600 font-medium">Temperature (T)</div>
+          <div className="bg-white border border-line rounded-lg p-3 shadow-card">
+            <div className="text-xs text-ink-muted font-medium">Temperature (T)</div>
             <div className="text-lg font-bold text-orange-600">{temperature} K</div>
             <div className="text-xs text-gray-500">{(temperature - 273.15).toFixed(1)}°C</div>
           </div>
-          <div className="bg-white border border-gray-200 rounded-lg p-3">
-            <div className="text-xs text-gray-600 font-medium">Moles (n)</div>
+          <div className="bg-white border border-line rounded-lg p-3 shadow-card">
+            <div className="text-xs text-ink-muted font-medium">Moles (n)</div>
             <div className="text-lg font-bold text-green-600">{moles.toFixed(1)} mol</div>
             <div className="text-xs text-gray-500">{(moles * 6.022e23).toExponential(2)} particles</div>
           </div>
@@ -392,7 +392,7 @@ export default function IdealGasLawVisualizer() {
       </div>
 
       {/* Info */}
-      <div className="border border-gray-200 rounded-lg p-4 bg-red-50">
+      <div className="border border-line rounded-lg p-4 bg-red-50">
         <div className="text-sm text-red-900">
           <p className="font-medium mb-2">💡 How to Use:</p>
           <ul className="list-disc list-inside space-y-1 text-sm">

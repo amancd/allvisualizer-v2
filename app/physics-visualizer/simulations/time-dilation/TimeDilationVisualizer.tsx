@@ -224,17 +224,17 @@ export default function TimeDilationVisualizer() {
   return (
     <div className="space-y-6">
       {/* Canvas */}
-      <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
+      <div className="border border-line rounded-lg p-4 bg-subtle">
         <canvas
           ref={canvasRef}
           width={canvasWidth}
           height={canvasHeight}
-          className="border border-gray-300 bg-gray-900 mx-auto block"
+          className="border border-line-strong bg-gray-900 mx-auto block"
         />
       </div>
 
       {/* Controls */}
-      <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
+      <div className="border border-line rounded-lg p-4 bg-subtle">
         <div className="text-xs font-semibold text-gray-700 mb-3">Simulation Controls</div>
         
         <div className="mb-4">
@@ -259,7 +259,7 @@ export default function TimeDilationVisualizer() {
               key={preset.label}
               onClick={() => setVelocity(preset.value)}
               disabled={isPlaying}
-              className="px-2 py-1 text-xs bg-white border border-gray-300 rounded hover:bg-gray-50 disabled:opacity-50"
+              className="px-2 py-1 text-xs bg-white border border-line-strong rounded hover:bg-subtle disabled:opacity-50"
             >
               {preset.label}
             </button>
@@ -284,7 +284,7 @@ export default function TimeDilationVisualizer() {
               setDistance(0);
               setIsPlaying(false);
             }}
-            className="px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium hover:bg-gray-100"
+            className="px-4 py-2 border border-line-strong rounded-lg text-sm font-medium hover:bg-gray-100"
           >
             Reset
           </button>
@@ -293,7 +293,7 @@ export default function TimeDilationVisualizer() {
             className={`px-4 py-2 rounded-lg text-sm font-medium ${
               showLightCones 
                 ? 'bg-yellow-500 text-white' 
-                : 'bg-white border border-gray-300 hover:bg-gray-50'
+                : 'bg-white border border-line-strong hover:bg-subtle'
             }`}
           >
             Light Cones
@@ -302,15 +302,15 @@ export default function TimeDilationVisualizer() {
       </div>
 
       {/* Time Comparison */}
-      <div className="border border-gray-200 rounded-lg p-4 bg-gradient-to-r from-blue-50 to-red-50">
-        <div className="text-sm font-semibold text-gray-900 mb-3">⏱️ Time Comparison</div>
+      <div className="border border-line rounded-lg p-4 bg-gradient-to-r from-blue-50 to-red-50">
+        <div className="text-sm font-semibold text-ink mb-3">⏱️ Time Comparison</div>
         <div className="grid md:grid-cols-2 gap-4 mb-3">
           <div className="bg-white p-3 rounded border border-blue-200">
-            <div className="text-xs text-gray-600 mb-1">Earth Observer (Stationary)</div>
+            <div className="text-xs text-ink-muted mb-1">Earth Observer (Stationary)</div>
             <div className="text-2xl font-bold text-blue-600">{earthTime.toFixed(2)} s</div>
           </div>
           <div className="bg-white p-3 rounded border border-red-200">
-            <div className="text-xs text-gray-600 mb-1">Spaceship (Moving at {(velocity * 100).toFixed(1)}% c)</div>
+            <div className="text-xs text-ink-muted mb-1">Spaceship (Moving at {(velocity * 100).toFixed(1)}% c)</div>
             <div className="text-2xl font-bold text-red-600">{shipTime.toFixed(2)} s</div>
           </div>
         </div>
@@ -321,19 +321,19 @@ export default function TimeDilationVisualizer() {
       </div>
 
       {/* Lorentz Factor Info */}
-      <div className="border border-gray-200 rounded-lg p-4 bg-purple-50">
-        <div className="text-sm font-semibold text-gray-900 mb-3">Lorentz Factor Analysis</div>
+      <div className="border border-line rounded-lg p-4 bg-purple-50">
+        <div className="text-sm font-semibold text-ink mb-3">Lorentz Factor Analysis</div>
         <div className="grid md:grid-cols-3 gap-3 text-sm">
           <div className="bg-white p-3 rounded">
-            <div className="text-xs text-gray-600 mb-1">Lorentz Factor (γ)</div>
+            <div className="text-xs text-ink-muted mb-1">Lorentz Factor (γ)</div>
             <div className="text-xl font-bold text-purple-600">{gamma.toFixed(3)}</div>
           </div>
           <div className="bg-white p-3 rounded">
-            <div className="text-xs text-gray-600 mb-1">v²/c²</div>
+            <div className="text-xs text-ink-muted mb-1">v²/c²</div>
             <div className="text-xl font-bold text-purple-600">{(velocity * velocity).toFixed(4)}</div>
           </div>
           <div className="bg-white p-3 rounded">
-            <div className="text-xs text-gray-600 mb-1">√(1 - v²/c²)</div>
+            <div className="text-xs text-ink-muted mb-1">√(1 - v²/c²)</div>
             <div className="text-xl font-bold text-purple-600">{(1/gamma).toFixed(4)}</div>
           </div>
         </div>
@@ -343,13 +343,13 @@ export default function TimeDilationVisualizer() {
       </div>
 
       {/* Twin Paradox Example */}
-      <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
-        <div className="text-sm font-semibold text-gray-900 mb-3">👥 Twin Paradox Scenario</div>
+      <div className="border border-line rounded-lg p-4 bg-subtle">
+        <div className="text-sm font-semibold text-ink mb-3">👥 Twin Paradox Scenario</div>
         <div className="text-sm text-gray-700 space-y-2">
           <p>
             If the spaceship travels for <strong>10 years</strong> Earth time at the current speed:
           </p>
-          <div className="bg-white p-3 rounded border border-gray-200">
+          <div className="bg-white p-3 rounded border border-line">
             <div className="grid md:grid-cols-2 gap-3">
               <div>
                 <span className="text-blue-600 font-semibold">Earth Twin Ages:</span> 10.0 years
@@ -358,7 +358,7 @@ export default function TimeDilationVisualizer() {
                 <span className="text-red-600 font-semibold">Space Twin Ages:</span> {(10 / gamma).toFixed(2)} years
               </div>
             </div>
-            <div className="mt-2 text-xs text-gray-600">
+            <div className="mt-2 text-xs text-ink-muted">
               Age difference: {(10 - 10/gamma).toFixed(2)} years
             </div>
           </div>
@@ -366,7 +366,7 @@ export default function TimeDilationVisualizer() {
       </div>
 
       {/* Info */}
-      <div className="border border-gray-200 rounded-lg p-4 bg-blue-50">
+      <div className="border border-line rounded-lg p-4 bg-blue-50">
         <div className="text-sm text-blue-900">
           <p className="font-medium mb-2">💡 Key Insights:</p>
           <ul className="list-disc list-inside space-y-1 text-sm">

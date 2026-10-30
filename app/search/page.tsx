@@ -93,13 +93,13 @@ export default function SearchPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section with Search */}
-      <section className="pt-32 md:pt-40 pb-12 md:pb-16 bg-gradient-to-b from-gray-50 to-white">
+      <section className="pt-32 md:pt-40 pb-12 md:pb-16 hero-surface border-b border-line">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-6">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
+            <h1 className="text-4xl md:text-5xl font-bold text-ink leading-tight tracking-tight">
               Search AllVisualizer
             </h1>
-            <p className="text-xl text-gray-600 leading-relaxed">
+            <p className="text-xl text-ink-muted leading-relaxed">
               Find topics, visualizations, and concepts across all categories
             </p>
 
@@ -117,12 +117,12 @@ export default function SearchPage() {
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   autoFocus
-                  className="w-full pl-14 pr-4 py-5 text-lg text-gray-900 placeholder-gray-500 bg-white border-2 border-gray-300 rounded-xl focus:border-gray-600 focus:outline-none transition-colors"
+                  className="w-full pl-14 pr-4 py-5 text-lg text-ink placeholder-gray-500 bg-white border border-line rounded-card focus:border-brand-500 focus:outline-none transition-colors shadow-card"
                 />
                 {query && (
                   <button
                     onClick={() => setQuery('')}
-                    className="absolute inset-y-0 right-0 pr-4 flex items-center text-gray-400 hover:text-gray-600"
+                    className="absolute inset-y-0 right-0 pr-4 flex items-center text-gray-400 hover:text-ink-muted"
                   >
                     <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -140,7 +140,7 @@ export default function SearchPage() {
                   onClick={() => setSelectedCategory(cat)}
                   className={`px-4 py-2 rounded-lg font-medium transition-all ${
                     selectedCategory === cat
-                      ? 'bg-black text-white'
+                      ? 'bg-brand-600 text-white shadow-brand'
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                   }`}
                 >
@@ -157,12 +157,12 @@ export default function SearchPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Results Header */}
           <div className="mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-2">
+            <h2 className="text-2xl font-bold text-ink mb-2">
               {results.length} {results.length === 1 ? 'result' : 'results'} found
               {query && ` for "${query}"`}
             </h2>
             {selectedCategory !== 'All' && (
-              <p className="text-gray-600">
+              <p className="text-ink-muted">
                 Filtered by: <span className="font-semibold">{selectedCategory}</span>
               </p>
             )}
@@ -171,8 +171,8 @@ export default function SearchPage() {
           {/* Results List */}
           {results.length === 0 ? (
             <div className="text-center py-16">
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">No results found</h3>
-              <p className="text-gray-600 mb-6">
+              <h3 className="text-2xl font-bold text-ink mb-2">No results found</h3>
+              <p className="text-ink-muted mb-6">
                 Try different keywords or browse our categories
               </p>
               <div className="flex gap-4 justify-center">
@@ -215,12 +215,12 @@ export default function SearchPage() {
                         </div>
 
                         {/* Title */}
-                        <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-gray-900 transition-colors">
+                        <h3 className="text-xl font-bold text-ink mb-2 group-hover:text-brand-700 transition-colors">
                           {result.title}
                         </h3>
 
                         {/* Description */}
-                        <p className="text-gray-600 mb-3">
+                        <p className="text-ink-muted mb-3">
                           {result.description}
                         </p>
 
@@ -229,7 +229,7 @@ export default function SearchPage() {
                           {result.tags.map((tag, tagIndex) => (
                             <span
                               key={tagIndex}
-                              className="px-2 py-1 bg-gray-50 text-gray-600 text-xs rounded-md"
+                              className="px-2 py-1 bg-subtle text-ink-muted text-xs rounded-md"
                             >
                               {tag}
                             </span>
@@ -240,7 +240,7 @@ export default function SearchPage() {
                       {/* Arrow Icon */}
                       <div className="flex-shrink-0">
                         <svg 
-                          className="w-6 h-6 text-gray-400 group-hover:text-gray-900 group-hover:translate-x-1 transition-all" 
+                          className="w-6 h-6 text-gray-400 group-hover:text-brand-700 group-hover:translate-x-1 transition-all" 
                           fill="none" 
                           stroke="currentColor" 
                           viewBox="0 0 24 24"
@@ -259,9 +259,9 @@ export default function SearchPage() {
 
       {/* Popular Searches */}
       {!query && (
-        <section className="border-t border-gray-200 bg-gray-50 py-16">
+        <section className="border-t border-line bg-subtle py-16">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">
+            <h3 className="text-2xl font-bold text-ink mb-6 text-center">
               Popular Topics
             </h3>
             <div className="flex flex-wrap gap-3 justify-center">
@@ -269,7 +269,7 @@ export default function SearchPage() {
                 <button
                   key={topic}
                   onClick={() => setQuery(topic)}
-                  className="px-4 py-2 bg-white border-2 border-gray-200 text-gray-700 rounded-lg hover:border-gray-400 hover:shadow-md transition-all"
+                  className="px-4 py-2 bg-white border border-line text-gray-700 rounded-lg hover:border-brand-300 hover:shadow-card-hover transition-all shadow-card"
                 >
                   {topic}
                 </button>

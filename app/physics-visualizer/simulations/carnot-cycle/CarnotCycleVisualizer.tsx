@@ -403,17 +403,17 @@ export default function CarnotCycleVisualizer() {
   return (
     <div className="space-y-6">
       {/* Canvas */}
-      <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
+      <div className="border border-line rounded-lg p-4 bg-subtle">
         <canvas
           ref={canvasRef}
           width={canvasWidth}
           height={canvasHeight}
-          className="border border-gray-300 bg-white mx-auto block"
+          className="border border-line-strong bg-white mx-auto block"
         />
       </div>
 
       {/* Controls */}
-      <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
+      <div className="border border-line rounded-lg p-4 bg-subtle">
         <div className="text-xs font-semibold text-gray-700 mb-3">Simulation Controls</div>
         
         <div className="grid md:grid-cols-2 gap-4 mb-4">
@@ -468,7 +468,7 @@ export default function CarnotCycleVisualizer() {
               setIsPlaying(false);
               setCycleCount(0);
             }}
-            className="px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium hover:bg-gray-100"
+            className="px-4 py-2 border border-line-strong rounded-lg text-sm font-medium hover:bg-gray-100"
           >
             Reset
           </button>
@@ -477,22 +477,22 @@ export default function CarnotCycleVisualizer() {
             className={`px-4 py-2 rounded-lg text-sm font-medium ${
               showLabels 
                 ? 'bg-blue-500 text-white' 
-                : 'bg-white border border-gray-300 hover:bg-gray-50'
+                : 'bg-white border border-line-strong hover:bg-subtle'
             }`}
           >
             {showLabels ? 'Hide' : 'Show'} Labels
           </button>
         </div>
 
-        <div className="mt-3 text-sm text-gray-600">
+        <div className="mt-3 text-sm text-ink-muted">
           Cycles completed: {cycleCount}
         </div>
       </div>
 
       {/* Efficiency Info */}
-      <div className="border border-gray-200 rounded-lg p-4 bg-gradient-to-r from-red-50 to-blue-50">
-        <div className="text-sm font-semibold text-gray-900 mb-2">⚡ Carnot Efficiency</div>
-        <div className="text-2xl font-bold text-gray-900 mb-2">
+      <div className="border border-line rounded-lg p-4 bg-gradient-to-r from-red-50 to-blue-50">
+        <div className="text-sm font-semibold text-ink mb-2">⚡ Carnot Efficiency</div>
+        <div className="text-2xl font-bold text-ink mb-2">
           η = {efficiency}%
         </div>
         <div className="text-xs text-gray-700 space-y-1">
@@ -505,24 +505,24 @@ export default function CarnotCycleVisualizer() {
       </div>
 
       {/* Process Info */}
-      <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
-        <div className="text-sm font-semibold text-gray-900 mb-3">🔄 Four Reversible Processes</div>
+      <div className="border border-line rounded-lg p-4 bg-subtle">
+        <div className="text-sm font-semibold text-ink mb-3">🔄 Four Reversible Processes</div>
         <div className="grid md:grid-cols-2 gap-3 text-sm">
-          <div className={`p-3 rounded ${currentPhase === 'isothermal-expansion' ? 'bg-red-100 border-2 border-red-500' : 'bg-white border border-gray-200'}`}>
+          <div className={`p-3 rounded ${currentPhase === 'isothermal-expansion' ? 'bg-red-100 border-2 border-red-500' : 'bg-white border border-line'}`}>
             <div className="font-semibold text-red-700">1. Isothermal Expansion</div>
-            <div className="text-xs text-gray-600 mt-1">T = TH constant, absorb QH</div>
+            <div className="text-xs text-ink-muted mt-1">T = TH constant, absorb QH</div>
           </div>
-          <div className={`p-3 rounded ${currentPhase === 'adiabatic-expansion' ? 'bg-blue-100 border-2 border-blue-500' : 'bg-white border border-gray-200'}`}>
+          <div className={`p-3 rounded ${currentPhase === 'adiabatic-expansion' ? 'bg-blue-100 border-2 border-blue-500' : 'bg-white border border-line'}`}>
             <div className="font-semibold text-blue-700">2. Adiabatic Expansion</div>
-            <div className="text-xs text-gray-600 mt-1">Q = 0, T drops to TC</div>
+            <div className="text-xs text-ink-muted mt-1">Q = 0, T drops to TC</div>
           </div>
-          <div className={`p-3 rounded ${currentPhase === 'isothermal-compression' ? 'bg-green-100 border-2 border-green-500' : 'bg-white border border-gray-200'}`}>
+          <div className={`p-3 rounded ${currentPhase === 'isothermal-compression' ? 'bg-green-100 border-2 border-green-500' : 'bg-white border border-line'}`}>
             <div className="font-semibold text-green-700">3. Isothermal Compression</div>
-            <div className="text-xs text-gray-600 mt-1">T = TC constant, release QC</div>
+            <div className="text-xs text-ink-muted mt-1">T = TC constant, release QC</div>
           </div>
-          <div className={`p-3 rounded ${currentPhase === 'adiabatic-compression' ? 'bg-purple-100 border-2 border-purple-500' : 'bg-white border border-gray-200'}`}>
+          <div className={`p-3 rounded ${currentPhase === 'adiabatic-compression' ? 'bg-purple-100 border-2 border-purple-500' : 'bg-white border border-line'}`}>
             <div className="font-semibold text-purple-700">4. Adiabatic Compression</div>
-            <div className="text-xs text-gray-600 mt-1">Q = 0, T rises to TH</div>
+            <div className="text-xs text-ink-muted mt-1">Q = 0, T rises to TH</div>
           </div>
         </div>
       </div>

@@ -171,60 +171,60 @@ ln(f(x))       →  f'(x)/f(x)`
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <nav className="mb-8 text-sm">
           <ol className="flex items-center gap-2 text-gray-500">
-            <li><Link href="/" className="hover:text-gray-900">Home</Link></li>
+            <li><Link href="/" className="hover:text-ink">Home</Link></li>
             <li>/</li>
-            <li><Link href="/math-visualizer" className="hover:text-gray-900">Math Visualizer</Link></li>
+            <li><Link href="/math-visualizer" className="hover:text-ink">Math Visualizer</Link></li>
             <li>/</li>
-            <li className="text-gray-900 font-medium">Chain Rule</li>
+            <li className="text-ink font-medium">Chain Rule</li>
           </ol>
         </nav>
 
         <article className="space-y-8">
-          <header className="space-y-4 pb-8 border-b border-gray-200">
+          <header className="space-y-4 pb-8 border-b border-line">
             <div className="flex items-center gap-2 text-sm">
-              <span className="px-2 py-1 bg-gray-200 text-gray-900 rounded font-medium">Calculus</span>
+              <span className="px-2 py-1 bg-gray-200 text-ink rounded font-medium">Calculus</span>
               <span className="text-gray-400">•</span>
               <span className="text-gray-500">Intermediate</span>
             </div>
             
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
+            <h1 className="text-4xl md:text-5xl font-bold text-ink leading-tight tracking-tight">
               The Chain Rule
             </h1>
             
-            <p className="text-xl text-gray-600 leading-relaxed">
+            <p className="text-xl text-ink-muted leading-relaxed">
               Master the chain rule to find derivatives of composite functions. Learn how to break down complex functions and apply differentiation step by step.
             </p>
           </header>
 
           <section className="space-y-4">
-            <h2 className="text-2xl font-bold text-gray-900">Problem Statement</h2>
-            <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 space-y-4">
+            <h2 className="text-2xl font-bold text-ink">Problem Statement</h2>
+            <div className="bg-subtle border border-line rounded-lg p-6 space-y-4">
               <p className="text-gray-700">
-                Given a composite function <code className="px-2 py-0.5 bg-white border border-gray-200 rounded text-sm">h(x) = f(g(x))</code>, 
+                Given a composite function <code className="px-2 py-0.5 bg-white border border-line rounded text-sm">h(x) = f(g(x))</code>, 
                 find its derivative using the chain rule.
               </p>
               
               <div className="space-y-2">
-                <p className="font-semibold text-gray-900">Example:</p>
+                <p className="font-semibold text-ink">Example:</p>
                 <div className="space-y-1 text-sm">
                   <p><span className="font-medium">Given:</span> h(x) = (x²) + 1, where g(x) = x² and f(u) = u + 1</p>
                   <p><span className="font-medium">Find:</span> h'(x) using the chain rule</p>
-                  <p className="text-gray-600">Solution: h'(x) = f'(g(x)) · g'(x) = 1 · 2x = 2x</p>
+                  <p className="text-ink-muted">Solution: h'(x) = f'(g(x)) · g'(x) = 1 · 2x = 2x</p>
                 </div>
               </div>
             </div>
           </section>
 
           <section className="space-y-4">
-            <h2 className="text-2xl font-bold text-gray-900">Intuition</h2>
+            <h2 className="text-2xl font-bold text-ink">Intuition</h2>
             <div className="prose prose-gray max-w-none">
               <p className="text-gray-700 leading-relaxed">
                 The chain rule handles <strong>composite functions</strong> - functions within functions. Think of it as 
                 unwrapping layers: differentiate the outer function, then multiply by the derivative of the inner function.
               </p>
               
-              <div className="bg-gray-100 border-l-4 border-gray-900 p-4 my-4">
-                <p className="text-sm text-gray-900">
+              <div className="bg-brand-50/60 border-l-4 border-brand-500 p-4 my-4">
+                <p className="text-sm text-ink">
                   <strong>Key Concept:</strong> If h(x) = f(g(x)), then h'(x) = f'(g(x)) · g'(x). 
                   You evaluate the outer derivative <em>at</em> the inner function, then multiply by the inner derivative.
                 </p>
@@ -235,9 +235,9 @@ ln(f(x))       →  f'(x)/f(x)`
                 Then g'(x) = 2x and f'(u) = 1, so h'(x) = 1 · 2x = 2x.
               </p>
 
-              <div className="bg-gray-100 border border-gray-300 rounded-lg p-4 my-4">
-                <h4 className="font-semibold text-gray-900 mb-2">Why it works:</h4>
-                <p className="text-sm text-gray-900">
+              <div className="bg-gray-100 border border-line-strong rounded-lg p-4 my-4">
+                <h4 className="font-semibold text-ink mb-2">Why it works:</h4>
+                <p className="text-sm text-ink">
                   The chain rule accounts for how changes in x affect g(x), which in turn affects f(g(x)). 
                   It's the rate of change "chained" through multiple layers.
                 </p>
@@ -246,8 +246,8 @@ ln(f(x))       →  f'(x)/f(x)`
           </section>
 
           <section className="space-y-4">
-            <h2 className="text-2xl font-bold text-gray-900">Interactive Visualization</h2>
-            <p className="text-gray-600">
+            <h2 className="text-2xl font-bold text-ink">Interactive Visualization</h2>
+            <p className="text-ink-muted">
               Drag the point to see how the chain rule computes the derivative of the composite function.
             </p>
             <ChainRuleVisualizer />
@@ -255,13 +255,13 @@ ln(f(x))       →  f'(x)/f(x)`
 
           <section className="space-y-4">
             <div className="flex items-center justify-between">
-              <h2 className="text-2xl font-bold text-gray-900">Implementation</h2>
+              <h2 className="text-2xl font-bold text-ink">Implementation</h2>
               <div className="flex gap-2">
                 <button
                   onClick={() => setSelectedLanguage('python')}
                   className={`px-3 py-1.5 text-sm font-medium rounded-lg transition-colors ${
                     selectedLanguage === 'python'
-                      ? 'bg-black text-white'
+                      ? 'bg-brand-600 text-white shadow-brand'
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                   }`}
                 >
@@ -271,7 +271,7 @@ ln(f(x))       →  f'(x)/f(x)`
                   onClick={() => setSelectedLanguage('javascript')}
                   className={`px-3 py-1.5 text-sm font-medium rounded-lg transition-colors ${
                     selectedLanguage === 'javascript'
-                      ? 'bg-black text-white'
+                      ? 'bg-brand-600 text-white shadow-brand'
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                   }`}
                 >
@@ -281,7 +281,7 @@ ln(f(x))       →  f'(x)/f(x)`
                   onClick={() => setSelectedLanguage('mathematical')}
                   className={`px-3 py-1.5 text-sm font-medium rounded-lg transition-colors ${
                     selectedLanguage === 'mathematical'
-                      ? 'bg-black text-white'
+                      ? 'bg-brand-600 text-white shadow-brand'
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                   }`}
                 >
@@ -305,24 +305,24 @@ ln(f(x))       →  f'(x)/f(x)`
           </section>
 
           <section className="space-y-4">
-            <h2 className="text-2xl font-bold text-gray-900">Common Applications</h2>
+            <h2 className="text-2xl font-bold text-ink">Common Applications</h2>
             <div className="grid md:grid-cols-2 gap-4">
-              <div className="bg-gray-100 border border-gray-300 rounded-lg p-4">
-                <h3 className="font-semibold text-gray-900 mb-2">Polynomial Compositions</h3>
-                <p className="text-gray-900 text-sm mb-2">
+              <div className="bg-gray-100 border border-line-strong rounded-lg p-4">
+                <h3 className="font-semibold text-ink mb-2">Polynomial Compositions</h3>
+                <p className="text-ink text-sm mb-2">
                   h(x) = (x² + 3x)⁵
                 </p>
-                <p className="text-gray-900 text-xs">
+                <p className="text-ink text-xs">
                   h'(x) = 5(x² + 3x)⁴ · (2x + 3)
                 </p>
               </div>
               
-              <div className="bg-gray-100 border border-gray-300 rounded-lg p-4">
-                <h3 className="font-semibold text-gray-900 mb-2">Trigonometric Functions</h3>
-                <p className="text-gray-900 text-sm mb-2">
+              <div className="bg-gray-100 border border-line-strong rounded-lg p-4">
+                <h3 className="font-semibold text-ink mb-2">Trigonometric Functions</h3>
+                <p className="text-ink text-sm mb-2">
                   h(x) = sin(x²)
                 </p>
-                <p className="text-gray-900 text-xs">
+                <p className="text-ink text-xs">
                   h'(x) = cos(x²) · 2x
                 </p>
               </div>
@@ -350,16 +350,16 @@ ln(f(x))       →  f'(x)/f(x)`
           </section>
 
           <section className="space-y-4">
-            <h2 className="text-2xl font-bold text-gray-900">Related Topics</h2>
+            <h2 className="text-2xl font-bold text-ink">Related Topics</h2>
             <div className="grid sm:grid-cols-2 gap-3">
-              <Link href="/math-visualizer/problems/derivatives" className="border border-gray-200 rounded-lg p-4 hover:border-gray-400 transition-colors group">
-                <h3 className="font-semibold text-gray-900 mb-1 group-hover:text-gray-900">
+              <Link href="/math-visualizer/problems/derivatives" className="border border-line rounded-lg p-4 hover:border-brand-300 transition-colors group">
+                <h3 className="font-semibold text-ink mb-1 group-hover:text-brand-700">
                   Basic Derivatives
                 </h3>
-                <p className="text-sm text-gray-600">Review fundamental derivative rules</p>
+                <p className="text-sm text-ink-muted">Review fundamental derivative rules</p>
               </Link>
               
-              <div className="border border-gray-200 rounded-lg p-4 hover:border-gray-400 transition-colors opacity-60 cursor-not-allowed">
+              <div className="border border-line rounded-lg p-4 hover:border-brand-300 transition-colors opacity-60 cursor-not-allowed">
                 <h3 className="font-semibold text-gray-700 mb-1 flex items-center justify-between">
                   Product Rule
                   <span className="text-xs text-gray-500">Coming Soon</span>
@@ -367,7 +367,7 @@ ln(f(x))       →  f'(x)/f(x)`
                 <p className="text-sm text-gray-500">Derivatives of products of functions</p>
               </div>
               
-              <div className="border border-gray-200 rounded-lg p-4 hover:border-gray-400 transition-colors opacity-60 cursor-not-allowed">
+              <div className="border border-line rounded-lg p-4 hover:border-brand-300 transition-colors opacity-60 cursor-not-allowed">
                 <h3 className="font-semibold text-gray-700 mb-1 flex items-center justify-between">
                   Implicit Differentiation
                   <span className="text-xs text-gray-500">Coming Soon</span>
@@ -375,7 +375,7 @@ ln(f(x))       →  f'(x)/f(x)`
                 <p className="text-sm text-gray-500">Chain rule with implicit functions</p>
               </div>
               
-              <div className="border border-gray-200 rounded-lg p-4 hover:border-gray-400 transition-colors opacity-60 cursor-not-allowed">
+              <div className="border border-line rounded-lg p-4 hover:border-brand-300 transition-colors opacity-60 cursor-not-allowed">
                 <h3 className="font-semibold text-gray-700 mb-1 flex items-center justify-between">
                   Related Rates
                   <span className="text-xs text-gray-500">Coming Soon</span>
@@ -385,8 +385,8 @@ ln(f(x))       →  f'(x)/f(x)`
             </div>
           </section>
 
-          <section className="pt-8 border-t border-gray-200">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Discussion</h2>
+          <section className="pt-8 border-t border-line">
+            <h2 className="text-2xl font-bold text-ink mb-6">Discussion</h2>
             <GiscusComments />
           </section>
         </article>

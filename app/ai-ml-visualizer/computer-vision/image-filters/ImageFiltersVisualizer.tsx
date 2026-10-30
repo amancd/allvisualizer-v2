@@ -262,26 +262,26 @@ export default function ImageFiltersVisualizer() {
       {/* Breadcrumbs */}
       <nav className="pt-24 pb-4">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ol className="flex items-center space-x-2 text-sm text-gray-600">
+          <ol className="flex items-center space-x-2 text-sm text-ink-muted">
             <li>
-              <Link href="/" className="hover:text-gray-900">
+              <Link href="/" className="hover:text-ink">
                 Home
               </Link>
             </li>
             <li>/</li>
             <li>
-              <Link href="/ai-ml-visualizer" className="hover:text-gray-900">
+              <Link href="/ai-ml-visualizer" className="hover:text-ink">
                 AI & ML
               </Link>
             </li>
             <li>/</li>
             <li>
-              <Link href="/ai-ml-visualizer/computer-vision" className="hover:text-gray-900">
+              <Link href="/ai-ml-visualizer/computer-vision" className="hover:text-ink">
                 Computer Vision
               </Link>
             </li>
             <li>/</li>
-            <li className="text-gray-900 font-medium">Image Filters</li>
+            <li className="text-ink font-medium">Image Filters</li>
           </ol>
         </div>
       </nav>
@@ -289,10 +289,10 @@ export default function ImageFiltersVisualizer() {
       {/* Header */}
       <section className="pb-12">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
+          <h1 className="text-4xl font-bold text-ink mb-4 tracking-tight">
             Image Filters & Convolution
           </h1>
-          <p className="text-lg text-gray-600 max-w-3xl">
+          <p className="text-lg text-ink-muted max-w-3xl">
             Explore how convolution kernels transform images. Apply different filters and see the mathematical operations in action.
           </p>
         </div>
@@ -305,8 +305,8 @@ export default function ImageFiltersVisualizer() {
             {/* Controls */}
             <div className="lg:col-span-1 space-y-6">
               {/* Upload Section */}
-              <div className="bg-white border-2 border-gray-200 rounded-xl p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">
+              <div className="bg-white border border-line rounded-card p-6 shadow-card">
+                <h3 className="text-lg font-semibold text-ink mb-4">
                   Image Upload
                 </h3>
                 <input
@@ -337,8 +337,8 @@ export default function ImageFiltersVisualizer() {
               </div>
 
               {/* Filter Selection */}
-              <div className="bg-white border-2 border-gray-200 rounded-xl p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">
+              <div className="bg-white border border-line rounded-card p-6 shadow-card">
+                <h3 className="text-lg font-semibold text-ink mb-4">
                   Select Filter
                 </h3>
                 <div className="space-y-2">
@@ -348,12 +348,12 @@ export default function ImageFiltersVisualizer() {
                       onClick={() => setSelectedFilter(filter.id)}
                       className={`w-full text-left p-3 rounded-lg border-2 transition-all ${
                         selectedFilter === filter.id
-                          ? 'border-black bg-gray-50'
-                          : 'border-gray-200 hover:border-gray-300'
+                          ? 'border-brand-500 bg-brand-50'
+                          : 'border-line hover:border-line-strong'
                       }`}
                     >
-                      <div className="font-medium text-gray-900">{filter.name}</div>
-                      <div className="text-sm text-gray-600">{filter.description}</div>
+                      <div className="font-medium text-ink">{filter.name}</div>
+                      <div className="text-sm text-ink-muted">{filter.description}</div>
                     </button>
                   ))}
                 </div>
@@ -361,8 +361,8 @@ export default function ImageFiltersVisualizer() {
 
               {/* Custom Kernel Editor */}
               {selectedFilter === 'custom' && (
-                <div className="bg-white border-2 border-gray-200 rounded-xl p-6">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                <div className="bg-white border border-line rounded-card p-6 shadow-card">
+                  <h3 className="text-lg font-semibold text-ink mb-4">
                     Custom Kernel
                   </h3>
                   <div className="space-y-4">
@@ -374,7 +374,7 @@ export default function ImageFiltersVisualizer() {
                             type="number"
                             value={val}
                             onChange={(e) => updateKernelCell(i, j, e.target.value)}
-                            className="w-full px-2 py-2 text-center border-2 border-gray-200 rounded focus:border-black focus:outline-none"
+                            className="w-full px-2 py-2 text-center border-2 border-line rounded focus:border-brand-500 focus:outline-none"
                             step="0.1"
                           />
                         ))
@@ -388,7 +388,7 @@ export default function ImageFiltersVisualizer() {
                         type="number"
                         value={customDivisor}
                         onChange={(e) => setCustomDivisor(parseFloat(e.target.value) || 1)}
-                        className="w-full px-3 py-2 border-2 border-gray-200 rounded focus:border-black focus:outline-none"
+                        className="w-full px-3 py-2 border-2 border-line rounded focus:border-brand-500 focus:outline-none"
                         step="0.1"
                       />
                     </div>
@@ -400,24 +400,24 @@ export default function ImageFiltersVisualizer() {
             {/* Canvas Display */}
             <div className="lg:col-span-2 space-y-6">
               {/* Original Image */}
-              <div className="bg-white border-2 border-gray-200 rounded-xl p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">
+              <div className="bg-white border border-line rounded-card p-6 shadow-card">
+                <h3 className="text-lg font-semibold text-ink mb-4">
                   Original Image
                 </h3>
-                <div className="flex justify-center bg-gray-50 rounded-lg p-4">
+                <div className="flex justify-center bg-subtle rounded-lg p-4">
                   <canvas
                     ref={sourceCanvasRef}
                     width={400}
                     height={300}
-                    className="border border-gray-300 rounded"
+                    className="border border-line-strong rounded"
                   />
                 </div>
               </div>
 
               {/* Filtered Result */}
-              <div className="bg-white border-2 border-gray-200 rounded-xl p-6">
+              <div className="bg-white border border-line rounded-card p-6 shadow-card">
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-lg font-semibold text-gray-900">
+                  <h3 className="text-lg font-semibold text-ink">
                     Filtered Result
                   </h3>
                   <Button
@@ -430,16 +430,16 @@ export default function ImageFiltersVisualizer() {
                     Download
                   </Button>
                 </div>
-                <div className="flex justify-center bg-gray-50 rounded-lg p-4">
+                <div className="flex justify-center bg-subtle rounded-lg p-4">
                   <canvas
                     ref={resultCanvasRef}
                     width={400}
                     height={300}
-                    className="border border-gray-300 rounded"
+                    className="border border-line-strong rounded"
                   />
                 </div>
                 {isProcessing && (
-                  <div className="text-center text-sm text-gray-600 mt-2">
+                  <div className="text-center text-sm text-ink-muted mt-2">
                     Processing...
                   </div>
                 )}
@@ -447,8 +447,8 @@ export default function ImageFiltersVisualizer() {
 
               {/* Kernel Visualization */}
               {selectedFilter !== 'none' && (
-                <div className="bg-white border-2 border-gray-200 rounded-xl p-6">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                <div className="bg-white border border-line rounded-card p-6 shadow-card">
+                  <h3 className="text-lg font-semibold text-ink mb-4">
                     Convolution Kernel
                   </h3>
                   <div className="space-y-4">
@@ -458,18 +458,18 @@ export default function ImageFiltersVisualizer() {
                           row.map((val, j) => (
                             <div
                               key={`${i}-${j}`}
-                              className="w-16 h-16 flex items-center justify-center bg-white border-2 border-gray-300 rounded font-mono text-sm font-semibold"
+                              className="w-16 h-16 flex items-center justify-center bg-white border-2 border-line-strong rounded font-mono text-sm font-semibold"
                             >
                               {val}
                             </div>
                           ))
                         )}
                       </div>
-                      <div className="text-center mt-2 text-sm text-gray-600">
+                      <div className="text-center mt-2 text-sm text-ink-muted">
                         Divisor: {selectedFilter === 'custom' ? customDivisor : KERNELS[selectedFilter]?.divisor}
                       </div>
                     </div>
-                    <p className="text-sm text-gray-600">
+                    <p className="text-sm text-ink-muted">
                       This 3×3 kernel slides across the image, multiplying each pixel with its neighbors and summing the results.
                     </p>
                   </div>
@@ -481,60 +481,60 @@ export default function ImageFiltersVisualizer() {
       </section>
 
       {/* Theory Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-subtle">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">
+          <h2 className="text-3xl font-bold text-ink mb-8 tracking-tight">
             How Convolution Works
           </h2>
           <div className="grid md:grid-cols-2 gap-6 mb-12">
-            <div className="bg-white rounded-xl p-6 border border-gray-200">
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">
+            <div className="bg-white rounded-card p-6 border border-line shadow-card">
+              <h3 className="text-lg font-semibold text-ink mb-3">
                 Sliding Window
               </h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
+              <p className="text-ink-muted text-sm leading-relaxed">
                 The kernel moves across the image pixel by pixel. At each position, it multiplies the kernel values with the corresponding pixel values and sums them up.
               </p>
             </div>
-            <div className="bg-white rounded-xl p-6 border border-gray-200">
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">
+            <div className="bg-white rounded-card p-6 border border-line shadow-card">
+              <h3 className="text-lg font-semibold text-ink mb-3">
                 Normalization
               </h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
+              <p className="text-ink-muted text-sm leading-relaxed">
                 The divisor normalizes the result to keep pixel values in the valid range (0-255). For blur kernels, this prevents the image from becoming too bright.
               </p>
             </div>
-            <div className="bg-white rounded-xl p-6 border border-gray-200">
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">
+            <div className="bg-white rounded-card p-6 border border-line shadow-card">
+              <h3 className="text-lg font-semibold text-ink mb-3">
                 Edge Detection
               </h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
+              <p className="text-ink-muted text-sm leading-relaxed">
                 Kernels like Sobel and Laplacian detect edges by finding areas with high pixel intensity changes. Positive and negative values highlight different edge directions.
               </p>
             </div>
-            <div className="bg-white rounded-xl p-6 border border-gray-200">
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">
+            <div className="bg-white rounded-card p-6 border border-line shadow-card">
+              <h3 className="text-lg font-semibold text-ink mb-3">
                 CNN Foundation
               </h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
+              <p className="text-ink-muted text-sm leading-relaxed">
                 Convolutional Neural Networks learn optimal kernels automatically. Understanding manual filters helps grasp how CNNs extract features from images.
               </p>
             </div>
           </div>
 
           {/* Mathematical Foundation */}
-          <div className="bg-white rounded-xl p-8 border border-gray-200 mb-12">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">
+          <div className="bg-white rounded-card p-8 border border-line mb-12 shadow-card">
+            <h3 className="text-2xl font-bold text-ink mb-6">
               Mathematical Foundation
             </h3>
             <div className="space-y-6">
               <div>
-                <h4 className="text-lg font-semibold text-gray-900 mb-3">
+                <h4 className="text-lg font-semibold text-ink mb-3">
                   Convolution Operation
                 </h4>
-                <p className="text-gray-600 mb-4 leading-relaxed">
+                <p className="text-ink-muted mb-4 leading-relaxed">
                   For a 3×3 kernel <strong>K</strong> applied to an image <strong>I</strong>, the output pixel value at position (x, y) is computed as:
                 </p>
-                <div className="bg-gray-50 p-6 rounded-lg border border-gray-200 overflow-x-auto">
+                <div className="bg-subtle p-6 rounded-lg border border-line overflow-x-auto">
                   <code className="text-sm font-mono">
                     Output(x, y) = Σ Σ I(x+i-1, y+j-1) × K(i, j) / divisor
                     <br />
@@ -544,13 +544,13 @@ export default function ImageFiltersVisualizer() {
               </div>
 
               <div>
-                <h4 className="text-lg font-semibold text-gray-900 mb-3">
+                <h4 className="text-lg font-semibold text-ink mb-3">
                   Example: Gaussian Blur
                 </h4>
-                <p className="text-gray-600 mb-4 leading-relaxed">
+                <p className="text-ink-muted mb-4 leading-relaxed">
                   The Gaussian blur kernel approximates a 2D Gaussian distribution, giving more weight to the center pixel:
                 </p>
-                <div className="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                <div className="bg-subtle p-6 rounded-lg border border-line">
                   <pre className="text-sm font-mono">
 {`┌         ┐
 │ 1  2  1 │
@@ -558,21 +558,21 @@ export default function ImageFiltersVisualizer() {
 │ 1  2  1 │
 └         ┘`}
                   </pre>
-                  <p className="text-gray-600 text-sm mt-4">
+                  <p className="text-ink-muted text-sm mt-4">
                     Sum of weights = 16, so we divide by 16 to maintain brightness. The center pixel has weight 4/16 = 0.25, corners have 1/16 = 0.0625.
                   </p>
                 </div>
               </div>
 
               <div>
-                <h4 className="text-lg font-semibold text-gray-900 mb-3">
+                <h4 className="text-lg font-semibold text-ink mb-3">
                   Example: Sobel Edge Detection
                 </h4>
-                <p className="text-gray-600 mb-4 leading-relaxed">
+                <p className="text-ink-muted mb-4 leading-relaxed">
                   Sobel kernels detect edges by computing intensity gradients. Two kernels detect horizontal and vertical edges:
                 </p>
                 <div className="grid md:grid-cols-2 gap-4">
-                  <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                  <div className="bg-subtle p-4 rounded-lg border border-line">
                     <p className="text-sm font-semibold text-gray-700 mb-2">Horizontal (Gx)</p>
                     <pre className="text-sm font-mono">
 {`┌          ┐
@@ -582,7 +582,7 @@ export default function ImageFiltersVisualizer() {
 └          ┘`}
                     </pre>
                   </div>
-                  <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                  <div className="bg-subtle p-4 rounded-lg border border-line">
                     <p className="text-sm font-semibold text-gray-700 mb-2">Vertical (Gy)</p>
                     <pre className="text-sm font-mono">
 {`┌           ┐
@@ -593,7 +593,7 @@ export default function ImageFiltersVisualizer() {
                     </pre>
                   </div>
                 </div>
-                <p className="text-gray-600 text-sm mt-4">
+                <p className="text-ink-muted text-sm mt-4">
                   Gradient magnitude: G = √(Gx² + Gy²) | Gradient direction: θ = arctan(Gy / Gx)
                 </p>
               </div>
@@ -602,17 +602,17 @@ export default function ImageFiltersVisualizer() {
 
           {/* Filter Types Deep Dive */}
           <div className="space-y-8">
-            <h3 className="text-2xl font-bold text-gray-900">
+            <h3 className="text-2xl font-bold text-ink">
               Filter Types Explained
             </h3>
 
-            <div className="bg-white rounded-xl p-6 border border-gray-200">
-              <h4 className="text-xl font-semibold text-gray-900 mb-4">
+            <div className="bg-white rounded-card p-6 border border-line shadow-card">
+              <h4 className="text-xl font-semibold text-ink mb-4">
                 1. Smoothing Filters (Low-Pass)
               </h4>
               <div className="space-y-4">
                 <div>
-                  <p className="text-gray-600 leading-relaxed mb-3">
+                  <p className="text-ink-muted leading-relaxed mb-3">
                     <strong>Purpose:</strong> Reduce noise and detail by averaging neighboring pixels. Called "low-pass" because they allow low-frequency components (smooth areas) to pass while blocking high frequencies (edges, noise).
                   </p>
                   <div className="bg-blue-50 border-l-4 border-blue-500 p-4 rounded">
@@ -622,8 +622,8 @@ export default function ImageFiltersVisualizer() {
                   </div>
                 </div>
                 <div className="grid md:grid-cols-2 gap-4">
-                  <div className="bg-gray-50 p-4 rounded-lg">
-                    <p className="text-sm font-semibold text-gray-900 mb-2">Box Blur (Simple Average)</p>
+                  <div className="bg-subtle p-4 rounded-lg">
+                    <p className="text-sm font-semibold text-ink mb-2">Box Blur (Simple Average)</p>
                     <pre className="text-xs font-mono mb-2">
 {`┌         ┐
 │ 1  1  1 │
@@ -631,10 +631,10 @@ export default function ImageFiltersVisualizer() {
 │ 1  1  1 │
 └         ┘`}
                     </pre>
-                    <p className="text-xs text-gray-600">Equal weights - fast but less natural</p>
+                    <p className="text-xs text-ink-muted">Equal weights - fast but less natural</p>
                   </div>
-                  <div className="bg-gray-50 p-4 rounded-lg">
-                    <p className="text-sm font-semibold text-gray-900 mb-2">Gaussian Blur</p>
+                  <div className="bg-subtle p-4 rounded-lg">
+                    <p className="text-sm font-semibold text-ink mb-2">Gaussian Blur</p>
                     <pre className="text-xs font-mono mb-2">
 {`┌         ┐
 │ 1  2  1 │
@@ -642,19 +642,19 @@ export default function ImageFiltersVisualizer() {
 │ 1  2  1 │
 └         ┘`}
                     </pre>
-                    <p className="text-xs text-gray-600">Weighted by distance - more natural</p>
+                    <p className="text-xs text-ink-muted">Weighted by distance - more natural</p>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="bg-white rounded-xl p-6 border border-gray-200">
-              <h4 className="text-xl font-semibold text-gray-900 mb-4">
+            <div className="bg-white rounded-card p-6 border border-line shadow-card">
+              <h4 className="text-xl font-semibold text-ink mb-4">
                 2. Sharpening Filters (High-Pass)
               </h4>
               <div className="space-y-4">
                 <div>
-                  <p className="text-gray-600 leading-relaxed mb-3">
+                  <p className="text-ink-muted leading-relaxed mb-3">
                     <strong>Purpose:</strong> Enhance edges and fine details by amplifying high-frequency components. Works by adding a scaled version of the Laplacian (second derivative) to the original image.
                   </p>
                   <div className="bg-green-50 border-l-4 border-green-500 p-4 rounded">
@@ -663,8 +663,8 @@ export default function ImageFiltersVisualizer() {
                     </p>
                   </div>
                 </div>
-                <div className="bg-gray-50 p-4 rounded-lg">
-                  <p className="text-sm font-semibold text-gray-900 mb-2">Standard Sharpen</p>
+                <div className="bg-subtle p-4 rounded-lg">
+                  <p className="text-sm font-semibold text-ink mb-2">Standard Sharpen</p>
                   <pre className="text-xs font-mono mb-2">
 {`┌           ┐
 │  0  -1  0 │
@@ -672,21 +672,21 @@ export default function ImageFiltersVisualizer() {
 │  0  -1  0 │
 └           ┘`}
                   </pre>
-                  <p className="text-xs text-gray-600 mb-3">Center: 5 (original + enhancement), Neighbors: -1 (subtract surrounding blur)</p>
-                  <p className="text-xs text-gray-600">
+                  <p className="text-xs text-ink-muted mb-3">Center: 5 (original + enhancement), Neighbors: -1 (subtract surrounding blur)</p>
+                  <p className="text-xs text-ink-muted">
                     <strong>Formula:</strong> Sharpened = Original + α × (Original - Blurred)
                   </p>
                 </div>
               </div>
             </div>
 
-            <div className="bg-white rounded-xl p-6 border border-gray-200">
-              <h4 className="text-xl font-semibold text-gray-900 mb-4">
+            <div className="bg-white rounded-card p-6 border border-line shadow-card">
+              <h4 className="text-xl font-semibold text-ink mb-4">
                 3. Edge Detection Filters
               </h4>
               <div className="space-y-4">
                 <div>
-                  <p className="text-gray-600 leading-relaxed mb-3">
+                  <p className="text-ink-muted leading-relaxed mb-3">
                     <strong>Purpose:</strong> Identify boundaries between regions by detecting rapid intensity changes. Essential for object recognition, image segmentation, and feature extraction.
                   </p>
                   <div className="bg-purple-50 border-l-4 border-purple-500 p-4 rounded mb-4">
@@ -696,8 +696,8 @@ export default function ImageFiltersVisualizer() {
                   </div>
                 </div>
                 <div className="grid md:grid-cols-3 gap-4">
-                  <div className="bg-gray-50 p-4 rounded-lg">
-                    <p className="text-sm font-semibold text-gray-900 mb-2">Sobel X</p>
+                  <div className="bg-subtle p-4 rounded-lg">
+                    <p className="text-sm font-semibold text-ink mb-2">Sobel X</p>
                     <pre className="text-xs font-mono mb-2">
 {`┌          ┐
 │ -1  0  1 │
@@ -705,10 +705,10 @@ export default function ImageFiltersVisualizer() {
 │ -1  0  1 │
 └          ┘`}
                     </pre>
-                    <p className="text-xs text-gray-600">Vertical edges (left-right gradient)</p>
+                    <p className="text-xs text-ink-muted">Vertical edges (left-right gradient)</p>
                   </div>
-                  <div className="bg-gray-50 p-4 rounded-lg">
-                    <p className="text-sm font-semibold text-gray-900 mb-2">Laplacian</p>
+                  <div className="bg-subtle p-4 rounded-lg">
+                    <p className="text-sm font-semibold text-ink mb-2">Laplacian</p>
                     <pre className="text-xs font-mono mb-2">
 {`┌           ┐
 │  0  -1  0 │
@@ -716,10 +716,10 @@ export default function ImageFiltersVisualizer() {
 │  0  -1  0 │
 └           ┘`}
                     </pre>
-                    <p className="text-xs text-gray-600">All directions (2nd derivative)</p>
+                    <p className="text-xs text-ink-muted">All directions (2nd derivative)</p>
                   </div>
-                  <div className="bg-gray-50 p-4 rounded-lg">
-                    <p className="text-sm font-semibold text-gray-900 mb-2">Prewitt</p>
+                  <div className="bg-subtle p-4 rounded-lg">
+                    <p className="text-sm font-semibold text-ink mb-2">Prewitt</p>
                     <pre className="text-xs font-mono mb-2">
 {`┌          ┐
 │ -1  0  1 │
@@ -727,25 +727,25 @@ export default function ImageFiltersVisualizer() {
 │ -1  0  1 │
 └          ┘`}
                     </pre>
-                    <p className="text-xs text-gray-600">Similar to Sobel, equal weights</p>
+                    <p className="text-xs text-ink-muted">Similar to Sobel, equal weights</p>
                   </div>
                 </div>
                 <div className="bg-gray-100 p-4 rounded-lg">
-                  <p className="text-sm font-semibold text-gray-900 mb-2">Why Sobel uses [-2, 0, 2]?</p>
-                  <p className="text-xs text-gray-600">
+                  <p className="text-sm font-semibold text-ink mb-2">Why Sobel uses [-2, 0, 2]?</p>
+                  <p className="text-xs text-ink-muted">
                     The center row has double weight because it's directly aligned with the edge direction. This provides better noise suppression while maintaining edge detection accuracy - it's essentially a combination of gradient and smoothing.
                   </p>
                 </div>
               </div>
             </div>
 
-            <div className="bg-white rounded-xl p-6 border border-gray-200">
-              <h4 className="text-xl font-semibold text-gray-900 mb-4">
+            <div className="bg-white rounded-card p-6 border border-line shadow-card">
+              <h4 className="text-xl font-semibold text-ink mb-4">
                 4. Emboss Filter
               </h4>
               <div className="space-y-4">
                 <div>
-                  <p className="text-gray-600 leading-relaxed mb-3">
+                  <p className="text-ink-muted leading-relaxed mb-3">
                     <strong>Purpose:</strong> Creates a 3D raised relief effect by emphasizing edges in a specific direction. Simulates light coming from one corner.
                   </p>
                   <div className="bg-orange-50 border-l-4 border-orange-500 p-4 rounded mb-4">
@@ -754,8 +754,8 @@ export default function ImageFiltersVisualizer() {
                     </p>
                   </div>
                 </div>
-                <div className="bg-gray-50 p-4 rounded-lg">
-                  <p className="text-sm font-semibold text-gray-900 mb-2">Emboss Kernel</p>
+                <div className="bg-subtle p-4 rounded-lg">
+                  <p className="text-sm font-semibold text-ink mb-2">Emboss Kernel</p>
                   <pre className="text-xs font-mono mb-2">
 {`┌           ┐
 │ -2  -1  0 │
@@ -763,7 +763,7 @@ export default function ImageFiltersVisualizer() {
 │  0   1  2 │
 └           ┘`}
                   </pre>
-                  <p className="text-xs text-gray-600 mb-2">Light from bottom-right, shadows top-left</p>
+                  <p className="text-xs text-ink-muted mb-2">Light from bottom-right, shadows top-left</p>
                   <p className="text-xs text-gray-700">
                     <strong>How it works:</strong> Negative values on one side, positive on the opposite. The difference creates the illusion of depth. Often combined with a gray offset (128) to center values.
                   </p>
@@ -771,28 +771,28 @@ export default function ImageFiltersVisualizer() {
               </div>
             </div>
 
-            <div className="bg-white rounded-xl p-6 border border-gray-200">
-              <h4 className="text-xl font-semibold text-gray-900 mb-4">
+            <div className="bg-white rounded-card p-6 border border-line shadow-card">
+              <h4 className="text-xl font-semibold text-ink mb-4">
                 5. Advanced Concepts
               </h4>
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <h5 className="text-md font-semibold text-gray-900 mb-2">Separable Filters</h5>
-                  <p className="text-sm text-gray-600 mb-2">
+                  <h5 className="text-md font-semibold text-ink mb-2">Separable Filters</h5>
+                  <p className="text-sm text-ink-muted mb-2">
                     Some 2D kernels can be decomposed into two 1D kernels (row and column), making them much faster to compute.
                   </p>
-                  <div className="bg-gray-50 p-3 rounded text-xs font-mono">
+                  <div className="bg-subtle p-3 rounded text-xs font-mono">
                     Gaussian 3×3 = [1,2,1]ᵀ × [1,2,1]
                     <br />
                     <span className="text-gray-500">Complexity: O(N²M²) → O(2NM)</span>
                   </div>
                 </div>
                 <div>
-                  <h5 className="text-md font-semibold text-gray-900 mb-2">Padding Strategies</h5>
-                  <p className="text-sm text-gray-600 mb-2">
+                  <h5 className="text-md font-semibold text-ink mb-2">Padding Strategies</h5>
+                  <p className="text-sm text-ink-muted mb-2">
                     How to handle edges where the kernel extends beyond the image:
                   </p>
-                  <ul className="text-xs text-gray-600 space-y-1 list-disc list-inside">
+                  <ul className="text-xs text-ink-muted space-y-1 list-disc list-inside">
                     <li><strong>Zero padding:</strong> Assume 0 outside image</li>
                     <li><strong>Replicate:</strong> Repeat edge pixels</li>
                     <li><strong>Reflect:</strong> Mirror the image</li>
@@ -800,11 +800,11 @@ export default function ImageFiltersVisualizer() {
                   </ul>
                 </div>
                 <div>
-                  <h5 className="text-md font-semibold text-gray-900 mb-2">Kernel Size Trade-offs</h5>
-                  <p className="text-sm text-gray-600 mb-2">
+                  <h5 className="text-md font-semibold text-ink mb-2">Kernel Size Trade-offs</h5>
+                  <p className="text-sm text-ink-muted mb-2">
                     Larger kernels (5×5, 7×7) provide:
                   </p>
-                  <ul className="text-xs text-gray-600 space-y-1">
+                  <ul className="text-xs text-ink-muted space-y-1">
                     <li>✅ Stronger effects (more blur, better noise reduction)</li>
                     <li>✅ Wider context for feature detection</li>
                     <li>❌ Higher computational cost (O(K²) per pixel)</li>
@@ -812,11 +812,11 @@ export default function ImageFiltersVisualizer() {
                   </ul>
                 </div>
                 <div>
-                  <h5 className="text-md font-semibold text-gray-900 mb-2">In CNNs</h5>
-                  <p className="text-sm text-gray-600 mb-2">
+                  <h5 className="text-md font-semibold text-ink mb-2">In CNNs</h5>
+                  <p className="text-sm text-ink-muted mb-2">
                     Deep learning networks learn kernel values through backpropagation:
                   </p>
-                  <ul className="text-xs text-gray-600 space-y-1">
+                  <ul className="text-xs text-ink-muted space-y-1">
                     <li>• Early layers: Edge/texture detectors (like manual filters)</li>
                     <li>• Middle layers: Shape/pattern detectors</li>
                     <li>• Deep layers: High-level features (faces, objects)</li>
@@ -831,7 +831,7 @@ export default function ImageFiltersVisualizer() {
       {/* Comments */}
       <section className="py-16">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">
+          <h2 className="text-2xl font-bold text-ink mb-6">
             Discussion
           </h2>
           <GiscusComments />

@@ -51,11 +51,11 @@ export default function ThermodynamicsPage() {
         {/* Breadcrumb */}
         <nav className="mb-8 text-sm">
           <ol className="flex items-center gap-2 text-gray-500">
-            <li><Link href="/" className="hover:text-gray-900">Home</Link></li>
+            <li><Link href="/" className="hover:text-ink">Home</Link></li>
             <li>/</li>
-            <li><Link href="/physics-visualizer" className="hover:text-gray-900">Physics Visualizer</Link></li>
+            <li><Link href="/physics-visualizer" className="hover:text-ink">Physics Visualizer</Link></li>
             <li>/</li>
-            <li className="text-gray-900 font-medium">Thermodynamics</li>
+            <li className="text-ink font-medium">Thermodynamics</li>
           </ol>
         </nav>
 
@@ -63,11 +63,11 @@ export default function ThermodynamicsPage() {
         <header className="mb-12 space-y-4">
           <div className="flex items-center gap-3">
             <span className="text-4xl">🔥</span>
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900">
+            <h1 className="text-4xl md:text-5xl font-bold text-ink tracking-tight">
               Thermodynamics
             </h1>
           </div>
-          <p className="text-xl text-gray-600 leading-relaxed">
+          <p className="text-xl text-ink-muted leading-relaxed">
             Explore heat, temperature, and energy transfer. Learn about gas laws, 
             thermodynamic processes, heat engines, and the laws of thermodynamics through interactive simulations.
           </p>
@@ -75,28 +75,28 @@ export default function ThermodynamicsPage() {
 
         {/* Key Concepts */}
         <section className="mb-12">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Key Concepts</h2>
+          <h2 className="text-2xl font-bold text-ink mb-4">Key Concepts</h2>
           <div className="grid sm:grid-cols-2 gap-4">
             <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-              <h3 className="font-semibold text-gray-900 mb-2">Laws of Thermodynamics</h3>
+              <h3 className="font-semibold text-ink mb-2">Laws of Thermodynamics</h3>
               <p className="text-sm text-gray-700">
                 Four fundamental laws governing energy, heat, and entropy in physical systems.
               </p>
             </div>
             <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-              <h3 className="font-semibold text-gray-900 mb-2">Ideal Gas Law</h3>
+              <h3 className="font-semibold text-ink mb-2">Ideal Gas Law</h3>
               <p className="text-sm text-gray-700">
                 PV = nRT describes the behavior of gases under various conditions of pressure, volume, and temperature.
               </p>
             </div>
             <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-              <h3 className="font-semibold text-gray-900 mb-2">Heat Transfer</h3>
+              <h3 className="font-semibold text-ink mb-2">Heat Transfer</h3>
               <p className="text-sm text-gray-700">
                 Energy transfer through conduction, convection, and radiation mechanisms.
               </p>
             </div>
             <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-              <h3 className="font-semibold text-gray-900 mb-2">Entropy</h3>
+              <h3 className="font-semibold text-ink mb-2">Entropy</h3>
               <p className="text-sm text-gray-700">
                 Measure of disorder and the irreversibility of natural processes.
               </p>
@@ -106,17 +106,17 @@ export default function ThermodynamicsPage() {
 
         {/* Problems Grid */}
         <section className="mb-12">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Simulations</h2>
+          <h2 className="text-2xl font-bold text-ink mb-6">Simulations</h2>
           <div className="space-y-4">
             {problems.map((simulation) => (
               <div
                 key={simulation.slug}
-                className={`border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow ${
+                className={`border border-line rounded-lg p-6 hover:shadow-card-hover transition-shadow ${
                   simulation.comingSoon ? 'opacity-60' : ''
                 }`}
               >
                 <div className="flex items-start justify-between mb-3">
-                  <h3 className="text-xl font-bold text-gray-900">{simulation.title}</h3>
+                  <h3 className="text-xl font-bold text-ink">{simulation.title}</h3>
                   <span className={`px-2 py-1 text-xs font-medium rounded shrink-0 ${
                     simulation.difficulty === 'Beginner' 
                       ? 'bg-green-100 text-green-700'
@@ -128,7 +128,7 @@ export default function ThermodynamicsPage() {
                   </span>
                 </div>
 
-                <p className="text-gray-600 mb-4">
+                <p className="text-ink-muted mb-4">
                   {simulation.description}
                 </p>
 
@@ -146,7 +146,7 @@ export default function ThermodynamicsPage() {
                 {!simulation.comingSoon ? (
                   <Link
                     href={`/physics-visualizer/simulations/${simulation.slug}`}
-                    className="inline-block w-full px-4 py-2 bg-transparent text-black border border-black text-center rounded-lg hover:bg-gray-50 transition-colors"
+                    className="inline-block w-full px-4 py-2 bg-white text-brand-700 border border-brand-200 shadow-card text-center rounded-lg hover:bg-subtle transition-colors"
                   >
                     Start Simulation →
                   </Link>

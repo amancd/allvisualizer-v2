@@ -24,20 +24,20 @@ export default function BohrModelPage() {
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 pt-24">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Breadcrumb */}
-        <div className="mb-6 text-sm text-gray-600">
-          <a href="/" className="hover:text-gray-900">Home</a>
+        <div className="mb-6 text-sm text-ink-muted">
+          <a href="/" className="hover:text-ink">Home</a>
           {' / '}
-          <a href="/physics-visualizer" className="hover:text-gray-900">Physics Visualizer</a>
+          <a href="/physics-visualizer" className="hover:text-ink">Physics Visualizer</a>
           {' / '}
-          <a href="/physics-visualizer/modern-physics" className="hover:text-gray-900">Modern Physics</a>
+          <a href="/physics-visualizer/modern-physics" className="hover:text-ink">Modern Physics</a>
           {' / '}
-          <span className="text-gray-900">Bohr Model</span>
+          <span className="text-ink">Bohr Model</span>
         </div>
 
         {/* Header */}
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-3">
-            <h1 className="text-4xl font-bold text-gray-900">Bohr Model of Hydrogen</h1>
+            <h1 className="text-4xl font-bold text-ink tracking-tight">Bohr Model of Hydrogen</h1>
             <span className="px-3 py-1 bg-yellow-100 text-yellow-800 text-xs font-semibold rounded-full">
               Medium
             </span>
@@ -55,7 +55,7 @@ export default function BohrModelPage() {
         {/* Theory Section */}
         <div className="prose max-w-none">
           <section className="mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">The Bohr Model</h2>
+            <h2 className="text-2xl font-bold text-ink mb-4">The Bohr Model</h2>
             <p className="text-gray-700 mb-4">
               Proposed by Niels Bohr in 1913, the Bohr model was the first successful quantum model of the atom. 
               It explained the discrete spectral lines of hydrogen by postulating that electrons orbit the nucleus 
@@ -68,10 +68,10 @@ export default function BohrModelPage() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">Key Postulates</h2>
+            <h2 className="text-2xl font-bold text-ink mb-4">Key Postulates</h2>
             <div className="space-y-4">
               <div className="border-l-4 border-blue-500 pl-4 py-2 bg-blue-50">
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">1. Quantized Orbits</h3>
+                <h3 className="text-lg font-semibold text-ink mb-2">1. Quantized Orbits</h3>
                 <p className="text-gray-700">
                   Electrons can only occupy certain discrete orbits where angular momentum is quantized: 
                   L = nℏ, where n = 1, 2, 3, ... and ℏ = h/2π.
@@ -79,7 +79,7 @@ export default function BohrModelPage() {
               </div>
 
               <div className="border-l-4 border-green-500 pl-4 py-2 bg-green-50">
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">2. Stationary States</h3>
+                <h3 className="text-lg font-semibold text-ink mb-2">2. Stationary States</h3>
                 <p className="text-gray-700">
                   Electrons in allowed orbits do not radiate energy. They maintain constant energy in 
                   these "stationary states" without spiraling into the nucleus.
@@ -87,7 +87,7 @@ export default function BohrModelPage() {
               </div>
 
               <div className="border-l-4 border-purple-500 pl-4 py-2 bg-purple-50">
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">3. Quantum Jumps</h3>
+                <h3 className="text-lg font-semibold text-ink mb-2">3. Quantum Jumps</h3>
                 <p className="text-gray-700">
                   When an electron transitions between orbits, it absorbs or emits a photon with energy 
                   exactly equal to the energy difference: ΔE = hf = E<sub>final</sub> - E<sub>initial</sub>.
@@ -97,7 +97,7 @@ export default function BohrModelPage() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">⚡ Energy Levels</h2>
+            <h2 className="text-2xl font-bold text-ink mb-4">⚡ Energy Levels</h2>
             <p className="text-gray-700 mb-4">
               The energy of an electron in the nth orbit is given by:
             </p>
@@ -118,13 +118,13 @@ export default function BohrModelPage() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">🌈 Spectral Series</h2>
+            <h2 className="text-2xl font-bold text-ink mb-4">🌈 Spectral Series</h2>
             <p className="text-gray-700 mb-4">
               When electrons transition between energy levels, they emit photons with specific wavelengths, 
               creating spectral lines grouped into series:
             </p>
             <div className="overflow-x-auto mb-4">
-              <table className="min-w-full bg-white border border-gray-300">
+              <table className="min-w-full bg-white border border-line-strong">
                 <thead className="bg-gray-100">
                   <tr>
                     <th className="px-4 py-2 border-b text-left">Series</th>
@@ -163,7 +163,7 @@ export default function BohrModelPage() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">📏 Orbital Radii</h2>
+            <h2 className="text-2xl font-bold text-ink mb-4">📏 Orbital Radii</h2>
             <p className="text-gray-700 mb-4">
               The radius of the nth orbit follows:
             </p>
@@ -179,7 +179,7 @@ export default function BohrModelPage() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">🌍 Applications</h2>
+            <h2 className="text-2xl font-bold text-ink mb-4">🌍 Applications</h2>
             <ul className="list-disc list-inside space-y-2 text-gray-700 ml-4">
               <li><strong>Spectroscopy:</strong> Identifying elements by their characteristic spectral lines</li>
               <li><strong>Astronomy:</strong> Analyzing light from stars and galaxies</li>
@@ -190,7 +190,7 @@ export default function BohrModelPage() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">⚠️ Limitations</h2>
+            <h2 className="text-2xl font-bold text-ink mb-4">⚠️ Limitations</h2>
             <p className="text-gray-700 mb-4">
               While revolutionary, the Bohr model has limitations:
             </p>

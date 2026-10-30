@@ -209,7 +209,7 @@ export default function DoubleSlitVisualizer() {
   return (
     <div className="space-y-6">
       {/* Canvas */}
-      <div className="border border-gray-200 rounded-lg p-4 bg-gray-900">
+      <div className="border border-line rounded-lg p-4 bg-gray-900">
         <div className="text-xs font-semibold text-gray-300 mb-3">Double-Slit Experiment Setup</div>
         <canvas
           ref={canvasRef}
@@ -223,7 +223,7 @@ export default function DoubleSlitVisualizer() {
       </div>
 
       {/* Controls */}
-      <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
+      <div className="border border-line rounded-lg p-4 bg-subtle">
         <div className="text-xs font-semibold text-gray-700 mb-3">Experiment Parameters</div>
         
         <div className="grid md:grid-cols-2 gap-4 mb-4">
@@ -319,39 +319,39 @@ export default function DoubleSlitVisualizer() {
             setSlitWidth(0.05);
             setScreenDistance(1.0);
           }}
-          className="px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium hover:bg-gray-100"
+          className="px-4 py-2 border border-line-strong rounded-lg text-sm font-medium hover:bg-gray-100"
         >
           Reset to Defaults
         </button>
       </div>
 
       {/* Measurements */}
-      <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
+      <div className="border border-line rounded-lg p-4 bg-subtle">
         <div className="text-xs font-semibold text-gray-700 mb-3">Calculated Values</div>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-          <div className="bg-white border border-gray-200 rounded-lg p-3">
-            <div className="text-xs text-gray-600 font-medium">Fringe Spacing</div>
+          <div className="bg-white border border-line rounded-lg p-3 shadow-card">
+            <div className="text-xs text-ink-muted font-medium">Fringe Spacing</div>
             <div className="text-lg font-bold text-teal-600">
               {calculateFringeSpacing().toFixed(2)} mm
             </div>
             <div className="text-xs text-gray-500">Δy = λL/d</div>
           </div>
-          <div className="bg-white border border-gray-200 rounded-lg p-3">
-            <div className="text-xs text-gray-600 font-medium">Wavelength</div>
+          <div className="bg-white border border-line rounded-lg p-3 shadow-card">
+            <div className="text-xs text-ink-muted font-medium">Wavelength</div>
             <div className="text-lg font-bold text-purple-600">
               {wavelength} nm
             </div>
             <div className="text-xs text-gray-500">{getColorName(wavelength)} light</div>
           </div>
-          <div className="bg-white border border-gray-200 rounded-lg p-3">
-            <div className="text-xs text-gray-600 font-medium">d/λ Ratio</div>
+          <div className="bg-white border border-line rounded-lg p-3 shadow-card">
+            <div className="text-xs text-ink-muted font-medium">d/λ Ratio</div>
             <div className="text-lg font-bold text-blue-600">
               {(slitSeparation * 1e6 / wavelength).toFixed(0)}
             </div>
             <div className="text-xs text-gray-500">Separation ratio</div>
           </div>
-          <div className="bg-white border border-gray-200 rounded-lg p-3">
-            <div className="text-xs text-gray-600 font-medium">Angular Width</div>
+          <div className="bg-white border border-line rounded-lg p-3 shadow-card">
+            <div className="text-xs text-ink-muted font-medium">Angular Width</div>
             <div className="text-lg font-bold text-green-600">
               {((wavelength * 1e-9 / (slitSeparation * 1e-3)) * 180 / Math.PI).toFixed(2)}°
             </div>
@@ -361,7 +361,7 @@ export default function DoubleSlitVisualizer() {
       </div>
 
       {/* Info */}
-      <div className="border border-gray-200 rounded-lg p-4 bg-teal-50">
+      <div className="border border-line rounded-lg p-4 bg-teal-50">
         <div className="text-sm text-teal-900">
           <p className="font-medium mb-2">💡 Experiment Tips:</p>
           <ul className="list-disc list-inside space-y-1 text-sm">

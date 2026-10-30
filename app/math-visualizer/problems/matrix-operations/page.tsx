@@ -375,41 +375,41 @@ Used in:
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <nav className="mb-8 text-sm">
           <ol className="flex items-center gap-2 text-gray-500">
-            <li><Link href="/" className="hover:text-gray-900">Home</Link></li>
+            <li><Link href="/" className="hover:text-ink">Home</Link></li>
             <li>/</li>
-            <li><Link href="/math-visualizer" className="hover:text-gray-900">Math Visualizer</Link></li>
+            <li><Link href="/math-visualizer" className="hover:text-ink">Math Visualizer</Link></li>
             <li>/</li>
-            <li className="text-gray-900 font-medium">Matrix Operations</li>
+            <li className="text-ink font-medium">Matrix Operations</li>
           </ol>
         </nav>
 
         <article className="space-y-8">
-          <header className="space-y-4 pb-8 border-b border-gray-200">
+          <header className="space-y-4 pb-8 border-b border-line">
             <div className="flex items-center gap-2 text-sm">
-              <span className="px-2 py-1 bg-gray-200 text-gray-900 rounded font-medium">Linear Algebra</span>
+              <span className="px-2 py-1 bg-gray-200 text-ink rounded font-medium">Linear Algebra</span>
               <span className="text-gray-400">•</span>
               <span className="text-gray-500">Beginner</span>
             </div>
             
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
+            <h1 className="text-4xl md:text-5xl font-bold text-ink leading-tight tracking-tight">
               Matrix Operations
             </h1>
             
-            <p className="text-xl text-gray-600 leading-relaxed">
+            <p className="text-xl text-ink-muted leading-relaxed">
               Learn fundamental matrix operations: addition, multiplication, and scalar multiplication. Understand how matrices work and their essential properties.
             </p>
           </header>
 
           <section className="space-y-4">
-            <h2 className="text-2xl font-bold text-gray-900">What are Matrices?</h2>
-            <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 space-y-4">
+            <h2 className="text-2xl font-bold text-ink">What are Matrices?</h2>
+            <div className="bg-subtle border border-line rounded-lg p-6 space-y-4">
               <p className="text-gray-700">
                 A <strong>matrix</strong> is a rectangular array of numbers arranged in rows and columns. 
                 Matrices are fundamental in linear algebra and used extensively in computer graphics, machine learning, physics, and engineering.
               </p>
               
               <div className="space-y-2">
-                <p className="font-semibold text-gray-900">Example Matrix (2×2):</p>
+                <p className="font-semibold text-ink">Example Matrix (2×2):</p>
                 <div className="flex items-center gap-2 text-lg font-mono">
                   <span>A =</span>
                   <div className="flex gap-1">
@@ -423,37 +423,37 @@ Used in:
                     <span className="text-2xl text-gray-400">]</span>
                   </div>
                 </div>
-                <p className="text-sm text-gray-600">This is a 2×2 matrix (2 rows, 2 columns)</p>
+                <p className="text-sm text-ink-muted">This is a 2×2 matrix (2 rows, 2 columns)</p>
               </div>
             </div>
           </section>
 
           <section className="space-y-4">
-            <h2 className="text-2xl font-bold text-gray-900">Interactive Operations</h2>
-            <p className="text-gray-600">
+            <h2 className="text-2xl font-bold text-ink">Interactive Operations</h2>
+            <p className="text-ink-muted">
               Experiment with matrix addition, multiplication, and scalar multiplication. Change the values and operation to see results in real-time.
             </p>
             <MatrixOperationsVisualizer />
           </section>
 
           <section className="space-y-4">
-            <h2 className="text-2xl font-bold text-gray-900">Understanding the Operations</h2>
+            <h2 className="text-2xl font-bold text-ink">Understanding the Operations</h2>
             <div className="space-y-4">
-              <div className="bg-gray-100 border-l-4 border-gray-900 p-4">
-                <h3 className="font-semibold text-gray-900 mb-2">Matrix Addition</h3>
-                <p className="text-sm text-gray-900">
+              <div className="bg-brand-50/60 border-l-4 border-brand-500 p-4">
+                <h3 className="font-semibold text-ink mb-2">Matrix Addition</h3>
+                <p className="text-sm text-ink">
                   Add corresponding elements element-wise. Both matrices must have the same dimensions. 
                   Simple and intuitive: A + B means add each element in A to the corresponding element in B.
                 </p>
               </div>
 
-              <div className="bg-gray-100 border-l-4 border-gray-900 p-4">
-                <h3 className="font-semibold text-gray-900 mb-2">Matrix Multiplication</h3>
-                <p className="text-sm text-gray-900 mb-2">
+              <div className="bg-brand-50/60 border-l-4 border-brand-500 p-4">
+                <h3 className="font-semibold text-ink mb-2">Matrix Multiplication</h3>
+                <p className="text-sm text-ink mb-2">
                   More complex: multiply rows of first matrix by columns of second matrix using dot product. 
                   For A×B, the number of columns in A must equal the number of rows in B.
                 </p>
-                <p className="text-sm text-gray-900">
+                <p className="text-sm text-ink">
                   <strong>Important:</strong> Matrix multiplication is NOT commutative! A×B ≠ B×A in general.
                 </p>
               </div>
@@ -470,13 +470,13 @@ Used in:
 
           <section className="space-y-4">
             <div className="flex items-center justify-between">
-              <h2 className="text-2xl font-bold text-gray-900">Implementation</h2>
+              <h2 className="text-2xl font-bold text-ink">Implementation</h2>
               <div className="flex gap-2">
                 <button
                   onClick={() => setSelectedLanguage('python')}
                   className={`px-3 py-1.5 text-sm font-medium rounded-lg transition-colors ${
                     selectedLanguage === 'python'
-                      ? 'bg-black text-white'
+                      ? 'bg-brand-600 text-white shadow-brand'
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                   }`}
                 >
@@ -486,7 +486,7 @@ Used in:
                   onClick={() => setSelectedLanguage('javascript')}
                   className={`px-3 py-1.5 text-sm font-medium rounded-lg transition-colors ${
                     selectedLanguage === 'javascript'
-                      ? 'bg-black text-white'
+                      ? 'bg-brand-600 text-white shadow-brand'
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                   }`}
                 >
@@ -496,7 +496,7 @@ Used in:
                   onClick={() => setSelectedLanguage('mathematical')}
                   className={`px-3 py-1.5 text-sm font-medium rounded-lg transition-colors ${
                     selectedLanguage === 'mathematical'
-                      ? 'bg-black text-white'
+                      ? 'bg-brand-600 text-white shadow-brand'
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                   }`}
                 >
@@ -520,11 +520,11 @@ Used in:
           </section>
 
           <section className="space-y-4">
-            <h2 className="text-2xl font-bold text-gray-900">Real-World Applications</h2>
+            <h2 className="text-2xl font-bold text-ink">Real-World Applications</h2>
             <div className="grid md:grid-cols-2 gap-4">
-              <div className="bg-gray-100 border border-gray-300 rounded-lg p-4">
-                <h3 className="font-semibold text-gray-900 mb-2">Computer Graphics</h3>
-                <p className="text-gray-900 text-sm">
+              <div className="bg-gray-100 border border-line-strong rounded-lg p-4">
+                <h3 className="font-semibold text-ink mb-2">Computer Graphics</h3>
+                <p className="text-ink text-sm">
                   3D transformations (rotation, scaling, translation) use matrix multiplication
                 </p>
               </div>
@@ -536,9 +536,9 @@ Used in:
                 </p>
               </div>
 
-              <div className="bg-gray-100 border border-gray-300 rounded-lg p-4">
-                <h3 className="font-semibold text-gray-900 mb-2">Image Processing</h3>
-                <p className="text-gray-900 text-sm">
+              <div className="bg-gray-100 border border-line-strong rounded-lg p-4">
+                <h3 className="font-semibold text-ink mb-2">Image Processing</h3>
+                <p className="text-ink text-sm">
                   Images are matrices; filters and transformations use matrix operations
                 </p>
               </div>
@@ -553,9 +553,9 @@ Used in:
           </section>
 
           <section className="space-y-4">
-            <h2 className="text-2xl font-bold text-gray-900">Related Topics</h2>
+            <h2 className="text-2xl font-bold text-ink">Related Topics</h2>
             <div className="grid sm:grid-cols-2 gap-3">
-              <div className="border border-gray-200 rounded-lg p-4 hover:border-gray-400 transition-colors opacity-60 cursor-not-allowed">
+              <div className="border border-line rounded-lg p-4 hover:border-brand-300 transition-colors opacity-60 cursor-not-allowed">
                 <h3 className="font-semibold text-gray-700 mb-1 flex items-center justify-between">
                   Determinants
                   <span className="text-xs text-gray-500">Coming Soon</span>
@@ -563,7 +563,7 @@ Used in:
                 <p className="text-sm text-gray-500">Calculate matrix determinants and their properties</p>
               </div>
               
-              <div className="border border-gray-200 rounded-lg p-4 hover:border-gray-400 transition-colors opacity-60 cursor-not-allowed">
+              <div className="border border-line rounded-lg p-4 hover:border-brand-300 transition-colors opacity-60 cursor-not-allowed">
                 <h3 className="font-semibold text-gray-700 mb-1 flex items-center justify-between">
                   Matrix Inverse
                   <span className="text-xs text-gray-500">Coming Soon</span>
@@ -571,7 +571,7 @@ Used in:
                 <p className="text-sm text-gray-500">Finding inverse matrices and solving equations</p>
               </div>
               
-              <div className="border border-gray-200 rounded-lg p-4 hover:border-gray-400 transition-colors opacity-60 cursor-not-allowed">
+              <div className="border border-line rounded-lg p-4 hover:border-brand-300 transition-colors opacity-60 cursor-not-allowed">
                 <h3 className="font-semibold text-gray-700 mb-1 flex items-center justify-between">
                   Eigenvalues & Eigenvectors
                   <span className="text-xs text-gray-500">Coming Soon</span>
@@ -579,7 +579,7 @@ Used in:
                 <p className="text-sm text-gray-500">Understanding matrix transformations</p>
               </div>
               
-              <div className="border border-gray-200 rounded-lg p-4 hover:border-gray-400 transition-colors opacity-60 cursor-not-allowed">
+              <div className="border border-line rounded-lg p-4 hover:border-brand-300 transition-colors opacity-60 cursor-not-allowed">
                 <h3 className="font-semibold text-gray-700 mb-1 flex items-center justify-between">
                   Linear Transformations
                   <span className="text-xs text-gray-500">Coming Soon</span>
@@ -589,8 +589,8 @@ Used in:
             </div>
           </section>
 
-          <section className="pt-8 border-t border-gray-200">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Discussion</h2>
+          <section className="pt-8 border-t border-line">
+            <h2 className="text-2xl font-bold text-ink mb-6">Discussion</h2>
             <GiscusComments />
           </section>
         </article>

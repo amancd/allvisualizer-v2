@@ -225,54 +225,54 @@ export default function NewtonsLawsVisualizer() {
   return (
     <div className="space-y-6">
       {/* Law Selector */}
-      <div className="bg-gradient-to-r from-gray-50 to-gray-100 border border-gray-300 rounded-lg p-6">
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">Select Newton's Law</h3>
+      <div className="bg-gradient-to-r from-gray-50 to-gray-100 border border-line-strong rounded-lg p-6">
+        <h3 className="text-lg font-semibold text-ink mb-4">Select Newton's Law</h3>
         <div className="grid md:grid-cols-3 gap-4">
           <button
             onClick={() => setSelectedLaw(1)}
             className={`p-4 rounded-lg border-2 transition-all ${
               selectedLaw === 1
-                ? 'border-gray-900 bg-gray-200'
-                : 'border-gray-200 bg-white hover:border-gray-400'
+                ? 'border-brand-500 bg-brand-50'
+                : 'border-line bg-white hover:border-brand-300'
             }`}
           >
             <div className="text-2xl mb-2">1️⃣</div>
             <div className="font-semibold text-sm mb-1">First Law</div>
-            <div className="text-xs text-gray-600">Law of Inertia</div>
+            <div className="text-xs text-ink-muted">Law of Inertia</div>
           </button>
           
           <button
             onClick={() => setSelectedLaw(2)}
             className={`p-4 rounded-lg border-2 transition-all ${
               selectedLaw === 2
-                ? 'border-gray-900 bg-gray-200'
-                : 'border-gray-200 bg-white hover:border-gray-400'
+                ? 'border-brand-500 bg-brand-50'
+                : 'border-line bg-white hover:border-brand-300'
             }`}
           >
             <div className="text-2xl mb-2">2️⃣</div>
             <div className="font-semibold text-sm mb-1">Second Law</div>
-            <div className="text-xs text-gray-600">F = ma</div>
+            <div className="text-xs text-ink-muted">F = ma</div>
           </button>
           
           <button
             onClick={() => setSelectedLaw(3)}
             className={`p-4 rounded-lg border-2 transition-all ${
               selectedLaw === 3
-                ? 'border-gray-900 bg-gray-200'
-                : 'border-gray-200 bg-white hover:border-gray-400'
+                ? 'border-brand-500 bg-brand-50'
+                : 'border-line bg-white hover:border-brand-300'
             }`}
           >
             <div className="text-2xl mb-2">3️⃣</div>
             <div className="font-semibold text-sm mb-1">Third Law</div>
-            <div className="text-xs text-gray-600">Action-Reaction</div>
+            <div className="text-xs text-ink-muted">Action-Reaction</div>
           </button>
         </div>
         
         {/* Law Explanation */}
-        <div className="mt-4 p-4 bg-white rounded-lg border border-gray-300">
+        <div className="mt-4 p-4 bg-white rounded-lg border border-line-strong shadow-card">
           {selectedLaw === 1 && (
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">First Law (Law of Inertia)</h4>
+              <h4 className="font-semibold text-ink mb-2">First Law (Law of Inertia)</h4>
               <p className="text-sm text-gray-700">
                 An object at rest stays at rest, and an object in motion stays in motion with constant velocity, 
                 unless acted upon by a net external force.
@@ -281,7 +281,7 @@ export default function NewtonsLawsVisualizer() {
           )}
           {selectedLaw === 2 && (
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">Second Law (F = ma)</h4>
+              <h4 className="font-semibold text-ink mb-2">Second Law (F = ma)</h4>
               <p className="text-sm text-gray-700">
                 The acceleration of an object is directly proportional to the net force acting on it and 
                 inversely proportional to its mass: <strong>F<sub>net</sub> = m × a</strong>
@@ -290,7 +290,7 @@ export default function NewtonsLawsVisualizer() {
           )}
           {selectedLaw === 3 && (
             <div>
-              <h4 className="font-semibold text-gray-900 mb-2">Third Law (Action-Reaction)</h4>
+              <h4 className="font-semibold text-ink mb-2">Third Law (Action-Reaction)</h4>
               <p className="text-sm text-gray-700">
                 For every action, there is an equal and opposite reaction. Forces always occur in pairs.
               </p>
@@ -300,18 +300,18 @@ export default function NewtonsLawsVisualizer() {
       </div>
 
       {/* Canvas */}
-      <div className="bg-white border border-gray-200 rounded-lg p-6">
+      <div className="bg-white border border-line rounded-lg p-6 shadow-card">
         <canvas
           ref={canvasRef}
           width={800}
           height={400}
-          className="w-full border border-gray-300 rounded"
+          className="w-full border border-line-strong rounded"
         />
       </div>
 
       {/* Controls */}
-      <div className="bg-white border border-gray-200 rounded-lg p-6">
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">Parameters</h3>
+      <div className="bg-white border border-line rounded-lg p-6 shadow-card">
+        <h3 className="text-lg font-semibold text-ink mb-4">Parameters</h3>
         
         <div className="grid md:grid-cols-2 gap-6 mb-6">
           {/* Mass */}
@@ -383,7 +383,7 @@ export default function NewtonsLawsVisualizer() {
           <button
             onClick={handleStart}
             disabled={isAnimating}
-            className="px-6 py-2 bg-black text-white rounded-lg hover:bg-gray-800 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
+            className="px-6 py-2 bg-brand-600 text-white rounded-lg hover:bg-brand-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors shadow-brand"
           >
             {isAnimating ? 'Running...' : 'Start'}
           </button>
@@ -397,48 +397,48 @@ export default function NewtonsLawsVisualizer() {
       </div>
 
       {/* Physics Data */}
-      <div className="bg-gradient-to-r from-gray-50 to-gray-100 border border-gray-300 rounded-lg p-6">
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">Physics Data</h3>
+      <div className="bg-gradient-to-r from-gray-50 to-gray-100 border border-line-strong rounded-lg p-6">
+        <h3 className="text-lg font-semibold text-ink mb-4">Physics Data</h3>
         
         <div className="grid md:grid-cols-3 gap-4">
-          <div className="bg-white rounded-lg p-4 border border-gray-200">
+          <div className="bg-white rounded-lg p-4 border border-line shadow-card">
             <div className="text-xs text-gray-500 mb-1">Position</div>
-            <div className="text-2xl font-bold text-gray-900">{position.toFixed(2)} m</div>
+            <div className="text-2xl font-bold text-ink">{position.toFixed(2)} m</div>
           </div>
           
-          <div className="bg-white rounded-lg p-4 border border-gray-200">
+          <div className="bg-white rounded-lg p-4 border border-line shadow-card">
             <div className="text-xs text-gray-500 mb-1">Velocity</div>
-            <div className="text-2xl font-bold text-gray-900">{velocity.toFixed(2)} m/s</div>
+            <div className="text-2xl font-bold text-ink">{velocity.toFixed(2)} m/s</div>
           </div>
           
-          <div className="bg-white rounded-lg p-4 border border-gray-200">
+          <div className="bg-white rounded-lg p-4 border border-line shadow-card">
             <div className="text-xs text-gray-500 mb-1">Acceleration</div>
             <div className="text-2xl font-bold text-cyan-600">{acceleration.toFixed(2)} m/s²</div>
           </div>
           
-          <div className="bg-white rounded-lg p-4 border border-gray-200">
+          <div className="bg-white rounded-lg p-4 border border-line shadow-card">
             <div className="text-xs text-gray-500 mb-1">Net Force</div>
             <div className="text-2xl font-bold text-green-600">{netForce.toFixed(2)} N</div>
           </div>
           
-          <div className="bg-white rounded-lg p-4 border border-gray-200">
+          <div className="bg-white rounded-lg p-4 border border-line shadow-card">
             <div className="text-xs text-gray-500 mb-1">Friction Force</div>
             <div className="text-2xl font-bold text-red-600">{frictionForce.toFixed(2)} N</div>
           </div>
           
-          <div className="bg-white rounded-lg p-4 border border-gray-200">
+          <div className="bg-white rounded-lg p-4 border border-line shadow-card">
             <div className="text-xs text-gray-500 mb-1">Time</div>
-            <div className="text-2xl font-bold text-gray-900">{currentTime.toFixed(2)} s</div>
+            <div className="text-2xl font-bold text-ink">{currentTime.toFixed(2)} s</div>
           </div>
         </div>
       </div>
 
       {/* Formulas */}
-      <div className="bg-white border border-gray-200 rounded-lg p-6">
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">Key Formulas</h3>
+      <div className="bg-white border border-line rounded-lg p-6 shadow-card">
+        <h3 className="text-lg font-semibold text-ink mb-4">Key Formulas</h3>
         <div className="space-y-3 text-sm">
           <div className="flex items-start gap-3">
-            <div className="bg-gray-200 text-gray-900 px-3 py-1 rounded font-mono text-xs">
+            <div className="bg-gray-200 text-ink px-3 py-1 rounded font-mono text-xs">
               F<sub>net</sub> = ma
             </div>
             <div className="text-gray-700">Newton's Second Law</div>
@@ -459,7 +459,7 @@ export default function NewtonsLawsVisualizer() {
           </div>
           
           <div className="flex items-start gap-3">
-            <div className="bg-gray-200 text-gray-900 px-3 py-1 rounded font-mono text-xs">
+            <div className="bg-gray-200 text-ink px-3 py-1 rounded font-mono text-xs">
               x = x₀ + v₀t + ½at²
             </div>
             <div className="text-gray-700">Position with constant acceleration</div>

@@ -15,14 +15,14 @@ export default function AboutPage() {
       {/* Main Content */}
       <section className="py-16 md:py-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">About Us</h1>
-          <p className="text-xl text-gray-600 mb-12">
+          <h1 className="text-3xl md:text-4xl font-bold text-ink mb-4 tracking-tight">About Us</h1>
+          <p className="text-xl text-ink-muted mb-12">
             Making learning accessible through visualization
           </p>
 
           <div className="space-y-12">
             <div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">
+              <h2 className="text-2xl font-bold text-ink mb-4">
                 Our Mission
               </h2>
               <p className="text-lg text-gray-700 mb-6">
@@ -34,7 +34,7 @@ export default function AboutPage() {
             </div>
 
             <div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">
+              <h2 className="text-2xl font-bold text-ink mb-4">
                 What We Do
               </h2>
             <p className="text-lg text-gray-700 mb-6">
@@ -50,7 +50,7 @@ export default function AboutPage() {
             </div>
 
             <div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">
+              <h2 className="text-2xl font-bold text-ink mb-4">
                 Why Visualization?
               </h2>
             <p className="text-lg text-gray-700 mb-6">
@@ -62,7 +62,7 @@ export default function AboutPage() {
             </div>
 
             <div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">
+              <h2 className="text-2xl font-bold text-ink mb-4">
                 Our Community
               </h2>
             <p className="text-lg text-gray-700 mb-6">
@@ -70,7 +70,7 @@ export default function AboutPage() {
               complex concepts. Share insights and learn together as part of our growing community.
             </p>
 
-              <div className="border-l-4 border-gray-900 pl-6 mt-8">
+              <div className="border-l-4 border-brand-500 pl-6 mt-8">
                 <p className="text-lg text-gray-700 italic">
                   "Learning should be engaging, interactive, and accessible to everyone. That's the vision 
                   behind AllVisualizer."

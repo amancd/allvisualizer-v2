@@ -278,29 +278,29 @@ export default function ElasticCollisionsVisualizer() {
   return (
     <div className="space-y-8">
       {/* Canvas */}
-      <div className="bg-white border-2 border-gray-300 rounded-lg p-6">
+      <div className="bg-white border border-line rounded-lg p-6 shadow-card">
         <div className="flex justify-center">
           <canvas
             ref={canvasRef}
             width={WIDTH}
             height={HEIGHT}
-            className="border-2 border-gray-300 rounded"
+            className="border-2 border-line-strong rounded"
           />
         </div>
       </div>
 
       {/* Controls */}
-      <div className="bg-white border-2 border-gray-300 rounded-lg p-6 space-y-6">
+      <div className="bg-white border border-line rounded-lg p-6 space-y-6 shadow-card">
         <div className="flex gap-3">
           <button
             onClick={() => setIsPlaying(!isPlaying)}
-            className="px-6 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors font-medium"
+            className="px-6 py-2 bg-brand-600 text-white rounded-lg hover:bg-brand-700 transition-colors font-medium shadow-brand"
           >
             {isPlaying ? 'Pause' : 'Play'}
           </button>
           <button
             onClick={resetSimulation}
-            className="px-6 py-2 bg-gray-200 text-gray-900 rounded-lg hover:bg-gray-300 transition-colors font-medium"
+            className="px-6 py-2 bg-gray-200 text-ink rounded-lg hover:bg-gray-300 transition-colors font-medium"
           >
             Reset
           </button>
@@ -393,8 +393,8 @@ export default function ElasticCollisionsVisualizer() {
         </div>
 
         {/* Environment Controls */}
-        <div className="space-y-4 p-4 bg-gray-50 border border-gray-300 rounded-lg">
-          <h3 className="font-semibold text-gray-900">Environment</h3>
+        <div className="space-y-4 p-4 bg-subtle border border-line-strong rounded-lg">
+          <h3 className="font-semibold text-ink">Environment</h3>
           
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -437,37 +437,37 @@ export default function ElasticCollisionsVisualizer() {
       </div>
 
       {/* Theory */}
-      <div className="bg-gray-50 border-2 border-gray-300 rounded-lg p-6 space-y-4">
-        <h3 className="text-xl font-bold text-gray-900">Elastic Collision Theory</h3>
+      <div className="bg-subtle border-2 border-line-strong rounded-lg p-6 space-y-4">
+        <h3 className="text-xl font-bold text-ink">Elastic Collision Theory</h3>
         
         <div className="space-y-3 text-gray-700">
           <div>
-            <h4 className="font-semibold text-gray-900 mb-1">Conservation of Momentum</h4>
+            <h4 className="font-semibold text-ink mb-1">Conservation of Momentum</h4>
             <p className="text-sm">In any collision, total momentum is conserved:</p>
-            <p className="font-mono text-sm bg-white p-2 rounded border border-gray-300 mt-1">
+            <p className="font-mono text-sm bg-white p-2 rounded border border-line-strong mt-1">
               m₁v₁ᵢ + m₂v₂ᵢ = m₁v₁f + m₂v₂f
             </p>
           </div>
 
           <div>
-            <h4 className="font-semibold text-gray-900 mb-1">Conservation of Kinetic Energy</h4>
+            <h4 className="font-semibold text-ink mb-1">Conservation of Kinetic Energy</h4>
             <p className="text-sm">In elastic collisions, kinetic energy is also conserved:</p>
-            <p className="font-mono text-sm bg-white p-2 rounded border border-gray-300 mt-1">
+            <p className="font-mono text-sm bg-white p-2 rounded border border-line-strong mt-1">
               ½m₁v₁ᵢ² + ½m₂v₂ᵢ² = ½m₁v₁f² + ½m₂v₂f²
             </p>
           </div>
 
           <div>
-            <h4 className="font-semibold text-gray-900 mb-1">Final Velocities (1D)</h4>
+            <h4 className="font-semibold text-ink mb-1">Final Velocities (1D)</h4>
             <p className="text-sm">For one-dimensional elastic collisions:</p>
-            <p className="font-mono text-sm bg-white p-2 rounded border border-gray-300 mt-1">
+            <p className="font-mono text-sm bg-white p-2 rounded border border-line-strong mt-1">
               v₁f = ((m₁ - m₂)v₁ᵢ + 2m₂v₂ᵢ) / (m₁ + m₂)<br/>
               v₂f = ((m₂ - m₁)v₂ᵢ + 2m₁v₁ᵢ) / (m₁ + m₂)
             </p>
           </div>
 
           <div className="pt-2">
-            <h4 className="font-semibold text-gray-900 mb-1">Key Observations</h4>
+            <h4 className="font-semibold text-ink mb-1">Key Observations</h4>
             <ul className="list-disc list-inside text-sm space-y-1">
               <li>When equal masses collide head-on, they exchange velocities</li>
               <li>A light ball bounces back when hitting a heavy stationary ball</li>

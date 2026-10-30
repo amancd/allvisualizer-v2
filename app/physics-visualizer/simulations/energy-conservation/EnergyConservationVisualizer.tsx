@@ -420,29 +420,29 @@ export default function EnergyConservationVisualizer() {
   return (
     <div className="space-y-8">
       {/* Canvas */}
-      <div className="bg-white border-2 border-gray-300 rounded-lg p-6">
+      <div className="bg-white border border-line rounded-lg p-6 shadow-card">
         <div className="flex justify-center">
           <canvas
             ref={canvasRef}
             width={WIDTH}
             height={HEIGHT}
-            className="border-2 border-gray-300 rounded"
+            className="border-2 border-line-strong rounded"
           />
         </div>
       </div>
 
       {/* Controls */}
-      <div className="bg-white border-2 border-gray-300 rounded-lg p-6 space-y-6">
+      <div className="bg-white border border-line rounded-lg p-6 space-y-6 shadow-card">
         <div className="flex gap-3">
           <button
             onClick={() => setIsPlaying(!isPlaying)}
-            className="px-6 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors font-medium"
+            className="px-6 py-2 bg-brand-600 text-white rounded-lg hover:bg-brand-700 transition-colors font-medium shadow-brand"
           >
             {isPlaying ? 'Pause' : 'Play'}
           </button>
           <button
             onClick={resetSimulation}
-            className="px-6 py-2 bg-gray-200 text-gray-900 rounded-lg hover:bg-gray-300 transition-colors font-medium"
+            className="px-6 py-2 bg-gray-200 text-ink rounded-lg hover:bg-gray-300 transition-colors font-medium"
           >
             Reset
           </button>
@@ -460,7 +460,7 @@ export default function EnergyConservationVisualizer() {
                 onClick={() => setScenario(s)}
                 className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                   scenario === s
-                    ? 'bg-black text-white'
+                    ? 'bg-brand-600 text-white shadow-brand'
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                 }`}
                 disabled={isPlaying}
@@ -565,44 +565,44 @@ export default function EnergyConservationVisualizer() {
       </div>
 
       {/* Theory */}
-      <div className="bg-gray-50 border-2 border-gray-300 rounded-lg p-6 space-y-4">
-        <h3 className="text-xl font-bold text-gray-900">Energy Conservation Principle</h3>
+      <div className="bg-subtle border-2 border-line-strong rounded-lg p-6 space-y-4">
+        <h3 className="text-xl font-bold text-ink">Energy Conservation Principle</h3>
         
         <div className="space-y-3 text-gray-700">
           <div>
-            <h4 className="font-semibold text-gray-900 mb-1">Law of Conservation of Energy</h4>
+            <h4 className="font-semibold text-ink mb-1">Law of Conservation of Energy</h4>
             <p className="text-sm">In a closed system with no external forces, total mechanical energy remains constant:</p>
-            <p className="font-mono text-sm bg-white p-2 rounded border border-gray-300 mt-1">
+            <p className="font-mono text-sm bg-white p-2 rounded border border-line-strong mt-1">
               E_total = KE + PE + SE = constant
             </p>
           </div>
 
           <div>
-            <h4 className="font-semibold text-gray-900 mb-1">Kinetic Energy (KE)</h4>
+            <h4 className="font-semibold text-ink mb-1">Kinetic Energy (KE)</h4>
             <p className="text-sm">Energy of motion, depends on mass and velocity:</p>
-            <p className="font-mono text-sm bg-white p-2 rounded border border-gray-300 mt-1">
+            <p className="font-mono text-sm bg-white p-2 rounded border border-line-strong mt-1">
               KE = ½mv²
             </p>
           </div>
 
           <div>
-            <h4 className="font-semibold text-gray-900 mb-1">Potential Energy (PE)</h4>
+            <h4 className="font-semibold text-ink mb-1">Potential Energy (PE)</h4>
             <p className="text-sm">Stored energy due to position in a gravitational field:</p>
-            <p className="font-mono text-sm bg-white p-2 rounded border border-gray-300 mt-1">
+            <p className="font-mono text-sm bg-white p-2 rounded border border-line-strong mt-1">
               PE = mgh
             </p>
           </div>
 
           <div>
-            <h4 className="font-semibold text-gray-900 mb-1">Spring Potential Energy (SE)</h4>
+            <h4 className="font-semibold text-ink mb-1">Spring Potential Energy (SE)</h4>
             <p className="text-sm">Energy stored in a compressed or stretched spring:</p>
-            <p className="font-mono text-sm bg-white p-2 rounded border border-gray-300 mt-1">
+            <p className="font-mono text-sm bg-white p-2 rounded border border-line-strong mt-1">
               SE = ½kx²
             </p>
           </div>
 
           <div className="pt-2">
-            <h4 className="font-semibold text-gray-900 mb-1">Energy Transformations</h4>
+            <h4 className="font-semibold text-ink mb-1">Energy Transformations</h4>
             <ul className="list-disc list-inside text-sm space-y-1">
               <li><strong>Pendulum:</strong> PE ↔ KE (at highest point: max PE, at lowest: max KE)</li>
               <li><strong>Free Fall:</strong> PE → KE (potential energy converts to kinetic as object falls)</li>

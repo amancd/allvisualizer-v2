@@ -238,7 +238,7 @@ export default function WaveInterferenceVisualizer() {
   return (
     <div className="space-y-6">
       {/* Canvas */}
-      <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
+      <div className="border border-line rounded-lg p-4 bg-subtle">
         <div className="flex items-center justify-between mb-3">
           <div className="text-xs font-semibold text-gray-700">Wave Interference Visualization</div>
           <div className="flex gap-2">
@@ -268,15 +268,15 @@ export default function WaveInterferenceVisualizer() {
           ref={canvasRef}
           width={canvasWidth}
           height={canvasHeight}
-          className="border border-gray-300 bg-white mx-auto block"
+          className="border border-line-strong bg-white mx-auto block"
         />
-        <div className="text-xs text-gray-600 text-center mt-2">
+        <div className="text-xs text-ink-muted text-center mt-2">
           {viewMode === '2D' ? 'Superposition of two waves' : 'Two-source interference pattern'}
         </div>
       </div>
 
       {/* Controls */}
-      <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
+      <div className="border border-line rounded-lg p-4 bg-subtle">
         <div className="text-xs font-semibold text-gray-700 mb-3">Wave Parameters</div>
         
         <div className="grid md:grid-cols-2 gap-6">
@@ -429,7 +429,7 @@ export default function WaveInterferenceVisualizer() {
               setPhase2(0);
               setTime(0);
             }}
-            className="px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium hover:bg-gray-100"
+            className="px-4 py-2 border border-line-strong rounded-lg text-sm font-medium hover:bg-gray-100"
           >
             Reset
           </button>
@@ -437,11 +437,11 @@ export default function WaveInterferenceVisualizer() {
       </div>
 
       {/* Analysis */}
-      <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
+      <div className="border border-line rounded-lg p-4 bg-subtle">
         <div className="text-xs font-semibold text-gray-700 mb-3">Interference Analysis</div>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-          <div className="bg-white border border-gray-200 rounded-lg p-3">
-            <div className="text-xs text-gray-600 font-medium">Type</div>
+          <div className="bg-white border border-line rounded-lg p-3 shadow-card">
+            <div className="text-xs text-ink-muted font-medium">Type</div>
             <div className={`text-lg font-bold ${
               calculateInterferenceType() === 'Constructive' ? 'text-green-600' :
               calculateInterferenceType() === 'Destructive' ? 'text-red-600' :
@@ -450,20 +450,20 @@ export default function WaveInterferenceVisualizer() {
               {calculateInterferenceType()}
             </div>
           </div>
-          <div className="bg-white border border-gray-200 rounded-lg p-3">
-            <div className="text-xs text-gray-600 font-medium">Max Amplitude</div>
+          <div className="bg-white border border-line rounded-lg p-3 shadow-card">
+            <div className="text-xs text-ink-muted font-medium">Max Amplitude</div>
             <div className="text-lg font-bold text-purple-600">
               {(amplitude1 + amplitude2).toFixed(0)}
             </div>
           </div>
-          <div className="bg-white border border-gray-200 rounded-lg p-3">
-            <div className="text-xs text-gray-600 font-medium">Phase Diff</div>
+          <div className="bg-white border border-line rounded-lg p-3 shadow-card">
+            <div className="text-xs text-ink-muted font-medium">Phase Diff</div>
             <div className="text-lg font-bold text-blue-600">
               {((phase2 - phase1) / Math.PI).toFixed(2)}π
             </div>
           </div>
-          <div className="bg-white border border-gray-200 rounded-lg p-3">
-            <div className="text-xs text-gray-600 font-medium">Freq Match</div>
+          <div className="bg-white border border-line rounded-lg p-3 shadow-card">
+            <div className="text-xs text-ink-muted font-medium">Freq Match</div>
             <div className={`text-lg font-bold ${
               frequency1 === frequency2 ? 'text-green-600' : 'text-orange-600'
             }`}>
@@ -474,7 +474,7 @@ export default function WaveInterferenceVisualizer() {
       </div>
 
       {/* Quick Presets */}
-      <div className="border border-gray-200 rounded-lg p-4 bg-teal-50">
+      <div className="border border-line rounded-lg p-4 bg-teal-50">
         <div className="text-sm font-semibold text-teal-900 mb-3">Quick Presets</div>
         <div className="grid sm:grid-cols-3 gap-2">
           <button

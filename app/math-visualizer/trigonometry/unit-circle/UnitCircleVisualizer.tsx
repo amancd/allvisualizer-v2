@@ -263,26 +263,26 @@ export default function UnitCircleVisualizer() {
       {/* Breadcrumbs */}
       <nav className="pt-24 pb-4">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ol className="flex items-center space-x-2 text-sm text-gray-600">
+          <ol className="flex items-center space-x-2 text-sm text-ink-muted">
             <li>
-              <Link href="/" className="hover:text-gray-900">
+              <Link href="/" className="hover:text-ink">
                 Home
               </Link>
             </li>
             <li>/</li>
             <li>
-              <Link href="/math-visualizer" className="hover:text-gray-900">
+              <Link href="/math-visualizer" className="hover:text-ink">
                 Math
               </Link>
             </li>
             <li>/</li>
             <li>
-              <Link href="/math-visualizer/trigonometry" className="hover:text-gray-900">
+              <Link href="/math-visualizer/trigonometry" className="hover:text-ink">
                 Trigonometry
               </Link>
             </li>
             <li>/</li>
-            <li className="text-gray-900 font-medium">Unit Circle</li>
+            <li className="text-ink font-medium">Unit Circle</li>
           </ol>
         </div>
       </nav>
@@ -290,10 +290,10 @@ export default function UnitCircleVisualizer() {
       {/* Header */}
       <section className="pb-12">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
+          <h1 className="text-4xl font-bold text-ink mb-4 tracking-tight">
             Unit Circle Explorer
           </h1>
-          <p className="text-lg text-gray-600 max-w-3xl">
+          <p className="text-lg text-ink-muted max-w-3xl">
             Explore the unit circle interactively. See how angles relate to coordinates and trigonometric functions in real-time.
           </p>
         </div>
@@ -306,8 +306,8 @@ export default function UnitCircleVisualizer() {
             {/* Controls */}
             <div className="lg:col-span-1 space-y-6">
               {/* Playback Controls */}
-              <div className="bg-white border-2 border-gray-200 rounded-xl p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">
+              <div className="bg-white border border-line rounded-card p-6 shadow-card">
+                <h3 className="text-lg font-semibold text-ink mb-4">
                   Controls
                 </h3>
                 <div className="space-y-4">
@@ -342,7 +342,7 @@ export default function UnitCircleVisualizer() {
                       onChange={(e) => setSpeed(parseFloat(e.target.value))}
                       className="w-full"
                     />
-                    <div className="text-xs text-gray-600 text-center mt-1">
+                    <div className="text-xs text-ink-muted text-center mt-1">
                       {speed.toFixed(1)}x
                     </div>
                   </div>
@@ -350,8 +350,8 @@ export default function UnitCircleVisualizer() {
               </div>
 
               {/* Angle Input */}
-              <div className="bg-white border-2 border-gray-200 rounded-xl p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">
+              <div className="bg-white border border-line rounded-card p-6 shadow-card">
+                <h3 className="text-lg font-semibold text-ink mb-4">
                   Angle
                 </h3>
                 <div className="space-y-4">
@@ -360,8 +360,8 @@ export default function UnitCircleVisualizer() {
                       onClick={() => setAngleMode('radians')}
                       className={`flex-1 px-3 py-2 rounded-lg border-2 text-sm font-medium transition-all ${
                         angleMode === 'radians'
-                          ? 'border-black bg-black text-white'
-                          : 'border-gray-200 text-gray-700 hover:border-gray-300'
+                          ? 'border-black bg-brand-600 text-white shadow-brand'
+                          : 'border-line text-gray-700 hover:border-line-strong'
                       }`}
                     >
                       Radians
@@ -370,8 +370,8 @@ export default function UnitCircleVisualizer() {
                       onClick={() => setAngleMode('degrees')}
                       className={`flex-1 px-3 py-2 rounded-lg border-2 text-sm font-medium transition-all ${
                         angleMode === 'degrees'
-                          ? 'border-black bg-black text-white'
-                          : 'border-gray-200 text-gray-700 hover:border-gray-300'
+                          ? 'border-black bg-brand-600 text-white shadow-brand'
+                          : 'border-line text-gray-700 hover:border-line-strong'
                       }`}
                     >
                       Degrees
@@ -389,14 +389,14 @@ export default function UnitCircleVisualizer() {
                       className="w-full"
                     />
                     <div className="text-center mt-2">
-                      <span className="text-2xl font-bold text-gray-900">
+                      <span className="text-2xl font-bold text-ink">
                         {angleMode === 'degrees' 
                           ? `${displayAngle.toFixed(1)}°`
                           : `${displayAngle.toFixed(3)}`
                         }
                       </span>
                       {angleMode === 'radians' && (
-                        <span className="text-sm text-gray-600 ml-2">rad</span>
+                        <span className="text-sm text-ink-muted ml-2">rad</span>
                       )}
                     </div>
                   </div>
@@ -407,7 +407,7 @@ export default function UnitCircleVisualizer() {
                       <button
                         key={special.rad}
                         onClick={() => setAngle(special.rad)}
-                        className="px-2 py-1 text-xs border-2 border-gray-200 rounded hover:border-gray-400 transition-all"
+                        className="px-2 py-1 text-xs border-2 border-line rounded hover:border-brand-300 transition-all"
                       >
                         {angleMode === 'degrees' ? `${special.deg}°` : special.label}
                       </button>
@@ -417,8 +417,8 @@ export default function UnitCircleVisualizer() {
               </div>
 
               {/* Display Options */}
-              <div className="bg-white border-2 border-gray-200 rounded-xl p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">
+              <div className="bg-white border border-line rounded-card p-6 shadow-card">
+                <h3 className="text-lg font-semibold text-ink mb-4">
                   Display Options
                 </h3>
                 <div className="space-y-3">
@@ -456,8 +456,8 @@ export default function UnitCircleVisualizer() {
             {/* Visualization */}
             <div className="lg:col-span-2 space-y-6">
               {/* Canvas */}
-              <div className="bg-white border-2 border-gray-200 rounded-xl p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">
+              <div className="bg-white border border-line rounded-card p-6 shadow-card">
+                <h3 className="text-lg font-semibold text-ink mb-4">
                   Unit Circle
                 </h3>
                 <div className="flex justify-center">
@@ -465,14 +465,14 @@ export default function UnitCircleVisualizer() {
                     ref={canvasRef}
                     width={600}
                     height={600}
-                    className="border border-gray-300 rounded-lg max-w-full"
+                    className="border border-line-strong rounded-lg max-w-full"
                   />
                 </div>
               </div>
 
               {/* Trig Values */}
-              <div className="bg-white border-2 border-gray-200 rounded-xl p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">
+              <div className="bg-white border border-line rounded-card p-6 shadow-card">
+                <h3 className="text-lg font-semibold text-ink mb-4">
                   Trigonometric Values
                 </h3>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -508,9 +508,9 @@ export default function UnitCircleVisualizer() {
                 </div>
 
                 {/* Point coordinates */}
-                <div className="mt-4 p-4 bg-gray-50 rounded-lg border border-gray-200">
+                <div className="mt-4 p-4 bg-subtle rounded-lg border border-line">
                   <div className="text-sm font-medium text-gray-700 mb-2">Point on Unit Circle</div>
-                  <div className="text-lg font-mono text-gray-900">
+                  <div className="text-lg font-mono text-ink">
                     ({formatNumber(cos)}, {formatNumber(sin)})
                   </div>
                 </div>
@@ -521,42 +521,42 @@ export default function UnitCircleVisualizer() {
       </section>
 
       {/* Theory Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-subtle">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">
+          <h2 className="text-3xl font-bold text-ink mb-8 tracking-tight">
             Understanding the Unit Circle
           </h2>
           
           <div className="grid md:grid-cols-2 gap-6 mb-12">
-            <div className="bg-white rounded-xl p-6 border border-gray-200">
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">
+            <div className="bg-white rounded-card p-6 border border-line shadow-card">
+              <h3 className="text-lg font-semibold text-ink mb-3">
                 What is the Unit Circle?
               </h3>
-              <p className="text-gray-600 text-sm leading-relaxed mb-3">
+              <p className="text-ink-muted text-sm leading-relaxed mb-3">
                 The unit circle is a circle with radius 1 centered at the origin (0, 0). It provides a geometric way to define trigonometric functions for all angles.
               </p>
-              <p className="text-gray-600 text-sm leading-relaxed">
+              <p className="text-ink-muted text-sm leading-relaxed">
                 For any angle θ measured from the positive x-axis, the point where the terminal side intersects the circle has coordinates (cos θ, sin θ).
               </p>
             </div>
 
-            <div className="bg-white rounded-xl p-6 border border-gray-200">
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">
+            <div className="bg-white rounded-card p-6 border border-line shadow-card">
+              <h3 className="text-lg font-semibold text-ink mb-3">
                 Radians vs Degrees
               </h3>
-              <p className="text-gray-600 text-sm leading-relaxed mb-3">
+              <p className="text-ink-muted text-sm leading-relaxed mb-3">
                 <strong>Degrees:</strong> Full circle = 360°, based on Babylonian astronomy.
               </p>
-              <p className="text-gray-600 text-sm leading-relaxed mb-3">
+              <p className="text-ink-muted text-sm leading-relaxed mb-3">
                 <strong>Radians:</strong> Full circle = 2π, based on arc length. One radian is the angle where the arc length equals the radius.
               </p>
-              <p className="text-gray-600 text-sm">
+              <p className="text-ink-muted text-sm">
                 Conversion: <code className="bg-gray-100 px-1 rounded">radians = degrees × π/180</code>
               </p>
             </div>
 
-            <div className="bg-white rounded-xl p-6 border border-gray-200">
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">
+            <div className="bg-white rounded-card p-6 border border-line shadow-card">
+              <h3 className="text-lg font-semibold text-ink mb-3">
                 The Six Trig Functions
               </h3>
               <div className="space-y-2 text-sm">
@@ -587,15 +587,15 @@ export default function UnitCircleVisualizer() {
               </div>
             </div>
 
-            <div className="bg-white rounded-xl p-6 border border-gray-200">
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">
+            <div className="bg-white rounded-card p-6 border border-line shadow-card">
+              <h3 className="text-lg font-semibold text-ink mb-3">
                 Special Angles
               </h3>
-              <p className="text-gray-600 text-sm leading-relaxed mb-3">
+              <p className="text-ink-muted text-sm leading-relaxed mb-3">
                 Certain angles have exact trigonometric values that can be expressed using simple radicals:
               </p>
               <div className="space-y-2 text-sm">
-                <div className="grid grid-cols-3 gap-2 font-mono text-xs bg-gray-50 p-2 rounded">
+                <div className="grid grid-cols-3 gap-2 font-mono text-xs bg-subtle p-2 rounded">
                   <div className="font-semibold">Angle</div>
                   <div className="font-semibold">sin</div>
                   <div className="font-semibold">cos</div>
@@ -630,22 +630,22 @@ export default function UnitCircleVisualizer() {
           </div>
 
           {/* Fundamental Identity */}
-          <div className="bg-white rounded-xl p-8 border border-gray-200">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">
+          <div className="bg-white rounded-card p-8 border border-line shadow-card">
+            <h3 className="text-2xl font-bold text-ink mb-6">
               The Pythagorean Identity
             </h3>
-            <p className="text-gray-600 mb-4 leading-relaxed">
+            <p className="text-ink-muted mb-4 leading-relaxed">
               Since any point on the unit circle has coordinates (cos θ, sin θ) and is exactly 1 unit from the origin, we can apply the Pythagorean theorem:
             </p>
             <div className="bg-blue-50 p-6 rounded-lg border border-blue-200 mb-4">
-              <div className="text-center text-2xl font-bold text-gray-900 mb-2">
+              <div className="text-center text-2xl font-bold text-ink mb-2">
                 sin²θ + cos²θ = 1
               </div>
-              <p className="text-center text-sm text-gray-600">
+              <p className="text-center text-sm text-ink-muted">
                 This fundamental identity holds for <strong>all</strong> angles θ
               </p>
             </div>
-            <p className="text-gray-600 text-sm leading-relaxed">
+            <p className="text-ink-muted text-sm leading-relaxed">
               This identity is the foundation for many other trigonometric identities and is essential in calculus, physics, and engineering. It comes directly from the definition of the unit circle and the distance formula.
             </p>
           </div>
@@ -655,7 +655,7 @@ export default function UnitCircleVisualizer() {
       {/* Comments */}
       <section className="py-16">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">
+          <h2 className="text-2xl font-bold text-ink mb-6">
             Discussion
           </h2>
           <GiscusComments />

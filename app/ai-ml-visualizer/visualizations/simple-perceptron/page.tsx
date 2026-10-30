@@ -17,13 +17,13 @@ export default function SimplePerceptronPage() {
         {/* Breadcrumb */}
         <nav className="mb-8 text-sm">
           <ol className="flex items-center gap-2 text-gray-500">
-            <li><Link href="/" className="hover:text-gray-900">Home</Link></li>
+            <li><Link href="/" className="hover:text-ink">Home</Link></li>
             <li>/</li>
-            <li><Link href="/ai-ml-visualizer" className="hover:text-gray-900">AI & ML Visualizer</Link></li>
+            <li><Link href="/ai-ml-visualizer" className="hover:text-ink">AI & ML Visualizer</Link></li>
             <li>/</li>
-            <li><Link href="/ai-ml-visualizer/neural-networks" className="hover:text-gray-900">Neural Networks</Link></li>
+            <li><Link href="/ai-ml-visualizer/neural-networks" className="hover:text-ink">Neural Networks</Link></li>
             <li>/</li>
-            <li className="text-gray-900 font-medium">Simple Perceptron</li>
+            <li className="text-ink font-medium">Simple Perceptron</li>
           </ol>
         </nav>
 
@@ -31,11 +31,11 @@ export default function SimplePerceptronPage() {
         <header className="mb-8 space-y-4">
           <div className="flex items-center gap-3">
             <span className="text-4xl">🧠</span>
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900">
+            <h1 className="text-4xl md:text-5xl font-bold text-ink tracking-tight">
               Simple Perceptron
             </h1>
           </div>
-          <p className="text-xl text-gray-600 leading-relaxed max-w-3xl">
+          <p className="text-xl text-ink-muted leading-relaxed max-w-3xl">
             The perceptron is the fundamental building block of neural networks. Watch it learn to classify 
             data points by adjusting its weights and bias.
           </p>
@@ -47,12 +47,12 @@ export default function SimplePerceptronPage() {
         {/* Educational Content */}
         <div className="mt-12 space-y-8">
           {/* Understanding Section */}
-          <section className="bg-gradient-to-r from-gray-50 to-gray-100 border border-gray-300 rounded-lg p-6">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">Understanding the Perceptron</h2>
+          <section className="bg-gradient-to-r from-gray-50 to-gray-100 border border-line-strong rounded-lg p-6">
+            <h2 className="text-2xl font-bold text-ink mb-4">Understanding the Perceptron</h2>
             
             <div className="space-y-4">
-              <div className="bg-white rounded-lg p-5 border border-gray-200">
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">What is a Perceptron?</h3>
+              <div className="bg-white rounded-lg p-5 border border-line shadow-card">
+                <h3 className="text-lg font-semibold text-ink mb-2">What is a Perceptron?</h3>
                 <p className="text-gray-700 mb-3">
                   A perceptron is a simple artificial neuron that takes multiple inputs, applies weights to them, 
                   adds a bias, and produces a binary output (0 or 1). It was invented by Frank Rosenblatt in 1957 
@@ -73,8 +73,8 @@ export default function SimplePerceptronPage() {
                 </ol>
               </div>
 
-              <div className="bg-white rounded-lg p-5 border border-gray-200">
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">Key Components</h3>
+              <div className="bg-white rounded-lg p-5 border border-line shadow-card">
+                <h3 className="text-lg font-semibold text-ink mb-2">Key Components</h3>
                 <div className="space-y-2 text-gray-700">
                   <p><strong>Weights (w₁, w₂):</strong> Control how much each input influences the output</p>
                   <p><strong>Bias (b):</strong> Shifts the decision boundary, allowing the model to fit better</p>
@@ -86,26 +86,26 @@ export default function SimplePerceptronPage() {
           </section>
 
           {/* Mathematical Details */}
-          <section className="bg-white border border-gray-200 rounded-lg p-6">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">Mathematical Formulation</h2>
+          <section className="bg-white border border-line rounded-lg p-6 shadow-card">
+            <h2 className="text-2xl font-bold text-ink mb-4">Mathematical Formulation</h2>
             
             <div className="space-y-4">
-              <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                <h3 className="font-semibold text-gray-900 mb-2">Forward Pass</h3>
+              <div className="bg-subtle p-4 rounded-lg border border-line">
+                <h3 className="font-semibold text-ink mb-2">Forward Pass</h3>
                 <div className="font-mono text-sm space-y-1 text-gray-800">
                   <p>z = w₁ × x + w₂ × y + b</p>
                   <p>output = activate(z) = {'{1 if z ≥ 0, 0 otherwise}'}</p>
                 </div>
               </div>
 
-              <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                <h3 className="font-semibold text-gray-900 mb-2">Weight Update Rule</h3>
+              <div className="bg-subtle p-4 rounded-lg border border-line">
+                <h3 className="font-semibold text-ink mb-2">Weight Update Rule</h3>
                 <div className="font-mono text-sm space-y-1 text-gray-800">
                   <p>error = actual_label - predicted_label</p>
                   <p>w₁ = w₁ + α × error × x</p>
                   <p>w₂ = w₂ + α × error × y</p>
                   <p>b = b + α × error</p>
-                  <p className="text-xs text-gray-600 mt-2">(where α is the learning rate)</p>
+                  <p className="text-xs text-ink-muted mt-2">(where α is the learning rate)</p>
                 </div>
               </div>
             </div>
@@ -113,7 +113,7 @@ export default function SimplePerceptronPage() {
 
           {/* Limitations */}
           <section className="bg-gradient-to-r from-orange-50 to-red-50 border border-orange-200 rounded-lg p-6">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">Limitations of the Perceptron</h2>
+            <h2 className="text-2xl font-bold text-ink mb-4">Limitations of the Perceptron</h2>
             
             <div className="space-y-3 text-gray-700">
               <div className="flex items-start gap-3">
@@ -141,8 +141,8 @@ export default function SimplePerceptronPage() {
           </section>
 
           {/* Real World Applications */}
-          <section className="bg-white border border-gray-200 rounded-lg p-6">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">Historical Significance</h2>
+          <section className="bg-white border border-line rounded-lg p-6 shadow-card">
+            <h2 className="text-2xl font-bold text-ink mb-4">Historical Significance</h2>
             <div className="space-y-3 text-gray-700">
               <p>
                 <strong>1957:</strong> Frank Rosenblatt invented the perceptron at the Cornell Aeronautical Laboratory.
@@ -162,23 +162,23 @@ export default function SimplePerceptronPage() {
           </section>
 
           {/* Practice Tips */}
-          <section className="bg-gradient-to-r from-gray-50 to-gray-100 border border-gray-300 rounded-lg p-6">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">Experiment Ideas</h2>
+          <section className="bg-gradient-to-r from-gray-50 to-gray-100 border border-line-strong rounded-lg p-6">
+            <h2 className="text-2xl font-bold text-ink mb-4">Experiment Ideas</h2>
             <div className="space-y-3 text-gray-700">
               <div className="flex items-start gap-3">
-                <span className="text-gray-900 font-bold">1.</span>
+                <span className="text-ink font-bold">1.</span>
                 <p>Try different learning rates and observe how quickly the perceptron converges</p>
               </div>
               <div className="flex items-start gap-3">
-                <span className="text-gray-900 font-bold">2.</span>
+                <span className="text-ink font-bold">2.</span>
                 <p>Generate new data and see how the perceptron adapts to different distributions</p>
               </div>
               <div className="flex items-start gap-3">
-                <span className="text-gray-900 font-bold">3.</span>
+                <span className="text-ink font-bold">3.</span>
                 <p>Manually adjust weights to understand how they affect the decision boundary</p>
               </div>
               <div className="flex items-start gap-3">
-                <span className="text-gray-900 font-bold">4.</span>
+                <span className="text-ink font-bold">4.</span>
                 <p>Watch how the bias parameter shifts the decision line up or down</p>
               </div>
             </div>

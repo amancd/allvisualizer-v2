@@ -230,7 +230,7 @@ export default function BackpropagationVisualizer() {
   return (
     <div className="space-y-8">
       {/* Network Visualization */}
-      <div className="bg-white border-2 border-gray-300 rounded-lg p-8">
+      <div className="bg-white border border-line rounded-lg p-8 shadow-card">
         <svg viewBox="0 0 800 500" className="w-full">
           {/* Input Layer */}
           <g id="input-layer">
@@ -399,11 +399,11 @@ export default function BackpropagationVisualizer() {
       </div>
 
       {/* Controls */}
-      <div className="bg-white border-2 border-gray-300 rounded-lg p-6 space-y-6">
+      <div className="bg-white border border-line rounded-lg p-6 space-y-6 shadow-card">
         <div className="flex gap-3">
           <button
             onClick={() => setIsTraining(!isTraining)}
-            className="px-6 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors font-medium"
+            className="px-6 py-2 bg-brand-600 text-white rounded-lg hover:bg-brand-700 transition-colors font-medium shadow-brand"
           >
             {isTraining ? 'Stop Training' : 'Start Training'}
           </button>
@@ -423,7 +423,7 @@ export default function BackpropagationVisualizer() {
           </button>
           <button
             onClick={reset}
-            className="px-6 py-2 bg-gray-200 text-gray-900 rounded-lg hover:bg-gray-300 transition-colors font-medium"
+            className="px-6 py-2 bg-gray-200 text-ink rounded-lg hover:bg-gray-300 transition-colors font-medium"
           >
             Reset
           </button>
@@ -540,48 +540,48 @@ export default function BackpropagationVisualizer() {
       </div>
 
       {/* Theory */}
-      <div className="bg-gray-50 border-2 border-gray-300 rounded-lg p-6 space-y-4">
-        <h3 className="text-xl font-bold text-gray-900">Backpropagation Algorithm</h3>
+      <div className="bg-subtle border-2 border-line-strong rounded-lg p-6 space-y-4">
+        <h3 className="text-xl font-bold text-ink">Backpropagation Algorithm</h3>
         
         <div className="space-y-3 text-gray-700">
           <div>
-            <h4 className="font-semibold text-gray-900 mb-1">1. Forward Pass</h4>
+            <h4 className="font-semibold text-ink mb-1">1. Forward Pass</h4>
             <p className="text-sm">Calculate activations from input to output:</p>
-            <p className="font-mono text-sm bg-white p-2 rounded border border-gray-300 mt-1">
+            <p className="font-mono text-sm bg-white p-2 rounded border border-line-strong mt-1">
               a = σ(Wx + b) where σ is sigmoid activation
             </p>
           </div>
 
           <div>
-            <h4 className="font-semibold text-gray-900 mb-1">2. Calculate Error</h4>
+            <h4 className="font-semibold text-ink mb-1">2. Calculate Error</h4>
             <p className="text-sm">Compute the difference between prediction and target:</p>
-            <p className="font-mono text-sm bg-white p-2 rounded border border-gray-300 mt-1">
+            <p className="font-mono text-sm bg-white p-2 rounded border border-line-strong mt-1">
               Error = Target - Output<br/>
               Loss = ½(Target - Output)²
             </p>
           </div>
 
           <div>
-            <h4 className="font-semibold text-gray-900 mb-1">3. Backward Pass</h4>
+            <h4 className="font-semibold text-ink mb-1">3. Backward Pass</h4>
             <p className="text-sm">Calculate deltas (error signals) from output to input:</p>
-            <p className="font-mono text-sm bg-white p-2 rounded border border-gray-300 mt-1">
+            <p className="font-mono text-sm bg-white p-2 rounded border border-line-strong mt-1">
               δ_output = Error × σ'(output)<br/>
               δ_hidden = (δ_next · W^T) × σ'(activation)
             </p>
           </div>
 
           <div>
-            <h4 className="font-semibold text-gray-900 mb-1">4. Update Weights</h4>
+            <h4 className="font-semibold text-ink mb-1">4. Update Weights</h4>
             <p className="text-sm">Adjust weights using gradient descent:</p>
-            <p className="font-mono text-sm bg-white p-2 rounded border border-gray-300 mt-1">
+            <p className="font-mono text-sm bg-white p-2 rounded border border-line-strong mt-1">
               W_new = W_old + η × δ × a_prev<br/>
               b_new = b_old + η × δ
             </p>
-            <p className="text-xs text-gray-600 mt-1">where η is the learning rate</p>
+            <p className="text-xs text-ink-muted mt-1">where η is the learning rate</p>
           </div>
 
           <div className="pt-2">
-            <h4 className="font-semibold text-gray-900 mb-1">Key Concepts</h4>
+            <h4 className="font-semibold text-ink mb-1">Key Concepts</h4>
             <ul className="list-disc list-inside text-sm space-y-1">
               <li><strong>Sigmoid Function:</strong> σ(x) = 1/(1 + e^(-x)) - squashes values to (0,1)</li>
               <li><strong>Delta (δ):</strong> Measures how much a neuron contributes to the error</li>

@@ -499,36 +499,36 @@ COMPUTATION TIPS
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <nav className="mb-8 text-sm">
           <ol className="flex items-center gap-2 text-gray-500">
-            <li><Link href="/" className="hover:text-gray-900">Home</Link></li>
+            <li><Link href="/" className="hover:text-ink">Home</Link></li>
             <li>/</li>
-            <li><Link href="/math-visualizer" className="hover:text-gray-900">Math Visualizer</Link></li>
+            <li><Link href="/math-visualizer" className="hover:text-ink">Math Visualizer</Link></li>
             <li>/</li>
-            <li><Link href="/math-visualizer/linear-algebra" className="hover:text-gray-900">Linear Algebra</Link></li>
+            <li><Link href="/math-visualizer/linear-algebra" className="hover:text-ink">Linear Algebra</Link></li>
             <li>/</li>
-            <li className="text-gray-900 font-medium">Determinants</li>
+            <li className="text-ink font-medium">Determinants</li>
           </ol>
         </nav>
 
         <article className="space-y-8">
-          <header className="space-y-4 pb-8 border-b border-gray-200">
+          <header className="space-y-4 pb-8 border-b border-line">
             <div className="flex items-center gap-2 text-sm">
-              <span className="px-2 py-1 bg-gray-200 text-gray-900 rounded font-medium">Linear Algebra</span>
+              <span className="px-2 py-1 bg-gray-200 text-ink rounded font-medium">Linear Algebra</span>
               <span className="text-gray-400">•</span>
               <span className="px-2 py-1 bg-yellow-100 text-yellow-700 rounded font-medium">Intermediate</span>
             </div>
             
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
+            <h1 className="text-4xl md:text-5xl font-bold text-ink leading-tight tracking-tight">
               Determinants
             </h1>
             
-            <p className="text-xl text-gray-600 leading-relaxed">
+            <p className="text-xl text-ink-muted leading-relaxed">
               Master the computation and interpretation of determinants. Learn how this powerful scalar value reveals matrix properties, invertibility, and geometric transformations.
             </p>
           </header>
 
           <section className="space-y-4">
-            <h2 className="text-2xl font-bold text-gray-900">What is a Determinant?</h2>
-            <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 space-y-4">
+            <h2 className="text-2xl font-bold text-ink">What is a Determinant?</h2>
+            <div className="bg-subtle border border-line rounded-lg p-6 space-y-4">
               <p className="text-gray-700">
                 The <strong>determinant</strong> is a scalar value computed from a square matrix that encodes important properties:
               </p>
@@ -543,35 +543,35 @@ COMPUTATION TIPS
           </section>
 
           <section className="space-y-4">
-            <h2 className="text-2xl font-bold text-gray-900">Interactive Calculator</h2>
-            <p className="text-gray-600">
+            <h2 className="text-2xl font-bold text-ink">Interactive Calculator</h2>
+            <p className="text-ink-muted">
               Calculate determinants for 2×2 and 3×3 matrices. See step-by-step calculations and geometric interpretation.
             </p>
             <DeterminantVisualizer />
           </section>
 
           <section className="space-y-4">
-            <h2 className="text-2xl font-bold text-gray-900">Understanding the Formula</h2>
+            <h2 className="text-2xl font-bold text-ink">Understanding the Formula</h2>
             <div className="space-y-4">
-              <div className="bg-gray-100 border-l-4 border-gray-900 p-4">
-                <h3 className="font-semibold text-gray-900 mb-2">2×2 Determinant: ad - bc</h3>
-                <p className="text-sm text-gray-900 mb-2">
+              <div className="bg-brand-50/60 border-l-4 border-brand-500 p-4">
+                <h3 className="font-semibold text-ink mb-2">2×2 Determinant: ad - bc</h3>
+                <p className="text-sm text-ink mb-2">
                   For a 2×2 matrix, multiply the main diagonal elements and subtract the product of the off-diagonal elements.
                 </p>
-                <div className="bg-white p-3 rounded border border-gray-300 font-mono text-sm">
+                <div className="bg-white p-3 rounded border border-line-strong font-mono text-sm">
                   |a  b|<br/>
                   |c  d| = (a×d) - (b×c)
                 </div>
               </div>
 
-              <div className="bg-gray-100 border-l-4 border-gray-900 p-4">
-                <h3 className="font-semibold text-gray-900 mb-2">3×3 Determinant: Cofactor Expansion</h3>
-                <p className="text-sm text-gray-900 mb-2">
+              <div className="bg-brand-50/60 border-l-4 border-brand-500 p-4">
+                <h3 className="font-semibold text-ink mb-2">3×3 Determinant: Cofactor Expansion</h3>
+                <p className="text-sm text-ink mb-2">
                   For a 3×3 matrix, expand along the first row. Each element is multiplied by its <em>minor</em> (the determinant of the 2×2 submatrix) with alternating signs.
                 </p>
-                <div className="bg-white p-3 rounded border border-gray-300 font-mono text-sm">
+                <div className="bg-white p-3 rounded border border-line-strong font-mono text-sm">
                   det(A) = a₁₁M₁₁ - a₁₂M₁₂ + a₁₃M₁₃<br/>
-                  <span className="text-xs text-gray-600">(+ - + pattern continues)</span>
+                  <span className="text-xs text-ink-muted">(+ - + pattern continues)</span>
                 </div>
               </div>
             </div>
@@ -579,13 +579,13 @@ COMPUTATION TIPS
 
           <section className="space-y-4">
             <div className="flex items-center justify-between">
-              <h2 className="text-2xl font-bold text-gray-900">Implementation</h2>
+              <h2 className="text-2xl font-bold text-ink">Implementation</h2>
               <div className="flex gap-2">
                 <button
                   onClick={() => setSelectedLanguage('python')}
                   className={`px-3 py-1.5 text-sm font-medium rounded-lg transition-colors ${
                     selectedLanguage === 'python'
-                      ? 'bg-black text-white'
+                      ? 'bg-brand-600 text-white shadow-brand'
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                   }`}
                 >
@@ -595,7 +595,7 @@ COMPUTATION TIPS
                   onClick={() => setSelectedLanguage('javascript')}
                   className={`px-3 py-1.5 text-sm font-medium rounded-lg transition-colors ${
                     selectedLanguage === 'javascript'
-                      ? 'bg-black text-white'
+                      ? 'bg-brand-600 text-white shadow-brand'
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                   }`}
                 >
@@ -605,7 +605,7 @@ COMPUTATION TIPS
                   onClick={() => setSelectedLanguage('mathematical')}
                   className={`px-3 py-1.5 text-sm font-medium rounded-lg transition-colors ${
                     selectedLanguage === 'mathematical'
-                      ? 'bg-black text-white'
+                      ? 'bg-brand-600 text-white shadow-brand'
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                   }`}
                 >
@@ -629,12 +629,12 @@ COMPUTATION TIPS
           </section>
 
           <section className="space-y-4">
-            <h2 className="text-2xl font-bold text-gray-900">Key Properties</h2>
+            <h2 className="text-2xl font-bold text-ink">Key Properties</h2>
             <div className="grid md:grid-cols-2 gap-4">
-              <div className="bg-gray-100 border border-gray-300 rounded-lg p-4">
-                <h3 className="font-semibold text-gray-900 mb-2">Multiplicative</h3>
-                <p className="text-gray-900 text-sm mb-1">det(AB) = det(A) × det(B)</p>
-                <p className="text-gray-900 text-xs">Determinant of product equals product of determinants</p>
+              <div className="bg-gray-100 border border-line-strong rounded-lg p-4">
+                <h3 className="font-semibold text-ink mb-2">Multiplicative</h3>
+                <p className="text-ink text-sm mb-1">det(AB) = det(A) × det(B)</p>
+                <p className="text-ink text-xs">Determinant of product equals product of determinants</p>
               </div>
               
               <div className="bg-green-50 border border-green-200 rounded-lg p-4">
@@ -643,10 +643,10 @@ COMPUTATION TIPS
                 <p className="text-green-700 text-xs">Non-zero determinant means inverse exists</p>
               </div>
 
-              <div className="bg-gray-100 border border-gray-300 rounded-lg p-4">
-                <h3 className="font-semibold text-gray-900 mb-2">Transpose Invariant</h3>
-                <p className="text-gray-900 text-sm mb-1">det(Aᵀ) = det(A)</p>
-                <p className="text-gray-900 text-xs">Transposing doesn't change the determinant</p>
+              <div className="bg-gray-100 border border-line-strong rounded-lg p-4">
+                <h3 className="font-semibold text-ink mb-2">Transpose Invariant</h3>
+                <p className="text-ink text-sm mb-1">det(Aᵀ) = det(A)</p>
+                <p className="text-ink text-xs">Transposing doesn't change the determinant</p>
               </div>
 
               <div className="bg-orange-50 border border-orange-200 rounded-lg p-4">
@@ -658,11 +658,11 @@ COMPUTATION TIPS
           </section>
 
           <section className="space-y-4">
-            <h2 className="text-2xl font-bold text-gray-900">Applications</h2>
+            <h2 className="text-2xl font-bold text-ink">Applications</h2>
             <div className="grid md:grid-cols-2 gap-4">
-              <div className="bg-gray-100 border border-gray-300 rounded-lg p-4">
+              <div className="bg-gray-100 border border-line-strong rounded-lg p-4">
                 <h3 className="font-semibold text-indigo-900 mb-2">System Solvability</h3>
-                <p className="text-gray-900 text-sm">
+                <p className="text-ink text-sm">
                   Check if system Ax = b has unique solution (det(A) ≠ 0)
                 </p>
               </div>
@@ -691,17 +691,17 @@ COMPUTATION TIPS
           </section>
 
           <section className="space-y-4">
-            <h2 className="text-2xl font-bold text-gray-900">Related Topics</h2>
+            <h2 className="text-2xl font-bold text-ink">Related Topics</h2>
             <div className="grid sm:grid-cols-2 gap-3">
               <Link
                 href="/math-visualizer/problems/matrix-operations"
-                className="border border-gray-200 rounded-lg p-4 hover:border-gray-400 transition-colors group"
+                className="border border-line rounded-lg p-4 hover:border-brand-300 transition-colors group"
               >
-                <h3 className="font-semibold text-gray-900 mb-1 group-hover:text-gray-900">← Matrix Operations</h3>
-                <p className="text-sm text-gray-600">Review matrix multiplication and addition</p>
+                <h3 className="font-semibold text-ink mb-1 group-hover:text-brand-700">← Matrix Operations</h3>
+                <p className="text-sm text-ink-muted">Review matrix multiplication and addition</p>
               </Link>
               
-              <div className="border border-gray-200 rounded-lg p-4 hover:border-gray-400 transition-colors opacity-60 cursor-not-allowed">
+              <div className="border border-line rounded-lg p-4 hover:border-brand-300 transition-colors opacity-60 cursor-not-allowed">
                 <h3 className="font-semibold text-gray-700 mb-1 flex items-center justify-between">
                   Matrix Inverse
                   <span className="text-xs text-gray-500">Coming Soon</span>
@@ -709,7 +709,7 @@ COMPUTATION TIPS
                 <p className="text-sm text-gray-500">Use determinants to find matrix inverses</p>
               </div>
               
-              <div className="border border-gray-200 rounded-lg p-4 hover:border-gray-400 transition-colors opacity-60 cursor-not-allowed">
+              <div className="border border-line rounded-lg p-4 hover:border-brand-300 transition-colors opacity-60 cursor-not-allowed">
                 <h3 className="font-semibold text-gray-700 mb-1 flex items-center justify-between">
                   Eigenvalues & Eigenvectors
                   <span className="text-xs text-gray-500">Coming Soon</span>
@@ -717,7 +717,7 @@ COMPUTATION TIPS
                 <p className="text-sm text-gray-500">Solve characteristic equation using determinants</p>
               </div>
               
-              <div className="border border-gray-200 rounded-lg p-4 hover:border-gray-400 transition-colors opacity-60 cursor-not-allowed">
+              <div className="border border-line rounded-lg p-4 hover:border-brand-300 transition-colors opacity-60 cursor-not-allowed">
                 <h3 className="font-semibold text-gray-700 mb-1 flex items-center justify-between">
                   Cramer's Rule
                   <span className="text-xs text-gray-500">Coming Soon</span>
@@ -727,8 +727,8 @@ COMPUTATION TIPS
             </div>
           </section>
 
-          <section className="pt-8 border-t border-gray-200">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Discussion</h2>
+          <section className="pt-8 border-t border-line">
+            <h2 className="text-2xl font-bold text-ink mb-6">Discussion</h2>
             <GiscusComments />
           </section>
         </article>

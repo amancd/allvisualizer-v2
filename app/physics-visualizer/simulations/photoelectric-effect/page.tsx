@@ -24,20 +24,20 @@ export default function PhotoelectricEffectPage() {
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 pt-24">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Breadcrumb */}
-        <div className="mb-6 text-sm text-gray-600">
-          <a href="/" className="hover:text-gray-900">Home</a>
+        <div className="mb-6 text-sm text-ink-muted">
+          <a href="/" className="hover:text-ink">Home</a>
           {' / '}
-          <a href="/physics-visualizer" className="hover:text-gray-900">Physics Visualizer</a>
+          <a href="/physics-visualizer" className="hover:text-ink">Physics Visualizer</a>
           {' / '}
-          <a href="/physics-visualizer/modern-physics" className="hover:text-gray-900">Modern Physics</a>
+          <a href="/physics-visualizer/modern-physics" className="hover:text-ink">Modern Physics</a>
           {' / '}
-          <span className="text-gray-900">Photoelectric Effect</span>
+          <span className="text-ink">Photoelectric Effect</span>
         </div>
 
         {/* Header */}
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-3">
-            <h1 className="text-4xl font-bold text-gray-900">Photoelectric Effect</h1>
+            <h1 className="text-4xl font-bold text-ink tracking-tight">Photoelectric Effect</h1>
             <span className="px-3 py-1 bg-yellow-100 text-yellow-800 text-xs font-semibold rounded-full">
               Medium
             </span>
@@ -55,7 +55,7 @@ export default function PhotoelectricEffectPage() {
         {/* Theory Section */}
         <div className="prose max-w-none">
           <section className="mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">💡 What is the Photoelectric Effect?</h2>
+            <h2 className="text-2xl font-bold text-ink mb-4">💡 What is the Photoelectric Effect?</h2>
             <p className="text-gray-700 mb-4">
               The photoelectric effect is the emission of electrons from a metal surface when light shines on it. 
               Discovered by Heinrich Hertz in 1887 and explained by Albert Einstein in 1905, this phenomenon 
@@ -69,7 +69,7 @@ export default function PhotoelectricEffectPage() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">Einstein's Equation</h2>
+            <h2 className="text-2xl font-bold text-ink mb-4">Einstein's Equation</h2>
             <p className="text-gray-700 mb-4">
               Einstein explained the photoelectric effect by proposing that light consists of discrete energy 
               packets called photons. When a photon hits an electron, it transfers all its energy:
@@ -92,10 +92,10 @@ export default function PhotoelectricEffectPage() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">Key Observations</h2>
+            <h2 className="text-2xl font-bold text-ink mb-4">Key Observations</h2>
             <div className="grid md:grid-cols-2 gap-6">
               <div className="bg-blue-50 p-4 rounded-lg">
-                <h3 className="font-semibold text-gray-900 mb-2">Threshold Frequency</h3>
+                <h3 className="font-semibold text-ink mb-2">Threshold Frequency</h3>
                 <p className="text-sm text-gray-700">
                   Below the threshold frequency f<sub>0</sub> = φ/h, no electrons are emitted regardless 
                   of light intensity. This was unexplainable by classical wave theory.
@@ -103,7 +103,7 @@ export default function PhotoelectricEffectPage() {
               </div>
               
               <div className="bg-green-50 p-4 rounded-lg">
-                <h3 className="font-semibold text-gray-900 mb-2">Instantaneous Emission</h3>
+                <h3 className="font-semibold text-ink mb-2">Instantaneous Emission</h3>
                 <p className="text-sm text-gray-700">
                   Electrons are emitted immediately when light above threshold frequency hits the surface. 
                   There's no time delay, even at low intensities.
@@ -111,7 +111,7 @@ export default function PhotoelectricEffectPage() {
               </div>
               
               <div className="bg-yellow-50 p-4 rounded-lg">
-                <h3 className="font-semibold text-gray-900 mb-2">Intensity Effect</h3>
+                <h3 className="font-semibold text-ink mb-2">Intensity Effect</h3>
                 <p className="text-sm text-gray-700">
                   Higher intensity means more photons, resulting in more electrons ejected per second, 
                   but doesn't change the maximum kinetic energy of individual electrons.
@@ -119,7 +119,7 @@ export default function PhotoelectricEffectPage() {
               </div>
               
               <div className="bg-purple-50 p-4 rounded-lg">
-                <h3 className="font-semibold text-gray-900 mb-2">Frequency Dependence</h3>
+                <h3 className="font-semibold text-ink mb-2">Frequency Dependence</h3>
                 <p className="text-sm text-gray-700">
                   Higher frequency light (shorter wavelength) produces electrons with higher kinetic energy. 
                   The relationship is linear: KE increases linearly with frequency.
@@ -129,12 +129,12 @@ export default function PhotoelectricEffectPage() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">⚡ Work Function Values</h2>
+            <h2 className="text-2xl font-bold text-ink mb-4">⚡ Work Function Values</h2>
             <p className="text-gray-700 mb-4">
               Different metals have different work functions (energy needed to remove an electron):
             </p>
             <div className="overflow-x-auto">
-              <table className="min-w-full bg-white border border-gray-300">
+              <table className="min-w-full bg-white border border-line-strong">
                 <thead className="bg-gray-100">
                   <tr>
                     <th className="px-4 py-2 border-b text-left">Metal</th>
@@ -174,7 +174,7 @@ export default function PhotoelectricEffectPage() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">🌍 Real-World Applications</h2>
+            <h2 className="text-2xl font-bold text-ink mb-4">🌍 Real-World Applications</h2>
             <ul className="list-disc list-inside space-y-2 text-gray-700 ml-4">
               <li><strong>Solar Panels:</strong> Photovoltaic cells convert light energy directly to electricity</li>
               <li><strong>Night Vision Devices:</strong> Image intensifiers amplify low light using photoelectric emission</li>
@@ -185,7 +185,7 @@ export default function PhotoelectricEffectPage() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">🏆 Historical Significance</h2>
+            <h2 className="text-2xl font-bold text-ink mb-4">🏆 Historical Significance</h2>
             <p className="text-gray-700 mb-4">
               Albert Einstein received the 1921 Nobel Prize in Physics for his explanation of the photoelectric 
               effect, not for his more famous theory of relativity. This work was crucial because:

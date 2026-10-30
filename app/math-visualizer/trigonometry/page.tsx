@@ -49,20 +49,20 @@ export default function TrigonometryPage() {
       {/* Breadcrumbs */}
       <nav className="pt-24 pb-4">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ol className="flex items-center space-x-2 text-sm text-gray-600">
+          <ol className="flex items-center space-x-2 text-sm text-ink-muted">
             <li>
-              <Link href="/" className="hover:text-gray-900">
+              <Link href="/" className="hover:text-ink">
                 Home
               </Link>
             </li>
             <li>/</li>
             <li>
-              <Link href="/math-visualizer" className="hover:text-gray-900">
+              <Link href="/math-visualizer" className="hover:text-ink">
                 Math
               </Link>
             </li>
             <li>/</li>
-            <li className="text-gray-900 font-medium">Trigonometry</li>
+            <li className="text-ink font-medium">Trigonometry</li>
           </ol>
         </div>
       </nav>
@@ -71,10 +71,10 @@ export default function TrigonometryPage() {
       <section className="pb-16 md:pb-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-4">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900">
+            <h1 className="text-4xl md:text-5xl font-bold text-ink tracking-tight">
               Trigonometry
             </h1>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="text-xl text-ink-muted max-w-2xl mx-auto">
               Master trigonometric concepts through interactive visualizations. Explore the unit circle, wave functions, and fundamental identities.
             </p>
           </div>
@@ -85,10 +85,10 @@ export default function TrigonometryPage() {
       <section className="pb-16 md:pb-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-2">
+            <h2 className="text-2xl font-bold text-ink mb-2">
               Interactive Visualizations
             </h2>
-            <p className="text-gray-600">
+            <p className="text-ink-muted">
               Explore trigonometry concepts step by step
             </p>
           </div>
@@ -96,11 +96,11 @@ export default function TrigonometryPage() {
           <div className="grid gap-6">
             {visualizations.map((viz, index) => {
               const CardContent = (
-                <div className="p-6 bg-white border-2 border-gray-200 rounded-xl hover:border-gray-400 hover:shadow-lg transition-all">
+                <div className="p-6 bg-white border border-line rounded-card hover:border-brand-300 hover:shadow-card-hover transition-all shadow-card">
                   <div className="flex items-start justify-between mb-3">
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2">
-                        <h3 className="text-xl font-semibold text-gray-900">
+                        <h3 className="text-xl font-semibold text-ink">
                           {viz.title}
                         </h3>
                         <span className={`px-2 py-1 text-xs font-medium rounded ${
@@ -111,7 +111,7 @@ export default function TrigonometryPage() {
                           {viz.difficulty}
                         </span>
                       </div>
-                      <p className="text-gray-600 mb-4">
+                      <p className="text-ink-muted mb-4">
                         {viz.description}
                       </p>
                       <div className="flex flex-wrap gap-2">
@@ -126,11 +126,11 @@ export default function TrigonometryPage() {
                       </div>
                     </div>
                     {viz.isAvailable ? (
-                      <svg className="w-6 h-6 text-gray-400 group-hover:text-gray-900 flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-6 h-6 text-gray-400 group-hover:text-brand-700 flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                       </svg>
                     ) : (
-                      <span className="px-3 py-1 bg-gray-200 text-gray-600 text-xs font-medium rounded-md flex-shrink-0 ml-4 h-fit">
+                      <span className="px-3 py-1 bg-gray-200 text-ink-muted text-xs font-medium rounded-md flex-shrink-0 ml-4 h-fit">
                         Coming Soon
                       </span>
                     )}
@@ -153,41 +153,41 @@ export default function TrigonometryPage() {
       </section>
 
       {/* Key Concepts */}
-      <section className="py-16 md:py-20 bg-gray-50">
+      <section className="py-16 md:py-20 bg-subtle">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">
+          <h2 className="text-3xl font-bold text-ink mb-8 tracking-tight">
             Key Concepts
           </h2>
           <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-white rounded-xl p-6 border border-gray-200">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+            <div className="bg-white rounded-card p-6 border border-line shadow-card">
+              <h3 className="text-lg font-semibold text-ink mb-2">
                 The Unit Circle
               </h3>
-              <p className="text-gray-600 text-sm">
+              <p className="text-ink-muted text-sm">
                 A circle with radius 1 centered at the origin. Every angle corresponds to a point (cos θ, sin θ) on this circle, providing a geometric foundation for all trig functions.
               </p>
             </div>
-            <div className="bg-white rounded-xl p-6 border border-gray-200">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+            <div className="bg-white rounded-card p-6 border border-line shadow-card">
+              <h3 className="text-lg font-semibold text-ink mb-2">
                 Six Trigonometric Functions
               </h3>
-              <p className="text-gray-600 text-sm">
+              <p className="text-ink-muted text-sm">
                 Sine, cosine, tangent, cosecant, secant, and cotangent each represent different ratios in a right triangle or coordinates on the unit circle.
               </p>
             </div>
-            <div className="bg-white rounded-xl p-6 border border-gray-200">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+            <div className="bg-white rounded-card p-6 border border-line shadow-card">
+              <h3 className="text-lg font-semibold text-ink mb-2">
                 Periodic Nature
               </h3>
-              <p className="text-gray-600 text-sm">
+              <p className="text-ink-muted text-sm">
                 Trig functions repeat their values in regular intervals (periods). Sin and cos have period 2π, while tan has period π. This makes them perfect for modeling waves and cycles.
               </p>
             </div>
-            <div className="bg-white rounded-xl p-6 border border-gray-200">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+            <div className="bg-white rounded-card p-6 border border-line shadow-card">
+              <h3 className="text-lg font-semibold text-ink mb-2">
                 Fundamental Identities
               </h3>
-              <p className="text-gray-600 text-sm">
+              <p className="text-ink-muted text-sm">
                 Equations like sin²θ + cos²θ = 1 hold for all angles. These identities are essential tools for simplifying expressions and solving equations.
               </p>
             </div>
@@ -198,7 +198,7 @@ export default function TrigonometryPage() {
       {/* Comments */}
       <section className="py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">
+          <h2 className="text-2xl font-bold text-ink mb-6">
             Discussion
           </h2>
           <GiscusComments />

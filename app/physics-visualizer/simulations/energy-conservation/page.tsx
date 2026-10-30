@@ -23,13 +23,13 @@ export default function EnergyConservationPage() {
         {/* Breadcrumb */}
         <nav className="mb-8 text-sm">
           <ol className="flex items-center gap-2 text-gray-500">
-            <li><Link href="/" className="hover:text-gray-900">Home</Link></li>
+            <li><Link href="/" className="hover:text-ink">Home</Link></li>
             <li>/</li>
-            <li><Link href="/physics-visualizer" className="hover:text-gray-900">Physics</Link></li>
+            <li><Link href="/physics-visualizer" className="hover:text-ink">Physics</Link></li>
             <li>/</li>
-            <li><Link href="/physics-visualizer/mechanics" className="hover:text-gray-900">Mechanics</Link></li>
+            <li><Link href="/physics-visualizer/mechanics" className="hover:text-ink">Mechanics</Link></li>
             <li>/</li>
-            <li className="text-gray-900 font-medium">Energy Conservation</li>
+            <li className="text-ink font-medium">Energy Conservation</li>
           </ol>
         </nav>
 
@@ -38,10 +38,10 @@ export default function EnergyConservationPage() {
           <div className="inline-block px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-semibold border border-green-300">
             Beginner
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900">
+          <h1 className="text-4xl md:text-5xl font-bold text-ink tracking-tight">
             Energy Conservation
           </h1>
-          <p className="text-xl text-gray-600 leading-relaxed">
+          <p className="text-xl text-ink-muted leading-relaxed">
             Discover how energy transforms between kinetic, potential, and spring forms while total energy remains constant.
           </p>
         </header>
@@ -51,7 +51,7 @@ export default function EnergyConservationPage() {
           {['Kinetic Energy', 'Potential Energy', 'Spring Energy', 'Energy Transformation'].map((topic) => (
             <span
               key={topic}
-              className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm border border-gray-300"
+              className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm border border-line-strong"
             >
               {topic}
             </span>
@@ -181,23 +181,23 @@ export default function EnergyConservationPage() {
         </div>
 
         {/* Energy Equations Reference */}
-        <div className="mt-8 bg-gray-50 border-2 border-gray-300 rounded-lg p-6">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Energy Equations Reference</h2>
+        <div className="mt-8 bg-subtle border-2 border-line-strong rounded-lg p-6">
+          <h2 className="text-2xl font-bold text-ink mb-4">Energy Equations Reference</h2>
           <div className="space-y-3">
-            <div className="bg-white p-3 rounded border border-gray-300">
-              <h3 className="font-semibold text-gray-900 mb-1">Total Mechanical Energy</h3>
+            <div className="bg-white p-3 rounded border border-line-strong">
+              <h3 className="font-semibold text-ink mb-1">Total Mechanical Energy</h3>
               <p className="font-mono text-sm">E = KE + PE (+ SE for springs)</p>
             </div>
-            <div className="bg-white p-3 rounded border border-gray-300">
-              <h3 className="font-semibold text-gray-900 mb-1">Kinetic Energy</h3>
+            <div className="bg-white p-3 rounded border border-line-strong">
+              <h3 className="font-semibold text-ink mb-1">Kinetic Energy</h3>
               <p className="font-mono text-sm">KE = ½mv² where m = mass, v = velocity</p>
             </div>
-            <div className="bg-white p-3 rounded border border-gray-300">
-              <h3 className="font-semibold text-gray-900 mb-1">Gravitational Potential Energy</h3>
+            <div className="bg-white p-3 rounded border border-line-strong">
+              <h3 className="font-semibold text-ink mb-1">Gravitational Potential Energy</h3>
               <p className="font-mono text-sm">PE = mgh where g = gravity, h = height</p>
             </div>
-            <div className="bg-white p-3 rounded border border-gray-300">
-              <h3 className="font-semibold text-gray-900 mb-1">Spring Potential Energy</h3>
+            <div className="bg-white p-3 rounded border border-line-strong">
+              <h3 className="font-semibold text-ink mb-1">Spring Potential Energy</h3>
               <p className="font-mono text-sm">SE = ½kx² where k = spring constant, x = compression</p>
             </div>
           </div>
@@ -207,7 +207,7 @@ export default function EnergyConservationPage() {
         <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-between">
           <Link
             href="/physics-visualizer/simulations/elastic-collisions"
-            className="flex items-center gap-2 px-6 py-3 bg-gray-100 text-gray-900 rounded-lg hover:bg-gray-200 transition-colors border-2 border-gray-300"
+            className="flex items-center gap-2 px-6 py-3 bg-gray-100 text-ink rounded-lg hover:bg-gray-200 transition-colors border-2 border-line-strong"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -217,7 +217,7 @@ export default function EnergyConservationPage() {
           
           <Link
             href="/physics-visualizer/mechanics"
-            className="flex items-center justify-center gap-2 px-6 py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors font-medium"
+            className="flex items-center justify-center gap-2 px-6 py-3 bg-brand-600 text-white rounded-lg hover:bg-brand-700 transition-colors font-medium shadow-brand"
           >
             <span>Back to Mechanics</span>
           </Link>

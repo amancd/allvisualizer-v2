@@ -95,7 +95,7 @@ export default function TwoSumVisualizer() {
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-gray-500 focus:border-transparent"
+            className="w-full px-3 py-2 border border-line-strong rounded-lg text-sm focus:ring-2 focus:ring-brand-500 focus:border-transparent"
             placeholder="2,7,11,15"
           />
         </div>
@@ -105,20 +105,20 @@ export default function TwoSumVisualizer() {
             type="text"
             value={targetInput}
             onChange={(e) => setTargetInput(e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-gray-500 focus:border-transparent"
+            className="w-full px-3 py-2 border border-line-strong rounded-lg text-sm focus:ring-2 focus:ring-brand-500 focus:border-transparent"
             placeholder="9"
           />
         </div>
         <button
           onClick={handleApply}
-          className="px-4 py-2 bg-black text-white rounded-lg text-sm font-medium hover:bg-gray-800"
+          className="px-4 py-2 bg-brand-600 text-white rounded-lg text-sm font-medium hover:bg-brand-700 shadow-brand"
         >
           Apply
         </button>
       </div>
 
       {/* Array Visualization */}
-      <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
+      <div className="border border-line rounded-lg p-4 bg-subtle">
         <div className="flex gap-2 overflow-x-auto pb-2">
           {nums.map((num, idx) => (
             <div key={idx} className="flex flex-col items-center min-w-[60px]">
@@ -131,7 +131,7 @@ export default function TwoSumVisualizer() {
                       : 'bg-gray-1000 text-white ring-2 ring-indigo-300'
                     : result && result.includes(idx)
                     ? 'bg-green-100 text-green-700 border-2 border-green-400'
-                    : 'bg-white border-2 border-gray-300 text-gray-700'
+                    : 'bg-white border-2 border-line-strong text-gray-700'
                 }`}
               >
                 {num}
@@ -142,14 +142,14 @@ export default function TwoSumVisualizer() {
       </div>
 
       {/* Hash Map Visualization */}
-      <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
+      <div className="border border-line rounded-lg p-4 bg-subtle">
         <div className="text-xs font-semibold text-gray-700 mb-2">Hash Map</div>
         <div className="flex flex-wrap gap-2">
           {hashMap.size === 0 ? (
             <div className="text-xs text-gray-400">Empty</div>
           ) : (
             Array.from(hashMap.entries()).map(([val, idx]) => (
-              <div key={val} className="px-3 py-1 bg-white border border-gray-300 rounded text-xs font-mono">
+              <div key={val} className="px-3 py-1 bg-white border border-line-strong rounded text-xs font-mono">
                 {val} → {idx}
               </div>
             ))
@@ -159,7 +159,7 @@ export default function TwoSumVisualizer() {
 
       {/* Current Step Info */}
       {step && (
-        <div className="border border-gray-200 rounded-lg p-4 bg-white">
+        <div className="border border-line rounded-lg p-4 bg-white shadow-card">
           <div className="text-sm text-gray-700">
             {step.found ? (
               <div className="text-green-700 font-medium">
@@ -182,27 +182,27 @@ export default function TwoSumVisualizer() {
         <button
           onClick={() => setCurrentStep(0)}
           disabled={currentStep === 0}
-          className="px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium hover:bg-gray-50 disabled:opacity-50"
+          className="px-4 py-2 border border-line-strong rounded-lg text-sm font-medium hover:bg-subtle disabled:opacity-50"
         >
           Reset
         </button>
         <button
           onClick={() => setCurrentStep(prev => Math.max(0, prev - 1))}
           disabled={currentStep === 0}
-          className="px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium hover:bg-gray-50 disabled:opacity-50"
+          className="px-4 py-2 border border-line-strong rounded-lg text-sm font-medium hover:bg-subtle disabled:opacity-50"
         >
           ← Prev
         </button>
         <button
           onClick={() => setIsPlaying(!isPlaying)}
-          className="px-6 py-2 bg-black text-white rounded-lg text-sm font-medium hover:bg-gray-800"
+          className="px-6 py-2 bg-brand-600 text-white rounded-lg text-sm font-medium hover:bg-brand-700 shadow-brand"
         >
           {isPlaying ? 'Pause' : currentStep >= steps.length - 1 ? 'Replay' : 'Play'}
         </button>
         <button
           onClick={() => setCurrentStep(prev => Math.min(steps.length - 1, prev + 1))}
           disabled={currentStep >= steps.length - 1}
-          className="px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium hover:bg-gray-50 disabled:opacity-50"
+          className="px-4 py-2 border border-line-strong rounded-lg text-sm font-medium hover:bg-subtle disabled:opacity-50"
         >
           Next →
         </button>
@@ -210,13 +210,13 @@ export default function TwoSumVisualizer() {
 
       {/* Progress */}
       <div className="space-y-1">
-        <div className="flex justify-between text-xs text-gray-600">
+        <div className="flex justify-between text-xs text-ink-muted">
           <span>Step {currentStep + 1} / {steps.length}</span>
           <span>{Math.round(((currentStep + 1) / steps.length) * 100)}%</span>
         </div>
         <div className="w-full bg-gray-200 rounded-full h-1.5">
           <div
-            className="bg-black h-1.5 rounded-full transition-all"
+            className="bg-brand-600 h-1.5 rounded-full transition-all"
             style={{ width: `${((currentStep + 1) / steps.length) * 100}%` }}
           />
         </div>

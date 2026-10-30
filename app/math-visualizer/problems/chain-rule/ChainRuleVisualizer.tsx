@@ -82,17 +82,17 @@ export default function ChainRuleVisualizer() {
   };
 
   return (
-    <div className="bg-white border border-gray-200 rounded-lg p-6 space-y-4">
+    <div className="bg-white border border-line rounded-lg p-6 space-y-4 shadow-card">
       <div className="space-y-3">
         <div className="flex items-center justify-between">
           <label className="text-sm font-medium text-gray-700">
             Point x = {xPoint.toFixed(2)}
           </label>
           <div className="flex items-center gap-4">
-            <span className="text-sm text-gray-600">
+            <span className="text-sm text-ink-muted">
               h({xPoint.toFixed(2)}) = {yPoint.toFixed(2)}
             </span>
-            <span className="text-sm font-semibold text-gray-900">
+            <span className="text-sm font-semibold text-ink">
               h'({xPoint.toFixed(2)}) = {hPrime(xPoint).toFixed(2)}
             </span>
           </div>
@@ -109,7 +109,7 @@ export default function ChainRuleVisualizer() {
         />
       </div>
 
-      <div className="bg-gray-50 rounded-lg p-4 overflow-x-auto">
+      <div className="bg-subtle rounded-lg p-4 overflow-x-auto">
         <svg
           ref={svgRef}
           width={width}
@@ -173,16 +173,16 @@ export default function ChainRuleVisualizer() {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-        <div className="bg-gray-100 border border-gray-300 rounded-lg p-3">
-          <div className="text-xs text-gray-900 font-medium mb-1">Inner Function</div>
-          <div className="text-sm font-semibold text-gray-900">g(x) = x²</div>
-          <div className="text-xs text-gray-900 mt-1">g({xPoint.toFixed(2)}) = {gValue.toFixed(2)}</div>
+        <div className="bg-gray-100 border border-line-strong rounded-lg p-3">
+          <div className="text-xs text-ink font-medium mb-1">Inner Function</div>
+          <div className="text-sm font-semibold text-ink">g(x) = x²</div>
+          <div className="text-xs text-ink mt-1">g({xPoint.toFixed(2)}) = {gValue.toFixed(2)}</div>
         </div>
         
-        <div className="bg-gray-100 border border-gray-300 rounded-lg p-3">
-          <div className="text-xs text-gray-900 font-medium mb-1">Outer Function</div>
-          <div className="text-sm font-semibold text-gray-900">f(u) = u + 1</div>
-          <div className="text-xs text-gray-900 mt-1">f({gValue.toFixed(2)}) = {yPoint.toFixed(2)}</div>
+        <div className="bg-gray-100 border border-line-strong rounded-lg p-3">
+          <div className="text-xs text-ink font-medium mb-1">Outer Function</div>
+          <div className="text-sm font-semibold text-ink">f(u) = u + 1</div>
+          <div className="text-xs text-ink mt-1">f({gValue.toFixed(2)}) = {yPoint.toFixed(2)}</div>
         </div>
         
         <div className="bg-orange-50 border border-orange-200 rounded-lg p-3">
@@ -198,7 +198,7 @@ export default function ChainRuleVisualizer() {
         </div>
       </div>
 
-      <div className="bg-gray-50 border-l-4 border-indigo-500 p-3">
+      <div className="bg-subtle border-l-4 border-indigo-500 p-3">
         <p className="text-sm text-gray-700">
           <strong>Chain Rule:</strong> For h(x) = f(g(x)), the derivative is h'(x) = f'(g(x)) · g'(x). 
           Drag the point to see how the outer function derivative f'(g(x)) = 1 multiplies with the inner derivative g'(x) = 2x.

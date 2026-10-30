@@ -14,27 +14,27 @@ export default function StandingWavesPage() {
     <div className="min-h-screen bg-white pt-24">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Breadcrumb */}
-        <nav className="flex items-center gap-2 text-sm text-gray-600 mb-8">
-          <Link href="/" className="hover:text-gray-900">Home</Link>
+        <nav className="flex items-center gap-2 text-sm text-ink-muted mb-8">
+          <Link href="/" className="hover:text-ink">Home</Link>
           <span>/</span>
-          <Link href="/physics-visualizer" className="hover:text-gray-900">Physics</Link>
+          <Link href="/physics-visualizer" className="hover:text-ink">Physics</Link>
           <span>/</span>
-          <Link href="/physics-visualizer/waves-optics" className="hover:text-gray-900">Waves & Optics</Link>
+          <Link href="/physics-visualizer/waves-optics" className="hover:text-ink">Waves & Optics</Link>
           <span>/</span>
-          <span className="text-gray-900">Standing Waves</span>
+          <span className="text-ink">Standing Waves</span>
         </nav>
 
         {/* Header */}
         <header className="mb-8">
           <div className="flex items-center gap-3 mb-4">
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-900">
+            <h1 className="text-3xl md:text-4xl font-bold text-ink tracking-tight">
               Standing Waves
             </h1>
             <span className="px-3 py-1 bg-yellow-100 text-yellow-700 rounded-lg text-sm font-medium">
               Intermediate
             </span>
           </div>
-          <p className="text-lg text-gray-600">
+          <p className="text-lg text-ink-muted">
             Explore standing wave patterns, nodes, antinodes, and harmonics in vibrating strings and air columns.
           </p>
         </header>
@@ -44,7 +44,7 @@ export default function StandingWavesPage() {
 
         {/* Theory Section */}
         <div className="mt-12 prose prose-lg max-w-none">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Theory</h2>
+          <h2 className="text-2xl font-bold text-ink mb-4">Theory</h2>
           
           <div className="bg-teal-50 border border-teal-200 rounded-lg p-6 mb-6">
             <h3 className="text-lg font-semibold text-teal-900 mb-3">Standing Waves Formation</h3>
@@ -60,10 +60,10 @@ export default function StandingWavesPage() {
             </div>
           </div>
 
-          <h3 className="text-xl font-semibold text-gray-900 mb-3">Nodes and Antinodes</h3>
+          <h3 className="text-xl font-semibold text-ink mb-3">Nodes and Antinodes</h3>
           <div className="grid md:grid-cols-2 gap-4 mb-6">
-            <div className="bg-gray-50 border border-gray-200 rounded p-4">
-              <h4 className="font-semibold text-gray-900 mb-2">Nodes</h4>
+            <div className="bg-subtle border border-line rounded p-4">
+              <h4 className="font-semibold text-ink mb-2">Nodes</h4>
               <p className="text-sm text-gray-700">
                 Points of zero displacement where destructive interference always occurs. 
                 The medium remains stationary at these points.
@@ -75,8 +75,8 @@ export default function StandingWavesPage() {
               </ul>
             </div>
             
-            <div className="bg-gray-50 border border-gray-200 rounded p-4">
-              <h4 className="font-semibold text-gray-900 mb-2">Antinodes</h4>
+            <div className="bg-subtle border border-line rounded p-4">
+              <h4 className="font-semibold text-ink mb-2">Antinodes</h4>
               <p className="text-sm text-gray-700">
                 Points of maximum displacement where constructive interference occurs. 
                 The medium oscillates with maximum amplitude.
@@ -89,16 +89,16 @@ export default function StandingWavesPage() {
             </div>
           </div>
 
-          <h3 className="text-xl font-semibold text-gray-900 mb-3">Harmonics</h3>
+          <h3 className="text-xl font-semibold text-ink mb-3">Harmonics</h3>
           <p className="text-gray-700 mb-4">
             Harmonics are the natural frequencies at which a system can vibrate. Each harmonic 
             corresponds to a specific standing wave pattern.
           </p>
           
-          <div className="bg-gray-50 border border-gray-200 rounded p-4 mb-6">
+          <div className="bg-subtle border border-line rounded p-4 mb-6">
             <table className="w-full text-sm">
               <thead>
-                <tr className="border-b border-gray-300">
+                <tr className="border-b border-line-strong">
                   <th className="text-left py-2 px-2">Harmonic</th>
                   <th className="text-left py-2 px-2">Nodes</th>
                   <th className="text-left py-2 px-2">Antinodes</th>
@@ -107,21 +107,21 @@ export default function StandingWavesPage() {
                 </tr>
               </thead>
               <tbody className="text-gray-700">
-                <tr className="border-b border-gray-200">
+                <tr className="border-b border-line">
                   <td className="py-2 px-2">1st (Fundamental)</td>
                   <td className="py-2 px-2">2</td>
                   <td className="py-2 px-2">1</td>
                   <td className="py-2 px-2">2L</td>
                   <td className="py-2 px-2">f₁</td>
                 </tr>
-                <tr className="border-b border-gray-200">
+                <tr className="border-b border-line">
                   <td className="py-2 px-2">2nd</td>
                   <td className="py-2 px-2">3</td>
                   <td className="py-2 px-2">2</td>
                   <td className="py-2 px-2">L</td>
                   <td className="py-2 px-2">2f₁</td>
                 </tr>
-                <tr className="border-b border-gray-200">
+                <tr className="border-b border-line">
                   <td className="py-2 px-2">3rd</td>
                   <td className="py-2 px-2">4</td>
                   <td className="py-2 px-2">3</td>
@@ -139,7 +139,7 @@ export default function StandingWavesPage() {
             </table>
           </div>
 
-          <h3 className="text-xl font-semibold text-gray-900 mb-3">Boundary Conditions</h3>
+          <h3 className="text-xl font-semibold text-ink mb-3">Boundary Conditions</h3>
           <ul className="list-disc list-inside text-gray-700 mb-6 space-y-2">
             <li><strong>String (both ends fixed):</strong> Nodes at both ends, supports all harmonics</li>
             <li><strong>Pipe (both ends open):</strong> Antinodes at both ends, supports all harmonics</li>
@@ -147,13 +147,13 @@ export default function StandingWavesPage() {
             <li><strong>Free end:</strong> Antinode forms at free boundaries</li>
           </ul>
 
-          <h3 className="text-xl font-semibold text-gray-900 mb-3">Resonance</h3>
+          <h3 className="text-xl font-semibold text-ink mb-3">Resonance</h3>
           <p className="text-gray-700 mb-4">
             Resonance occurs when a system is driven at one of its natural frequencies (harmonics). 
             This causes a dramatic increase in amplitude as energy efficiently transfers to the system.
           </p>
 
-          <h3 className="text-xl font-semibold text-gray-900 mb-3">Real-World Applications</h3>
+          <h3 className="text-xl font-semibold text-ink mb-3">Real-World Applications</h3>
           <ul className="list-disc list-inside text-gray-700 space-y-2">
             <li><strong>Musical instruments:</strong> Guitar strings, violin, piano - all use standing waves to produce sound</li>
             <li><strong>Wind instruments:</strong> Flutes, organs, trumpets use standing waves in air columns</li>
@@ -167,7 +167,7 @@ export default function StandingWavesPage() {
 
         {/* Discussion Section */}
         <div className="mt-12">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Discussion</h2>
+          <h2 className="text-2xl font-bold text-ink mb-6">Discussion</h2>
           <GiscusComments />
         </div>
       </div>

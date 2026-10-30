@@ -73,17 +73,17 @@ export default function OptimizationVisualizer() {
   const rectHeight = currentHeight * rectScale;
 
   return (
-    <div className="bg-white border border-gray-200 rounded-lg p-6 space-y-4">
+    <div className="bg-white border border-line rounded-lg p-6 space-y-4 shadow-card">
       <div className="space-y-3">
         <div className="flex items-center justify-between">
           <label className="text-sm font-medium text-gray-700">
             Width: {baseWidth.toFixed(2)} units
           </label>
           <div className="flex items-center gap-4">
-            <span className="text-sm text-gray-600">
+            <span className="text-sm text-ink-muted">
               Height: {currentHeight.toFixed(2)} units
             </span>
-            <span className={`text-sm font-semibold ${currentArea === maxArea ? 'text-green-600' : 'text-gray-900'}`}>
+            <span className={`text-sm font-semibold ${currentArea === maxArea ? 'text-green-600' : 'text-ink'}`}>
               Area: {currentArea.toFixed(2)} sq units
             </span>
           </div>
@@ -102,7 +102,7 @@ export default function OptimizationVisualizer() {
 
       <div className="space-y-4">
         {/* Area Function Graph */}
-        <div className="bg-gray-50 rounded-lg p-4">
+        <div className="bg-subtle rounded-lg p-4">
           <h3 className="text-sm font-semibold text-gray-700 mb-2">Area Function: A(w) = w(8-w)</h3>
           <svg
             ref={svgRef}
@@ -170,7 +170,7 @@ export default function OptimizationVisualizer() {
         </div>
 
         {/* Rectangle Visualization */}
-        <div className="bg-gray-50 rounded-lg p-4 flex items-center justify-center">
+        <div className="bg-subtle rounded-lg p-4 flex items-center justify-center">
           <div className="relative">
             <h3 className="text-sm font-semibold text-gray-700 mb-4 text-center">Rectangle (Perimeter = 16)</h3>
             <svg width="280" height="280">
@@ -254,14 +254,14 @@ export default function OptimizationVisualizer() {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-4 gap-3 pt-2">
-        <div className="bg-gray-100 border border-gray-300 rounded-lg p-3">
-          <div className="text-xs text-gray-900 font-medium mb-1">Constraint</div>
-          <div className="text-sm font-semibold text-gray-900">2w + 2h = 16</div>
+        <div className="bg-gray-100 border border-line-strong rounded-lg p-3">
+          <div className="text-xs text-ink font-medium mb-1">Constraint</div>
+          <div className="text-sm font-semibold text-ink">2w + 2h = 16</div>
         </div>
         
-        <div className="bg-gray-100 border border-gray-300 rounded-lg p-3">
-          <div className="text-xs text-gray-900 font-medium mb-1">Objective</div>
-          <div className="text-sm font-semibold text-gray-900">A = w·h</div>
+        <div className="bg-gray-100 border border-line-strong rounded-lg p-3">
+          <div className="text-xs text-ink font-medium mb-1">Objective</div>
+          <div className="text-sm font-semibold text-ink">A = w·h</div>
         </div>
         
         <div className="bg-orange-50 border border-orange-200 rounded-lg p-3">
@@ -275,7 +275,7 @@ export default function OptimizationVisualizer() {
         </div>
       </div>
 
-      <div className="bg-gray-50 border-l-4 border-indigo-500 p-3">
+      <div className="bg-subtle border-l-4 border-indigo-500 p-3">
         <p className="text-sm text-gray-700">
           <strong>Try it:</strong> Drag the red point or slider to change the rectangle width. Notice that the area is maximized when 
           w = 4 (making it a square), where the derivative A'(w) = 0. This is a critical point!

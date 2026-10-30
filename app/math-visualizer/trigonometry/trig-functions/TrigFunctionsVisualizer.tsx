@@ -337,26 +337,26 @@ export default function TrigFunctionsVisualizer() {
       {/* Breadcrumbs */}
       <nav className="pt-24 pb-4">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ol className="flex items-center space-x-2 text-sm text-gray-600">
+          <ol className="flex items-center space-x-2 text-sm text-ink-muted">
             <li>
-              <Link href="/" className="hover:text-gray-900">
+              <Link href="/" className="hover:text-ink">
                 Home
               </Link>
             </li>
             <li>/</li>
             <li>
-              <Link href="/math-visualizer" className="hover:text-gray-900">
+              <Link href="/math-visualizer" className="hover:text-ink">
                 Math
               </Link>
             </li>
             <li>/</li>
             <li>
-              <Link href="/math-visualizer/trigonometry" className="hover:text-gray-900">
+              <Link href="/math-visualizer/trigonometry" className="hover:text-ink">
                 Trigonometry
               </Link>
             </li>
             <li>/</li>
-            <li className="text-gray-900 font-medium">Trig Functions</li>
+            <li className="text-ink font-medium">Trig Functions</li>
           </ol>
         </div>
       </nav>
@@ -364,10 +364,10 @@ export default function TrigFunctionsVisualizer() {
       {/* Header */}
       <section className="pb-12">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
+          <h1 className="text-4xl font-bold text-ink mb-4 tracking-tight">
             Trigonometric Functions
           </h1>
-          <p className="text-lg text-gray-600 max-w-3xl">
+          <p className="text-lg text-ink-muted max-w-3xl">
             Explore sine, cosine, and tangent functions interactively. Adjust amplitude, frequency, phase shift, and vertical shift to see how they transform the graphs.
           </p>
         </div>
@@ -380,8 +380,8 @@ export default function TrigFunctionsVisualizer() {
             {/* Controls */}
             <div className="lg:col-span-1 space-y-6">
               {/* Function Selection */}
-              <div className="bg-white border-2 border-gray-200 rounded-xl p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">
+              <div className="bg-white border border-line rounded-card p-6 shadow-card">
+                <h3 className="text-lg font-semibold text-ink mb-4">
                   Function
                 </h3>
                 <div className="space-y-2">
@@ -396,20 +396,20 @@ export default function TrigFunctionsVisualizer() {
                       onClick={() => setSelectedFunction(func.id)}
                       className={`w-full flex items-center gap-3 p-3 rounded-lg border-2 transition-all ${
                         selectedFunction === func.id
-                          ? 'border-black bg-gray-50'
-                          : 'border-gray-200 hover:border-gray-300'
+                          ? 'border-brand-500 bg-brand-50'
+                          : 'border-line hover:border-line-strong'
                       }`}
                     >
                       <div className={`w-3 h-3 rounded-full ${func.color}`} />
-                      <span className="font-medium text-gray-900">{func.name}</span>
+                      <span className="font-medium text-ink">{func.name}</span>
                     </button>
                   ))}
                 </div>
               </div>
 
               {/* Parameters */}
-              <div className="bg-white border-2 border-gray-200 rounded-xl p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">
+              <div className="bg-white border border-line rounded-card p-6 shadow-card">
+                <h3 className="text-lg font-semibold text-ink mb-4">
                   Parameters
                 </h3>
                 <div className="space-y-4">
@@ -480,8 +480,8 @@ export default function TrigFunctionsVisualizer() {
               </div>
 
               {/* Controls */}
-              <div className="bg-white border-2 border-gray-200 rounded-xl p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">
+              <div className="bg-white border border-line rounded-card p-6 shadow-card">
+                <h3 className="text-lg font-semibold text-ink mb-4">
                   Controls
                 </h3>
                 <div className="space-y-3">
@@ -505,8 +505,8 @@ export default function TrigFunctionsVisualizer() {
               </div>
 
               {/* Display Options */}
-              <div className="bg-white border-2 border-gray-200 rounded-xl p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">
+              <div className="bg-white border border-line rounded-card p-6 shadow-card">
+                <h3 className="text-lg font-semibold text-ink mb-4">
                   Display
                 </h3>
                 <div className="space-y-3">
@@ -537,17 +537,17 @@ export default function TrigFunctionsVisualizer() {
               {/* Equation Display */}
               <div className="bg-gradient-to-r from-blue-50 to-purple-50 border-2 border-blue-200 rounded-xl p-8">
                 <h3 className="text-sm font-medium text-gray-700 mb-3">Current Equation</h3>
-                <div className="text-4xl font-bold text-gray-900 font-mono mb-6">
+                <div className="text-4xl font-bold text-ink font-mono mb-6 tracking-tight">
                   {getEquation()}
                 </div>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
                   <div className="bg-white/60 rounded-lg p-3">
-                    <div className="text-xs text-gray-600 mb-1">Amplitude</div>
-                    <div className="text-lg font-bold text-gray-900">{Math.abs(amplitude).toFixed(1)}</div>
+                    <div className="text-xs text-ink-muted mb-1">Amplitude</div>
+                    <div className="text-lg font-bold text-ink">{Math.abs(amplitude).toFixed(1)}</div>
                   </div>
                   <div className="bg-white/60 rounded-lg p-3">
-                    <div className="text-xs text-gray-600 mb-1">Period</div>
-                    <div className="text-lg font-bold text-gray-900">
+                    <div className="text-xs text-ink-muted mb-1">Period</div>
+                    <div className="text-lg font-bold text-ink">
                       {selectedFunction === 'tan' 
                         ? `π/${frequency.toFixed(1)}`
                         : `2π/${frequency.toFixed(1)}`
@@ -555,19 +555,19 @@ export default function TrigFunctionsVisualizer() {
                     </div>
                   </div>
                   <div className="bg-white/60 rounded-lg p-3">
-                    <div className="text-xs text-gray-600 mb-1">Phase Shift</div>
-                    <div className="text-lg font-bold text-gray-900">{phaseShift.toFixed(2)}</div>
+                    <div className="text-xs text-ink-muted mb-1">Phase Shift</div>
+                    <div className="text-lg font-bold text-ink">{phaseShift.toFixed(2)}</div>
                   </div>
                   <div className="bg-white/60 rounded-lg p-3">
-                    <div className="text-xs text-gray-600 mb-1">Vertical Shift</div>
-                    <div className="text-lg font-bold text-gray-900">{verticalShift.toFixed(1)}</div>
+                    <div className="text-xs text-ink-muted mb-1">Vertical Shift</div>
+                    <div className="text-lg font-bold text-ink">{verticalShift.toFixed(1)}</div>
                   </div>
                 </div>
               </div>
 
               {/* Function Graph */}
-              <div className="bg-white border-2 border-gray-200 rounded-xl p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">
+              <div className="bg-white border border-line rounded-card p-6 shadow-card">
+                <h3 className="text-lg font-semibold text-ink mb-4">
                   Graph
                 </h3>
                 <div className="overflow-x-auto">
@@ -575,15 +575,15 @@ export default function TrigFunctionsVisualizer() {
                     ref={canvasRef}
                     width={800}
                     height={400}
-                    className="border border-gray-300 rounded-lg w-full"
+                    className="border border-line-strong rounded-lg w-full"
                   />
                 </div>
               </div>
 
               {/* Unit Circle */}
               {showUnitCircle && (
-                <div className="bg-white border-2 border-gray-200 rounded-xl p-6">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                <div className="bg-white border border-line rounded-card p-6 shadow-card">
+                  <h3 className="text-lg font-semibold text-ink mb-4">
                     Unit Circle Connection
                   </h3>
                   <div className="flex justify-center">
@@ -591,45 +591,45 @@ export default function TrigFunctionsVisualizer() {
                       ref={circleCanvasRef}
                       width={300}
                       height={300}
-                      className="border border-gray-300 rounded-lg"
+                      className="border border-line-strong rounded-lg"
                     />
                   </div>
-                  <p className="text-sm text-gray-600 text-center mt-4">
+                  <p className="text-sm text-ink-muted text-center mt-4">
                     The angle rotates as the function progresses through its period
                   </p>
                 </div>
               )}
 
               {/* Key Properties */}
-              <div className="bg-white border-2 border-gray-200 rounded-xl p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">
+              <div className="bg-white border border-line rounded-card p-6 shadow-card">
+                <h3 className="text-lg font-semibold text-ink mb-4">
                   Key Properties
                 </h3>
                 <div className="grid md:grid-cols-2 gap-4">
-                  <div className="bg-gray-50 rounded-lg p-4">
+                  <div className="bg-subtle rounded-lg p-4">
                     <div className="text-sm font-medium text-gray-700 mb-1">Amplitude</div>
-                    <div className="text-xl font-bold text-gray-900">{Math.abs(amplitude).toFixed(1)}</div>
-                    <div className="text-xs text-gray-600 mt-1">Max distance from midline</div>
+                    <div className="text-xl font-bold text-ink">{Math.abs(amplitude).toFixed(1)}</div>
+                    <div className="text-xs text-ink-muted mt-1">Max distance from midline</div>
                   </div>
-                  <div className="bg-gray-50 rounded-lg p-4">
+                  <div className="bg-subtle rounded-lg p-4">
                     <div className="text-sm font-medium text-gray-700 mb-1">Period</div>
-                    <div className="text-xl font-bold text-gray-900">
+                    <div className="text-xl font-bold text-ink">
                       {selectedFunction === 'tan' 
                         ? `π/${frequency.toFixed(1)}`
                         : `2π/${frequency.toFixed(1)}`
                       }
                     </div>
-                    <div className="text-xs text-gray-600 mt-1">Length of one complete cycle</div>
+                    <div className="text-xs text-ink-muted mt-1">Length of one complete cycle</div>
                   </div>
-                  <div className="bg-gray-50 rounded-lg p-4">
+                  <div className="bg-subtle rounded-lg p-4">
                     <div className="text-sm font-medium text-gray-700 mb-1">Phase Shift</div>
-                    <div className="text-xl font-bold text-gray-900">{phaseShift.toFixed(2)}</div>
-                    <div className="text-xs text-gray-600 mt-1">Horizontal translation</div>
+                    <div className="text-xl font-bold text-ink">{phaseShift.toFixed(2)}</div>
+                    <div className="text-xs text-ink-muted mt-1">Horizontal translation</div>
                   </div>
-                  <div className="bg-gray-50 rounded-lg p-4">
+                  <div className="bg-subtle rounded-lg p-4">
                     <div className="text-sm font-medium text-gray-700 mb-1">Vertical Shift</div>
-                    <div className="text-xl font-bold text-gray-900">{verticalShift.toFixed(1)}</div>
-                    <div className="text-xs text-gray-600 mt-1">Midline position</div>
+                    <div className="text-xl font-bold text-ink">{verticalShift.toFixed(1)}</div>
+                    <div className="text-xs text-ink-muted mt-1">Midline position</div>
                   </div>
                 </div>
               </div>
@@ -639,23 +639,23 @@ export default function TrigFunctionsVisualizer() {
       </section>
 
       {/* Theory Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-subtle">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">
+          <h2 className="text-3xl font-bold text-ink mb-8 tracking-tight">
             Understanding Trigonometric Functions
           </h2>
           
           <div className="grid md:grid-cols-2 gap-6 mb-12">
-            <div className="bg-white rounded-xl p-6 border border-gray-200">
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">
+            <div className="bg-white rounded-card p-6 border border-line shadow-card">
+              <h3 className="text-lg font-semibold text-ink mb-3">
                 General Form
               </h3>
               <div className="bg-blue-50 p-4 rounded-lg mb-3">
-                <code className="text-lg font-mono text-gray-900">
+                <code className="text-lg font-mono text-ink">
                   y = A·f(Bx - C) + D
                 </code>
               </div>
-              <ul className="space-y-2 text-sm text-gray-600">
+              <ul className="space-y-2 text-sm text-ink-muted">
                 <li><strong>A (Amplitude):</strong> Vertical stretch/compression. |A| is the max distance from midline.</li>
                 <li><strong>B (Frequency):</strong> Horizontal compression. Period = 2π/B for sin/cos, π/B for tan.</li>
                 <li><strong>C (Phase Shift):</strong> Horizontal shift. Positive C shifts right by C/B units.</li>
@@ -663,93 +663,93 @@ export default function TrigFunctionsVisualizer() {
               </ul>
             </div>
 
-            <div className="bg-white rounded-xl p-6 border border-gray-200">
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">
+            <div className="bg-white rounded-card p-6 border border-line shadow-card">
+              <h3 className="text-lg font-semibold text-ink mb-3">
                 Function Characteristics
               </h3>
               <div className="space-y-3 text-sm">
                 <div>
                   <div className="font-semibold text-red-600 mb-1">Sine (sin x)</div>
-                  <p className="text-gray-600">Domain: All reals | Range: [-1, 1]<br/>
+                  <p className="text-ink-muted">Domain: All reals | Range: [-1, 1]<br/>
                   Period: 2π | Starts at (0, 0)</p>
                 </div>
                 <div>
                   <div className="font-semibold text-blue-600 mb-1">Cosine (cos x)</div>
-                  <p className="text-gray-600">Domain: All reals | Range: [-1, 1]<br/>
+                  <p className="text-ink-muted">Domain: All reals | Range: [-1, 1]<br/>
                   Period: 2π | Starts at (0, 1)</p>
                 </div>
                 <div>
                   <div className="font-semibold text-green-600 mb-1">Tangent (tan x)</div>
-                  <p className="text-gray-600">Domain: x ≠ π/2 + nπ | Range: All reals<br/>
+                  <p className="text-ink-muted">Domain: x ≠ π/2 + nπ | Range: All reals<br/>
                   Period: π | Has vertical asymptotes</p>
                 </div>
               </div>
             </div>
 
-            <div className="bg-white rounded-xl p-6 border border-gray-200">
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">
+            <div className="bg-white rounded-card p-6 border border-line shadow-card">
+              <h3 className="text-lg font-semibold text-ink mb-3">
                 Amplitude & Period
               </h3>
-              <p className="text-gray-600 text-sm leading-relaxed mb-3">
+              <p className="text-ink-muted text-sm leading-relaxed mb-3">
                 <strong>Amplitude</strong> measures the height of the wave. For y = A·sin(x), the function oscillates between -A and A.
               </p>
-              <p className="text-gray-600 text-sm leading-relaxed">
+              <p className="text-ink-muted text-sm leading-relaxed">
                 <strong>Period</strong> is the horizontal length of one complete cycle. Increasing frequency B makes the function oscillate faster (shorter period).
               </p>
             </div>
 
-            <div className="bg-white rounded-xl p-6 border border-gray-200">
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">
+            <div className="bg-white rounded-card p-6 border border-line shadow-card">
+              <h3 className="text-lg font-semibold text-ink mb-3">
                 Phase Shift & Vertical Shift
               </h3>
-              <p className="text-gray-600 text-sm leading-relaxed mb-3">
+              <p className="text-ink-muted text-sm leading-relaxed mb-3">
                 <strong>Phase shift</strong> moves the graph left or right. In y = sin(Bx - C), the shift is C/B to the right.
               </p>
-              <p className="text-gray-600 text-sm leading-relaxed">
+              <p className="text-ink-muted text-sm leading-relaxed">
                 <strong>Vertical shift</strong> D moves the entire graph up or down, changing the midline from y = 0 to y = D.
               </p>
             </div>
           </div>
 
           {/* Applications */}
-          <div className="bg-white rounded-xl p-8 border border-gray-200">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">
+          <div className="bg-white rounded-card p-8 border border-line shadow-card">
+            <h3 className="text-2xl font-bold text-ink mb-6">
               Real-World Applications
             </h3>
             <div className="grid md:grid-cols-3 gap-6">
               <div>
-                <h4 className="font-semibold text-gray-900 mb-2">Sound Waves</h4>
-                <p className="text-sm text-gray-600">
+                <h4 className="font-semibold text-ink mb-2">Sound Waves</h4>
+                <p className="text-sm text-ink-muted">
                   Sound is modeled as sine waves. Amplitude represents volume, frequency determines pitch. Musical notes are specific frequencies.
                 </p>
               </div>
               <div>
-                <h4 className="font-semibold text-gray-900 mb-2">AC Electricity</h4>
-                <p className="text-sm text-gray-600">
+                <h4 className="font-semibold text-ink mb-2">AC Electricity</h4>
+                <p className="text-sm text-ink-muted">
                   Alternating current follows a sinusoidal pattern. Voltage oscillates at 60 Hz (US) or 50 Hz (most other countries).
                 </p>
               </div>
               <div>
-                <h4 className="font-semibold text-gray-900 mb-2">Tides & Seasons</h4>
-                <p className="text-sm text-gray-600">
+                <h4 className="font-semibold text-ink mb-2">Tides & Seasons</h4>
+                <p className="text-sm text-ink-muted">
                   Ocean tides and daylight hours vary sinusoidally. The period for tides is about 12.4 hours, for seasons it's one year.
                 </p>
               </div>
               <div>
-                <h4 className="font-semibold text-gray-900 mb-2">Spring Motion</h4>
-                <p className="text-sm text-gray-600">
+                <h4 className="font-semibold text-ink mb-2">Spring Motion</h4>
+                <p className="text-sm text-ink-muted">
                   A mass on a spring oscillates sinusoidally. The frequency depends on spring constant and mass (Hooke's Law).
                 </p>
               </div>
               <div>
-                <h4 className="font-semibold text-gray-900 mb-2">Radio Waves</h4>
-                <p className="text-sm text-gray-600">
+                <h4 className="font-semibold text-ink mb-2">Radio Waves</h4>
+                <p className="text-sm text-ink-muted">
                   Radio and light are electromagnetic waves modeled by sine functions. Different frequencies create different types of radiation.
                 </p>
               </div>
               <div>
-                <h4 className="font-semibold text-gray-900 mb-2">Biorhythms</h4>
-                <p className="text-sm text-gray-600">
+                <h4 className="font-semibold text-ink mb-2">Biorhythms</h4>
+                <p className="text-sm text-ink-muted">
                   Many biological processes are periodic: heartbeat, breathing, circadian rhythms, and hormone cycles.
                 </p>
               </div>
@@ -761,7 +761,7 @@ export default function TrigFunctionsVisualizer() {
       {/* Comments */}
       <section className="py-16">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">
+          <h2 className="text-2xl font-bold text-ink mb-6">
             Discussion
           </h2>
           <GiscusComments />

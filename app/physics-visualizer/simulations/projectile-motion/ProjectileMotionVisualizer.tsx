@@ -277,7 +277,7 @@ export default function ProjectileMotionVisualizer() {
   };
 
   return (
-    <div className="bg-white border border-gray-200 rounded-lg p-6 space-y-6">
+    <div className="bg-white border border-line rounded-lg p-6 space-y-6 shadow-card">
       {/* Controls */}
       <div className="grid md:grid-cols-3 gap-4">
         <div className="space-y-2">
@@ -334,7 +334,7 @@ export default function ProjectileMotionVisualizer() {
         <button
           onClick={handleStart}
           disabled={isAnimating}
-          className="px-6 py-2 bg-black text-white rounded-lg font-medium hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+          className="px-6 py-2 bg-brand-600 text-white rounded-lg font-medium hover:bg-brand-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors shadow-brand"
         >
           {isAnimating ? 'Animating...' : 'Launch'}
         </button>
@@ -347,7 +347,7 @@ export default function ProjectileMotionVisualizer() {
       </div>
       
       {/* Canvas */}
-      <div className="bg-white border border-gray-200 rounded-lg p-4">
+      <div className="bg-white border border-line rounded-lg p-4 shadow-card">
         <canvas
           ref={canvasRef}
           width={800}
@@ -358,9 +358,9 @@ export default function ProjectileMotionVisualizer() {
       
       {/* Real-time Data */}
       <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-3">
-        <div className="bg-gray-100 border border-gray-300 rounded-lg p-3">
-          <div className="text-xs text-gray-900 font-medium mb-1">Time Elapsed</div>
-          <div className="text-lg font-bold text-gray-900">{currentTime.toFixed(2)} s</div>
+        <div className="bg-gray-100 border border-line-strong rounded-lg p-3">
+          <div className="text-xs text-ink font-medium mb-1">Time Elapsed</div>
+          <div className="text-lg font-bold text-ink">{currentTime.toFixed(2)} s</div>
         </div>
         
         <div className="bg-green-50 border border-green-200 rounded-lg p-3">
@@ -368,9 +368,9 @@ export default function ProjectileMotionVisualizer() {
           <div className="text-lg font-bold text-green-900">{currentPoint.y.toFixed(2)} m</div>
         </div>
         
-        <div className="bg-gray-100 border border-gray-300 rounded-lg p-3">
-          <div className="text-xs text-gray-900 font-medium mb-1">Horizontal Distance</div>
-          <div className="text-lg font-bold text-gray-900">{currentPoint.x.toFixed(2)} m</div>
+        <div className="bg-gray-100 border border-line-strong rounded-lg p-3">
+          <div className="text-xs text-ink font-medium mb-1">Horizontal Distance</div>
+          <div className="text-lg font-bold text-ink">{currentPoint.x.toFixed(2)} m</div>
         </div>
         
         <div className="bg-orange-50 border border-orange-200 rounded-lg p-3">
@@ -382,32 +382,32 @@ export default function ProjectileMotionVisualizer() {
       </div>
       
       {/* Calculated Results */}
-      <div className="bg-gray-50 rounded-lg p-4 space-y-3">
-        <h3 className="text-sm font-semibold text-gray-900">Calculated Values</h3>
+      <div className="bg-subtle rounded-lg p-4 space-y-3">
+        <h3 className="text-sm font-semibold text-ink">Calculated Values</h3>
         <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-4 text-sm">
           <div>
-            <div className="text-gray-600">Time of Flight</div>
-            <div className="font-semibold text-gray-900">{timeOfFlight.toFixed(2)} s</div>
+            <div className="text-ink-muted">Time of Flight</div>
+            <div className="font-semibold text-ink">{timeOfFlight.toFixed(2)} s</div>
           </div>
           <div>
-            <div className="text-gray-600">Maximum Height</div>
-            <div className="font-semibold text-gray-900">{maxHeight.toFixed(2)} m</div>
+            <div className="text-ink-muted">Maximum Height</div>
+            <div className="font-semibold text-ink">{maxHeight.toFixed(2)} m</div>
           </div>
           <div>
-            <div className="text-gray-600">Range</div>
-            <div className="font-semibold text-gray-900">{range.toFixed(2)} m</div>
+            <div className="text-ink-muted">Range</div>
+            <div className="font-semibold text-ink">{range.toFixed(2)} m</div>
           </div>
           <div>
-            <div className="text-gray-600">Horizontal Velocity</div>
-            <div className="font-semibold text-gray-900">{vx.toFixed(2)} m/s</div>
+            <div className="text-ink-muted">Horizontal Velocity</div>
+            <div className="font-semibold text-ink">{vx.toFixed(2)} m/s</div>
           </div>
         </div>
         
-        <div className="border-t border-gray-200 pt-3 mt-3">
-          <div className="text-xs text-gray-600 space-y-1">
-            <div>• <span className="text-gray-900 font-semibold">Purple arrow</span>: Initial velocity vector</div>
+        <div className="border-t border-line pt-3 mt-3">
+          <div className="text-xs text-ink-muted space-y-1">
+            <div>• <span className="text-ink font-semibold">Purple arrow</span>: Initial velocity vector</div>
             <div>• <span className="text-red-600 font-semibold">Red arrow</span>: Current velocity vector</div>
-            <div>• <span className="text-gray-900 font-semibold">Blue</span>: Horizontal component (constant)</div>
+            <div>• <span className="text-ink font-semibold">Blue</span>: Horizontal component (constant)</div>
             <div>• <span className="text-green-600 font-semibold">Green</span>: Vertical component (changes with gravity)</div>
           </div>
         </div>

@@ -198,30 +198,30 @@ export default function SimplePerceptronVisualizer() {
   return (
     <div className="space-y-6">
       {/* Introduction */}
-      <div className="bg-gradient-to-r from-gray-50 to-gray-100 border border-gray-300 rounded-lg p-6">
-        <h3 className="text-lg font-semibold text-gray-900 mb-3">The Perceptron</h3>
+      <div className="bg-gradient-to-r from-gray-50 to-gray-100 border border-line-strong rounded-lg p-6">
+        <h3 className="text-lg font-semibold text-ink mb-3">The Perceptron</h3>
         <p className="text-gray-700 mb-3">
           A perceptron is the simplest type of artificial neuron. It takes inputs, multiplies them by weights, 
           adds a bias, and produces an output through an activation function.
         </p>
-        <div className="bg-white rounded-lg p-4 border border-gray-300">
+        <div className="bg-white rounded-lg p-4 border border-line-strong shadow-card">
           <p className="text-sm font-mono text-gray-800">
             output = activate(w₁·x + w₂·y + b)
           </p>
-          <p className="text-xs text-gray-600 mt-2">
+          <p className="text-xs text-ink-muted mt-2">
             The perceptron learns by adjusting weights and bias to minimize prediction errors.
           </p>
         </div>
       </div>
 
       {/* Canvas */}
-      <div className="bg-white border border-gray-200 rounded-lg p-6">
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">Visualization</h3>
+      <div className="bg-white border border-line rounded-lg p-6 shadow-card">
+        <h3 className="text-lg font-semibold text-ink mb-4">Visualization</h3>
         <canvas
           ref={canvasRef}
           width={600}
           height={600}
-          className="w-full border border-gray-300 rounded"
+          className="w-full border border-line-strong rounded"
         />
         <div className="mt-4 flex items-center gap-6 text-sm">
           <div className="flex items-center gap-2">
@@ -240,8 +240,8 @@ export default function SimplePerceptronVisualizer() {
       </div>
 
       {/* Controls */}
-      <div className="bg-white border border-gray-200 rounded-lg p-6">
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">Parameters</h3>
+      <div className="bg-white border border-line rounded-lg p-6 shadow-card">
+        <h3 className="text-lg font-semibold text-ink mb-4">Parameters</h3>
         
         <div className="grid md:grid-cols-2 gap-6 mb-6">
           {/* Weight 1 */}
@@ -320,7 +320,7 @@ export default function SimplePerceptronVisualizer() {
             className={`px-6 py-2 rounded-lg font-medium transition-colors ${
               isTraining
                 ? 'bg-red-600 text-white hover:bg-red-700'
-                : 'bg-black text-white hover:bg-gray-800'
+                : 'bg-brand-600 text-white hover:bg-brand-700 shadow-brand'
             }`}
           >
             {isTraining ? 'Stop Training' : 'Start Training'}
@@ -328,7 +328,7 @@ export default function SimplePerceptronVisualizer() {
           <button
             onClick={trainEpoch}
             disabled={isTraining}
-            className="px-6 py-2 bg-black text-white rounded-lg hover:bg-gray-800 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
+            className="px-6 py-2 bg-brand-600 text-white rounded-lg hover:bg-brand-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors shadow-brand"
           >
             Train 1 Epoch
           </button>
@@ -347,7 +347,7 @@ export default function SimplePerceptronVisualizer() {
           <button
             onClick={() => generateData()}
             disabled={isTraining}
-            className="px-6 py-2 bg-black text-white rounded-lg hover:bg-gray-800 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
+            className="px-6 py-2 bg-brand-600 text-white rounded-lg hover:bg-brand-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors shadow-brand"
           >
             New Data
           </button>
@@ -355,28 +355,28 @@ export default function SimplePerceptronVisualizer() {
       </div>
 
       {/* Training Stats */}
-      <div className="bg-gradient-to-r from-gray-50 to-gray-100 border border-gray-300 rounded-lg p-6">
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">Training Statistics</h3>
+      <div className="bg-gradient-to-r from-gray-50 to-gray-100 border border-line-strong rounded-lg p-6">
+        <h3 className="text-lg font-semibold text-ink mb-4">Training Statistics</h3>
         
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div className="bg-white rounded-lg p-4 border border-gray-200">
+          <div className="bg-white rounded-lg p-4 border border-line shadow-card">
             <div className="text-xs text-gray-500 mb-1">Epoch</div>
-            <div className="text-2xl font-bold text-gray-900">{epoch}</div>
+            <div className="text-2xl font-bold text-ink">{epoch}</div>
           </div>
           
-          <div className="bg-white rounded-lg p-4 border border-gray-200">
+          <div className="bg-white rounded-lg p-4 border border-line shadow-card">
             <div className="text-xs text-gray-500 mb-1">Accuracy</div>
             <div className="text-2xl font-bold text-green-600">{accuracy.toFixed(1)}%</div>
           </div>
           
-          <div className="bg-white rounded-lg p-4 border border-gray-200">
+          <div className="bg-white rounded-lg p-4 border border-line shadow-card">
             <div className="text-xs text-gray-500 mb-1">Data Points</div>
-            <div className="text-2xl font-bold text-gray-900">{dataPoints.length}</div>
+            <div className="text-2xl font-bold text-ink">{dataPoints.length}</div>
           </div>
           
-          <div className="bg-white rounded-lg p-4 border border-gray-200">
+          <div className="bg-white rounded-lg p-4 border border-line shadow-card">
             <div className="text-xs text-gray-500 mb-1">Status</div>
-            <div className="text-sm font-semibold text-gray-900">
+            <div className="text-sm font-semibold text-ink">
               {isTraining ? 'Training...' : 'Ready'}
             </div>
           </div>
@@ -384,8 +384,8 @@ export default function SimplePerceptronVisualizer() {
       </div>
 
       {/* How it Works */}
-      <div className="bg-white border border-gray-200 rounded-lg p-6">
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">How the Perceptron Learns</h3>
+      <div className="bg-white border border-line rounded-lg p-6 shadow-card">
+        <h3 className="text-lg font-semibold text-ink mb-4">How the Perceptron Learns</h3>
         <div className="space-y-4 text-sm text-gray-700">
           <div className="flex items-start gap-3">
             <span className="flex-shrink-0 w-6 h-6 bg-gray-200 text-gray-800 rounded-full flex items-center justify-center font-semibold">1</span>

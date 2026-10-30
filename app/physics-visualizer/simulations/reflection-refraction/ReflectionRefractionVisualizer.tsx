@@ -233,13 +233,13 @@ export default function ReflectionRefractionVisualizer() {
   return (
     <div className="space-y-6">
       {/* Canvas */}
-      <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
+      <div className="border border-line rounded-lg p-4 bg-subtle">
         <div className="text-xs font-semibold text-gray-700 mb-3">Reflection & Refraction Visualization</div>
         <canvas
           ref={canvasRef}
           width={canvasWidth}
           height={canvasHeight}
-          className="border border-gray-300 bg-white mx-auto block"
+          className="border border-line-strong bg-white mx-auto block"
         />
         <div className="flex justify-center gap-6 text-xs mt-3">
           <div className="flex items-center gap-2">
@@ -258,7 +258,7 @@ export default function ReflectionRefractionVisualizer() {
       </div>
 
       {/* Controls */}
-      <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
+      <div className="border border-line rounded-lg p-4 bg-subtle">
         <div className="text-xs font-semibold text-gray-700 mb-3">Parameters</div>
         
         <div className="grid md:grid-cols-2 gap-4 mb-4">
@@ -276,9 +276,9 @@ export default function ReflectionRefractionVisualizer() {
               className="w-full"
             />
             <div className="flex gap-1 mt-1">
-              <button onClick={() => setN1(1.0)} className="px-2 py-1 text-xs bg-white border rounded hover:bg-gray-50">Air</button>
-              <button onClick={() => setN1(1.33)} className="px-2 py-1 text-xs bg-white border rounded hover:bg-gray-50">Water</button>
-              <button onClick={() => setN1(1.5)} className="px-2 py-1 text-xs bg-white border rounded hover:bg-gray-50">Glass</button>
+              <button onClick={() => setN1(1.0)} className="px-2 py-1 text-xs bg-white border rounded hover:bg-subtle">Air</button>
+              <button onClick={() => setN1(1.33)} className="px-2 py-1 text-xs bg-white border rounded hover:bg-subtle">Water</button>
+              <button onClick={() => setN1(1.5)} className="px-2 py-1 text-xs bg-white border rounded hover:bg-subtle">Glass</button>
             </div>
           </div>
           
@@ -296,10 +296,10 @@ export default function ReflectionRefractionVisualizer() {
               className="w-full"
             />
             <div className="flex gap-1 mt-1">
-              <button onClick={() => setN2(1.0)} className="px-2 py-1 text-xs bg-white border rounded hover:bg-gray-50">Air</button>
-              <button onClick={() => setN2(1.33)} className="px-2 py-1 text-xs bg-white border rounded hover:bg-gray-50">Water</button>
-              <button onClick={() => setN2(1.5)} className="px-2 py-1 text-xs bg-white border rounded hover:bg-gray-50">Glass</button>
-              <button onClick={() => setN2(2.42)} className="px-2 py-1 text-xs bg-white border rounded hover:bg-gray-50">Diamond</button>
+              <button onClick={() => setN2(1.0)} className="px-2 py-1 text-xs bg-white border rounded hover:bg-subtle">Air</button>
+              <button onClick={() => setN2(1.33)} className="px-2 py-1 text-xs bg-white border rounded hover:bg-subtle">Water</button>
+              <button onClick={() => setN2(1.5)} className="px-2 py-1 text-xs bg-white border rounded hover:bg-subtle">Glass</button>
+              <button onClick={() => setN2(2.42)} className="px-2 py-1 text-xs bg-white border rounded hover:bg-subtle">Diamond</button>
             </div>
           </div>
           
@@ -346,38 +346,38 @@ export default function ReflectionRefractionVisualizer() {
             setN2(1.5);
             setIncidentAngle(30);
           }}
-          className="px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium hover:bg-gray-100"
+          className="px-4 py-2 border border-line-strong rounded-lg text-sm font-medium hover:bg-gray-100"
         >
           Reset (Air to Glass)
         </button>
       </div>
 
       {/* Calculations */}
-      <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
+      <div className="border border-line rounded-lg p-4 bg-subtle">
         <div className="text-xs font-semibold text-gray-700 mb-3">Calculations</div>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-          <div className="bg-white border border-gray-200 rounded-lg p-3">
-            <div className="text-xs text-gray-600 font-medium">Incident Angle</div>
+          <div className="bg-white border border-line rounded-lg p-3 shadow-card">
+            <div className="text-xs text-ink-muted font-medium">Incident Angle</div>
             <div className="text-lg font-bold text-red-600">{incidentAngle}°</div>
             <div className="text-xs text-gray-500">From normal</div>
           </div>
           
-          <div className="bg-white border border-gray-200 rounded-lg p-3">
-            <div className="text-xs text-gray-600 font-medium">Reflected Angle</div>
+          <div className="bg-white border border-line rounded-lg p-3 shadow-card">
+            <div className="text-xs text-ink-muted font-medium">Reflected Angle</div>
             <div className="text-lg font-bold text-blue-600">{incidentAngle}°</div>
             <div className="text-xs text-gray-500">θᵢ = θᵣ</div>
           </div>
           
-          <div className="bg-white border border-gray-200 rounded-lg p-3">
-            <div className="text-xs text-gray-600 font-medium">Refracted Angle</div>
+          <div className="bg-white border border-line rounded-lg p-3 shadow-card">
+            <div className="text-xs text-ink-muted font-medium">Refracted Angle</div>
             <div className={`text-lg font-bold ${isTotalInternalReflection() ? 'text-purple-600' : 'text-green-600'}`}>
               {isTotalInternalReflection() ? 'TIR' : `${calculateRefractedAngle()?.toFixed(1)}°`}
             </div>
             <div className="text-xs text-gray-500">Snell's law</div>
           </div>
           
-          <div className="bg-white border border-gray-200 rounded-lg p-3">
-            <div className="text-xs text-gray-600 font-medium">Critical Angle</div>
+          <div className="bg-white border border-line rounded-lg p-3 shadow-card">
+            <div className="text-xs text-ink-muted font-medium">Critical Angle</div>
             <div className="text-lg font-bold text-orange-600">
               {calculateCriticalAngle() ? `${calculateCriticalAngle()?.toFixed(1)}°` : 'N/A'}
             </div>
@@ -387,7 +387,7 @@ export default function ReflectionRefractionVisualizer() {
       </div>
 
       {/* Snell's Law Display */}
-      <div className="border border-gray-200 rounded-lg p-4 bg-blue-50">
+      <div className="border border-line rounded-lg p-4 bg-blue-50">
         <div className="text-sm font-semibold text-blue-900 mb-2">Snell's Law Verification</div>
         <div className="font-mono text-sm text-blue-800 space-y-1">
           <p>n₁ sin(θ₁) = n₂ sin(θ₂)</p>
@@ -402,7 +402,7 @@ export default function ReflectionRefractionVisualizer() {
       </div>
 
       {/* Info */}
-      <div className="border border-gray-200 rounded-lg p-4 bg-teal-50">
+      <div className="border border-line rounded-lg p-4 bg-teal-50">
         <div className="text-sm text-teal-900">
           <p className="font-medium mb-2">💡 Tips:</p>
           <ul className="list-disc list-inside space-y-1 text-sm">

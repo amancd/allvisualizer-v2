@@ -13,13 +13,13 @@ export default function SupportPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="pt-32 md:pt-40 pb-16 md:pb-20 bg-gradient-to-b from-gray-50 to-white">
+      <section className="pt-32 md:pt-40 pb-16 md:pb-20 hero-surface border-b border-line">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-6">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
+            <h1 className="text-4xl md:text-5xl font-bold text-ink leading-tight tracking-tight">
               Support & Community
             </h1>
-            <p className="text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto">
+            <p className="text-xl text-ink-muted leading-relaxed max-w-2xl mx-auto">
               Help us keep AllVisualizer free and accessible for learners worldwide
             </p>
           </div>
@@ -33,7 +33,7 @@ export default function SupportPage() {
             
             {/* How We Sustain */}
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">
+              <h2 className="text-3xl font-bold text-ink mb-6 tracking-tight">
                 How We Sustain AllVisualizer
               </h2>
               <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
@@ -44,7 +44,7 @@ export default function SupportPage() {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-3">Ad-Supported Platform</h3>
+                    <h3 className="text-xl font-semibold text-ink mb-3">Ad-Supported Platform</h3>
                     <p className="text-gray-700 mb-3">
                       <strong>We use non-intrusive advertisements to cover hosting charges and server costs.</strong> 
                       These ads help us maintain the platform, keep it running smoothly, and continue developing 
@@ -59,8 +59,8 @@ export default function SupportPage() {
                 </div>
               </div>
               
-              <div className="bg-gray-50 border border-gray-200 rounded-lg p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">What the Ads Support:</h3>
+              <div className="bg-subtle border border-line rounded-lg p-6">
+                <h3 className="text-lg font-semibold text-ink mb-3">What the Ads Support:</h3>
                 <ul className="space-y-2 text-gray-700">
                   <li className="flex items-start gap-2">
                     <svg className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -92,7 +92,7 @@ export default function SupportPage() {
 
             {/* Contribute Section */}
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">
+              <h2 className="text-3xl font-bold text-ink mb-6 tracking-tight">
                 Contribute to Keep This Project Alive
               </h2>
               <p className="text-lg text-gray-700 mb-6">
@@ -102,14 +102,14 @@ export default function SupportPage() {
 
               <div className="grid md:grid-cols-2 gap-6">
                 {/* Code Contributions */}
-                <div className="border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
+                <div className="border border-line rounded-lg p-6 hover:shadow-card-hover transition-shadow">
                   <div className="flex items-center gap-3 mb-4">
                     <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
                       <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                       </svg>
                     </div>
-                    <h3 className="text-xl font-semibold text-gray-900">Code Contributions</h3>
+                    <h3 className="text-xl font-semibold text-ink">Code Contributions</h3>
                   </div>
                   <p className="text-gray-700 mb-4">
                     Help us build new features, fix bugs, and improve existing visualizations. 
@@ -129,12 +129,12 @@ export default function SupportPage() {
                 </div>
 
                 {/* Report Issues */}
-                <div className="border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
+                <div className="border border-line rounded-lg p-6 hover:shadow-card-hover transition-shadow">
                   <div className="flex items-center gap-3 mb-4">
                     <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center text-2xl">
                       🐛
                     </div>
-                    <h3 className="text-xl font-semibold text-gray-900">Report Issues</h3>
+                    <h3 className="text-xl font-semibold text-ink">Report Issues</h3>
                   </div>
                   <p className="text-gray-700 mb-4">
                     Found a bug or have a feature request? Report it on GitHub to help us improve 
@@ -154,12 +154,12 @@ export default function SupportPage() {
                 </div>
 
                 {/* Share Feedback */}
-                <div className="border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
+                <div className="border border-line rounded-lg p-6 hover:shadow-card-hover transition-shadow">
                   <div className="flex items-center gap-3 mb-4">
                     <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center text-2xl">
                       💬
                     </div>
-                    <h3 className="text-xl font-semibold text-gray-900">Share Feedback</h3>
+                    <h3 className="text-xl font-semibold text-ink">Share Feedback</h3>
                   </div>
                   <p className="text-gray-700 mb-4">
                     Your feedback helps us understand what works and what doesn't. Share your 
@@ -177,12 +177,12 @@ export default function SupportPage() {
                 </div>
 
                 {/* Spread the Word */}
-                <div className="border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
+                <div className="border border-line rounded-lg p-6 hover:shadow-card-hover transition-shadow">
                   <div className="flex items-center gap-3 mb-4">
                     <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center text-2xl">
                       📢
                     </div>
-                    <h3 className="text-xl font-semibold text-gray-900">Spread the Word</h3>
+                    <h3 className="text-xl font-semibold text-ink">Spread the Word</h3>
                   </div>
                   <p className="text-gray-700 mb-4">
                     Share AllVisualizer with students, teachers, and fellow learners. Help us reach 
@@ -194,7 +194,7 @@ export default function SupportPage() {
 
             {/* Community */}
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">
+              <h2 className="text-3xl font-bold text-ink mb-6 tracking-tight">
                 Join Our Community
               </h2>
               <div className="bg-gradient-to-r from-indigo-50 to-purple-50 border border-indigo-200 rounded-lg p-8">
@@ -205,7 +205,7 @@ export default function SupportPage() {
                     </svg>
                   </div>
                   <div className="flex-1 text-center md:text-left">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-2">Connect on GitHub</h3>
+                    <h3 className="text-2xl font-bold text-ink mb-2">Connect on GitHub</h3>
                     <p className="text-gray-700 mb-4">
                       Join discussions, ask questions, share feedback, and connect with fellow learners 
                       in our GitHub Discussions. Contribute ideas and help shape the future of AllVisualizer.
@@ -225,8 +225,8 @@ export default function SupportPage() {
             </div>
 
             {/* Thank You */}
-            <div className="bg-gray-50 border border-gray-200 rounded-lg p-8 text-center">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">Thank You for Your Support</h2>
+            <div className="bg-subtle border border-line rounded-lg p-8 text-center">
+              <h2 className="text-2xl font-bold text-ink mb-4">Thank You for Your Support</h2>
               <p className="text-lg text-gray-700 max-w-2xl mx-auto">
                 Whether you're using AllVisualizer, contributing code, reporting issues, or simply 
                 sharing it with others, you're helping us build a better learning experience for 

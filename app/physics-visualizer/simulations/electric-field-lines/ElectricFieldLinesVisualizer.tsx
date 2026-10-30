@@ -250,18 +250,18 @@ export default function ElectricFieldLinesVisualizer() {
   return (
     <div className="space-y-6">
       {/* Canvas */}
-      <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
+      <div className="border border-line rounded-lg p-4 bg-subtle">
         <canvas
           ref={canvasRef}
           width={canvasWidth}
           height={canvasHeight}
           onClick={handleCanvasClick}
-          className="border border-gray-300 bg-white cursor-crosshair mx-auto block"
+          className="border border-line-strong bg-white cursor-crosshair mx-auto block"
         />
       </div>
 
       {/* Controls */}
-      <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
+      <div className="border border-line rounded-lg p-4 bg-subtle">
         <div className="text-xs font-semibold text-gray-700 mb-3">Controls</div>
         <div className="space-y-4">
           {/* Add Charges */}
@@ -319,13 +319,13 @@ export default function ElectricFieldLinesVisualizer() {
           <div className="flex gap-2">
             <button
               onClick={resetToDefault}
-              className="px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium hover:bg-gray-50"
+              className="px-4 py-2 border border-line-strong rounded-lg text-sm font-medium hover:bg-subtle"
             >
               Reset to Dipole
             </button>
             <button
               onClick={clearAllCharges}
-              className="px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium hover:bg-gray-50"
+              className="px-4 py-2 border border-line-strong rounded-lg text-sm font-medium hover:bg-subtle"
             >
               Clear All
             </button>
@@ -334,7 +334,7 @@ export default function ElectricFieldLinesVisualizer() {
       </div>
 
       {/* Info */}
-      <div className="border border-gray-200 rounded-lg p-4 bg-blue-50">
+      <div className="border border-line rounded-lg p-4 bg-blue-50">
         <div className="text-sm text-blue-900">
           <p className="font-medium mb-2">💡 How to Use:</p>
           <ul className="list-disc list-inside space-y-1 text-sm">
@@ -349,7 +349,7 @@ export default function ElectricFieldLinesVisualizer() {
 
       {/* Charge List */}
       {charges.length > 0 && (
-        <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
+        <div className="border border-line rounded-lg p-4 bg-subtle">
           <div className="text-xs font-semibold text-gray-700 mb-2">Current Charges ({charges.length})</div>
           <div className="grid grid-cols-2 gap-2">
             {charges.map(charge => (
@@ -358,7 +358,7 @@ export default function ElectricFieldLinesVisualizer() {
                 className={`p-2 rounded border ${
                   selectedCharge === charge.id
                     ? 'border-gray-600 bg-white'
-                    : 'border-gray-200 bg-white'
+                    : 'border-line bg-white'
                 }`}
               >
                 <div className="flex items-center justify-between">

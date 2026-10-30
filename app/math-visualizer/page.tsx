@@ -80,14 +80,14 @@ export default function MathVisualizer() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="pt-32 md:pt-40 pb-16 md:pb-24">
+      <section className="pt-32 md:pt-40 pb-16 md:pb-24 hero-surface border-b border-line">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-6">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
+            <h1 className="text-4xl md:text-5xl font-bold text-ink leading-tight tracking-tight">
               Mathematics Visualizer
             </h1>
             
-            <p className="text-xl text-gray-600 leading-relaxed">
+            <p className="text-xl text-ink-muted leading-relaxed">
               Master math concepts through interactive visualizations. See calculus, algebra, and geometry come to life with step-by-step animations.
             </p>
 
@@ -107,13 +107,13 @@ export default function MathVisualizer() {
       </section>
 
       {/* Categories Grid */}
-      <section className="py-16 md:py-20 bg-gray-50">
+      <section className="py-16 md:py-20 bg-subtle">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-3">
+            <h2 className="text-3xl font-bold text-ink mb-3 tracking-tight">
               Browse Topics
             </h2>
-            <p className="text-lg text-gray-600">
+            <p className="text-lg text-ink-muted">
               Explore mathematics concepts organized by category
             </p>
           </div>
@@ -125,22 +125,22 @@ export default function MathVisualizer() {
                   <div className="flex items-start justify-between mb-3">
                     <div className="flex items-center gap-3">
                       <category.icon className="w-6 h-6 text-gray-700" />
-                      <h3 className="text-lg font-semibold text-gray-900 group-hover:text-gray-900">
+                      <h3 className="text-lg font-semibold text-ink group-hover:text-brand-700">
                         {category.title}
                       </h3>
                     </div>
                     {category.isAvailable ? (
-                      <svg className="w-5 h-5 text-gray-400 group-hover:text-gray-900 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-5 h-5 text-gray-400 group-hover:text-brand-700 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                       </svg>
                     ) : (
-                      <span className="px-2 py-0.5 bg-gray-200 text-gray-600 rounded text-xs font-medium flex-shrink-0">
+                      <span className="px-2 py-0.5 bg-gray-200 text-ink-muted rounded text-xs font-medium flex-shrink-0">
                         Coming Soon
                       </span>
                     )}
                   </div>
 
-                  <p className="text-sm text-gray-600 mb-3">
+                  <p className="text-sm text-ink-muted mb-3">
                     {category.description}
                   </p>
 
@@ -148,7 +148,7 @@ export default function MathVisualizer() {
                     {category.topics.slice(0, 3).map((topic, i) => (
                       <span
                         key={i}
-                        className="px-2 py-0.5 bg-gray-100 text-gray-600 rounded text-xs"
+                        className="px-2 py-0.5 bg-gray-100 text-ink-muted rounded text-xs"
                       >
                         {topic}
                       </span>
@@ -166,14 +166,14 @@ export default function MathVisualizer() {
                 <Link
                   key={index}
                   href={`/math-visualizer/${category.slug}`}
-                  className="group block p-5 bg-white border border-gray-200 rounded-lg hover:border-gray-400 hover:shadow-sm transition-all"
+                  className="group block p-5 bg-white border border-line rounded-lg hover:border-brand-300 hover:shadow-card-hover transition-all shadow-card"
                 >
                   {CardContent}
                 </Link>
               ) : (
                 <div
                   key={index}
-                  className="group block p-5 bg-white border border-gray-200 rounded-lg opacity-60 cursor-not-allowed"
+                  className="group block p-5 bg-white border border-line rounded-lg opacity-60 cursor-not-allowed shadow-card"
                 >
                   {CardContent}
                 </div>

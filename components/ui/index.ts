@@ -8,3 +8,8 @@ export { Section } from './Section';
 export { Heading } from './Heading';
 export { Spinner } from './Spinner';
 export { default as GiscusComments } from './GiscusComments';
+export { buttonStyles } from './Button';
+export type { ButtonVariant, ButtonSize } from './Button';
+export { PageHeader, SectionHeader } from './PageHeader';
+export { accents } from './accents';
+export type { Accent } from './accents';

@@ -71,17 +71,17 @@ export default function DerivativeVisualizer() {
   };
 
   return (
-    <div className="bg-white border border-gray-200 rounded-lg p-6 space-y-4">
+    <div className="bg-white border border-line rounded-lg p-6 space-y-4 shadow-card">
       <div className="space-y-3">
         <div className="flex items-center justify-between">
           <label className="text-sm font-medium text-gray-700">
             Point x = {xPoint.toFixed(2)}
           </label>
           <div className="flex items-center gap-4">
-            <span className="text-sm text-gray-600">
+            <span className="text-sm text-ink-muted">
               f({xPoint.toFixed(2)}) = {yPoint.toFixed(2)}
             </span>
-            <span className="text-sm font-semibold text-gray-900">
+            <span className="text-sm font-semibold text-ink">
               f'({xPoint.toFixed(2)}) = {derivative(xPoint).toFixed(2)}
             </span>
           </div>
@@ -98,7 +98,7 @@ export default function DerivativeVisualizer() {
         />
       </div>
 
-      <div className="bg-gray-50 rounded-lg p-4 overflow-x-auto">
+      <div className="bg-subtle rounded-lg p-4 overflow-x-auto">
         <svg
           ref={svgRef}
           width={width}
@@ -162,9 +162,9 @@ export default function DerivativeVisualizer() {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
-        <div className="bg-gray-100 border border-gray-300 rounded-lg p-3">
-          <div className="text-xs text-gray-900 font-medium mb-1">Function</div>
-          <div className="text-sm font-semibold text-gray-900">f(x) = x²</div>
+        <div className="bg-gray-100 border border-line-strong rounded-lg p-3">
+          <div className="text-xs text-ink font-medium mb-1">Function</div>
+          <div className="text-sm font-semibold text-ink">f(x) = x²</div>
         </div>
         
         <div className="bg-red-50 border border-red-200 rounded-lg p-3">
@@ -178,7 +178,7 @@ export default function DerivativeVisualizer() {
         </div>
       </div>
 
-      <div className="bg-gray-50 border-l-4 border-indigo-500 p-3">
+      <div className="bg-subtle border-l-4 border-indigo-500 p-3">
         <p className="text-sm text-gray-700">
           <strong>Try it:</strong> Drag the red point along the curve to see how the tangent line slope changes. 
           Notice that the derivative f'(x) = 2x gives the exact slope at each point.

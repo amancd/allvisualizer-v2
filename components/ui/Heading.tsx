@@ -15,7 +15,7 @@ export const Heading: React.FC<HeadingProps> = ({
 }) => {
   const Tag = `h${level}` as keyof React.JSX.IntrinsicElements;
   
-  const baseStyles = 'font-bold text-gray-900';
+  const baseStyles = 'font-bold tracking-tight text-ink';
   
   const levelStyles = {
     1: 'text-4xl md:text-5xl',

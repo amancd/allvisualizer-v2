@@ -100,14 +100,14 @@ export default function DSAVisualizer() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="pt-32 md:pt-40 pb-16 md:pb-24">
+      <section className="pt-32 md:pt-40 pb-16 md:pb-24 hero-surface border-b border-line">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-6">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
+            <h1 className="text-4xl md:text-5xl font-bold text-ink leading-tight tracking-tight">
               Data Structures & Algorithms Visualizer
             </h1>
             
-            <p className="text-xl text-gray-600 leading-relaxed">
+            <p className="text-xl text-ink-muted leading-relaxed">
               Master DSA concepts through interactive visualizations. Watch algorithms execute step-by-step, experiment with your own data, and build deep understanding.
             </p>
 
@@ -127,35 +127,35 @@ export default function DSAVisualizer() {
       </section>
 
       {/* Practice Problems Section */}
-      <section className="py-16 md:py-20 border-t border-gray-200">
+      <section className="py-16 md:py-20 border-t border-line">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-3">
+            <h2 className="text-3xl font-bold text-ink mb-3 tracking-tight">
               Practice Problems
             </h2>
-            <p className="text-lg text-gray-600">
+            <p className="text-lg text-ink-muted">
               Solve real problems with complete explanations, solutions, and interactive visualizations
             </p>
           </div>
 
           <div className="space-y-4">
             <Link href="/dsa-visualizer/problems/two-sum" className="block group">
-              <div className="p-6 bg-white border border-gray-200 rounded-lg hover:border-gray-400 hover:shadow-sm transition-all">
+              <div className="p-6 bg-white border border-line rounded-lg hover:border-brand-300 hover:shadow-card-hover transition-all shadow-card">
                 <div className="flex items-start justify-between">
                   <div>
                     <div className="flex items-center gap-3 mb-2">
-                      <h3 className="text-lg font-semibold text-gray-900 group-hover:text-gray-900">
+                      <h3 className="text-lg font-semibold text-ink group-hover:text-brand-700">
                         Two Sum
                       </h3>
                       <span className="px-2 py-0.5 bg-green-100 text-green-700 rounded text-xs font-medium">
                         Easy
                       </span>
                     </div>
-                    <p className="text-gray-600">
+                    <p className="text-ink-muted">
                       Find two numbers in an array that add up to a target value.
                     </p>
                   </div>
-                  <svg className="w-5 h-5 text-gray-400 group-hover:text-gray-900 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-gray-400 group-hover:text-brand-700 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                   </svg>
                 </div>
@@ -163,22 +163,22 @@ export default function DSAVisualizer() {
             </Link>
 
             <Link href="/dsa-visualizer/problems/valid-palindrome" className="block group">
-              <div className="p-6 bg-white border border-gray-200 rounded-lg hover:border-gray-400 hover:shadow-sm transition-all">
+              <div className="p-6 bg-white border border-line rounded-lg hover:border-brand-300 hover:shadow-card-hover transition-all shadow-card">
                 <div className="flex items-start justify-between">
                   <div>
                     <div className="flex items-center gap-3 mb-2">
-                      <h3 className="text-lg font-semibold text-gray-900 group-hover:text-gray-900">
+                      <h3 className="text-lg font-semibold text-ink group-hover:text-brand-700">
                         Valid Palindrome
                       </h3>
                       <span className="px-2 py-0.5 bg-green-100 text-green-700 rounded text-xs font-medium">
                         Easy
                       </span>
                     </div>
-                    <p className="text-gray-600">
+                    <p className="text-ink-muted">
                       Determine if a string is a palindrome using two pointers.
                     </p>
                   </div>
-                  <svg className="w-5 h-5 text-gray-400 group-hover:text-gray-900 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-gray-400 group-hover:text-brand-700 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                   </svg>
                 </div>
@@ -189,13 +189,13 @@ export default function DSAVisualizer() {
       </section>
 
       {/* Categories Grid */}
-      <section className="py-16 md:py-20 bg-gray-50">
+      <section className="py-16 md:py-20 bg-subtle">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-3">
+            <h2 className="text-3xl font-bold text-ink mb-3 tracking-tight">
               Browse Topics
             </h2>
-            <p className="text-lg text-gray-600">
+            <p className="text-lg text-ink-muted">
               Explore DSA concepts organized by category
             </p>
           </div>
@@ -207,22 +207,22 @@ export default function DSAVisualizer() {
                   <div className="flex items-start justify-between mb-3">
                     <div className="flex items-center gap-3">
                       <span className="text-2xl">{category.icon}</span>
-                      <h3 className="text-lg font-semibold text-gray-900 group-hover:text-gray-900">
+                      <h3 className="text-lg font-semibold text-ink group-hover:text-brand-700">
                         {category.title}
                       </h3>
                     </div>
                     {category.isAvailable ? (
-                      <svg className="w-5 h-5 text-gray-400 group-hover:text-gray-900 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-5 h-5 text-gray-400 group-hover:text-brand-700 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                       </svg>
                     ) : (
-                      <span className="px-2 py-0.5 bg-gray-200 text-gray-600 rounded text-xs font-medium flex-shrink-0">
+                      <span className="px-2 py-0.5 bg-gray-200 text-ink-muted rounded text-xs font-medium flex-shrink-0">
                         Coming Soon
                       </span>
                     )}
                   </div>
 
-                  <p className="text-sm text-gray-600 mb-3">
+                  <p className="text-sm text-ink-muted mb-3">
                     {category.description}
                   </p>
 
@@ -230,7 +230,7 @@ export default function DSAVisualizer() {
                     {category.topics.slice(0, 3).map((topic, i) => (
                       <span
                         key={i}
-                        className="px-2 py-0.5 bg-gray-100 text-gray-600 rounded text-xs"
+                        className="px-2 py-0.5 bg-gray-100 text-ink-muted rounded text-xs"
                       >
                         {topic}
                       </span>
@@ -248,14 +248,14 @@ export default function DSAVisualizer() {
                 <Link
                   key={index}
                   href={`/dsa-visualizer/${category.slug}`}
-                  className="group block p-5 bg-white border border-gray-200 rounded-lg hover:border-gray-400 hover:shadow-sm transition-all"
+                  className="group block p-5 bg-white border border-line rounded-lg hover:border-brand-300 hover:shadow-card-hover transition-all shadow-card"
                 >
                   {CardContent}
                 </Link>
               ) : (
                 <div
                   key={index}
-                  className="group block p-5 bg-white border border-gray-200 rounded-lg opacity-60 cursor-not-allowed"
+                  className="group block p-5 bg-white border border-line rounded-lg opacity-60 cursor-not-allowed shadow-card"
                 >
                   {CardContent}
                 </div>

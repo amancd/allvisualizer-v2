@@ -138,61 +138,61 @@ f(x) = cos(x)   →  f'(x) = -sin(x)`
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <nav className="mb-8 text-sm">
           <ol className="flex items-center gap-2 text-gray-500">
-            <li><Link href="/" className="hover:text-gray-900">Home</Link></li>
+            <li><Link href="/" className="hover:text-ink">Home</Link></li>
             <li>/</li>
-            <li><Link href="/math-visualizer" className="hover:text-gray-900">Math Visualizer</Link></li>
+            <li><Link href="/math-visualizer" className="hover:text-ink">Math Visualizer</Link></li>
             <li>/</li>
-            <li className="text-gray-900 font-medium">Derivatives</li>
+            <li className="text-ink font-medium">Derivatives</li>
           </ol>
         </nav>
 
         <article className="space-y-8">
-          <header className="space-y-4 pb-8 border-b border-gray-200">
+          <header className="space-y-4 pb-8 border-b border-line">
             <div className="flex items-center gap-2 text-sm">
-              <span className="px-2 py-1 bg-gray-200 text-gray-900 rounded font-medium">Calculus</span>
+              <span className="px-2 py-1 bg-gray-200 text-ink rounded font-medium">Calculus</span>
               <span className="text-gray-400">•</span>
               <span className="text-gray-500">Beginner</span>
             </div>
             
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
+            <h1 className="text-4xl md:text-5xl font-bold text-ink leading-tight tracking-tight">
               Understanding Derivatives
             </h1>
             
-            <p className="text-xl text-gray-600 leading-relaxed">
+            <p className="text-xl text-ink-muted leading-relaxed">
               Learn how derivatives measure instantaneous rate of change and visualize tangent lines to understand the geometric interpretation of differentiation.
             </p>
           </header>
 
           <section className="space-y-4">
-            <h2 className="text-2xl font-bold text-gray-900">Problem Statement</h2>
-            <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 space-y-4">
+            <h2 className="text-2xl font-bold text-ink">Problem Statement</h2>
+            <div className="bg-subtle border border-line rounded-lg p-6 space-y-4">
               <p className="text-gray-700">
-                Given a function <code className="px-2 py-0.5 bg-white border border-gray-200 rounded text-sm">f(x) = x²</code>, 
-                find the derivative at a point <code className="px-2 py-0.5 bg-white border border-gray-200 rounded text-sm">x = a</code> and 
+                Given a function <code className="px-2 py-0.5 bg-white border border-line rounded text-sm">f(x) = x²</code>, 
+                find the derivative at a point <code className="px-2 py-0.5 bg-white border border-line rounded text-sm">x = a</code> and 
                 visualize the tangent line at that point.
               </p>
               
               <div className="space-y-2">
-                <p className="font-semibold text-gray-900">Example:</p>
+                <p className="font-semibold text-ink">Example:</p>
                 <div className="space-y-1 text-sm">
                   <p><span className="font-medium">Input:</span> f(x) = x², a = 2</p>
                   <p><span className="font-medium">Output:</span> f'(2) = 4</p>
-                  <p className="text-gray-600">Tangent line: y = 4x - 4</p>
+                  <p className="text-ink-muted">Tangent line: y = 4x - 4</p>
                 </div>
               </div>
             </div>
           </section>
 
           <section className="space-y-4">
-            <h2 className="text-2xl font-bold text-gray-900">Intuition</h2>
+            <h2 className="text-2xl font-bold text-ink">Intuition</h2>
             <div className="prose prose-gray max-w-none">
               <p className="text-gray-700 leading-relaxed">
                 The derivative represents the <strong>instantaneous rate of change</strong> of a function. Geometrically, 
                 it's the slope of the tangent line to the curve at a specific point.
               </p>
               
-              <div className="bg-gray-100 border-l-4 border-gray-900 p-4 my-4">
-                <p className="text-sm text-gray-900">
+              <div className="bg-brand-50/60 border-l-4 border-brand-500 p-4 my-4">
+                <p className="text-sm text-ink">
                   <strong>Key Concept:</strong> While the average rate of change uses two points, the derivative 
                   captures the rate of change at a single instant by taking the limit as the interval approaches zero.
                 </p>
@@ -207,8 +207,8 @@ f(x) = cos(x)   →  f'(x) = -sin(x)`
           </section>
 
           <section className="space-y-4">
-            <h2 className="text-2xl font-bold text-gray-900">Interactive Visualization</h2>
-            <p className="text-gray-600">
+            <h2 className="text-2xl font-bold text-ink">Interactive Visualization</h2>
+            <p className="text-ink-muted">
               Drag the point along the curve to see how the derivative (tangent line slope) changes.
             </p>
             <DerivativeVisualizer />
@@ -216,13 +216,13 @@ f(x) = cos(x)   →  f'(x) = -sin(x)`
 
           <section className="space-y-4">
             <div className="flex items-center justify-between">
-              <h2 className="text-2xl font-bold text-gray-900">Implementation</h2>
+              <h2 className="text-2xl font-bold text-ink">Implementation</h2>
               <div className="flex gap-2">
                 <button
                   onClick={() => setSelectedLanguage('python')}
                   className={`px-3 py-1.5 text-sm font-medium rounded-lg transition-colors ${
                     selectedLanguage === 'python'
-                      ? 'bg-black text-white'
+                      ? 'bg-brand-600 text-white shadow-brand'
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                   }`}
                 >
@@ -232,7 +232,7 @@ f(x) = cos(x)   →  f'(x) = -sin(x)`
                   onClick={() => setSelectedLanguage('javascript')}
                   className={`px-3 py-1.5 text-sm font-medium rounded-lg transition-colors ${
                     selectedLanguage === 'javascript'
-                      ? 'bg-black text-white'
+                      ? 'bg-brand-600 text-white shadow-brand'
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                   }`}
                 >
@@ -242,7 +242,7 @@ f(x) = cos(x)   →  f'(x) = -sin(x)`
                   onClick={() => setSelectedLanguage('mathematical')}
                   className={`px-3 py-1.5 text-sm font-medium rounded-lg transition-colors ${
                     selectedLanguage === 'mathematical'
-                      ? 'bg-black text-white'
+                      ? 'bg-brand-600 text-white shadow-brand'
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                   }`}
                 >
@@ -266,7 +266,7 @@ f(x) = cos(x)   →  f'(x) = -sin(x)`
           </section>
 
           <section className="space-y-4">
-            <h2 className="text-2xl font-bold text-gray-900">Computational Complexity</h2>
+            <h2 className="text-2xl font-bold text-ink">Computational Complexity</h2>
             <div className="grid md:grid-cols-2 gap-4">
               <div className="bg-green-50 border border-green-200 rounded-lg p-4">
                 <h3 className="font-semibold text-green-900 mb-2">Time Complexity</h3>
@@ -278,12 +278,12 @@ f(x) = cos(x)   →  f'(x) = -sin(x)`
                 </p>
               </div>
               
-              <div className="bg-gray-100 border border-gray-300 rounded-lg p-4">
-                <h3 className="font-semibold text-gray-900 mb-2">Space Complexity</h3>
-                <p className="text-gray-900 text-sm">
-                  <code className="px-2 py-0.5 bg-white border border-gray-300 rounded">O(1)</code> - Constant space
+              <div className="bg-gray-100 border border-line-strong rounded-lg p-4">
+                <h3 className="font-semibold text-ink mb-2">Space Complexity</h3>
+                <p className="text-ink text-sm">
+                  <code className="px-2 py-0.5 bg-white border border-line-strong rounded">O(1)</code> - Constant space
                 </p>
-                <p className="text-gray-900 text-xs mt-2">
+                <p className="text-ink text-xs mt-2">
                   Only stores the result value
                 </p>
               </div>
@@ -298,9 +298,9 @@ f(x) = cos(x)   →  f'(x) = -sin(x)`
           </section>
 
           <section className="space-y-4">
-            <h2 className="text-2xl font-bold text-gray-900">Related Topics</h2>
+            <h2 className="text-2xl font-bold text-ink">Related Topics</h2>
             <div className="grid sm:grid-cols-2 gap-3">
-              <div className="border border-gray-200 rounded-lg p-4 hover:border-gray-400 transition-colors opacity-60 cursor-not-allowed">
+              <div className="border border-line rounded-lg p-4 hover:border-brand-300 transition-colors opacity-60 cursor-not-allowed">
                 <h3 className="font-semibold text-gray-700 mb-1 flex items-center justify-between">
                   Chain Rule
                   <span className="text-xs text-gray-500">Coming Soon</span>
@@ -308,7 +308,7 @@ f(x) = cos(x)   →  f'(x) = -sin(x)`
                 <p className="text-sm text-gray-500">Derivatives of composite functions</p>
               </div>
               
-              <div className="border border-gray-200 rounded-lg p-4 hover:border-gray-400 transition-colors opacity-60 cursor-not-allowed">
+              <div className="border border-line rounded-lg p-4 hover:border-brand-300 transition-colors opacity-60 cursor-not-allowed">
                 <h3 className="font-semibold text-gray-700 mb-1 flex items-center justify-between">
                   Integration
                   <span className="text-xs text-gray-500">Coming Soon</span>
@@ -316,7 +316,7 @@ f(x) = cos(x)   →  f'(x) = -sin(x)`
                 <p className="text-sm text-gray-500">The inverse operation of differentiation</p>
               </div>
               
-              <div className="border border-gray-200 rounded-lg p-4 hover:border-gray-400 transition-colors opacity-60 cursor-not-allowed">
+              <div className="border border-line rounded-lg p-4 hover:border-brand-300 transition-colors opacity-60 cursor-not-allowed">
                 <h3 className="font-semibold text-gray-700 mb-1 flex items-center justify-between">
                   Optimization
                   <span className="text-xs text-gray-500">Coming Soon</span>
@@ -324,7 +324,7 @@ f(x) = cos(x)   →  f'(x) = -sin(x)`
                 <p className="text-sm text-gray-500">Finding maxima and minima using derivatives</p>
               </div>
               
-              <div className="border border-gray-200 rounded-lg p-4 hover:border-gray-400 transition-colors opacity-60 cursor-not-allowed">
+              <div className="border border-line rounded-lg p-4 hover:border-brand-300 transition-colors opacity-60 cursor-not-allowed">
                 <h3 className="font-semibold text-gray-700 mb-1 flex items-center justify-between">
                   Taylor Series
                   <span className="text-xs text-gray-500">Coming Soon</span>
@@ -334,8 +334,8 @@ f(x) = cos(x)   →  f'(x) = -sin(x)`
             </div>
           </section>
 
-          <section className="pt-8 border-t border-gray-200">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Discussion</h2>
+          <section className="pt-8 border-t border-line">
+            <h2 className="text-2xl font-bold text-ink mb-6">Discussion</h2>
             <GiscusComments />
           </section>
         </article>

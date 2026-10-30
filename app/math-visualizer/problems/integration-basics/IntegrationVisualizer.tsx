@@ -115,14 +115,14 @@ export default function IntegrationVisualizer() {
   };
 
   return (
-    <div className="bg-white border border-gray-200 rounded-lg p-6 space-y-4">
+    <div className="bg-white border border-line rounded-lg p-6 space-y-4 shadow-card">
       <div className="space-y-3">
         <div className="flex items-center justify-between">
           <label className="text-sm font-medium text-gray-700">
             Upper Bound: x = {upperBound.toFixed(2)}
           </label>
           <div className="flex items-center gap-4">
-            <span className="text-sm font-semibold text-gray-900">
+            <span className="text-sm font-semibold text-ink">
               ∫₀^{upperBound.toFixed(2)} x² dx = {definiteIntegral.toFixed(3)}
             </span>
           </div>
@@ -139,7 +139,7 @@ export default function IntegrationVisualizer() {
         />
       </div>
 
-      <div className="bg-gray-50 rounded-lg p-4 overflow-x-auto">
+      <div className="bg-subtle rounded-lg p-4 overflow-x-auto">
         <svg
           ref={svgRef}
           width={width}
@@ -222,14 +222,14 @@ export default function IntegrationVisualizer() {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
-        <div className="bg-gray-100 border border-gray-300 rounded-lg p-3">
-          <div className="text-xs text-gray-900 font-medium mb-1">Function</div>
-          <div className="text-sm font-semibold text-gray-900">f(x) = x²</div>
+        <div className="bg-gray-100 border border-line-strong rounded-lg p-3">
+          <div className="text-xs text-ink font-medium mb-1">Function</div>
+          <div className="text-sm font-semibold text-ink">f(x) = x²</div>
         </div>
         
-        <div className="bg-gray-100 border border-gray-300 rounded-lg p-3">
-          <div className="text-xs text-gray-900 font-medium mb-1">Antiderivative</div>
-          <div className="text-sm font-semibold text-gray-900">F(x) = x³/3</div>
+        <div className="bg-gray-100 border border-line-strong rounded-lg p-3">
+          <div className="text-xs text-ink font-medium mb-1">Antiderivative</div>
+          <div className="text-sm font-semibold text-ink">F(x) = x³/3</div>
         </div>
         
         <div className="bg-green-50 border border-green-200 rounded-lg p-3">
@@ -238,7 +238,7 @@ export default function IntegrationVisualizer() {
         </div>
       </div>
 
-      <div className="bg-gray-50 border-l-4 border-indigo-500 p-3">
+      <div className="bg-subtle border-l-4 border-indigo-500 p-3">
         <p className="text-sm text-gray-700">
           <strong>Try it:</strong> Drag the red point to change the upper bound. The shaded area represents the definite integral 
           ∫₀^b x² dx = [x³/3]₀^b = b³/3. Notice how the area grows as you increase b.

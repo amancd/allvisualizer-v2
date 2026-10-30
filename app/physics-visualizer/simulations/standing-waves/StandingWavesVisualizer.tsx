@@ -307,15 +307,15 @@ export default function StandingWavesVisualizer() {
   return (
     <div className="space-y-6">
       {/* Canvas */}
-      <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
+      <div className="border border-line rounded-lg p-4 bg-subtle">
         <div className="text-xs font-semibold text-gray-700 mb-3">Standing Wave Visualization</div>
         <canvas
           ref={canvasRef}
           width={canvasWidth}
           height={canvasHeight}
-          className="border border-gray-300 bg-white mx-auto block"
+          className="border border-line-strong bg-white mx-auto block"
         />
-        <div className="text-xs text-gray-600 text-center mt-2">
+        <div className="text-xs text-ink-muted text-center mt-2">
           {boundaryType === 'string' && 'Vibrating string with both ends fixed'}
           {boundaryType === 'open-pipe' && 'Air column in pipe with both ends open'}
           {boundaryType === 'closed-pipe' && 'Air column in pipe with one end closed'}
@@ -323,7 +323,7 @@ export default function StandingWavesVisualizer() {
       </div>
 
       {/* Controls */}
-      <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
+      <div className="border border-line rounded-lg p-4 bg-subtle">
         <div className="text-xs font-semibold text-gray-700 mb-3">Parameters</div>
         
         <div className="grid md:grid-cols-2 gap-4 mb-4">
@@ -337,7 +337,7 @@ export default function StandingWavesVisualizer() {
                 className={`px-3 py-2 text-xs rounded ${
                   boundaryType === 'string'
                     ? 'bg-blue-600 text-white'
-                    : 'bg-white border border-gray-300 hover:bg-gray-50'
+                    : 'bg-white border border-line-strong hover:bg-subtle'
                 }`}
               >
                 String
@@ -347,7 +347,7 @@ export default function StandingWavesVisualizer() {
                 className={`px-3 py-2 text-xs rounded ${
                   boundaryType === 'open-pipe'
                     ? 'bg-blue-600 text-white'
-                    : 'bg-white border border-gray-300 hover:bg-gray-50'
+                    : 'bg-white border border-line-strong hover:bg-subtle'
                 }`}
               >
                 Open Pipe
@@ -357,7 +357,7 @@ export default function StandingWavesVisualizer() {
                 className={`px-3 py-2 text-xs rounded ${
                   boundaryType === 'closed-pipe'
                     ? 'bg-blue-600 text-white'
-                    : 'bg-white border border-gray-300 hover:bg-gray-50'
+                    : 'bg-white border border-line-strong hover:bg-subtle'
                 }`}
               >
                 Closed Pipe
@@ -452,7 +452,7 @@ export default function StandingWavesVisualizer() {
               setBoundaryType('string');
               setTime(0);
             }}
-            className="px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium hover:bg-gray-100"
+            className="px-4 py-2 border border-line-strong rounded-lg text-sm font-medium hover:bg-gray-100"
           >
             Reset
           </button>
@@ -460,32 +460,32 @@ export default function StandingWavesVisualizer() {
       </div>
 
       {/* Measurements */}
-      <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
+      <div className="border border-line rounded-lg p-4 bg-subtle">
         <div className="text-xs font-semibold text-gray-700 mb-3">Wave Properties</div>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-          <div className="bg-white border border-gray-200 rounded-lg p-3">
-            <div className="text-xs text-gray-600 font-medium">Nodes</div>
+          <div className="bg-white border border-line rounded-lg p-3 shadow-card">
+            <div className="text-xs text-ink-muted font-medium">Nodes</div>
             <div className="text-lg font-bold text-red-600">
               {getNodePositions().length}
             </div>
             <div className="text-xs text-gray-500">Zero displacement</div>
           </div>
-          <div className="bg-white border border-gray-200 rounded-lg p-3">
-            <div className="text-xs text-gray-600 font-medium">Antinodes</div>
+          <div className="bg-white border border-line rounded-lg p-3 shadow-card">
+            <div className="text-xs text-ink-muted font-medium">Antinodes</div>
             <div className="text-lg font-bold text-green-600">
               {getAntinodePositions().length}
             </div>
             <div className="text-xs text-gray-500">Max displacement</div>
           </div>
-          <div className="bg-white border border-gray-200 rounded-lg p-3">
-            <div className="text-xs text-gray-600 font-medium">Wavelength</div>
+          <div className="bg-white border border-line rounded-lg p-3 shadow-card">
+            <div className="text-xs text-ink-muted font-medium">Wavelength</div>
             <div className="text-lg font-bold text-blue-600">
               {calculateWavelength().toFixed(0)} px
             </div>
             <div className="text-xs text-gray-500">λ = 2L/n</div>
           </div>
-          <div className="bg-white border border-gray-200 rounded-lg p-3">
-            <div className="text-xs text-gray-600 font-medium">Frequency</div>
+          <div className="bg-white border border-line rounded-lg p-3 shadow-card">
+            <div className="text-xs text-ink-muted font-medium">Frequency</div>
             <div className="text-lg font-bold text-purple-600">
               {calculateFrequency().toFixed(2)} Hz
             </div>
@@ -495,7 +495,7 @@ export default function StandingWavesVisualizer() {
       </div>
 
       {/* Info */}
-      <div className="border border-gray-200 rounded-lg p-4 bg-teal-50">
+      <div className="border border-line rounded-lg p-4 bg-teal-50">
         <div className="text-sm text-teal-900">
           <p className="font-medium mb-2">💡 How to Use:</p>
           <ul className="list-disc list-inside space-y-1 text-sm">

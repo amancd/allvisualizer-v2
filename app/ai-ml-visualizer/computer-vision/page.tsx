@@ -49,20 +49,20 @@ export default function ComputerVisionPage() {
       {/* Breadcrumbs */}
       <nav className="pt-24 pb-4">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ol className="flex items-center space-x-2 text-sm text-gray-600">
+          <ol className="flex items-center space-x-2 text-sm text-ink-muted">
             <li>
-              <Link href="/" className="hover:text-gray-900">
+              <Link href="/" className="hover:text-ink">
                 Home
               </Link>
             </li>
             <li>/</li>
             <li>
-              <Link href="/ai-ml-visualizer" className="hover:text-gray-900">
+              <Link href="/ai-ml-visualizer" className="hover:text-ink">
                 AI & ML
               </Link>
             </li>
             <li>/</li>
-            <li className="text-gray-900 font-medium">Computer Vision</li>
+            <li className="text-ink font-medium">Computer Vision</li>
           </ol>
         </div>
       </nav>
@@ -71,10 +71,10 @@ export default function ComputerVisionPage() {
       <section className="pb-16 md:pb-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-4">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900">
+            <h1 className="text-4xl md:text-5xl font-bold text-ink tracking-tight">
               Computer Vision
             </h1>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="text-xl text-ink-muted max-w-2xl mx-auto">
               Master computer vision concepts through interactive visualizations. Learn how computers see and understand images.
             </p>
           </div>
@@ -85,10 +85,10 @@ export default function ComputerVisionPage() {
       <section className="pb-16 md:pb-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-2">
+            <h2 className="text-2xl font-bold text-ink mb-2">
               Interactive Visualizations
             </h2>
-            <p className="text-gray-600">
+            <p className="text-ink-muted">
               Explore computer vision algorithms step by step
             </p>
           </div>
@@ -96,11 +96,11 @@ export default function ComputerVisionPage() {
           <div className="grid gap-6">
             {visualizations.map((viz, index) => {
               const CardContent = (
-                <div className="p-6 bg-white border-2 border-gray-200 rounded-xl hover:border-gray-400 hover:shadow-lg transition-all">
+                <div className="p-6 bg-white border border-line rounded-card hover:border-brand-300 hover:shadow-card-hover transition-all shadow-card">
                   <div className="flex items-start justify-between mb-3">
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2">
-                        <h3 className="text-xl font-semibold text-gray-900">
+                        <h3 className="text-xl font-semibold text-ink">
                           {viz.title}
                         </h3>
                         <span className={`px-2 py-1 text-xs font-medium rounded ${
@@ -111,7 +111,7 @@ export default function ComputerVisionPage() {
                           {viz.difficulty}
                         </span>
                       </div>
-                      <p className="text-gray-600 mb-4">
+                      <p className="text-ink-muted mb-4">
                         {viz.description}
                       </p>
                       <div className="flex flex-wrap gap-2">
@@ -126,11 +126,11 @@ export default function ComputerVisionPage() {
                       </div>
                     </div>
                     {viz.isAvailable ? (
-                      <svg className="w-6 h-6 text-gray-400 group-hover:text-gray-900 flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-6 h-6 text-gray-400 group-hover:text-brand-700 flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                       </svg>
                     ) : (
-                      <span className="px-3 py-1 bg-gray-200 text-gray-600 text-xs font-medium rounded-md flex-shrink-0 ml-4 h-fit">
+                      <span className="px-3 py-1 bg-gray-200 text-ink-muted text-xs font-medium rounded-md flex-shrink-0 ml-4 h-fit">
                         Coming Soon
                       </span>
                     )}
@@ -153,41 +153,41 @@ export default function ComputerVisionPage() {
       </section>
 
       {/* Key Concepts */}
-      <section className="py-16 md:py-20 bg-gray-50">
+      <section className="py-16 md:py-20 bg-subtle">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">
+          <h2 className="text-3xl font-bold text-ink mb-8 tracking-tight">
             Key Concepts
           </h2>
           <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-white rounded-xl p-6 border border-gray-200">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+            <div className="bg-white rounded-card p-6 border border-line shadow-card">
+              <h3 className="text-lg font-semibold text-ink mb-2">
                 Convolution Operations
               </h3>
-              <p className="text-gray-600 text-sm">
+              <p className="text-ink-muted text-sm">
                 Learn how convolution kernels extract features from images through sliding windows and mathematical operations.
               </p>
             </div>
-            <div className="bg-white rounded-xl p-6 border border-gray-200">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+            <div className="bg-white rounded-card p-6 border border-line shadow-card">
+              <h3 className="text-lg font-semibold text-ink mb-2">
                 Feature Extraction
               </h3>
-              <p className="text-gray-600 text-sm">
+              <p className="text-ink-muted text-sm">
                 Understand how neural networks identify patterns, edges, and complex features in visual data.
               </p>
             </div>
-            <div className="bg-white rounded-xl p-6 border border-gray-200">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+            <div className="bg-white rounded-card p-6 border border-line shadow-card">
+              <h3 className="text-lg font-semibold text-ink mb-2">
                 Object Recognition
               </h3>
-              <p className="text-gray-600 text-sm">
+              <p className="text-ink-muted text-sm">
                 Explore how models detect and classify objects using bounding boxes and confidence scores.
               </p>
             </div>
-            <div className="bg-white rounded-xl p-6 border border-gray-200">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+            <div className="bg-white rounded-card p-6 border border-line shadow-card">
+              <h3 className="text-lg font-semibold text-ink mb-2">
                 Image Segmentation
               </h3>
-              <p className="text-gray-600 text-sm">
+              <p className="text-ink-muted text-sm">
                 Discover techniques for pixel-level classification and separating objects from backgrounds.
               </p>
             </div>
@@ -198,7 +198,7 @@ export default function ComputerVisionPage() {
       {/* Comments */}
       <section className="py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">
+          <h2 className="text-2xl font-bold text-ink mb-6">
             Discussion
           </h2>
           <GiscusComments />

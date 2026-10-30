@@ -308,7 +308,7 @@ export default function EMInductionVisualizer() {
   return (
     <div className="space-y-6">
       {/* Canvas */}
-      <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
+      <div className="border border-line rounded-lg p-4 bg-subtle">
         <div className="text-xs font-semibold text-gray-700 mb-3">Electromagnetic Induction Demonstration</div>
         <canvas
           ref={canvasRef}
@@ -318,15 +318,15 @@ export default function EMInductionVisualizer() {
           onMouseMove={handleMouseMove}
           onMouseUp={handleMouseUp}
           onMouseLeave={handleMouseUp}
-          className="border border-gray-300 bg-white mx-auto block cursor-pointer"
+          className="border border-line-strong bg-white mx-auto block cursor-pointer"
         />
-        <div className="text-xs text-gray-600 text-center mt-2">
+        <div className="text-xs text-ink-muted text-center mt-2">
           Drag the magnet up and down through the coil
         </div>
       </div>
 
       {/* Controls */}
-      <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
+      <div className="border border-line rounded-lg p-4 bg-subtle">
         <div className="text-xs font-semibold text-gray-700 mb-3">Parameters</div>
         <div className="grid sm:grid-cols-2 gap-4 mb-4">
           <div>
@@ -376,7 +376,7 @@ export default function EMInductionVisualizer() {
               setMagnetVelocity(0);
               setAutoMove(false);
             }}
-            className="px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium hover:bg-gray-100"
+            className="px-4 py-2 border border-line-strong rounded-lg text-sm font-medium hover:bg-gray-100"
           >
             Reset Position
           </button>
@@ -384,30 +384,30 @@ export default function EMInductionVisualizer() {
       </div>
 
       {/* Real-time Measurements */}
-      <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
+      <div className="border border-line rounded-lg p-4 bg-subtle">
         <div className="text-xs font-semibold text-gray-700 mb-3">Real-Time Measurements</div>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-          <div className="bg-white border border-gray-200 rounded-lg p-3">
-            <div className="text-xs text-gray-600 font-medium">Magnetic Flux</div>
+          <div className="bg-white border border-line rounded-lg p-3 shadow-card">
+            <div className="text-xs text-ink-muted font-medium">Magnetic Flux</div>
             <div className="text-lg font-bold text-purple-600">{magneticFlux.toFixed(2)} Wb</div>
             <div className="text-xs text-gray-500">Through coil</div>
           </div>
-          <div className="bg-white border border-gray-200 rounded-lg p-3">
-            <div className="text-xs text-gray-600 font-medium">Induced EMF</div>
-            <div className={`text-lg font-bold ${inducedEMF > 0 ? 'text-green-600' : inducedEMF < 0 ? 'text-red-600' : 'text-gray-600'}`}>
+          <div className="bg-white border border-line rounded-lg p-3 shadow-card">
+            <div className="text-xs text-ink-muted font-medium">Induced EMF</div>
+            <div className={`text-lg font-bold ${inducedEMF > 0 ? 'text-green-600' : inducedEMF < 0 ? 'text-red-600' : 'text-ink-muted'}`}>
               {inducedEMF.toFixed(2)} V
             </div>
             <div className="text-xs text-gray-500">Faraday's Law</div>
           </div>
-          <div className="bg-white border border-gray-200 rounded-lg p-3">
-            <div className="text-xs text-gray-600 font-medium">Induced Current</div>
-            <div className={`text-lg font-bold ${inducedCurrent > 0 ? 'text-green-600' : inducedCurrent < 0 ? 'text-red-600' : 'text-gray-600'}`}>
+          <div className="bg-white border border-line rounded-lg p-3 shadow-card">
+            <div className="text-xs text-ink-muted font-medium">Induced Current</div>
+            <div className={`text-lg font-bold ${inducedCurrent > 0 ? 'text-green-600' : inducedCurrent < 0 ? 'text-red-600' : 'text-ink-muted'}`}>
               {inducedCurrent.toFixed(2)} A
             </div>
             <div className="text-xs text-gray-500">I = EMF / R</div>
           </div>
-          <div className="bg-white border border-gray-200 rounded-lg p-3">
-            <div className="text-xs text-gray-600 font-medium">Velocity</div>
+          <div className="bg-white border border-line rounded-lg p-3 shadow-card">
+            <div className="text-xs text-ink-muted font-medium">Velocity</div>
             <div className="text-lg font-bold text-blue-600">
               {Math.abs(magnetVelocity).toFixed(1)} px/s
             </div>
@@ -418,11 +418,11 @@ export default function EMInductionVisualizer() {
 
       {/* Graphs */}
       {fluxHistory.length > 10 && (
-        <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
+        <div className="border border-line rounded-lg p-4 bg-subtle">
           <div className="text-xs font-semibold text-gray-700 mb-3">Graphs</div>
           <div className="grid sm:grid-cols-2 gap-4">
             {/* Flux Graph */}
-            <div className="bg-white border border-gray-200 rounded p-3">
+            <div className="bg-white border border-line rounded p-3">
               <div className="text-sm font-medium text-gray-700 mb-2">Magnetic Flux vs Time</div>
               <svg width="250" height="150" className="mx-auto">
                 <polyline
@@ -445,7 +445,7 @@ export default function EMInductionVisualizer() {
             </div>
 
             {/* EMF Graph */}
-            <div className="bg-white border border-gray-200 rounded p-3">
+            <div className="bg-white border border-line rounded p-3">
               <div className="text-sm font-medium text-gray-700 mb-2">Induced EMF vs Time</div>
               <svg width="250" height="150" className="mx-auto">
                 <polyline
@@ -471,7 +471,7 @@ export default function EMInductionVisualizer() {
       )}
 
       {/* Info */}
-      <div className="border border-gray-200 rounded-lg p-4 bg-purple-50">
+      <div className="border border-line rounded-lg p-4 bg-purple-50">
         <div className="text-sm text-purple-900">
           <p className="font-medium mb-2">💡 How to Use:</p>
           <ul className="list-disc list-inside space-y-1 text-sm">
@@ -488,7 +488,7 @@ export default function EMInductionVisualizer() {
       </div>
 
       {/* Lenz's Law Explanation */}
-      <div className="border border-gray-200 rounded-lg p-4 bg-blue-50">
+      <div className="border border-line rounded-lg p-4 bg-blue-50">
         <div className="text-sm text-blue-900">
           <p className="font-medium mb-2">🧲 Lenz's Law in Action:</p>
           <ul className="list-disc list-inside space-y-1 text-sm">

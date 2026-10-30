@@ -20,8 +20,8 @@ export const Section: React.FC<SectionProps> = ({
 }) => {
   const backgrounds = {
     white: 'bg-white',
-    gray: 'bg-gray-50',
-    gradient: 'bg-gradient-to-b from-gray-50 to-white',
+    gray: 'bg-subtle border-y border-line',
+    gradient: 'bg-gradient-to-b from-brand-50/60 to-white',
   };
   
   const paddings = {

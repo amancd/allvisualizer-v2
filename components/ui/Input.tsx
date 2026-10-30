@@ -24,26 +24,27 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
     },
     ref
   ) => {
-    const inputId = id || `input-${Math.random().toString(36).substr(2, 9)}`;
-    const baseStyles = 'px-4 py-3 text-gray-900 placeholder-gray-500 bg-white border-2 rounded-lg transition-colors focus:outline-none';
+    const generatedId = React.useId();
+    const inputId = id || generatedId;
+    const baseStyles = 'h-11 px-3.5 text-sm text-ink placeholder-ink-faint bg-white border rounded-control shadow-card transition-colors focus:outline-none focus:ring-4';
     const errorStyles = error 
-      ? 'border-red-500 focus:border-red-600' 
-      : 'border-gray-200 focus:border-gray-400';
+      ? 'border-red-400 focus:border-red-500 focus:ring-red-100' 
+      : 'border-line-strong focus:border-brand-500 focus:ring-brand-100';
     const widthClass = fullWidth ? 'w-full' : '';
-    const iconPaddingLeft = leftIcon ? 'pl-12' : '';
-    const iconPaddingRight = rightIcon ? 'pr-12' : '';
+    const iconPaddingLeft = leftIcon ? 'pl-10' : '';
+    const iconPaddingRight = rightIcon ? 'pr-10' : '';
     
     return (
       <div className={fullWidth ? 'w-full' : ''}>
         {label && (
-          <label htmlFor={inputId} className="block text-sm font-semibold text-gray-900 mb-2">
+          <label htmlFor={inputId} className="block text-sm font-medium text-ink mb-1.5">
             {label}
           </label>
         )}
         
         <div className="relative">
           {leftIcon && (
-            <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+            <div className="absolute inset-y-0 left-0 pl-3.5 flex text-ink-faint items-center pointer-events-none">
               {leftIcon}
             </div>
           )}
@@ -56,7 +57,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
           />
           
           {rightIcon && (
-            <div className="absolute inset-y-0 right-0 pr-4 flex items-center">
+            <div className="absolute inset-y-0 right-0 pr-3.5 flex text-ink-faint items-center">
               {rightIcon}
             </div>
           )}
@@ -67,7 +68,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
         )}
         
         {helperText && !error && (
-          <p className="mt-2 text-sm text-gray-500">{helperText}</p>
+          <p className="mt-2 text-sm text-ink-muted">{helperText}</p>
         )}
       </div>
     );

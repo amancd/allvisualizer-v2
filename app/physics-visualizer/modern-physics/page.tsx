@@ -57,19 +57,19 @@ export default function ModernPhysicsPage() {
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 pt-28">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Breadcrumb */}
-        <div className="mb-6 text-sm text-gray-600">
-          <a href="/" className="hover:text-gray-900">Home</a>
+        <div className="mb-6 text-sm text-ink-muted">
+          <a href="/" className="hover:text-ink">Home</a>
           {' / '}
-          <a href="/physics-visualizer" className="hover:text-gray-900">Physics Visualizer</a>
+          <a href="/physics-visualizer" className="hover:text-ink">Physics Visualizer</a>
           {' / '}
-          <span className="text-gray-900">Modern Physics</span>
+          <span className="text-ink">Modern Physics</span>
         </div>
 
         {/* Header */}
         <div className="mb-12">
           <div className="flex items-center gap-3 mb-4">
             <span className="text-5xl">⚛️</span>
-            <h1 className="text-4xl font-bold text-gray-900">Modern Physics</h1>
+            <h1 className="text-4xl font-bold text-ink tracking-tight">Modern Physics</h1>
           </div>
           <p className="text-xl text-gray-700 max-w-3xl">
             Explore the revolutionary discoveries of 20th-century physics that changed our understanding 
@@ -79,42 +79,42 @@ export default function ModernPhysicsPage() {
 
         {/* Key Concepts */}
         <div className="mb-12">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Key Concepts</h2>
+          <h2 className="text-2xl font-bold text-ink mb-6">Key Concepts</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
             <div className="bg-purple-50 p-4 rounded-lg border border-purple-200">
               <div className="text-2xl mb-2">🌊</div>
-              <h3 className="font-semibold text-gray-900 mb-1">Quantum Mechanics</h3>
-              <p className="text-sm text-gray-600">Wave-particle duality, quantization, and uncertainty principle</p>
+              <h3 className="font-semibold text-ink mb-1">Quantum Mechanics</h3>
+              <p className="text-sm text-ink-muted">Wave-particle duality, quantization, and uncertainty principle</p>
             </div>
             <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
               <div className="text-2xl mb-2">⚡</div>
-              <h3 className="font-semibold text-gray-900 mb-1">Special Relativity</h3>
-              <p className="text-sm text-gray-600">Time dilation, length contraction, and mass-energy equivalence</p>
+              <h3 className="font-semibold text-ink mb-1">Special Relativity</h3>
+              <p className="text-sm text-ink-muted">Time dilation, length contraction, and mass-energy equivalence</p>
             </div>
             <div className="bg-green-50 p-4 rounded-lg border border-green-200">
               <div className="text-2xl mb-2">💡</div>
-              <h3 className="font-semibold text-gray-900 mb-1">Photoelectric Effect</h3>
-              <p className="text-sm text-gray-600">Photons, work function, and particle nature of light</p>
+              <h3 className="font-semibold text-ink mb-1">Photoelectric Effect</h3>
+              <p className="text-sm text-ink-muted">Photons, work function, and particle nature of light</p>
             </div>
             <div className="bg-yellow-50 p-4 rounded-lg border border-yellow-200">
               <div className="text-2xl mb-2">🎯</div>
-              <h3 className="font-semibold text-gray-900 mb-1">Atomic Structure</h3>
-              <p className="text-sm text-gray-600">Bohr model, energy levels, and spectral emission</p>
+              <h3 className="font-semibold text-ink mb-1">Atomic Structure</h3>
+              <p className="text-sm text-ink-muted">Bohr model, energy levels, and spectral emission</p>
             </div>
           </div>
         </div>
 
         {/* Simulations Grid */}
         <div className="mb-12">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Interactive Simulations</h2>
+          <h2 className="text-2xl font-bold text-ink mb-6">Interactive Simulations</h2>
           <div className="grid md:grid-cols-2 gap-6">
             {simulations.map((sim, index) => (
               <div
                 key={index}
-                className="bg-white rounded-lg border border-gray-200 p-6 hover:shadow-lg transition-shadow"
+                className="bg-white rounded-lg border border-line p-6 hover:shadow-card-hover transition-shadow shadow-card"
               >
                 <div className="flex items-start justify-between mb-3">
-                  <h3 className="text-xl font-bold text-gray-900">{sim.title}</h3>
+                  <h3 className="text-xl font-bold text-ink">{sim.title}</h3>
                   <span className={`px-3 py-1 text-xs font-semibold rounded-full ${
                     sim.difficulty === 'Easy' ? 'bg-green-100 text-green-800' :
                     sim.difficulty === 'Medium' ? 'bg-yellow-100 text-yellow-800' :
@@ -123,7 +123,7 @@ export default function ModernPhysicsPage() {
                     {sim.difficulty}
                   </span>
                 </div>
-                <p className="text-gray-600 mb-4">{sim.description}</p>
+                <p className="text-ink-muted mb-4">{sim.description}</p>
                 <div className="flex flex-wrap gap-2 mb-4">
                   {sim.topics.map((topic, i) => (
                     <span key={i} className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">
@@ -141,7 +141,7 @@ export default function ModernPhysicsPage() {
                 ) : (
                   <Link
                     href={sim.href}
-                    className="block w-full px-4 py-2 bg-transparent border border-black text-black text-center rounded-lg text-sm font-medium hover:bg-gray-50 transition-colors"
+                    className="block w-full px-4 py-2 bg-white border border-brand-200 text-brand-700 shadow-card text-center rounded-lg text-sm font-medium hover:bg-subtle transition-colors"
                   >
                     Explore Simulation →
                   </Link>
@@ -155,7 +155,7 @@ export default function ModernPhysicsPage() {
         <div>
           <Link
             href="/physics-visualizer"
-            className="inline-flex items-center text-gray-600 hover:text-gray-900"
+            className="inline-flex items-center text-ink-muted hover:text-ink"
           >
             ← Back to Physics Visualizer
           </Link>

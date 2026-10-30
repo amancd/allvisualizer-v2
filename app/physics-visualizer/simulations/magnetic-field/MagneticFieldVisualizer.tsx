@@ -425,18 +425,18 @@ export default function MagneticFieldVisualizer() {
   return (
     <div className="space-y-6">
       {/* Canvas */}
-      <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
+      <div className="border border-line rounded-lg p-4 bg-subtle">
         <canvas
           ref={canvasRef}
           width={canvasWidth}
           height={canvasHeight}
           onClick={handleCanvasClick}
-          className="border border-gray-300 bg-white cursor-crosshair mx-auto block"
+          className="border border-line-strong bg-white cursor-crosshair mx-auto block"
         />
       </div>
 
       {/* Controls */}
-      <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
+      <div className="border border-line rounded-lg p-4 bg-subtle">
         <div className="text-xs font-semibold text-gray-700 mb-3">Controls</div>
         <div className="space-y-4">
           {/* Add Sources */}
@@ -525,13 +525,13 @@ export default function MagneticFieldVisualizer() {
           <div className="flex gap-2">
             <button
               onClick={resetToDefault}
-              className="px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium hover:bg-gray-50"
+              className="px-4 py-2 border border-line-strong rounded-lg text-sm font-medium hover:bg-subtle"
             >
               Reset Default
             </button>
             <button
               onClick={clearAll}
-              className="px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium hover:bg-gray-50"
+              className="px-4 py-2 border border-line-strong rounded-lg text-sm font-medium hover:bg-subtle"
             >
               Clear All
             </button>
@@ -540,7 +540,7 @@ export default function MagneticFieldVisualizer() {
       </div>
 
       {/* Info */}
-      <div className="border border-gray-200 rounded-lg p-4 bg-purple-50">
+      <div className="border border-line rounded-lg p-4 bg-purple-50">
         <div className="text-sm text-purple-900">
           <p className="font-medium mb-2">💡 How to Use:</p>
           <ul className="list-disc list-inside space-y-1 text-sm">
@@ -556,7 +556,7 @@ export default function MagneticFieldVisualizer() {
 
       {/* Source List */}
       {sources.length > 0 && (
-        <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
+        <div className="border border-line rounded-lg p-4 bg-subtle">
           <div className="text-xs font-semibold text-gray-700 mb-2">Current Sources ({sources.length})</div>
           <div className="grid grid-cols-2 gap-2">
             {sources.map(source => (
@@ -565,7 +565,7 @@ export default function MagneticFieldVisualizer() {
                 className={`p-2 rounded border ${
                   selectedSource === source.id
                     ? 'border-blue-600 bg-blue-50'
-                    : 'border-gray-200 bg-white'
+                    : 'border-line bg-white'
                 }`}
               >
                 <div className="flex items-center justify-between">

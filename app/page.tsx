@@ -1,197 +1,126 @@
 import Link from 'next/link';
-import { Button } from '@/components/ui';
+import { ArrowRight, MousePointerClick, Layers, Github, Sparkles } from 'lucide-react';
+import { PageHeader, SectionHeader, buttonStyles } from '@/components/ui';
+import CategoryCard from '@/components/catalog/CategoryCard';
+import { categories } from '@/config/categories';
+
+const available = categories.filter((c) => c.status !== 'Coming Soon');
+
+const stats = [
+  { value: '43', label: 'DSA patterns' },
+  { value: `${available.filter((c) => c.id !== 'dsa-patterns').reduce((n, c) => n + c.count, 0)}+`, label: 'interactive visualizers' },
+  { value: '4', label: 'subjects' },
+  { value: '100%', label: 'free & open source' },
+];
+
+const features = [
+  {
+    icon: MousePointerClick,
+    title: 'Interactive, not passive',
+    description: 'Change inputs, step through each operation and watch state update in real time.',
+  },
+  {
+    icon: Layers,
+    title: 'Theory next to the visual',
+    description: 'Every visualizer pairs the animation with the explanation, complexity and code.',
+  },
+  {
+    icon: Github,
+    title: 'Open source',
+    description: 'Built in the open. Suggest topics, report issues or contribute a visualizer on GitHub.',
+  },
+];
 
 export default function Home() {
+  const [featured, ...rest] = available;
+
   return (
-    <div className="bg-white">
-      {/* Hero Section - Simplified */}
-      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 md:pt-40 pb-16 md:pb-24">
-        <div className="text-center space-y-6">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
-            World's 1st Open Source Visualization Platform
-          </h1>
-          
-          <p className="text-lg md:text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto">
-            Master complex concepts with interactive visual learning experiences. See algorithms come to life step-by-step.
-          </p>
-
-          {/* Einstein Quote */}
-          <div className="pt-2">
-            <blockquote className="text-base md:text-lg italic text-gray-500">
-              "Imagination is more important than knowledge."
-              <span className="block text-sm mt-1 not-italic text-gray-400">— Albert Einstein</span>
-            </blockquote>
-          </div>
-              
-          <div className="pt-4">
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/categories">
-                <Button size="lg">
-                  Browse Categories
-                </Button>
-              </Link>
-              <Link href="/physics-visualizer">
-                <Button variant="outline" size="lg">
-                  Start with Physics
-                </Button>
-              </Link>
+    <div>
+      <PageHeader
+        eyebrow={<><Sparkles className="h-3.5 w-3.5" /> New: 43 DSA patterns with code templates</>}
+        title={<>Learn hard concepts by <span className="text-gradient">seeing them move</span></>}
+        description="Open-source interactive visualizations for algorithms, mathematics, physics and machine learning. Step through every idea instead of memorizing it."
+        actions={
+          <>
+            <Link href="/categories" className={buttonStyles({ size: 'lg' })}>
+              Browse categories <ArrowRight className="h-4 w-4" />
+            </Link>
+            <Link href="/dsa-patterns" className={buttonStyles({ variant: 'outline', size: 'lg' })}>
+              Explore DSA Patterns
+            </Link>
+          </>
+        }
+      >
+        <dl className="mx-auto mt-14 grid max-w-3xl grid-cols-2 gap-px overflow-hidden rounded-card border border-line bg-line shadow-card sm:grid-cols-4">
+          {stats.map((s) => (
+            <div key={s.label} className="bg-white/90 px-4 py-5 backdrop-blur">
+              <dt className="sr-only">{s.label}</dt>
+              <dd className="text-2xl font-bold tracking-tight text-ink">{s.value}</dd>
+              <dd className="mt-0.5 text-xs text-ink-muted">{s.label}</dd>
             </div>
+          ))}
+        </dl>
+      </PageHeader>
+
+      <section className="py-16 md:py-24">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionHeader
+            title="Pick a subject"
+            description="Start with whatever you're studying right now."
+            action={
+              <Link href="/categories" className="inline-flex items-center gap-1 text-sm font-semibold text-brand-700 hover:text-brand-800">
+                All categories <ArrowRight className="h-4 w-4" />
+              </Link>
+            }
+          />
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+            <div className="md:col-span-2">
+              <CategoryCard category={featured} featured />
+            </div>
+            {rest.map((c) => (
+              <CategoryCard key={c.id} category={c} />
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Categories Section - Simplified */}
-      <section className="border-t border-gray-200 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Popular Categories
-            </h2>
-            <p className="text-lg text-gray-600 mb-6">
-              Start learning with our interactive visualizers
-            </p>
-            <Link
-              href="/categories"
-              className="inline-flex items-center gap-2 text-sm font-semibold text-gray-700 hover:text-gray-900 transition-colors"
-            >
-              <span>View all categories</span>
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-              </svg>
-            </Link>
+      <section className="border-y border-line bg-subtle py-16 md:py-24">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionHeader title="Why AllVisualizer" description="Built for the moment a concept finally clicks." />
+          <div className="grid gap-5 md:grid-cols-3">
+            {features.map(({ icon: Icon, title, description }) => (
+              <div key={title} className="rounded-card border border-line bg-white p-6 shadow-card">
+                <span className="grid h-10 w-10 place-items-center rounded-lg bg-brand-50 text-brand-600 ring-1 ring-inset ring-brand-100">
+                  <Icon className="h-5 w-5" />
+                </span>
+                <h3 className="mt-4 font-semibold text-ink">{title}</h3>
+                <p className="mt-1.5 text-sm leading-relaxed text-ink-muted">{description}</p>
+              </div>
+            ))}
           </div>
-
-          <div className="space-y-4">
-            {/* DSA Patterns - Available */}
-            <Link href="/dsa-patterns" className="block group">
-              <div className="bg-white border-2 border-gray-300 rounded-xl p-6 hover:border-gray-600 hover:shadow-lg transition-all">
-                <div className="flex items-start justify-between">
-                  <div>
-                    <div className="flex items-center gap-2 mb-2">
-                      <h3 className="text-xl font-bold text-gray-900 group-hover:text-gray-900 transition-colors">
-                        DSA Patterns
-                      </h3>
-                      <span className="px-3 py-1 bg-orange-100 text-orange-800 text-xs font-bold rounded-full border border-orange-300">New</span>
-                    </div>
-                    <p className="text-gray-700 font-medium">
-                      93 coding interview patterns with notes and ready-to-use code templates
-                    </p>
-                  </div>
-                  <svg className="w-6 h-6 text-gray-500 group-hover:text-gray-900 group-hover:translate-x-1 transition-all flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                  </svg>
-                </div>
-              </div>
-            </Link>
-
-            {/* DSA - Available */}
-            <Link href="/dsa-visualizer" className="block group">
-              <div className="bg-white border-2 border-gray-300 rounded-xl p-6 hover:border-gray-600 hover:shadow-lg transition-all">
-                <div className="flex items-start justify-between">
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-gray-900 transition-colors">
-                      Data Structures & Algorithms
-                    </h3>
-                    <p className="text-gray-700 font-medium">
-                      Learn sorting, searching, trees, graphs, and essential CS concepts
-                    </p>
-                  </div>
-                  <svg className="w-6 h-6 text-gray-500 group-hover:text-gray-900 group-hover:translate-x-1 transition-all flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                  </svg>
-                </div>
-              </div>
-            </Link>
-
-            {/* Mathematics - Preview */}
-            <Link href="/math-visualizer" className="block group">
-              <div className="bg-white border-2 border-gray-300 rounded-xl p-6 hover:border-gray-600 hover:shadow-lg transition-all">
-                <div className="flex items-start justify-between">
-                  <div>
-                    <div className="flex items-center gap-2 mb-2">
-                      <h3 className="text-xl font-bold text-gray-900 group-hover:text-gray-900 transition-colors">
-                        Mathematics
-                      </h3>
-                      <span className="px-3 py-1 bg-yellow-100 text-yellow-800 text-xs font-bold rounded-full border border-yellow-300">Preview</span>
-                    </div>
-                    <p className="text-gray-700 font-medium">
-                      Visualize calculus, linear algebra, and mathematical concepts
-                    </p>
-                  </div>
-                  <svg className="w-6 h-6 text-gray-500 group-hover:text-gray-900 group-hover:translate-x-1 transition-all flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                  </svg>
-                </div>
-              </div>
-            </Link>
-
-            {/* Physics - Preview */}
-            <Link href="/physics-visualizer" className="block group">
-              <div className="bg-white border-2 border-gray-300 rounded-xl p-6 hover:border-gray-600 hover:shadow-lg transition-all">
-                <div className="flex items-start justify-between">
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-2">
-                      <h3 className="text-xl font-bold text-gray-900 group-hover:text-gray-900 transition-colors">
-                        Physics
-                      </h3>
-                      <span className="px-3 py-1 bg-green-100 text-green-800 text-xs font-bold rounded-full border border-green-300">Preview</span>
-                    </div>
-                    <p className="text-gray-700 font-medium">
-                      Simulate mechanics, waves, energy, and forces
-                    </p>
-                  </div>
-                  <svg className="w-6 h-6 text-gray-500 group-hover:text-gray-900 group-hover:translate-x-1 transition-all flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                  </svg>
-                </div>
-              </div>
-            </Link>
-
-            {/* AI/ML - Preview */}
-            <Link href="/ai-ml-visualizer" className="block group">
-              <div className="bg-white border-2 border-gray-300 rounded-xl p-6 hover:border-gray-600 hover:shadow-lg transition-all">
-                <div className="flex items-start justify-between">
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-2">
-                      <h3 className="text-xl font-bold text-gray-900 group-hover:text-gray-900 transition-colors">
-                        AI & Machine Learning
-                      </h3>
-                      <span className="px-3 py-1 bg-gray-200 text-gray-900 text-xs font-bold rounded-full border border-gray-300">Preview</span>
-                    </div>
-                    <p className="text-gray-700 font-medium">
-                      Understand neural networks and AI algorithms visually
-                    </p>
-                  </div>
-                  <svg className="w-6 h-6 text-gray-500 group-hover:text-gray-900 group-hover:translate-x-1 transition-all flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                  </svg>
-                </div>
-              </div>
-            </Link>
-          </div>
+          <figure className="mt-12 text-center">
+            <blockquote className="text-lg italic text-ink-muted">&ldquo;Imagination is more important than knowledge.&rdquo;</blockquote>
+            <figcaption className="mt-1 text-sm text-ink-faint">Albert Einstein</figcaption>
+          </figure>
         </div>
       </section>
 
-      {/* CTA Section - Simplified */}
-      <section className="border-t border-gray-200 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Start Your Learning Journey Today
-          </h2>
-          <p className="text-lg text-gray-600 mb-8">
-            Master complex concepts with interactive visualizations and step-by-step explanations
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/categories">
-              <Button size="lg">
-                Explore All Categories
-              </Button>
-            </Link>
-            <Link href="/dsa-visualizer">
-              <Button variant="outline" size="lg">
-                Start with DSA
-              </Button>
-            </Link>
+      <section className="py-16 md:py-24">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="relative overflow-hidden rounded-3xl border border-brand-100 bg-gradient-to-br from-brand-50 via-white to-fuchsia-50 px-6 py-14 text-center shadow-card sm:px-12">
+            <div className="absolute inset-0 bg-dots [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_70%)] opacity-70" aria-hidden />
+            <div className="relative">
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-ink">Start your learning journey today</h2>
+              <p className="mx-auto mt-3 max-w-xl text-ink-muted">
+                Pick a topic, press play and see the idea unfold step by step.
+              </p>
+              <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+                <Link href="/categories" className={buttonStyles({ size: 'lg' })}>Explore all categories</Link>
+                <Link href="/dsa-visualizer" className={buttonStyles({ variant: 'outline', size: 'lg' })}>
+                  Start with DSA
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
@@ -2676,236 +2677,320 @@ def subarray_sum(nums, k):
 /*  HELPERS                                                            */
 /* ------------------------------------------------------------------ */
 
-const diffColor: Record<string, string> = {
-  Easy: 'text-green-600',
-  Medium: 'text-yellow-600',
-  Hard: 'text-red-600',
+const diffStyle: Record<Problem['difficulty'], string> = {
+  Easy: 'bg-emerald-50 text-emerald-700 ring-emerald-200',
+  Medium: 'bg-amber-50 text-amber-700 ring-amber-200',
+  Hard: 'bg-rose-50 text-rose-700 ring-rose-200',
 };
 
 function lcSlug(name: string): string {
   return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+$/, '');
 }
 
+function CodeBlock({ code, compact = false }: { code: string; compact?: boolean }) {
+  const [copied, setCopied] = useState(false);
+
+  const copy = () => {
+    navigator.clipboard.writeText(code).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1500);
+    });
+  };
+
+  return (
+    <div className="overflow-hidden rounded-xl border border-black/5 bg-[#1e1e1e] shadow-card">
+      <div className="flex items-center justify-between border-b border-white/5 px-4 py-2">
+        <div className="flex items-center gap-2">
+          <span className="flex gap-1.5" aria-hidden>
+            <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
+            <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
+            <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
+          </span>
+          <span className="ml-2 font-mono text-xs text-gray-400">python</span>
+        </div>
+        <button
+          onClick={copy}
+          className={`rounded-md px-2 py-1 text-xs font-medium transition-colors ${
+            copied ? 'bg-emerald-500/15 text-emerald-300' : 'text-gray-400 hover:bg-white/10 hover:text-gray-200'
+          }`}
+        >
+          {copied ? 'Copied' : 'Copy'}
+        </button>
+      </div>
+      <SyntaxHighlighter
+        language="python"
+        style={vscDarkPlus}
+        customStyle={{
+          margin: 0,
+          padding: compact ? '0.75rem 1rem' : '1rem 1.25rem',
+          fontSize: '0.84rem',
+          lineHeight: '1.65',
+          background: 'transparent',
+        }}
+        codeTagProps={{ style: { fontFamily: 'var(--font-mono)' } }}
+        wrapLongLines={false}
+      >
+        {code}
+      </SyntaxHighlighter>
+    </div>
+  );
+}
+
+function SubHeading({ children }: { children: React.ReactNode }) {
+  return <h3 className="mb-3 text-xs font-semibold uppercase tracking-wider text-ink-faint">{children}</h3>;
+}
+
 /* ------------------------------------------------------------------ */
 /*  COMPONENT                                                          */
 /* ------------------------------------------------------------------ */
+
+const totalPatterns = categories.reduce((n, c) => n + c.subPatterns.length, 0);
 
 export default function DSAPatterns() {
   const [activeCategory, setActiveCategory] = useState(categories[0].slug);
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const activeData = categories.find((c) => c.slug === activeCategory) || categories[0];
+  const activeIndex = categories.indexOf(activeData);
+  const problemCount = activeData.subPatterns.reduce((n, sp) => n + sp.problems.length, 0);
 
   // Scroll to top of main content when category changes
   useEffect(() => {
     document.getElementById('main-content')?.scrollTo(0, 0);
+    window.scrollTo(0, 0);
   }, [activeCategory]);
 
   return (
-    <div className="bg-white min-h-screen pt-16 md:pt-20">
+    <div className="min-h-screen bg-white pt-16">
       {/* Mobile sidebar toggle */}
       <button
         onClick={() => setSidebarOpen(!sidebarOpen)}
-        className="lg:hidden fixed bottom-4 right-4 z-50 bg-gray-900 text-white p-3 rounded-full shadow-lg"
-        aria-label="Toggle sidebar"
+        className="lg:hidden fixed bottom-5 right-5 z-50 flex items-center gap-2 rounded-full bg-brand-600 px-4 py-3 text-sm font-semibold text-white shadow-brand"
+        aria-label="Toggle pattern list"
       >
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
         </svg>
+        Patterns
       </button>
 
       <div className="flex">
         {/* ── Sidebar ─────────────────────────────────────── */}
         <aside
-          className={`fixed lg:sticky top-16 md:top-20 left-0 z-40 h-[calc(100vh-4rem)] md:h-[calc(100vh-5rem)] w-64 bg-white border-r border-gray-200 overflow-y-auto transition-transform lg:translate-x-0 ${
-            sidebarOpen ? 'translate-x-0' : '-translate-x-full'
+          className={`fixed lg:sticky top-16 left-0 z-40 h-[calc(100vh-4rem)] w-72 shrink-0 border-r border-line bg-subtle overflow-y-auto transition-transform lg:translate-x-0 ${
+            sidebarOpen ? 'translate-x-0 shadow-card-hover' : '-translate-x-full'
           }`}
         >
           {/* Overlay for mobile */}
           {sidebarOpen && (
             <div
-              className="lg:hidden fixed inset-0 bg-black/20 -z-10"
+              className="lg:hidden fixed inset-0 bg-ink/30 backdrop-blur-[1px] -z-10"
               onClick={() => setSidebarOpen(false)}
             />
           )}
 
           <div className="p-4">
-            <h2 className="text-sm font-bold text-gray-900 mb-3">DSA Patterns</h2>
+            <div className="mb-4 rounded-xl border border-line bg-white p-4 shadow-card">
+              <p className="text-xs font-semibold uppercase tracking-wider text-brand-600">Pattern library</p>
+              <p className="mt-1 text-sm text-ink-muted">
+                <span className="font-semibold text-ink">{totalPatterns}</span> patterns in {categories.length} topics
+              </p>
+            </div>
 
-            <nav className="space-y-1">
-              {categories.map((cat) => (
-                <button
-                  key={cat.slug}
-                  onClick={() => {
-                    setActiveCategory(cat.slug);
-                    setSidebarOpen(false);
-                  }}
-                  className={`w-full text-left px-3 py-2 rounded-md text-sm transition-colors ${
-                    activeCategory === cat.slug
-                      ? 'bg-gray-900 text-white font-medium'
-                      : 'text-gray-700 hover:bg-gray-100'
-                  }`}
-                >
-                  <div className="flex justify-between items-center">
-                    <span className="truncate">{cat.name}</span>
-                    <span className={`text-xs flex-shrink-0 ml-2 ${
-                      activeCategory === cat.slug ? 'text-gray-300' : 'text-gray-400'
-                    }`}>
+            <nav className="space-y-0.5">
+              {categories.map((cat, i) => {
+                const active = activeCategory === cat.slug;
+                return (
+                  <button
+                    key={cat.slug}
+                    onClick={() => {
+                      setActiveCategory(cat.slug);
+                      setSidebarOpen(false);
+                    }}
+                    className={`group relative flex w-full items-center gap-3 rounded-lg px-3 py-2 text-left text-sm transition-colors ${
+                      active ? 'bg-white text-ink font-semibold shadow-card ring-1 ring-line' : 'text-ink-muted hover:bg-white/70 hover:text-ink'
+                    }`}
+                  >
+                    {active && <span className="absolute left-0 top-2 bottom-2 w-0.5 rounded-full bg-brand-600" />}
+                    <span className={`w-5 font-mono text-[11px] ${active ? 'text-brand-600' : 'text-ink-faint'}`}>
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
+                    <span className="flex-1 truncate">{cat.name.replace(/ Patterns$/, '')}</span>
+                    <span className={`rounded-full px-1.5 text-[11px] tabular-nums ${active ? 'bg-brand-50 text-brand-700' : 'text-ink-faint'}`}>
                       {cat.subPatterns.length}
                     </span>
-                  </div>
-                </button>
-              ))}
+                  </button>
+                );
+              })}
             </nav>
           </div>
         </aside>
 
         {/* ── Main Content ────────────────────────────────── */}
-        <main id="main-content" className="flex-1 min-w-0 lg:h-[calc(100vh-5rem)] lg:overflow-y-auto">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 py-10">
-            {/* Category header */}
-            <div className="mb-10">
-              <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">{activeData.name}</h1>
-              <p className="text-base text-gray-500">
-                {activeData.subPatterns.length} patterns
-              </p>
+        <main id="main-content" className="flex-1 min-w-0 lg:h-[calc(100vh-4rem)] lg:overflow-y-auto">
+          <div className="hero-surface border-b border-line">
+            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-10 pt-10 pb-8">
+              <nav aria-label="Breadcrumb" className="mb-5 flex items-center gap-1.5 text-sm text-ink-muted">
+                <Link href="/" className="hover:text-ink">Home</Link>
+                <span className="text-ink-faint">/</span>
+                <span>DSA Patterns</span>
+                <span className="text-ink-faint">/</span>
+                <span className="font-medium text-ink">{activeData.name.replace(/ Patterns$/, '')}</span>
+              </nav>
+              <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-ink">{activeData.name}</h1>
+              <div className="mt-3 flex flex-wrap items-center gap-2 text-sm">
+                <span className="rounded-full bg-white px-2.5 py-0.5 text-ink-muted ring-1 ring-inset ring-line">
+                  {activeData.subPatterns.length} patterns
+                </span>
+                <span className="rounded-full bg-white px-2.5 py-0.5 text-ink-muted ring-1 ring-inset ring-line">
+                  {problemCount} practice problems
+                </span>
+              </div>
+
+              {activeData.subPatterns.length > 1 && (
+                <div className="mt-6 flex flex-wrap gap-2">
+                  {activeData.subPatterns.map((sp, i) => (
+                    <a
+                      key={sp.slug}
+                      href={`#${sp.slug}`}
+                      className="rounded-lg border border-line bg-white px-3 py-1.5 text-xs font-medium text-ink-muted shadow-card transition-colors hover:border-brand-300 hover:text-brand-700"
+                    >
+                      <span className="mr-1.5 font-mono text-ink-faint">{i + 1}</span>
+                      {sp.title.split(' - ').pop()?.replace(/\s*\(.*\)$/, '')}
+                    </a>
+                  ))}
+                </div>
+              )}
             </div>
+          </div>
 
-            {/* Sub-patterns */}
-            <div className="space-y-10">
-              {activeData.subPatterns.map((sp) => (
-                  <section
-                    key={sp.slug}
-                    id={sp.slug}
-                    className="border border-gray-200 rounded-xl scroll-mt-20"
-                  >
-                    {/* Header */}
-                    <div className="px-5 sm:px-6 py-5">
-                      <h2 className="text-xl font-bold text-gray-900">{sp.title}</h2>
-                      <p className="text-sm text-gray-400 mt-1">{sp.problems.length} problems</p>
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-10 py-10">
+            <div className="space-y-8">
+              {activeData.subPatterns.map((sp, spIndex) => (
+                <section
+                  key={sp.slug}
+                  id={sp.slug}
+                  className="scroll-mt-20 lg:scroll-mt-6 overflow-hidden rounded-card border border-line bg-white shadow-card"
+                >
+                  {/* Header */}
+                  <div className="flex items-start gap-4 px-5 sm:px-7 py-5">
+                    <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-brand-50 font-mono text-sm font-semibold text-brand-700 ring-1 ring-inset ring-brand-100">
+                      {spIndex + 1}
+                    </span>
+                    <div className="min-w-0">
+                      <h2 className="text-lg sm:text-xl font-semibold tracking-tight text-ink">{sp.title}</h2>
+                      <p className="mt-0.5 text-sm text-ink-faint">{sp.problems.length} practice problems</p>
                     </div>
+                  </div>
 
-                      <div className="px-5 sm:px-6 pb-6 border-t border-gray-100">
-                        {/* How to Recall */}
-                        {sp.recall && (
-                          <div className="mt-5 mb-5 p-4 bg-blue-50 border border-blue-100 rounded-lg">
-                            <h3 className="text-sm font-semibold text-blue-900 mb-1">How to Recall This Pattern</h3>
-                            <p className="text-sm text-blue-800 leading-relaxed">{sp.recall}</p>
-                          </div>
-                        )}
-
-                        {/* Visual Diagram */}
-                        {patternDiagrams[sp.slug] && (
-                          <div className="mt-5 mb-5 p-4 bg-gray-50 border border-gray-200 rounded-lg">
-                            <h3 className="text-sm font-semibold text-gray-700 mb-3">Visual Diagram</h3>
-                            <div className="flex justify-center">
-                              {patternDiagrams[sp.slug]}
-                            </div>
-                          </div>
-                        )}
-
-                        {/* Theory */}
-                        <div className="mt-5 mb-5">
-                          <h3 className="text-sm font-semibold text-gray-700 mb-3">Theory</h3>
-                          <ul className="space-y-2">
-                            {sp.theory.map((point, i) => (
-                              <li key={i} className="text-base text-gray-700 flex gap-2.5 leading-relaxed">
-                                <span className="text-gray-300 select-none mt-0.5">•</span>
-                                <span>{point}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-
-                        {/* Code Template */}
-                        <div className="mb-6">
-                          <h3 className="text-sm font-semibold text-gray-700 mb-3">Code Template</h3>
-                          <div className="rounded-lg overflow-hidden">
-                            <div className="bg-[#1e1e1e] px-4 py-2 flex items-center justify-between">
-                              <span className="text-xs text-gray-400 font-mono">Python</span>
-                              <button
-                                onClick={() => navigator.clipboard.writeText(sp.template)}
-                                className="text-xs text-gray-500 hover:text-gray-300 transition-colors"
-                              >
-                                Copy
-                              </button>
-                            </div>
-                            <SyntaxHighlighter
-                              language="python"
-                              style={vscDarkPlus}
-                              customStyle={{ margin: 0, padding: '0.5rem 1rem 1rem', fontSize: '0.875rem', lineHeight: '1.625', background: '#1e1e1e' }}
-                              wrapLongLines
-                            >
-                              {sp.template}
-                            </SyntaxHighlighter>
-                          </div>
-                        </div>
-
-                        {/* Problems */}
+                  <div className="space-y-7 border-t border-line px-5 sm:px-7 py-6">
+                    {/* How to Recall */}
+                    {sp.recall && (
+                      <div className="flex gap-3 rounded-xl border border-brand-100 bg-brand-50/60 p-4">
+                        <svg className="mt-0.5 h-5 w-5 shrink-0 text-brand-600" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z" />
+                        </svg>
                         <div>
-                          <h3 className="text-sm font-semibold text-gray-700 mb-4">
-                            Practice Problems ({sp.problems.length})
-                          </h3>
-                          <div className="space-y-5">
-                            {sp.problems.map((prob, i) => (
-                              <div key={i} className="border border-gray-100 rounded-lg">
-                                {/* Problem title row */}
-                                <div className="flex items-center justify-between px-4 py-3">
-                                  <div className="flex items-center gap-2.5 min-w-0">
-                                    <span className="text-sm text-gray-400 font-mono w-5 flex-shrink-0">{i + 1}.</span>
-                                    <a
-                                      href={`https://leetcode.com/problems/${lcSlug(prob.name)}/`}
-                                      target="_blank"
-                                      rel="noopener noreferrer"
-                                      className="text-base font-medium text-gray-900 hover:text-blue-700 transition-colors truncate"
-                                    >
-                                      {prob.name}
-                                    </a>
-                                  </div>
-                                  <div className="flex items-center gap-2 flex-shrink-0">
-                                    <span className={`text-xs font-semibold ${diffColor[prob.difficulty]}`}>
-                                      {prob.difficulty}
-                                    </span>
-                                    <span className="text-xs text-gray-400">#{prob.lc}</span>
-                                  </div>
-                                </div>
-
-                                {/* Explanation + Code */}
-                                {(prob.explanation || prob.code) && (
-                                  <div className="px-4 pb-4 space-y-3">
-                                    {prob.explanation && (
-                                      <p className="text-sm text-gray-600 leading-relaxed">{prob.explanation}</p>
-                                    )}
-                                    {prob.code && (
-                                      <div className="rounded-lg overflow-hidden">
-                                        <div className="bg-[#1e1e1e] px-4 py-1.5 flex items-center justify-between">
-                                          <span className="text-xs text-gray-400 font-mono">Python</span>
-                                          <button
-                                            onClick={() => navigator.clipboard.writeText(prob.code!)}
-                                            className="text-xs text-gray-500 hover:text-gray-300 transition-colors"
-                                          >
-                                            Copy
-                                          </button>
-                                        </div>
-                                        <SyntaxHighlighter
-                                          language="python"
-                                          style={vscDarkPlus}
-                                          customStyle={{ margin: 0, padding: '0.5rem 1rem 0.75rem', fontSize: '0.875rem', lineHeight: '1.625', background: '#1e1e1e' }}
-                                          wrapLongLines
-                                        >
-                                          {prob.code!}
-                                        </SyntaxHighlighter>
-                                      </div>
-                                    )}
-                                  </div>
-                                )}
-                              </div>
-                            ))}
-                          </div>
+                          <h3 className="text-sm font-semibold text-brand-900">How to recall this pattern</h3>
+                          <p className="mt-1 text-sm leading-relaxed text-brand-800">{sp.recall}</p>
                         </div>
                       </div>
-                  </section>
-                ))}
+                    )}
+
+                    {/* Visual Diagram */}
+                    {patternDiagrams[sp.slug] && (
+                      <div>
+                        <SubHeading>Visual diagram</SubHeading>
+                        <div className="flex justify-center rounded-xl border border-line bg-subtle bg-dots p-5">
+                          {patternDiagrams[sp.slug]}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Theory */}
+                    <div>
+                      <SubHeading>Theory</SubHeading>
+                      <ul className="space-y-2.5">
+                        {sp.theory.map((point, i) => (
+                          <li key={i} className="flex gap-3 text-[15px] leading-relaxed text-gray-700">
+                            <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-400" aria-hidden />
+                            <span>{point}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* Code Template */}
+                    <div>
+                      <SubHeading>Code template</SubHeading>
+                      <CodeBlock code={sp.template} />
+                    </div>
+
+                    {/* Problems */}
+                    <div>
+                      <SubHeading>Practice problems · {sp.problems.length}</SubHeading>
+                      <div className="divide-y divide-line overflow-hidden rounded-xl border border-line">
+                        {sp.problems.map((prob, i) => (
+                          <div key={i} className="bg-white">
+                            {/* Problem title row */}
+                            <div className="flex items-center justify-between gap-3 px-4 py-3 hover:bg-subtle/70">
+                              <div className="flex min-w-0 items-center gap-3">
+                                <span className="w-5 shrink-0 font-mono text-xs text-ink-faint">{String(i + 1).padStart(2, '0')}</span>
+                                <a
+                                  href={`https://leetcode.com/problems/${lcSlug(prob.name)}/`}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="truncate text-[15px] font-medium text-ink transition-colors hover:text-brand-700"
+                                >
+                                  {prob.name}
+                                </a>
+                              </div>
+                              <div className="flex shrink-0 items-center gap-2">
+                                <span className={`rounded-full px-2 py-0.5 text-[11px] font-medium ring-1 ring-inset ${diffStyle[prob.difficulty]}`}>
+                                  {prob.difficulty}
+                                </span>
+                                <span className="hidden font-mono text-xs text-ink-faint sm:inline">#{prob.lc}</span>
+                              </div>
+                            </div>
+
+                            {/* Explanation + Code */}
+                            {(prob.explanation || prob.code) && (
+                              <div className="space-y-3 px-4 pb-4 sm:pl-12">
+                                {prob.explanation && (
+                                  <p className="text-sm leading-relaxed text-ink-muted">{prob.explanation}</p>
+                                )}
+                                {prob.code && <CodeBlock code={prob.code} compact />}
+                              </div>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              ))}
+            </div>
+
+            {/* Prev / next topic */}
+            <div className="mt-10 grid gap-3 sm:grid-cols-2">
+              {activeIndex > 0 ? (
+                <button
+                  onClick={() => setActiveCategory(categories[activeIndex - 1].slug)}
+                  className="rounded-card border border-line bg-white p-4 text-left shadow-card transition-all hover:border-brand-300 hover:shadow-card-hover"
+                >
+                  <span className="text-xs text-ink-faint">← Previous</span>
+                  <span className="mt-0.5 block font-semibold text-ink">{categories[activeIndex - 1].name}</span>
+                </button>
+              ) : <span />}
+              {activeIndex < categories.length - 1 && (
+                <button
+                  onClick={() => setActiveCategory(categories[activeIndex + 1].slug)}
+                  className="rounded-card border border-line bg-white p-4 text-right shadow-card transition-all hover:border-brand-300 hover:shadow-card-hover"
+                >
+                  <span className="text-xs text-ink-faint">Next →</span>
+                  <span className="mt-0.5 block font-semibold text-ink">{categories[activeIndex + 1].name}</span>
+                </button>
+              )}
             </div>
           </div>
         </main>

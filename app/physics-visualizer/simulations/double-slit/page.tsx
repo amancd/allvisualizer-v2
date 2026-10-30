@@ -14,27 +14,27 @@ export default function DoubleSlitPage() {
     <div className="min-h-screen bg-white pt-24">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Breadcrumb */}
-        <nav className="flex items-center gap-2 text-sm text-gray-600 mb-8">
-          <Link href="/" className="hover:text-gray-900">Home</Link>
+        <nav className="flex items-center gap-2 text-sm text-ink-muted mb-8">
+          <Link href="/" className="hover:text-ink">Home</Link>
           <span>/</span>
-          <Link href="/physics-visualizer" className="hover:text-gray-900">Physics</Link>
+          <Link href="/physics-visualizer" className="hover:text-ink">Physics</Link>
           <span>/</span>
-          <Link href="/physics-visualizer/waves-optics" className="hover:text-gray-900">Waves & Optics</Link>
+          <Link href="/physics-visualizer/waves-optics" className="hover:text-ink">Waves & Optics</Link>
           <span>/</span>
-          <span className="text-gray-900">Double-Slit Experiment</span>
+          <span className="text-ink">Double-Slit Experiment</span>
         </nav>
 
         {/* Header */}
         <header className="mb-8">
           <div className="flex items-center gap-3 mb-4">
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-900">
+            <h1 className="text-3xl md:text-4xl font-bold text-ink tracking-tight">
               Double-Slit Experiment
             </h1>
             <span className="px-3 py-1 bg-yellow-100 text-yellow-700 rounded-lg text-sm font-medium">
               Intermediate
             </span>
           </div>
-          <p className="text-lg text-gray-600">
+          <p className="text-lg text-ink-muted">
             One of the most famous experiments in physics, demonstrating the wave nature of light.
           </p>
         </header>
@@ -44,7 +44,7 @@ export default function DoubleSlitPage() {
 
         {/* Theory Section */}
         <div className="mt-12 prose prose-lg max-w-none">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Theory</h2>
+          <h2 className="text-2xl font-bold text-ink mb-4">Theory</h2>
           
           <div className="bg-teal-50 border border-teal-200 rounded-lg p-6 mb-6">
             <h3 className="text-lg font-semibold text-teal-900 mb-3">Young's Double-Slit Experiment</h3>
@@ -60,42 +60,42 @@ export default function DoubleSlitPage() {
             </div>
           </div>
 
-          <h3 className="text-xl font-semibold text-gray-900 mb-3">Key Concepts</h3>
+          <h3 className="text-xl font-semibold text-ink mb-3">Key Concepts</h3>
           
           <div className="grid md:grid-cols-2 gap-4 mb-6">
-            <div className="bg-gray-50 border border-gray-200 rounded p-4">
-              <h4 className="font-semibold text-gray-900 mb-2">Coherent Sources</h4>
+            <div className="bg-subtle border border-line rounded p-4">
+              <h4 className="font-semibold text-ink mb-2">Coherent Sources</h4>
               <p className="text-sm text-gray-700">
                 The two slits act as coherent sources - they maintain a constant phase relationship 
                 because they come from the same light source.
               </p>
             </div>
             
-            <div className="bg-gray-50 border border-gray-200 rounded p-4">
-              <h4 className="font-semibold text-gray-900 mb-2">Interference Pattern</h4>
+            <div className="bg-subtle border border-line rounded p-4">
+              <h4 className="font-semibold text-ink mb-2">Interference Pattern</h4>
               <p className="text-sm text-gray-700">
                 Alternating bright and dark fringes appear due to constructive and destructive interference 
                 of waves from the two slits.
               </p>
             </div>
             
-            <div className="bg-gray-50 border border-gray-200 rounded p-4">
-              <h4 className="font-semibold text-gray-900 mb-2">Path Difference</h4>
+            <div className="bg-subtle border border-line rounded p-4">
+              <h4 className="font-semibold text-ink mb-2">Path Difference</h4>
               <p className="text-sm text-gray-700">
                 The difference in distance traveled by light from each slit determines whether 
                 interference is constructive or destructive.
               </p>
             </div>
             
-            <div className="bg-gray-50 border border-gray-200 rounded p-4">
-              <h4 className="font-semibold text-gray-900 mb-2">Central Maximum</h4>
+            <div className="bg-subtle border border-line rounded p-4">
+              <h4 className="font-semibold text-ink mb-2">Central Maximum</h4>
               <p className="text-sm text-gray-700">
                 The brightest fringe at the center where path difference is zero and waves arrive in phase.
               </p>
             </div>
           </div>
 
-          <h3 className="text-xl font-semibold text-gray-900 mb-3">Parameters Explained</h3>
+          <h3 className="text-xl font-semibold text-ink mb-3">Parameters Explained</h3>
           <ul className="list-disc list-inside text-gray-700 space-y-2 mb-6">
             <li><strong>Wavelength (λ):</strong> Smaller wavelengths (blue) create tighter fringe spacing</li>
             <li><strong>Slit Separation (d):</strong> Larger separation creates tighter fringes</li>
@@ -103,7 +103,7 @@ export default function DoubleSlitPage() {
             <li><strong>Slit Width:</strong> Affects the single-slit diffraction envelope</li>
           </ul>
 
-          <h3 className="text-xl font-semibold text-gray-900 mb-3">Historical Significance</h3>
+          <h3 className="text-xl font-semibold text-ink mb-3">Historical Significance</h3>
           <p className="text-gray-700 mb-4">
             Thomas Young performed this experiment in 1801, providing compelling evidence for the wave 
             theory of light. It challenged Newton's particle theory and revolutionized our understanding 
@@ -111,7 +111,7 @@ export default function DoubleSlitPage() {
             wave-particle duality.
           </p>
 
-          <h3 className="text-xl font-semibold text-gray-900 mb-3">Applications</h3>
+          <h3 className="text-xl font-semibold text-ink mb-3">Applications</h3>
           <ul className="list-disc list-inside text-gray-700 space-y-2">
             <li><strong>Wavelength measurement</strong> - Precisely determine wavelength of light sources</li>
             <li><strong>Optical testing</strong> - Check quality of lenses and mirrors using interferometry</li>
@@ -124,7 +124,7 @@ export default function DoubleSlitPage() {
 
         {/* Discussion Section */}
         <div className="mt-12">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Discussion</h2>
+          <h2 className="text-2xl font-bold text-ink mb-6">Discussion</h2>
           <GiscusComments />
         </div>
       </div>
