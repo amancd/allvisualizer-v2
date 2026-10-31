@@ -1,4 +1,6 @@
+import { Children } from 'react';
 import type { LucideIcon } from 'lucide-react';
+import AdSlot from '@/components/ads/AdSlot';
 import { breadcrumbsFor, getItem, type SubjectId } from '@/config/content';
 import ContentHeader from './ContentHeader';
 import DifficultyBadge from './DifficultyBadge';
@@ -37,6 +39,8 @@ export default function DetailPage({
   children,
 }: DetailPageProps) {
   const { topic, item } = getItem(subject, slug);
+  // Ads go after the first two sections (usually the visualizer and its explanation) and at the end.
+  const sections = Children.toArray(children);
 
   return (
     <article>
@@ -53,7 +57,10 @@ export default function DetailPage({
         }
       />
       <div className="page-container space-y-12 py-10">
-        {children}
+        {sections.slice(0, 2)}
+        {sections.length >= 4 && <AdSlot placement="inContent" />}
+        {sections.slice(2)}
+        <AdSlot placement="endOfContent" />
         <ItemNav subject={subject} item={slug} />
         {discussion && <Discussion />}
       </div>

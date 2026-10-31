@@ -6,6 +6,7 @@ import ContentHeader from './ContentHeader';
 import ContentSection from './ContentSection';
 import Discussion from './Discussion';
 import ItemCard from './ItemCard';
+import AdSlot from '@/components/ads/AdSlot';
 
 /** Metadata for a topic page, built from the registry. */
 export function topicMetadata(subjectId: SubjectId, topicSlug: string): Metadata {
@@ -59,6 +60,8 @@ export default function TopicPage({ subjectId, topicSlug }: { subjectId: Subject
             ))}
           </div>
         </ContentSection>
+
+        <AdSlot placement="listing" />
 
         {topic.discussion && <Discussion />}
       </div>

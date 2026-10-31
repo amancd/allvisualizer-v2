@@ -3,6 +3,7 @@ import { breadcrumbsFor, getSubject, isAvailable, itemHref, type SubjectId } fro
 import CardGrid from './CardGrid';
 import ItemCard from './ItemCard';
 import TopicCard from './TopicCard';
+import AdSlot from '@/components/ads/AdSlot';
 
 /**
  * Landing page for a subject (e.g. /physics-visualizer).
@@ -44,6 +45,7 @@ export default function SubjectPage({ subjectId }: { subjectId: SubjectId }) {
               <ItemCard key={href} item={item} href={href} />
             ))}
           </div>
+          <AdSlot placement="listing" className="mt-12" />
         </div>
       </section>
 

@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { Menu } from 'lucide-react';
 import { Breadcrumbs } from '@/components/ui';
+import AdSlot from '@/components/ads/AdSlot';
 import { patternCategories, totalPatterns } from '@/config/dsa-patterns';
 import PatternCard from './PatternCard';
 import PatternSidebar, { shortName } from './PatternSidebar';
@@ -86,6 +87,8 @@ export default function DSAPatterns() {
                 <PatternCard key={sp.slug} pattern={sp} index={i} />
               ))}
             </div>
+
+            <AdSlot key={activeSlug} placement="dsaPatterns" className="mt-10" />
 
             <div className="mt-10 grid gap-3 sm:grid-cols-2">
               {prev ? <NavButton label="← Previous" title={prev.name} onClick={() => select(prev.slug)} /> : <span />}
