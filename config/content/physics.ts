@@ -101,7 +101,7 @@ export const physics: Subject = {
         { slug: 'ideal-gas-law', title: 'Ideal Gas Law', description: 'Explore the relationship between pressure, volume, and temperature in gases', difficulty: 'Beginner', tags: ['PV=nRT', 'Pressure', 'Volume', 'Temperature'] },
         { slug: 'heat-transfer', title: 'Heat Transfer', description: 'Visualize conduction, convection, and radiation', difficulty: 'Intermediate', tags: ['Conduction', 'Convection', 'Radiation', 'Thermal Energy'] },
         { slug: 'carnot-cycle', title: 'Carnot Cycle', description: 'Understand the most efficient heat engine cycle', difficulty: 'Advanced', tags: ['Heat Engine', 'Efficiency', 'PV Diagram', 'Reversible Process'] },
-        { slug: 'entropy', title: 'Entropy & Second Law', description: 'Explore entropy and the direction of thermodynamic processes', difficulty: 'Advanced', tags: ['Entropy', 'Second Law', 'Disorder', 'Irreversibility'], status: 'coming-soon' },
+        { slug: 'entropy', title: 'Entropy & Second Law', description: 'Explore entropy and the direction of thermodynamic processes', difficulty: 'Advanced', tags: ['Entropy', 'Second Law', 'Disorder', 'Irreversibility'] },
       ],
     },
     {
@@ -123,7 +123,7 @@ export const physics: Subject = {
         { slug: 'photoelectric-effect', title: 'Photoelectric Effect', description: 'See how light ejects electrons from metal surfaces, proving the particle nature of light', difficulty: 'Intermediate', tags: ['Quantum Mechanics', 'Photons', 'Work Function'] },
         { slug: 'bohr-model', title: 'Bohr Model', description: 'Visualize electron orbits and energy levels in the hydrogen atom', difficulty: 'Intermediate', tags: ['Atomic Physics', 'Energy Levels', 'Spectral Lines'] },
         { slug: 'time-dilation', title: 'Time Dilation', description: 'Explore how time passes differently for observers in relative motion', difficulty: 'Advanced', tags: ['Special Relativity', 'Lorentz Factor', 'Twin Paradox'] },
-        { slug: 'wave-particle-duality', title: 'Wave-Particle Duality', description: 'Demonstrate the dual wave and particle nature of matter and light', difficulty: 'Beginner', tags: ['Quantum Mechanics', 'de Broglie', 'Uncertainty'], status: 'coming-soon' },
+        { slug: 'wave-particle-duality', title: 'Wave-Particle Duality', description: 'Demonstrate the dual wave and particle nature of matter and light', difficulty: 'Beginner', tags: ['Quantum Mechanics', 'de Broglie', 'Uncertainty'] },
       ],
     },
     {
@@ -131,11 +131,21 @@ export const physics: Subject = {
       title: 'Oscillations',
       icon: Activity,
       summary: 'Periodic motion and simple harmonic motion',
-      intro: 'Periodic motion, pendulums, springs, and resonance.',
+      intro:
+        'Explore motion that repeats. Watch masses on springs and swinging pendulums, then add damping and a driving force to see resonance.',
       itemBasePath: sims,
       highlights: ['SHM', 'Pendulum', 'Springs', 'Resonance'],
-      items: [],
-      status: 'coming-soon',
+      concepts: [
+        { title: 'Simple Harmonic Motion', description: 'A restoring force proportional to displacement produces sinusoidal motion' },
+        { title: 'Period and Frequency', description: 'How long one cycle takes, and what sets it: mass, stiffness, length and gravity' },
+        { title: 'Damping', description: 'Friction drains energy so the amplitude decays over time' },
+        { title: 'Resonance', description: 'Driving a system near its natural frequency builds up large amplitudes' },
+      ],
+      items: [
+        { slug: 'simple-harmonic-motion', title: 'Simple Harmonic Motion', description: 'A mass on a spring with live position, velocity and energy graphs', difficulty: 'Beginner', tags: ['Hooke\'s Law', 'Spring Constant', 'Period', 'Energy'] },
+        { slug: 'simple-pendulum', title: 'Simple Pendulum', description: 'Swing a pendulum and compare the exact motion with the small-angle approximation', difficulty: 'Beginner', tags: ['Period', 'Gravity', 'Small-Angle Approximation'] },
+        { slug: 'damped-driven-oscillations', title: 'Damping & Resonance', description: 'Add damping and a driving force, and trace the resonance curve', difficulty: 'Advanced', tags: ['Damping', 'Driving Force', 'Resonance', 'Q Factor'] },
+      ],
     },
   ],
   whyLearn: {

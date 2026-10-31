@@ -44,9 +44,9 @@ export default function AboutPage() {
             </p>
             <ul className="list-disc list-inside text-lg text-gray-700 mb-6 space-y-2">
               <li>Data Structures and Algorithms</li>
-              <li>Mathematics (Coming Soon)</li>
-              <li>Physics (Coming Soon)</li>
-              <li>Artificial Intelligence and Machine Learning (Coming Soon)</li>
+              <li>Mathematics</li>
+              <li>Physics</li>
+              <li>Artificial Intelligence and Machine Learning</li>
             </ul>
 
             </div>
