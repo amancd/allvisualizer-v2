@@ -10,7 +10,7 @@ export default function CategoriesPage() {
       <PageHeader
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Categories' }]}
         title="Browse all categories"
-        description="Interactive visualizations and notes across computer science, math, physics and AI."
+        description="Interactive visualizations and notes across computer science, math, physics, chemistry, statistics and AI."
       >
         <Link
           href="/search"

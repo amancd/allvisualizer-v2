@@ -8,7 +8,7 @@ import Tag from './Tag';
  * link and live/coming-soon state are read from there, so they never go stale.
  * Use `title` for ideas that don't have a registry entry yet; they show as "Coming soon".
  */
-export type RelatedEntry = { slug: string; note?: string } | { title: string; note: string };
+export type RelatedEntry = { slug: string; subject?: SubjectId; note?: string } | { title: string; note: string };
 
 interface RelatedItemsProps {
   subject: SubjectId;
@@ -23,7 +23,7 @@ export default function RelatedItems({ subject, current, items }: RelatedItemsPr
 
   const cards = items.map((entry) => {
     if ('slug' in entry) {
-      const { topic, item } = getItem(subject, entry.slug);
+      const { topic, item } = getItem(entry.subject ?? subject, entry.slug);
       return {
         title: item.title,
         note: entry.note ?? item.description,
