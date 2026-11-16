@@ -12,7 +12,7 @@ Open-source Next.js 16 (App Router) + Tailwind v4 site of interactive visualizat
   - Control rows wrap (`flex-wrap`), and side-by-side panels stack below `lg`.
 - **Use design tokens, not raw colors** for UI chrome: `text-ink`, `text-ink-muted`, `text-ink-faint`, `border-line`, `border-line-strong`, `bg-subtle`, `bg-brand-*`, `rounded-card`, `shadow-card`. Tokens live in `app/globals.css`. Colors *inside* a visualization (series, vectors, particles) may use the regular Tailwind palette.
 - **One width for every page:** use the `page-container` utility. Header, footer and page bodies share it so their edges line up.
-- **Each link appears once per page.** Header: Categories, About, Contact, search, GitHub. Footer: Support, Privacy, Terms, Instagram. Don't repeat those in page bodies, and don't link the same destination twice within a page.
+- **Each link appears once per page.** Header: Categories, About, Contact, search, GitHub. Footer: Support, Privacy, Terms. Don't repeat those in page bodies, and don't link the same destination twice within a page.
 
 ## Where things live
 
