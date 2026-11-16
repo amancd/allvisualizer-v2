@@ -5,13 +5,14 @@ import { CardGrid } from '@/components/content';
 import CategoryCard from '@/components/catalog/CategoryCard';
 import { categories } from '@/config/categories';
 import { totalPatterns } from '@/config/dsa-patterns';
+import { subjects } from '@/config/content';
 
 const available = categories.filter((c) => c.status !== 'Coming Soon');
 
 const stats = [
   { value: String(totalPatterns), label: 'DSA patterns' },
   { value: `${available.filter((c) => c.id !== 'dsa-patterns').reduce((n, c) => n + c.count, 0)}+`, label: 'interactive visualizers' },
-  { value: '4', label: 'subjects' },
+  { value: String(subjects.length), label: 'subjects' },
   { value: '100%', label: 'free & open source' },
 ];
 
@@ -41,7 +42,7 @@ export default function Home() {
       <PageHeader
         eyebrow={<><Sparkles className="h-3.5 w-3.5" /> New: {totalPatterns} DSA patterns with code templates</>}
         title={<>Learn hard concepts by <span className="text-gradient">seeing them move</span></>}
-        description="Open-source interactive visualizations for algorithms, mathematics, physics and machine learning. Step through every idea instead of memorizing it."
+        description="Open-source interactive visualizations for algorithms, mathematics, physics, chemistry, statistics and machine learning. Step through every idea instead of memorizing it."
         actions={
           <Link href="/categories" className={buttonStyles({ size: 'lg' })}>
             Browse categories <ArrowRight className="h-4 w-4" />

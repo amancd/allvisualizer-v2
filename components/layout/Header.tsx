@@ -7,7 +7,7 @@ import { Search, Menu, X } from 'lucide-react';
 import Logo from './Logo';
 
 const navLinks = [
-  { href: '/categories', label: 'Categories', match: ['/categories', '/dsa-patterns', '/dsa-visualizer', '/math-visualizer', '/physics-visualizer', '/ai-ml-visualizer'] },
+  { href: '/categories', label: 'Categories', match: ['/categories', '/dsa-patterns', '/dsa-visualizer', '/math-visualizer', '/physics-visualizer', '/ai-ml-visualizer', '/chemistry-visualizer', '/statistics-visualizer'] },
   { href: '/about', label: 'About', match: ['/about'] },
   { href: '/contact', label: 'Contact', match: ['/contact'] },
 ];

@@ -21,7 +21,7 @@ export default function Footer() {
           <div>
             <Logo asLink={false} />
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-ink-muted">
-              Open-source interactive visualizations for algorithms, math, physics and machine learning, plus DSA pattern notes for interview prep.
+              Open-source interactive visualizations for algorithms, math, physics, chemistry, statistics and machine learning, plus DSA pattern notes for interview prep.
             </p>
 
             {/* App store badges: hidden for now. Uncomment to show them again.

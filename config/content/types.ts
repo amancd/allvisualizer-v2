@@ -67,7 +67,7 @@ export interface Highlight {
 
 /** A top-level subject such as Physics. */
 export interface Subject {
-  id: 'dsa' | 'math' | 'physics' | 'ai-ml';
+  id: 'dsa' | 'math' | 'physics' | 'ai-ml' | 'chemistry' | 'statistics';
   title: string;
   /** Short label used in breadcrumbs. */
   shortTitle: string;

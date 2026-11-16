@@ -6,13 +6,15 @@ import { dsa } from './dsa';
 import { math } from './math';
 import { physics } from './physics';
 import { aiMl } from './ai-ml';
+import { chemistry } from './chemistry';
+import { statistics } from './statistics';
 import type { Crumb } from '@/components/ui/Breadcrumbs';
 import type { ContentItem, Subject, Topic } from './types';
 
 export type { Crumb };
 export type { ContentItem, Concept, Difficulty, Highlight, Status, Subject, Topic } from './types';
 
-export const subjects: Subject[] = [dsa, math, physics, aiMl];
+export const subjects: Subject[] = [dsa, math, physics, aiMl, chemistry, statistics];
 
 export type SubjectId = Subject['id'];
 

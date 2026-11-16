@@ -17,7 +17,7 @@ const mono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: "AllVisualizer - Interactive Learning Through Visualization",
-  description: "Learn Data Structures, Algorithms, Mathematics, Physics, and AI through interactive visualizations.",
+  description: "Learn Data Structures, Algorithms, Mathematics, Physics, Chemistry, Statistics and AI through interactive visualizations.",
   keywords: ["DSA visualizer", "algorithm visualization", "data structures", "interactive learning", "programming education"],
   authors: [{ name: "AllVisualizer Team" }],
   openGraph: {

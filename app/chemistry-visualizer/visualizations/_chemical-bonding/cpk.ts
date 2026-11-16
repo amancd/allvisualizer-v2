@@ -1,0 +1,15 @@
+export const CPK: Record<string, { fill: string; stroke: string; text: string }> = {
+  H: { fill: '#f8fafc', stroke: '#94a3b8', text: '#334155' },
+  B: { fill: '#fda4af', stroke: '#e11d48', text: '#881337' },
+  C: { fill: '#475569', stroke: '#1e293b', text: '#ffffff' },
+  N: { fill: '#3b82f6', stroke: '#1d4ed8', text: '#ffffff' },
+  O: { fill: '#ef4444', stroke: '#b91c1c', text: '#ffffff' },
+  F: { fill: '#86efac', stroke: '#16a34a', text: '#14532d' },
+  P: { fill: '#fb923c', stroke: '#c2410c', text: '#431407' },
+  S: { fill: '#facc15', stroke: '#a16207', text: '#422006' },
+  Cl: { fill: '#22c55e', stroke: '#15803d', text: '#052e16' },
+  Br: { fill: '#b45309', stroke: '#78350f', text: '#ffffff' },
+  Xe: { fill: '#22d3ee', stroke: '#0e7490', text: '#083344' },
+  A: { fill: '#8b5cf6', stroke: '#6d28d9', text: '#ffffff' },
+  X: { fill: '#e2e8f0', stroke: '#64748b', text: '#334155' },
+};

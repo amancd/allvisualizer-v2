@@ -47,6 +47,8 @@ export default function AboutPage() {
               <li>Mathematics</li>
               <li>Physics</li>
               <li>Artificial Intelligence and Machine Learning</li>
+              <li>Chemistry</li>
+              <li>Statistics and Probability</li>
             </ul>
 
             </div>
